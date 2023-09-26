@@ -1,4 +1,4 @@
-#Proyecto de Gestión de Recursos y Generador de Reportes
+# Proyecto de Gestión de Recursos y Generador de Reportes
 ### Tecnologías utilizadas
 - Angular
 - Spring Boot (Java)
