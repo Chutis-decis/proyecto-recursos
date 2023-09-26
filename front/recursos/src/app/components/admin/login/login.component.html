@@ -1,0 +1,30 @@
+<!-- Nav -->
+<app-navv></app-navv>
+
+<!-- Loging -->
+<section class="fontTitle container-lg">
+    <div class="row g-0 mt-5">
+        <div class="col-lg-7">
+
+        </div>
+        <!-- Loggeo de usuario -->
+        <div class="col-lg-5 mt-5 loggin">
+            <div class="px-lg-5 py-lg-4 p-4">
+                <!-- Titulo -->
+                <h1 class="mt-5 font-weight-bold mb-4 text-center">Administracion</h1>
+                <!-- Formulario -->
+                <form>
+                    <div class="mb-4">
+                        <label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
+                        <input type="email" class="form-control" placeholder="Ingresa tu email" id="exampleInputEmail1" aria-describedby="emailHelp">   
+                    </div>
+                    <div class="mb-4">
+                        <label for="exampleInputPassword1" class="form-label font-weight-bold">Password</label>
+                        <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1">
+                        <a href="" id="emailHelp" class="form-text text-muted text-decoration-none mt-3">Has olvidado tu contraseña</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 border-0" (click)="admin()">Iniciar Sesion</button>
+                </form>
+            </div>
+        </div>
+    </div>
