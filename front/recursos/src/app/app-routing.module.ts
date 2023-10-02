@@ -6,6 +6,7 @@ import { AspiranteComponent } from './components/user/aspirante/aspirante.compon
 import { AyudaComponent } from './components/user/ayuda/ayuda.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -20,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

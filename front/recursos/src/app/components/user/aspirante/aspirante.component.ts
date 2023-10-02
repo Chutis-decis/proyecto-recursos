@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./aspirante.component.css']
 })
 export class AspiranteComponent {
+  arpiranteIncorrecto: boolean;
 
+  constructor() {
+    this.arpiranteIncorrecto = false;
+  }
+  
+
+  
 }

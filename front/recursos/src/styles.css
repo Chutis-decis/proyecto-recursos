@@ -40,3 +40,7 @@
 .bor{
     border-bottom: 2px solid #9F5722;
 }
+
+.textError{
+    font-size: 1rem;
+}
