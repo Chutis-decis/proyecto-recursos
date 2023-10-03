@@ -1,15 +1,10 @@
 <!-- Nav -->
 <app-navv></app-navv>
 
-<div class="mt-4">
-    <!-- Barra de Opciones -->
-    <div class="btn-group w-100 mt-5" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary border-0" (click)="inicio()">Inicio</button>
-        <button type="button" class="btn btn-primary border-0">Gestionar Alumno</button>
-        <button type="button" class="btn btn-primary border-0">Reportes</button>
-        <button type="button" class="btn btn-primary border-0" (click)="login()">Cerrar Sesión</button>
-    </div>
-</div>
+<!-- Barra de opciones -->
+<app-barra-opciones></app-barra-opciones>
+
+
 <div class="mt-3 container-lg">
     <h1 class="mt-5 font-weight-bold mb-4 text-center">Panel de Administración </h1>
     <form class="d-flex" role="search">
@@ -25,10 +20,11 @@
         </div>
     </div>
     <div class="mt-2">
-        <div class="row text-center">
-            <div class="col-2">1</div>
-            <div class="col-2">Juan Perez</div>
-            <div class="col-2">juancho@tec.com</div>
+        <div class="row text-center" *ngFor="let item for listAlumn">
+            <div class="col-2">{{item.id}}</div>
+            <div class="col-2">{{item.nombres}}</div>
+            <div class="col-2">{{item.correoPersonal}}</div>
+
             <div class="col-6 text-center">
                 <button type="button" class="btn crud text-white ms-1">
                     <img src="../../../../assets/editar.svg" alt="Editar" width="20">

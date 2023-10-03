@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Model } from 'src/app/model/model';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-panel-admin',
@@ -7,12 +9,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./panel-admin.component.css']
 })
 export class PanelAdminComponent {
-  constructor(private router: Router){}
+  listAlumn: Model[] = [];
+  
+  
+  constructor(private router: Router, private modalService: ServicesService){}
+  
+
+  ngInit(){
+    this.list();
+  }
+
+  list(){
+    this.modalService.getModel().subscribe(resp => {
+      if(resp){
+        this.listAlumn = resp;
+      }
+    });
+  }
 
   inicio(){
     this.router.navigate(['/admin']);
   }
   login(){
     this.router.navigate(['/login']);
+  }
+  repor (){
+    this.router.navigate(['/admin/reportes']);
   }
 }

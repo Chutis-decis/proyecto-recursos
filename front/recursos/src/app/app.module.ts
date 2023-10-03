@@ -12,6 +12,11 @@ import { AyudaComponent } from './components/user/ayuda/ayuda.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ReportesComponent } from './components/admin/reportes/reportes.component';
+import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-opciones.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +27,15 @@ import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.
     AlumnoComponent,
     AyudaComponent,
     LoginComponent,
-    PanelAdminComponent
+    PanelAdminComponent,
+    ReportesComponent,
+    BarraOpcionesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

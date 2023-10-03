@@ -7,6 +7,7 @@ import { AyudaComponent } from './components/user/ayuda/ayuda.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 import { FormsModule } from '@angular/forms';
+import { ReportesComponent } from './components/admin/reportes/reportes.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: "login", component:LoginComponent},
   {path: "admin", component:PanelAdminComponent},
   {path: "ayuda", component:AyudaComponent},
+  {path: "admin/reportes", component:ReportesComponent},
   { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
