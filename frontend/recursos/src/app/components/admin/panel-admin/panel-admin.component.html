@@ -20,14 +20,20 @@
             <div class="col-5">Acciones</div>
         </div>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped mt-3">
         <tbody>
-            <tr *ngFor="let Alumno of alumno">
-                <td>{{Alumno.id}}</td>
-                <td>{{Alumno.nombres}}</td>
-                <td>{{Alumno.primerApellido}}</td>
-                <td>{{Alumno.segundoApellido}}</td>
-            </tr>
+            <div class="row text-center" *ngFor="let Alumno of alumno">
+                <div class="col-1">{{Alumno.id}}</div>
+                <div class="col-2">{{Alumno.nombres}}</div>
+                <div class="col-2">{{Alumno.primerApellido}}</div>
+                <div class="col-2">{{Alumno.segundoApellido}}</div>
+                <div class="col-5">
+                    <button class="btn btn-primary btn-sm border-0 me-1">Editar</button>
+                    <button class="btn col3 btn-sm border-0 me-1 text-white">Eliminar</button>
+                    <button class="btn col2 btn-sm border-0 text-white me-1">Ver</button>
+                    <button class="btn col4 btn-sm border-0 text-white">Dar de Baja</button>
+                </div>
+            </div>
         </tbody>
     </table>
 </div>
