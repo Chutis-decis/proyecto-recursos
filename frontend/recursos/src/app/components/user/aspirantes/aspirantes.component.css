@@ -1,0 +1,20 @@
+
+/* Carousel */
+
+
+.carousel-inner{
+ height: 100%;
+}
+
+
+/* Botones */
+.btn-size{
+    padding: 70px 90px;
+}
+
+
+/* Toda la pantalla */
+.color-fondo{
+    background-color: #f3eeee;
+}
+

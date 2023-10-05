@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+/*  */
+.infotec{
+    background-color: #f7f7eb;
+}
+
+/* Titulo de los componentes */
+.fontTitle{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+
+/* Colores Primary */
+.col1{
+    background-color: #9F2241;
+}
+.col2{
+    background-color: #10312B;
+}
+
+.col3{
+    background-color: #9B7845;
+}
+.col4{
+    background-color: #C07189;
+}
+.col-title{
+    color: #9F5722;
+}
+
+.btn-primary{
+    background-color: #9F2241 !important;
+}
+
+.crud{
+    background-color: #9F5722 !important;
+}
+/* Bordes */
+.bor{
+    border-bottom: 2px solid #9F5722;
+}
+
+.textError{
+    font-size: 1rem;
+}

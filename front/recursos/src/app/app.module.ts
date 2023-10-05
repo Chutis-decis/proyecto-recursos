@@ -13,7 +13,7 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ReportesComponent } from './components/admin/reportes/reportes.component';
 import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-opciones.component';
 
@@ -35,7 +35,8 @@ import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
