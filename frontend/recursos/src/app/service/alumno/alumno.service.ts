@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CPanel } from 'src/app/components/admin/panel-admin/CPanel';
+import { CPanel } from 'src/app/components/admin/CPanel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,25 @@ export class AlumnoService {
   /* Obtencion de los alumnos  */
   obtenerAlumnos():Observable<CPanel[]> {
     return this.httpClient.get<CPanel[]>(`${this.baseUrl}`);  
+  }
+
+  /* Creacion de un nuevo usuario (alumno) */
+  createAlumno(aspirante:CPanel):Observable<CPanel>{
+    return this.httpClient.post<CPanel>(`${this.baseUrl}`, aspirante);
+  }
+
+  /* Obtencion de un solo alumno */
+  get(id: number):Observable<CPanel>{
+    return this.httpClient.get<CPanel>(`${this.baseUrl}`+'/'+id);
+  }
+
+  /* Actualizar */
+  update(aspirante:CPanel):Observable<CPanel>{
+    return this.httpClient.put<CPanel>(`${this.baseUrl}`, aspirante);
+  }
+
+  /* Eliminar */
+  deleted(id: number):Observable<CPanel>{
+    return this.httpClient.delete<CPanel>(`${this.baseUrl}`+'/'+id);
   }
 }

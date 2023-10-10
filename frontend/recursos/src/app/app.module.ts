@@ -12,6 +12,9 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-opciones.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { WatchComponent } from './components/admin/panel/watch/watch.component';
+import { EditarComponent } from './components/admin/panel/editar/editar.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
     AyudaComponent,
     LoginComponent,
     PanelAdminComponent,
-    BarraOpcionesComponent
+    BarraOpcionesComponent,
+    WatchComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
