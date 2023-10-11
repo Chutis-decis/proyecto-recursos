@@ -3,10 +3,37 @@
 
 <!-- Ver los datos de alumno -->
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-4 mt-5">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-    </div>
+    <table class="table table-striped mt-5">
+        <thead class="thead-black">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre(s)</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Curp</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Doomicilio</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let ingreso of alumno">
+            <th scope="row">{{ingreso.id}}</th>
+            <th>{{ingreso.nombres}}</th>
+            <th>{{ingreso.primerApellido}}</th>
+            <th>{{ingreso.segundoApellido}}</th>
+            <th>{{ingreso.genero}}</th>
+            <th>{{ingreso.curp}}</th>
+            <th>{{ingreso.estado}}</th>
+            <th>{{ingreso.ciudad}}</th>
+            <th>{{ingreso.domicilio}}</th>
+            <th>{{ingreso.celular}}</th>
+            <th>{{ingreso.telefono}}</th>
+            <th>{{ingreso.correoPersonal}}</th>
+        </tbody>
+    </table>
 </div>

@@ -25,8 +25,8 @@ export class AlumnoService {
   }
 
   /* Obtencion de un solo alumno */
-  get(id: number):Observable<CPanel>{
-    return this.httpClient.get<CPanel>(`${this.baseUrl}`+'/'+id);
+  get(estudianteId: number):Observable<CPanel>{
+    return this.httpClient.get<CPanel>(`${this.baseUrl}/${estudianteId}`);
   }
 
   /* Actualizar */

@@ -23,6 +23,10 @@ public class EstudianteService {
 
     }
 
+    public Optional<Estudiante> getEstudianteId(Long id){
+        return estudianteRepository.findById(id);
+    }
+
     public void addNewEstudiante(Estudiante estudiante) {
         Optional<Estudiante> estudianteOptional = estudianteRepository
                 .findEstudianteByCorreoPersonal(estudiante.getCorreoPersonal());

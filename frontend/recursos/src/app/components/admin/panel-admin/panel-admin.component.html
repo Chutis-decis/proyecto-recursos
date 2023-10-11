@@ -28,29 +28,10 @@
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
                 <div class="col-5">
-                    <button class="btn btn-primary btn-sm border-0 me-1" [routerLink]="['/editar', Alumno.id]" (click)="edittar()">Editar</button>
-                    <button class="btn col3 btn-sm border-0 me-1 text-white" data-bs-toggle="modal" data-bs-target="#delete">Eliminar</button>
+                    <button type="button" class="btn btn-primary btn-sm border-0 me-1" [routerLink]="['/crear', Alumno.id]">Editar</button>
+                    <button class="btn col3 btn-sm border-0 me-1 text-white" (click)="delete(Alumno)">Eliminar</button>
                     <button class="btn col2 btn-sm border-0 text-white me-1" (click)="verInfo()">Ver</button>
                     <button class="btn col4 btn-sm border-0 text-white">Dar de Baja</button>
-                </div>
-                <!-- Modal  del eliminado-->
-                <div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h5>Deseas eliminar el registro</h5>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Rechazar</button>
-                            <div *ngFor="let student of alumno">
-                                <button type="button" class="btn btn-primary border-0" (click)="delete(student)" data-bs-dismiss="modal">Aceptar</button>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
                 </div>
             </div>
         </tbody>

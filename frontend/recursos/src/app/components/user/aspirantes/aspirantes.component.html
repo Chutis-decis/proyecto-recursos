@@ -47,7 +47,7 @@
         <div class="row " >
             <div class="col-9">
                 <div class="d-grid gap-2 my-5 fontTitle col2">
-                    <button type="button" class="btn text-white btn-size text-center" data-bs-toggle="modal" data-bs-target="#miModal">Aspirantes</button>
+                    <button type="button" class="btn text-white btn-size text-center" (click)="crear()">Aspirantes</button>
                 </div>
             </div>
             <div class="col-3">
@@ -57,71 +57,7 @@
             </div>
         </div>
 
-    <!-- Modal -->
-        <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Datos Personales</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-4 mt-4">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu nombre" id="nombre" name="nombre" [(ngModel)]="estudiante.nombres">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Apellido Paterno</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu apellido paterno" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="estudiante.primerApellido">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Apellido Materno</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu apellido materno" id="apellidoMaterno" name="apellidoMaterno" [(ngModel)]="estudiante.segundoApellido">
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <label>Genero</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu género" id="genero" name="genero" [(ngModel)]="estudiante.genero">
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <label>CURP</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="estado" name="estado" [(ngModel)]="estudiante.estado">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Domicilio</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="domicilio" name="domicilio" [(ngModel)]="estudiante.domicilio">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Celular</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="celular" name="celular" [(ngModel)]="estudiante.celular">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Telefono</label>
-                                <input type="text" class="form-control" placeholder="Escribe tu curp" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
-                            </div>
-                            <div class="col-md-4 mt-4">
-                                <label>Correo Personal</label>
-                                <input type="email" class="form-control" placeholder="Escribe tu email" id="email" name="email" [(ngModel)]="estudiante.correoPersonal">
-                            </div>
-                            <!-- boton -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success border-0" role="button" (click)="create()" data-bs-dismiss="modal">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </div>
-        </div>
+    
     </div>
 
 </div>

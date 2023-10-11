@@ -23,6 +23,9 @@ export class AspirantesComponent implements OnInit{
   ayuda(){
     this.route.navigate(['/ayuda']);
   }
+  crear(){
+    this.route.navigate(['/crear']);
+  }
   
   ngOnInit(): void {
   }

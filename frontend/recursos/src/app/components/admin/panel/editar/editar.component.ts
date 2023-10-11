@@ -19,17 +19,15 @@ export class EditarComponent implements OnInit {
     this.cargar();
   }
 
-
-  /* Cargar: servira para cargar todo el documento de alumnos para poder editar() */
   cargar():void{
     this.activateRouter.params.subscribe(
       e=> {
-        let id = e['id'];
+        let id = e['estudianteId'];
         if(id){
           this.alumnosService.get(id).subscribe(
-            es => this.alumnos = es
-          )
-        } 
+            es=> this.alumnos = es
+          ) 
+        }
       }
     );
   }

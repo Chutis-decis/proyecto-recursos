@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { EditarComponent } from './components/admin/panel/editar/editar.component';
+import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditarComponent } from './components/admin/panel/editar/editar.componen
     PanelAdminComponent,
     BarraOpcionesComponent,
     WatchComponent,
-    EditarComponent
+    EditarComponent,
+    RegistroAspiranteComponent
   ],
   imports: [
     BrowserModule,

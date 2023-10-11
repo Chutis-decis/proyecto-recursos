@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -22,6 +23,11 @@ public class EstudianteController {
     public List<Estudiante> getEstudiante() {
         return estudianteService.getEstudiante();
 
+    }
+
+    @GetMapping (path = "{estudianteId}")
+    public Optional<Estudiante> getEstudianteId(Long id){
+        return estudianteService.getEstudianteId(id);
     }
 
     @PostMapping
