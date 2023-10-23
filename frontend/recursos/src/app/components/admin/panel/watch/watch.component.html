@@ -2,38 +2,47 @@
 <app-navv></app-navv>
 
 <!-- Ver los datos de alumno -->
-<div class="container">
-    <table class="table table-striped mt-5">
-        <thead class="thead-black">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre(s)</th>
-                <th scope="col">Primer Apellido</th>
-                <th scope="col">Segundo Apellido</th>
-                <th scope="col">Genero</th>
-                <th scope="col">Curp</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Ciudad</th>
-                <th scope="col">Doomicilio</th>
-                <th scope="col">Celular</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Email</th>
-            </tr>
-        </thead>
-
-        <tbody *ngFor="let ingreso of alumno">
-            <th scope="row">{{ingreso.id}}</th>
-            <th>{{ingreso.nombres}}</th>
-            <th>{{ingreso.primerApellido}}</th>
-            <th>{{ingreso.segundoApellido}}</th>
-            <th>{{ingreso.genero}}</th>
-            <th>{{ingreso.curp}}</th>
-            <th>{{ingreso.estado}}</th>
-            <th>{{ingreso.ciudad}}</th>
-            <th>{{ingreso.domicilio}}</th>
-            <th>{{ingreso.celular}}</th>
-            <th>{{ingreso.telefono}}</th>
-            <th>{{ingreso.correoPersonal}}</th>
-        </tbody>
-    </table>
+<div class="mt-4 container-lg">
+    <h1 class="mt-5 font-weight-bold mb-4 text-center">Ver Datos</h1>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary border-0" type="submit">Buscar</button>
+    </form>
+    <div class="">
+        <div class="mt-4">
+            <div class="row btn-primary text-white text-center">
+                <div class="col">ID</div>
+                <div class="col">Nombre</div>
+                <div class="col">Primer Apellido</div>
+                <div class="col">Segundo Apellido</div>
+                <div class="col">Genero</div>
+                <div class="col">CURP</div>
+                <div class="col">Estado</div>
+                <div class="col">Ciudad</div>
+                <div class="col">Domicilio</div>
+                <div class="col">Celular</div>
+                <div class="col">Telefono</div>
+                <div class="col">Email</div>
+            </div>
+        </div>
+        <table class="table table-striped mt-3">
+            <tbody>
+                <div class="row text-center" *ngFor="let Alumno of alumno">
+                    <div class="col">{{Alumno.id}}</div>
+                    <div class="col">{{Alumno.nombres}}</div>
+                    <div class="col">{{Alumno.primerApellido}}</div>
+                    <div class="col">{{Alumno.segundoApellido}}</div>
+                    <div class="col">{{Alumno.genero}}</div>
+                    <div class="col">{{Alumno.curp}}</div>
+                    <div class="col">{{Alumno.estado}}</div>
+                    <div class="col">{{Alumno.ciudad}}</div>
+                    <div class="col">{{Alumno.domicilio}}</div>
+                    <div class="col">{{Alumno.celular}}</div>
+                    <div class="col">{{Alumno.telefono}}</div>
+                    <div class="col">{{Alumno.correoPersonal}}</div>
+                </div>
+            </tbody>
+        </table>
+    </div>
+    
 </div>

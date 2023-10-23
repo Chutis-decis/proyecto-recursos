@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent },
   {path: "admin", component: PanelAdminComponent},
   {path: 'seeInformacion', component: WatchComponent},
-  {path: 'crear/:estudianteId', component: RegistroAspiranteComponent},
+  {path: 'admin/:estudianteId', component: PanelAdminComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -24,7 +24,6 @@ public class EstudianteController {
         return estudianteService.getEstudiante();
 
     }
-
     @GetMapping (path = "{estudianteId}")
     public Optional<Estudiante> getEstudianteId(Long id){
         return estudianteService.getEstudianteId(id);

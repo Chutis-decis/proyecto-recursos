@@ -12,9 +12,11 @@ export class PanelAdminComponent implements OnInit {
 
   /* Atributo */
   alumno: CPanel[];
+  estudiante : CPanel = new CPanel();
 
   /* Constructor */
   constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute) {this.rout = rout; }
+  
   /* Metodos para el crud */
   ngOnInit(): void {
     this.getAlumnos();
@@ -40,10 +42,34 @@ export class PanelAdminComponent implements OnInit {
       )
     );
   }
+  deleteStudent(id: number) {  
+    this.alumnoService.deleted(id)  
+      .subscribe(  
+        data => {  
+          console.log(data);  
+          this.alumnoService.obtenerAlumnos().subscribe(data =>{  
+            this.alumno =data  
+            })  
+        },  
+        error => console.log(error));  
+  } 
 
   /* Editar */
   edittar(){
-    this.rout.navigate(['/editar/:id']);
+    this.rout.navigate(['/editar/::estudianteId']);
   }
   
+  /* Eliminar */
+  eliminar(){
+    this.rout.navigate(['/eliminar/:estudianteId']);
+  }
+  
+  /* Obtencion de los alumnos */
+  get(estudianteId: number){
+    return this.alumnoService.get(estudianteId).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error);
+    })
+  }
 }

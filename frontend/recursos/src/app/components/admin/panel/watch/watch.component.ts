@@ -17,6 +17,8 @@ export class WatchComponent implements OnInit{
   ngOnInit(): void {
     this.getAlumnos();
   }
+
+  /* Metodo para vizualizar los datos de  los alumnos: Datos de Ingreso, Datos FTD, datos escolares y datos personales */
   private getAlumnos(){
     this.alumnoService.obtenerAlumnos().subscribe(data => {
       this.alumno = data;

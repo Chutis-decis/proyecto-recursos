@@ -28,8 +28,8 @@
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
                 <div class="col-5">
-                    <button type="button" class="btn btn-primary btn-sm border-0 me-1" [routerLink]="['/crear', Alumno.id]">Editar</button>
-                    <button class="btn col3 btn-sm border-0 me-1 text-white" (click)="delete(Alumno)">Eliminar</button>
+                    <button type="button" class="btn btn-primary btn-sm border-0 me-1" (click)="get(Alumno.id)" [routerLink]="['/crear', Alumno.id]">Editar</button>
+                    <button class="btn col3 btn-sm border-0 me-1 text-white"[routerLink]="['/eliminar', Alumno.id]" (click)="deleteStudent(Alumno.id)">Eliminar</button>
                     <button class="btn col2 btn-sm border-0 text-white me-1" (click)="verInfo()">Ver</button>
                     <button class="btn col4 btn-sm border-0 text-white">Dar de Baja</button>
                 </div>

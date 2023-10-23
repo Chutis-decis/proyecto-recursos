@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { EditarComponent } from './components/admin/panel/editar/editar.component';
 import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
+import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RegistroAspiranteComponent } from './components/user/registro-aspirante
     BarraOpcionesComponent,
     WatchComponent,
     EditarComponent,
-    RegistroAspiranteComponent
+    RegistroAspiranteComponent,
+    EliminarComponent
   ],
   imports: [
     BrowserModule,
