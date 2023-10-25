@@ -7,9 +7,13 @@ export class CPanel{
     curp:string;
     estado:string;
     ciudad:string;
-    domicilio:string;
+    colonia: string;
+    calle: string;
+    numeroExterior: string;
+    numeroInterior: string;
+    extra: string;
     celular:string;
     telefono:string;
     correoPersonal:string;
-    deleted:boolean;
+    activo:boolean;
 }

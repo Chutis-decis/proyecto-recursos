@@ -5,6 +5,7 @@
         
 <form>
     <div class="container-md mt-5">
+        <h1 class="text-center mt-5 col-title">Datos Personales</h1>
     <div class="row">
         <div class="col-md-4 mt-4">
             <label>Nombre</label>
@@ -18,41 +19,59 @@
             <label>Apellido Materno</label>
             <input type="text" class="form-control" placeholder="Escribe tu apellido materno" id="apellidoMaterno" name="apellidoMaterno" [(ngModel)]="estudiante.segundoApellido">
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="col-md-4 mt-4">
             <label>Genero</label>
             <input type="text" class="form-control" placeholder="Escribe tu género" id="genero" name="genero" [(ngModel)]="estudiante.genero">
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="col-md-4 mt-4">
             <label>CURP</label>
             <input type="text" class="form-control" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp">
         </div>
         <div class="col-md-4 mt-4">
             <label>Estado</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="estado" name="estado" [(ngModel)]="estudiante.estado">
+            <input type="text" class="form-control" placeholder="Escribe tu estado" id="estado" name="estado" [(ngModel)]="estudiante.estado">
         </div>
         <div class="col-md-4 mt-4">
             <label>Ciudad</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad">
+            <input type="text" class="form-control" placeholder="Escribe tu ciudad" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad">
         </div>
         <div class="col-md-4 mt-4">
-            <label>Domicilio</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="domicilio" name="domicilio" [(ngModel)]="estudiante.domicilio">
+            <label>Colonoa</label>
+            <input type="text" class="form-control" placeholder="Escribe tu colonia" id="colonia" name="colonia" [(ngModel)]="estudiante.colonia">
+        </div>
+        <div class="col-md-4 mt-4">
+            <label>Calle</label>
+            <input type="text" class="form-control" placeholder="Escribe tu calle" id="calle" name="calle" [(ngModel)]="estudiante.calle">
+        </div>
+        <div class="col-md-4 mt-4">
+            <label>Numero Exterior</label>
+            <input type="text" class="form-control" placeholder="Escribe tu nùmero exterior" id="numExterior" name="numExterior" [(ngModel)]="estudiante.numeroExterior">
+        </div>
+        <div class="col-md-4 mt-4">
+            <label>Numero Interior</label>
+            <input type="text" class="form-control" placeholder="Escribe tu nùmero interior" id="numInterior" name="numInterior" [(ngModel)]="estudiante.numeroInterior">
+        </div>
+        <div class="col-md-4 mt-4">
+            <label>Extra</label>
+            <input type="text" class="form-control" placeholder="Escribe tu ubicaciòn" id="extra
+            " name="extra
+            " [(ngModel)]="estudiante.extra">
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Celular</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="celular" name="celular" [(ngModel)]="estudiante.celular">
+            <input type="text" class="form-control" placeholder="Escribe tu nùmero de celular" id="celular" name="celular" [(ngModel)]="estudiante.celular">
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Telefono</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
+            <input type="text" class="form-control" placeholder="Escribe tu nùmero de telefono" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Correo Personal</label>
-            <input type="email" class="form-control" placeholder="Escribe tu email" id="email" name="email" [(ngModel)]="estudiante.correoPersonal">
+            <input type="email" class="form-control" placeholder="Escribe tu correo personal" id="email" name="email" [(ngModel)]="estudiante.correoPersonal">
         </div>
         <!-- boton -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-success border-0" role="button" (click)="create()" data-bs-dismiss="modal">Enviar</button>
+            <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" data-bs-dismiss="modal">Siguiente</button>
         </div>
     </div>
     </div>

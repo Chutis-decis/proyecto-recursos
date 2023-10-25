@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-panel-admin',
@@ -14,6 +15,26 @@ export class PanelAdminComponent implements OnInit {
   alumno: CPanel[];
   estudiante : CPanel = new CPanel();
 
+  /* Atributos para el crud */
+  id = 0;
+  nombres: FormControl = new FormControl('');
+  primerApellido: FormControl = new FormControl('');
+  segundoApellido: FormControl = new FormControl('');
+  genero: FormControl = new FormControl('');
+  curp: FormControl = new FormControl('');
+  estado: FormControl = new FormControl('');
+  ciudad: FormControl = new FormControl('');
+  colonia: FormControl = new FormControl('');
+  calle: FormControl = new FormControl('');
+  numeroExterior: FormControl = new FormControl('');
+  numeroInterior: FormControl = new FormControl('');
+  extra: FormControl = new FormControl('');
+  celular: FormControl = new FormControl('');
+  telefono: FormControl = new FormControl('');
+  correoPersonal: FormControl = new FormControl('');
+  activo: FormControl = new FormControl('');
+
+
   /* Constructor */
   constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute) {this.rout = rout; }
   
@@ -22,9 +43,18 @@ export class PanelAdminComponent implements OnInit {
     this.getAlumnos();
   }
 
+  /* Obtencion de los alumnos */
   private getAlumnos(){
     this.alumnoService.obtenerAlumnos().subscribe(data => {
       this.alumno = data;
+    });
+  }
+
+  /* Eliminacion de los alumnos */
+  deleteEstudiante(id: number): void{
+    this.alumnoService.deleted(id).subscribe(data => {
+      console.log("Alumno eliminado", data);
+      this.getAlumnos();
     });
   }
 
@@ -33,43 +63,12 @@ export class PanelAdminComponent implements OnInit {
     this.rout.navigate(['/seeInformacion']);
   }
 
-  /* Eliminar */
-  delete(aspirante:CPanel):void{
-    console.log("Eliminado");
-    this.alumnoService.deleted(aspirante.id).subscribe(
-      res=> this.alumnoService.obtenerAlumnos().subscribe(
-        response=> this.alumno= response
-      )
-    );
-  }
-  deleteStudent(id: number) {  
-    this.alumnoService.deleted(id)  
-      .subscribe(  
-        data => {  
-          console.log(data);  
-          this.alumnoService.obtenerAlumnos().subscribe(data =>{  
-            this.alumno =data  
-            })  
-        },  
-        error => console.log(error));  
-  } 
-
   /* Editar */
-  edittar(){
-    this.rout.navigate(['/editar/::estudianteId']);
-  }
-  
-  /* Eliminar */
-  eliminar(){
-    this.rout.navigate(['/eliminar/:estudianteId']);
-  }
-  
-  /* Obtencion de los alumnos */
-  get(estudianteId: number){
-    return this.alumnoService.get(estudianteId).subscribe(res => {
-      console.log(res);
-    }, error => {
-      console.log(error);
-    })
+
+  getStudent(id: number): void{
+    this.alumnoService.getById(id).subscribe(data => {
+      console.log("Alumno editado", data);
+      this.nombres.setValue(data.nombres);
+    });
   }
 }

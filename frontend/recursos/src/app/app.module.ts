@@ -17,6 +17,8 @@ import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { EditarComponent } from './components/admin/panel/editar/editar.component';
 import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
 import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.component';
+import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
+import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.co
     WatchComponent,
     EditarComponent,
     RegistroAspiranteComponent,
-    EliminarComponent
+    EliminarComponent,
+    DatosEscolaresComponent,
+    RegistroDatosPersonalesComponent,
   ],
   imports: [
     BrowserModule,

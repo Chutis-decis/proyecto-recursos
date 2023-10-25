@@ -9,7 +9,7 @@ import { CPanel } from 'src/app/components/admin/CPanel';
 export class AlumnoService {
 
   /* URL listado de  todos los empleados en el backend */
-  baseUrl = 'http://localhost:8081/api/v1/estudiante';
+  baseUrl = 'http://localhost:8081/datos-personales';
 
 
   constructor(private httpClient: HttpClient) { }
@@ -25,17 +25,17 @@ export class AlumnoService {
   }
 
   /* Obtencion de un solo alumno */
-  get(estudianteId: number):Observable<CPanel>{
-    return this.httpClient.get<CPanel>(`${this.baseUrl}/${estudianteId}`);
+  getById(id: number):Observable<CPanel>{
+    return this.httpClient.get<CPanel>(`${this.baseUrl}/${id}`);
   }
 
   /* Actualizar */
-  update(aspirante:CPanel):Observable<CPanel>{
-    return this.httpClient.put<CPanel>(`${this.baseUrl}`, aspirante);
-  }
+  editarAlumno (id: number, aspirante: CPanel): Observable<Object>{
+    return this.httpClient.put<CPanel>(`${this.baseUrl}/${id}`, aspirante);
+  } 
 
   /* Eliminar */
   deleted(id: number):Observable<CPanel>{
-    return this.httpClient.delete<CPanel>(`${this.baseUrl}`+'/'+id);
+    return this.httpClient.delete<CPanel>(`${this.baseUrl}/${id}`);
   }
 }

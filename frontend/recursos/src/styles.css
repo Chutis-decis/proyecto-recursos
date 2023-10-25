@@ -32,6 +32,9 @@
 .btn-primary{
     background-color: #9F2241 !important;
 }
+.btn-secondary{
+    background-color: #10312B !important;
+}
 
 .crud{
     background-color: #9F5722 !important;

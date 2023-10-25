@@ -24,7 +24,7 @@ export class EditarComponent implements OnInit {
       e=> {
         let id = e['estudianteId'];
         if(id){
-          this.alumnosService.get(id).subscribe(
+          this.alumnosService.getById(id).subscribe(
             es=> this.alumnos = es
           ) 
         }

@@ -14,5 +14,10 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/home']);
   }
 
+  datos_escolares(){
+    this.router.navigate(['/datos-escolares']);
+  }
+
+
 
 }

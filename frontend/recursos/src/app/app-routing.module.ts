@@ -7,7 +7,7 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
-
+import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,7 +18,9 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent },
   {path: "admin", component: PanelAdminComponent},
   {path: 'seeInformacion', component: WatchComponent},
-  {path: 'admin/:estudianteId', component: PanelAdminComponent},
+  {path: 'estudiante/:id', component: RegistroAspiranteComponent},
+  {path: 'datos-escolares', component: DatosEscolaresComponent},
+  
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
