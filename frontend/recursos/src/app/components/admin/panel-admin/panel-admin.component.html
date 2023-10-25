@@ -17,7 +17,9 @@
             <div class="col-2">Nombre</div>
             <div class="col-2">Primer Apellido</div>
             <div class="col-2">Segundo Apellido</div>
-            <div class="col-5">Acciones</div>
+            <div class="col-1">Editar</div>
+            <div class="col-2">Eliminar</div>
+            <div class="col-1">Detalles</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -27,11 +29,9 @@
                 <div class="col-2">{{Alumno.nombres}}</div>
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
-                <div class="col-5">
-                    <button type="button" class="btn btn-primary btn-sm border-0 me-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
-                    <button type="button" class="btn col3 btn-sm border-0 me-1 text-white" (click) ="deleteEstudiante(Alumno.id)">Eliminar</button>
-                    <button class="btn col2 btn-sm border-0 text-white me-1" (click)="verInfo()">Detalles</button>
-                </div>
+                    <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
+                    <button type="button" class="btn col3 btn-sm border-0 me-1 text-white col-2 mt-1" (click) ="deleteEstudiante(Alumno.id)">Eliminar</button>
+                    <button class="btn col2 btn-sm border-0 text-white me-1 col-1 mt-1" (click)="verInfo()">Detalles</button>
             </div>
         </tbody>
     </table>

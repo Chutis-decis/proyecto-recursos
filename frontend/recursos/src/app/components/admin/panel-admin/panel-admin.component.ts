@@ -41,6 +41,7 @@ export class PanelAdminComponent implements OnInit {
   /* Metodos para el crud */
   ngOnInit(): void {
     this.getAlumnos();
+    this.cargar();
   }
 
   /* Obtencion de los alumnos */
@@ -65,10 +66,12 @@ export class PanelAdminComponent implements OnInit {
 
   /* Editar */
 
-  getStudent(id: number): void{
-    this.alumnoService.getById(id).subscribe(data => {
-      console.log("Alumno editado", data);
-      this.nombres.setValue(data.nombres);
+  cargar(): void{
+    this.activatedRouter.params.subscribe(e => {
+      let id = e['id'];
+      if(id){
+        this.alumnoService.getById(id).subscribe(data => this.estudiante=data);
+      }
     });
   }
 }

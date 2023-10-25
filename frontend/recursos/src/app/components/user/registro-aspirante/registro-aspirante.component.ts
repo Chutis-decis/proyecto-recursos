@@ -12,21 +12,28 @@ import { Escolares } from 'src/app/escolares';
 export class RegistroAspiranteComponent implements OnInit{
   /* Atributo para crear un nuevo estudiante */
   estudiante : CPanel = new CPanel();
+  estudiantes: CPanel[];
   /* Atributo para crear un nuevo dato escolar */
   escolares: Escolares = new Escolares();
 
   /* Constructor */
   constructor(private route: Router, public alumnoService: AlumnoService, private activateRouter: ActivatedRoute) { this.route = route }
 
+  getAll():void{
+    this.alumnoService.obtenerAlumnos().subscribe(
+      e=> this.estudiantes = e
+    )
+  }
+
   create():void{
     console.log(this.estudiante);
     this.alumnoService.createAlumno(this.estudiante).subscribe(
-      res=> this.route.navigate(['/aspirantes']),
+      res=> this.getAll()
     );
+    this.route.navigate(['/aspirantes'])
   }
 
   ngOnInit(): void {
-    this.cargar();
   }
   cargar():void{
     this.activateRouter.params.subscribe(

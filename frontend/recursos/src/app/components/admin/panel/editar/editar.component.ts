@@ -16,19 +16,12 @@ export class EditarComponent implements OnInit {
   constructor(private alumnosService: AlumnoService, private activateRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.cargar();
+    
   }
 
-  cargar():void{
-    this.activateRouter.params.subscribe(
-      e=> {
-        let id = e['estudianteId'];
-        if(id){
-          this.alumnosService.getById(id).subscribe(
-            es=> this.alumnos = es
-          ) 
-        }
-      }
-    );
+  editar(alumno: any){
+    this.alumnos = alumno
   }
+
+  
 }
