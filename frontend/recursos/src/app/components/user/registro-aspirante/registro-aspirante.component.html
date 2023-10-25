@@ -70,9 +70,10 @@
             <input type="email" class="form-control" placeholder="Escribe tu correo personal" id="email" name="email" [(ngModel)]="estudiante.correoPersonal">
         </div>
         <!-- boton -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" data-bs-dismiss="modal">Siguiente</button>
-        </div>
+            <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" *ngIf="!estudiante.id else elseBlock">Siguiente</button>
+            <ng-template #elseBlock>
+                <button type="button" class="btn btn-secondary border-0" role="button" (click)="update()">Actualizar</button>
+            </ng-template>
     </div>
     </div>
 </form>

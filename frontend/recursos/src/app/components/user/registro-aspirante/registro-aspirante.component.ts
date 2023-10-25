@@ -34,17 +34,22 @@ export class RegistroAspiranteComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.cargar();
   }
-  cargar():void{
-    this.activateRouter.params.subscribe(
-      e=> {
-        let estudianteId = e['estudianteId'];
-        if(estudianteId){
-          this.alumnoService.getById(estudianteId).subscribe(
-            es=> this.estudiante = es
-          ) 
-        }
+
+  /* Nos servira para mostrar los datos registrados */
+  cargar(){
+    this.activateRouter.params.subscribe(e => {
+      let id = e['id'];
+      if(id){
+        this.alumnoService.getById(id).subscribe(data => this.estudiante=data);
       }
+    });
+  }
+  
+  update():void{
+    this.alumnoService.editarAlumno(this.estudiante.id, this.estudiante).subscribe(
+      e=> this.route.navigate(['/admin'])
     );
   }
 }

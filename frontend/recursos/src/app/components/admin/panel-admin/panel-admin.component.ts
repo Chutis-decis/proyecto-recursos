@@ -15,25 +15,6 @@ export class PanelAdminComponent implements OnInit {
   alumno: CPanel[];
   estudiante : CPanel = new CPanel();
 
-  /* Atributos para el crud */
-  id = 0;
-  nombres: FormControl = new FormControl('');
-  primerApellido: FormControl = new FormControl('');
-  segundoApellido: FormControl = new FormControl('');
-  genero: FormControl = new FormControl('');
-  curp: FormControl = new FormControl('');
-  estado: FormControl = new FormControl('');
-  ciudad: FormControl = new FormControl('');
-  colonia: FormControl = new FormControl('');
-  calle: FormControl = new FormControl('');
-  numeroExterior: FormControl = new FormControl('');
-  numeroInterior: FormControl = new FormControl('');
-  extra: FormControl = new FormControl('');
-  celular: FormControl = new FormControl('');
-  telefono: FormControl = new FormControl('');
-  correoPersonal: FormControl = new FormControl('');
-  activo: FormControl = new FormControl('');
-
 
   /* Constructor */
   constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute) {this.rout = rout; }
@@ -66,7 +47,7 @@ export class PanelAdminComponent implements OnInit {
 
   /* Editar */
 
-  cargar(): void{
+  cargar(){
     this.activatedRouter.params.subscribe(e => {
       let id = e['id'];
       if(id){
