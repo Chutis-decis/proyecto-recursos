@@ -30,7 +30,7 @@ export class RegistroAspiranteComponent implements OnInit{
     this.alumnoService.createAlumno(this.estudiante).subscribe(
       res=> this.getAll()
     );
-    this.route.navigate(['/aspirantes'])
+    this.route.navigate(['/registro-datos-escolares'])
   }
 
   ngOnInit(): void {

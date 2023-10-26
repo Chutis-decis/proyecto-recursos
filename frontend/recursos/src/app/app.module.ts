@@ -20,6 +20,7 @@ import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.co
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
+import { PipesPipe } from './pipes.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PersonalesBajaComponent } from './components/admin/panel-admin/personal
     DatosEscolaresComponent,
     RegistroDatosPersonalesComponent,
     PersonalesBajaComponent,
+    PipesPipe
   ],
   imports: [
     BrowserModule,

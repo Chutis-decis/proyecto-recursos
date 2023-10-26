@@ -9,6 +9,7 @@ import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
+import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'datos-escolares', component: DatosEscolaresComponent},
   {path: 'detalles/:id', component: WatchComponent},
   {path: 'dados-baja', component: PersonalesBajaComponent},
+  {path: 'registro-datos-escolares', component: RegistroDatosPersonalesComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
