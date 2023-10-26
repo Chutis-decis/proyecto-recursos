@@ -19,6 +19,7 @@ import { RegistroAspiranteComponent } from './components/user/registro-aspirante
 import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.component';
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
+import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegistroDatosPersonalesComponent } from './components/user/registro-asp
     EliminarComponent,
     DatosEscolaresComponent,
     RegistroDatosPersonalesComponent,
+    PersonalesBajaComponent,
   ],
   imports: [
     BrowserModule,

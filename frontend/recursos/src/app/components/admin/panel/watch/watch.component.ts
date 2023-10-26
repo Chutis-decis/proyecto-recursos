@@ -10,18 +10,19 @@ import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 export class WatchComponent implements OnInit{
   /* Atributo */
   alumno: CPanel[];
-
+  alumnoSeleccionado: CPanel = new CPanel();
+  id:number;
   constructor(private alumnoService: AlumnoService) { }
 
   /* Metodos para el crud */
   ngOnInit(): void {
-    this.getAlumnos();
+    this.getAlumnos(this.id);
   }
 
   /* Metodo para vizualizar los datos de  los alumnos: Datos de Ingreso, Datos FTD, datos escolares y datos personales */
-  private getAlumnos(){
-    this.alumnoService.obtenerAlumnos().subscribe(data => {
-      this.alumno = data;
+  private getAlumnos(ids:number){
+    this.alumnoService.getById(ids).subscribe((data) => {
+      this.alumnoSeleccionado = data;
     });
   }
 }

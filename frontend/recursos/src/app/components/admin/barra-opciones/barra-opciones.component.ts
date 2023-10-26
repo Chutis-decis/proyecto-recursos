@@ -18,6 +18,8 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/datos-escolares']);
   }
 
-
+  dados_baja(){
+    this.router.navigate(['/dados-baja']);
+  }
 
 }

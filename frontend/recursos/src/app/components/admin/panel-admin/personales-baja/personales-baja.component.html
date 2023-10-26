@@ -24,14 +24,12 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let Alumno of alumno">
-            <div class="row text-center" *ngIf="Alumno.activo == true">
+            <div class="row text-center" *ngIf="Alumno.activo == false">
                 <div class="col-1">{{Alumno.id}}</div>
                 <div class="col-2">{{Alumno.nombres}}</div>
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
-                <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
-                <button type="button" class="btn col3 btn-sm border-0 me-1 text-white col-2 mt-1" (click) ="deleteEstudiante(Alumno.id)">Eliminar</button>
-                <button class="btn col2 btn-sm border-0 text-white me-1 col-1 mt-1" (click)="verInfo()">Detalles</button>
+                <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1">Activiar</button>
             </div>
         </tbody>
     </table>
