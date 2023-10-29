@@ -19,6 +19,7 @@ import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
 import { PipesPipe } from './pipes.pipe';
+import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-datos-escolares/watch-datos-escolares.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PipesPipe } from './pipes.pipe';
     DatosEscolaresComponent,
     RegistroDatosPersonalesComponent,
     PersonalesBajaComponent,
-    PipesPipe
+    PipesPipe,
+    WatchDatosEscolaresComponent
   ],
   imports: [
     BrowserModule,

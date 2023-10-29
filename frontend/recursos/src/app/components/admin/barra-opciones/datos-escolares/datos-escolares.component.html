@@ -9,27 +9,26 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-primary border-0" type="submit">Buscar</button>
     </form>
+    <button class="btn btn-primary btn-sm border-0 text-white me-1 mt-3" (click)="obtenerEscolares()">Detalles</button>
     <div class="mt-4">
         <div class="row btn-primary text-white text-center">
             <div class="col-1">ID</div>
-            <div class="col-2">Correo</div>
+            <div class="col-3">Correo</div>
             <div class="col-2">Carrera</div>
             <div class="col-2">Modalidad Escolar</div>
-            <div class="col-1">Editar</div>
-            <div class="col-2">Eliminar</div>
-            <div class="col-1">Detalles</div>
+            <div class="col-2">Editar</div>
+            <div class="col-1">Eliminar</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let escolares of escolares">
             <div class="row text-center">
                 <div class="col-1">{{escolares.id}}</div>
-                <div class="col-2">{{escolares.correoEscolar}}</div>
+                <div class="col-3">{{escolares.correoEscolar}}</div>
                 <div class="col-2">{{escolares.carrera}}</div>
                 <div class="col-2">{{escolares.modalidadEscolar}}</div>
-                <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/registro-datos-escolares', escolares.id]">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm border-0 me-1 text-white col-2 mt-1" (click) ="deleteEstudiante(escolares.id)">Eliminar</button>
-                <button class="btn btn-primary btn-sm border-0 text-white me-1 col-1 mt-1" [routerLink]="['/detalles', escolares.id]">Detalles</button>
+                <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-2 text-white mt-1" [routerLink]="['/registro-datos-escolares', escolares.id]">Editar</button>
+                <button type="button" class="btn btn-primary btn-sm border-0 me-1 text-white col-1 mt-1" (click) ="deleteEstudiante(escolares.id)">Eliminar</button>
             </div>
         </tbody>
     </table>

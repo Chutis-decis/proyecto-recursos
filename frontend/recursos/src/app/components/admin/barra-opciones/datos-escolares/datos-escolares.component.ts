@@ -21,7 +21,7 @@ export class DatosEscolaresComponent {
   }
 
   /* Mostrar los datos Escolares */
-  private getEsolares(){
+  getEsolares(){
     this.serviceEstudiante.obtenerEscolar().subscribe(data => {
       this.escolares = data;
     });
@@ -50,5 +50,10 @@ export class DatosEscolaresComponent {
       console.log("Alumno eliminado", data);
       this.getEsolares();
     });
+  }
+
+  obtenerEscolares(): void{
+    this.getEsolares();
+    this.route.navigate(['/detalle-escolares']);
   }
 }

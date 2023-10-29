@@ -53,5 +53,9 @@ export class PanelAdminComponent implements OnInit {
   /* *******************************************************************************************************++ */
   
   
-  /* Metodo para ver la informacion de cada uno de los id */
+  /* Metodo para mostrar datos completos */
+  getAlumno(): void{
+    this.getAlumnos();
+    this.rout.navigate(['/detalles']);
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-watch',
@@ -13,25 +13,23 @@ export class WatchComponent implements OnInit{
   alumno: CPanel[];
   alumnoSeleccionado: CPanel = new CPanel();
   id:number;
-  constructor(private alumnoService: AlumnoService, private route: Router) { }
+  constructor(private alumnoService: AlumnoService, private route: Router, private router: ActivatedRoute) { }
 
   /* Metodos para el crud */
   ngOnInit(): void {
-    this.getAlumnos(this.id);
+    this.getAlumnos();
   }
 
   /* Metodo para vizualizar los datos de  los alumnos: Datos de Ingreso, Datos FTD, datos escolares y datos personales */
-  private getAlumnos(ids:number){
-    this.alumnoService.getById(ids).subscribe((data) => {
-      this.alumnoSeleccionado = data;
+  private getAlumnos(){
+    this.alumnoService.obtenerAlumnos().subscribe((data) => {
+      this.alumno = data;
     });
   }
 
-
-
-  see():void{
-    this.alumnoService.getById(this.alumnoSeleccionado.id).subscribe(
-      e=> this.route.navigate(['/admin'])
-    );
+  getDataById(id: number): void{
+    this.alumnoService.getById(id).subscribe((data) => {
+      this.alumnoSeleccionado = data;
+    })
   }
 }

@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Escolares } from 'src/app/escolares';
+import { EscolaresService } from 'src/app/service/escolar/escolares.service';
+
+@Component({
+  selector: 'app-watch-datos-escolares',
+  templateUrl: './watch-datos-escolares.component.html',
+  styleUrls: ['./watch-datos-escolares.component.css']
+})
+export class WatchDatosEscolaresComponent {
+  /* Atributos */
+  ecolar = new Escolares();
+  escolar : Escolares[];
+
+  /* Constructor */
+  constructor(private route: Router, private escolarService: EscolaresService) { }
+
+  ngOnInit(): void {
+    this.getEscolares();
+  }
+
+  /* Mostrar los datos Escolares */
+  getEscolares(){
+    this.escolarService.obtenerEscolar().subscribe(data => {
+      this.escolar = data;
+    });
+  }
+}
