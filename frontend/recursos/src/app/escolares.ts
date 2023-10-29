@@ -1,4 +1,5 @@
 export class Escolares{
+    datosPersonales: number;
     id: number;
     correoEscolar: string;
     carrera: string;

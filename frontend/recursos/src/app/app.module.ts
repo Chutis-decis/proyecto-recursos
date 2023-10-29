@@ -14,9 +14,7 @@ import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WatchComponent } from './components/admin/panel/watch/watch.component';
-import { EditarComponent } from './components/admin/panel/editar/editar.component';
-import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component';
-import { EliminarComponent } from './components/admin/panel/eliminar/eliminar.component';
+import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component'
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
@@ -33,9 +31,7 @@ import { PipesPipe } from './pipes.pipe';
     PanelAdminComponent,
     BarraOpcionesComponent,
     WatchComponent,
-    EditarComponent,
     RegistroAspiranteComponent,
-    EliminarComponent,
     DatosEscolaresComponent,
     RegistroDatosPersonalesComponent,
     PersonalesBajaComponent,

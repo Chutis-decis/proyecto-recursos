@@ -40,11 +40,6 @@ export class PanelAdminComponent implements OnInit {
     });
   }
 
-  /* Metodo de ver la informacion del alumno alumno */
-  verInfo(){
-    this.rout.navigate(['/seeInformacion']);
-  }
-
   /* Editar */
 
   cargar(){
@@ -56,4 +51,7 @@ export class PanelAdminComponent implements OnInit {
     });
   }
   /* *******************************************************************************************************++ */
+  
+  
+  /* Metodo para ver la informacion de cada uno de los id */
 }

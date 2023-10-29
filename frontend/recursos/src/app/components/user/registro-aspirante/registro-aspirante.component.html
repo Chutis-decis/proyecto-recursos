@@ -19,13 +19,19 @@
             <label>Apellido Materno</label>
             <input type="text" class="form-control" placeholder="Escribe tu apellido materno" id="apellidoMaterno" name="apellidoMaterno" [(ngModel)]="estudiante.segundoApellido">
         </div>
-        <div class="col-md-4 mt-4">
-            <label>Genero</label>
-            <input type="text" class="form-control" placeholder="Escribe tu género" id="genero" name="genero" [(ngModel)]="estudiante.genero">
+        <div class="col-md-3 position-relative mt-4">
+            <label for="genero" class="form-label">Genero</label>
+            <div>
+                <select class="form-select" id="genero" name="genero" [(ngModel)]="estudiante.genero">
+                    <option selected disabled value="">Elige una de las opciones</option>
+                    <option value="Escolarizada">Masculino</option>
+                    <option value="Abierta">Femenino</option>
+                </select>
+            </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>CURP</label>
-            <input type="text" class="form-control" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp">
+            <input maxlength="18" type="text" class="form-control mayus" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp">
         </div>
         <div class="col-md-4 mt-4">
             <label>Estado</label>
@@ -36,7 +42,7 @@
             <input type="text" class="form-control" placeholder="Escribe tu ciudad" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad">
         </div>
         <div class="col-md-4 mt-4">
-            <label>Colonoa</label>
+            <label>Colonia</label>
             <input type="text" class="form-control" placeholder="Escribe tu colonia" id="colonia" name="colonia" [(ngModel)]="estudiante.colonia">
         </div>
         <div class="col-md-4 mt-4">
@@ -45,11 +51,11 @@
         </div>
         <div class="col-md-4 mt-4">
             <label>Numero Exterior</label>
-            <input type="text" class="form-control" placeholder="Escribe tu nùmero exterior" id="numExterior" name="numExterior" [(ngModel)]="estudiante.numeroExterior">
+            <input type="number" class="form-control" placeholder="Escribe tu nùmero exterior" id="numExterior" name="numExterior" [(ngModel)]="estudiante.numeroExterior">
         </div>
         <div class="col-md-4 mt-4">
             <label>Numero Interior</label>
-            <input type="text" class="form-control" placeholder="Escribe tu nùmero interior" id="numInterior" name="numInterior" [(ngModel)]="estudiante.numeroInterior">
+            <input type="number" class="form-control" placeholder="Escribe tu nùmero interior" id="numInterior" name="numInterior" [(ngModel)]="estudiante.numeroInterior">
         </div>
         <div class="col-md-4 mt-4">
             <label>Extra</label>
@@ -59,11 +65,11 @@
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Celular</label>
-            <input type="text" class="form-control" placeholder="Escribe tu nùmero de celular" id="celular" name="celular" [(ngModel)]="estudiante.celular">
+            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu nùmero de celular" id="celular" name="celular" [(ngModel)]="estudiante.celular">
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Telefono</label>
-            <input type="text" class="form-control" placeholder="Escribe tu nùmero de telefono" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
+            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu nùmero de telefono" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Correo Personal</label>

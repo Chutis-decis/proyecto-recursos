@@ -31,7 +31,7 @@
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
                 <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
                 <button type="button" class="btn col3 btn-sm border-0 me-1 text-white col-2 mt-1" (click) ="deleteEstudiante(Alumno.id)">Eliminar</button>
-                <button class="btn col2 btn-sm border-0 text-white me-1 col-1 mt-1" (click)="verInfo()">Detalles</button>
+                <button class="btn col2 btn-sm border-0 text-white me-1 col-1 mt-1" [routerLink]="['/detalles', Alumno.id]">Detalles</button>
             </div>
         </tbody>
     </table>

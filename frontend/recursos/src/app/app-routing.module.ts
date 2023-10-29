@@ -19,12 +19,13 @@ const routes: Routes = [
   {path: 'ayuda', component:AyudaComponent},
   {path: 'login', component:LoginComponent },
   {path: "admin", component: PanelAdminComponent},
-  {path: 'seeInformacion', component: WatchComponent},
+  {path: 'detalles/:id', component: WatchComponent},
   {path: 'estudiante/:id', component: RegistroAspiranteComponent},
   {path: 'datos-escolares', component: DatosEscolaresComponent},
   {path: 'detalles/:id', component: WatchComponent},
   {path: 'dados-baja', component: PersonalesBajaComponent},
   {path: 'registro-datos-escolares', component: RegistroDatosPersonalesComponent},
+  {path: 'registro-datos-escolares/:id', component: RegistroDatosPersonalesComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

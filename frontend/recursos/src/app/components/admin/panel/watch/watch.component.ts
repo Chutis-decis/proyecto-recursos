@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watch',
@@ -12,7 +13,7 @@ export class WatchComponent implements OnInit{
   alumno: CPanel[];
   alumnoSeleccionado: CPanel = new CPanel();
   id:number;
-  constructor(private alumnoService: AlumnoService) { }
+  constructor(private alumnoService: AlumnoService, private route: Router) { }
 
   /* Metodos para el crud */
   ngOnInit(): void {
@@ -24,5 +25,13 @@ export class WatchComponent implements OnInit{
     this.alumnoService.getById(ids).subscribe((data) => {
       this.alumnoSeleccionado = data;
     });
+  }
+
+
+
+  see():void{
+    this.alumnoService.getById(this.alumnoSeleccionado.id).subscribe(
+      e=> this.route.navigate(['/admin'])
+    );
   }
 }
