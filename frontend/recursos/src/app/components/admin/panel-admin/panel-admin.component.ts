@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-panel-admin',
