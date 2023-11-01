@@ -1,0 +1,74 @@
+<!-- Nav -->
+<app-navv></app-navv>
+
+<!-- Modal -->
+        
+<form>
+    <div class="container-md mt-5">
+        <h1 class="text-center mt-5 col-title">{{ingreso.id ? 'Edición': 'Registro'}} de Datos Personales</h1>
+    
+    <div class="row container-md " >
+        <div class="col-md-3 position-relative mt-4">
+            <label for="tramite" class="form-label">Modalidad Escolar</label>
+            <select class="form-select" id="tramite" name="tramite" [(ngModel)]="ingreso.tramite">
+                <option selected disabled value="">Elige una de las opciones</option>
+                    <option value="Estadìas">Estadìas</option>
+                    <option value="PRACTICAS_PROFESIONALES">PRACTICAS_PROFESIONALES</option>
+                    <option value="Residencias">Residencias</option>
+                    <option value="Servicio Social">Servicio Social</option>
+                    <option value="Capacitaciòn">Capacitaciòn</option>
+            </select>
+        </div>   
+        <div class="col-md-3 position-relative mt-4">
+            <label for="perfilamiento" class="form-label">Perfilamiento</label>
+            <select class="form-select" id="perfilamiento" name="perfilamiento" [(ngModel)]="ingreso.perfilamiento">
+                <option selected disabled value="">Elige una de las opciones</option>
+                <option value="ProgramacionFrontend">ProgramacionFrontend</option>
+                <option value="Programaciòn Backend">Programaciòn Backend</option>
+                <option value="Fullstack">Fullstack</option>
+                <option value="Infraestuctura">Infraestructura</option>
+                <option value="Negocios Digitales">Negocios Digitales</option>
+            </select>
+        </div> 
+        <div class="col-md-3 position-relative mt-4">
+            <label for="turno" class="form-label">Turno</label>
+            <select class="form-select" id="turno" name="turno" [(ngModel)]="ingreso.turno">
+                <option selected disabled value="">Elige una de las opciones</option>
+                    <option value="Matutino">Matutino</option>
+                    <option value="Vespertino">Vespertino</option>
+            </select>
+        </div> 
+        <div class="col-md-3 position-relative mt-4">
+            <label for="horario" class="form-label">Horario</label>
+            <select class="form-select" id="horario" name="horario" [(ngModel)]="ingreso.horario">
+                <option selected disabled value="">Elige una de las opciones</option>
+                    <option value="9:00-14:00">9:00-14:00</option>
+                    <option value="14:00-19:00">14:00-19:00</option>
+            </select>
+        </div> 
+        <div class="col-md-4 position-relative mt-4">
+            <label for="modalidad" class="form-label">Modalidad</label>
+            <select class="form-select" id="modalidad" name="modalidad" [(ngModel)]="ingreso.modalidad">
+                <option selected disabled value="">Elige una de las opciones</option>
+                <option value="PRESENCIAL">PRESENCIAL</option>
+                <option value="En Linea">En Linea</option>
+                <option value="Hibirida">Hìbrida</option>
+            </select>
+        </div>
+        <div class="col-md-4 position-relative mt-4">
+            <label form="cv" class="form-label">Curriculum Vitae (CV)</label>
+            <input type="text" class="form-control" placeholder="Escribe el link de tu cv" id="cv" name="cv" [(ngModel)]="ingreso.cv">
+        </div>
+        <div class="col-md-4 position-relative mt-4">
+            <label form="historialAcademico" class="form-label">Historial Académico</label>
+            <input type="text" class="form-control" placeholder="Escribe el link de tu historial Academico" id="historiaAcademico" name="historial  Academico" [(ngModel)]="ingreso.historialAcademico">
+        </div>
+
+        <!-- boton -->
+            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!ingreso.id else elseBlock">Siguiente</button>
+            <ng-template #elseBlock>
+                <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
+            </ng-template>
+        </div>   
+    </div>
+</form>

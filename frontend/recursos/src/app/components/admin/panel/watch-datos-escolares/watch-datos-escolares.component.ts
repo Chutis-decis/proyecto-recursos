@@ -26,4 +26,9 @@ export class WatchDatosEscolaresComponent {
       this.escolar = data;
     });
   }
+
+  /* Regresar pantalla anterior */
+  regresar(){
+    this.route.navigate(['/datos-escolares']);
+  }
 }

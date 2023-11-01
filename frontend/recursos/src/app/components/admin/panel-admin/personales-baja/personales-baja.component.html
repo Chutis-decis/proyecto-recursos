@@ -9,10 +9,10 @@
     <h1 class="mt-5 font-weight-bold mb-4 text-center">Datos Personales (Baja)</h1>
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary border-0" type="submit">Buscar</button>
+        <button class="btn btn-outline-success border-0" type="submit">Buscar</button>
     </form>
     <div>
-        <button class="btn btn-primary btn-sm border-0 text-white me-1 col-1 mt-3" (click)="getAlumno()">Detalles</button>
+        <button class="btn btn-danger btn-sm border-0 text-white me-1 col-1 mt-3" (click)="getAlumno()">Detalles</button>
     </div>
     <div class="mt-4">
         <div class="row btn-primary text-white text-center">
@@ -30,7 +30,7 @@
                 <div class="col-2">{{Alumno.nombres}}</div>
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
-                <button type="button" class="btn btn-primary btn-sm border-0 me-1 col text-white mt-3">Activiar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3">Activiar</button>
             </div>
         </tbody>
     </table>

@@ -22,4 +22,8 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/dados-baja']);
   }
 
+  datos_ingreso(){
+    this.router.navigate(['/datos-ingreso']);
+  }
+
 }

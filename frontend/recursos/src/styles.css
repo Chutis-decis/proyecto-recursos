@@ -35,7 +35,16 @@
 .btn-secondary{
     background-color: #10312B !important;
 }
+.btn-success{
+    background-color: #C07189 !important;
+}
+.btn-danger{
+    background-color: #9F5722 !important;
+}
+.btn-outline-success{
+    border-color: #10312B !important;
 
+}
 .crud{
     background-color: #9F5722 !important;
 }

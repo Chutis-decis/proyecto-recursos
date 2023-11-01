@@ -20,6 +20,9 @@ import { RegistroDatosPersonalesComponent } from './components/user/registro-asp
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
 import { PipesPipe } from './pipes.pipe';
 import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-datos-escolares/watch-datos-escolares.component';
+import { DatosIngresoComponent } from './components/admin/barra-opciones/datos-ingreso/datos-ingreso.component';
+import { RegistroDatosIngresoComponent } from './components/user/registro-aspirante/registro-datos-ingreso/registro-datos-ingreso.component';
+import { WatchDatosIngresoComponent } from './components/admin/panel/watch-datos-ingreso/watch-datos-ingreso.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-dat
     RegistroDatosPersonalesComponent,
     PersonalesBajaComponent,
     PipesPipe,
-    WatchDatosEscolaresComponent
+    WatchDatosEscolaresComponent,
+    DatosIngresoComponent,
+    RegistroDatosIngresoComponent,
+    WatchDatosIngresoComponent,
   ],
   imports: [
     BrowserModule,

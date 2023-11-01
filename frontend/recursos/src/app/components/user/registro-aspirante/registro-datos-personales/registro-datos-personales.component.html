@@ -12,15 +12,15 @@
         </div>
         <div class="col-md-5 mt-4">
             <label class="form-label">Carrera</label>
-            <input type="text" class="form-control" placeholder="Escribe tu carrera" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="escolares.carrera">
+            <input type="text" class="form-control" placeholder="Escribe tu carrera" id="carrera" name="carrera" [(ngModel)]="escolares.carrera">
         </div>
         <div class="col-md-4 mt-4">
             <label class="form-label">Universidad</label>
-            <input type="text" class="form-control" placeholder="Ingresa el nombre de tu universidad" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="escolares.universidad">
+            <input type="text" class="form-control" placeholder="Ingresa el nombre de tu universidad" id="universidad" name="universidad" [(ngModel)]="escolares.universidad">
         </div>
         <div class="col-md-3 mt-4">
             <label class="form-label">Matricula Escolar</label>
-            <input type="text" class="form-control" placeholder="Escribe tu matricula Escolar" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="escolares.matriculaEscolar">
+            <input type="text" class="form-control" placeholder="Escribe tu matricula Escolar" id="matricula-escolar" name="matricula-escolar" [(ngModel)]="escolares.matriculaEscolar">
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="periodo" class="form-label">Periodo</label>
@@ -46,7 +46,7 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="mod-escolar" class="form-label">Modalidad Escolar</label>
             <div>
-                <select class="form-select" id="modalidad" name="modalidad" [(ngModel)]="escolares.modalidadEscolar">
+                <select class="form-select" id="mod-escolar" name="modalidad" [(ngModel)]="escolares.modalidadEscolar">
                     <option selected disabled value="">Elige una de las opciones</option>
                     <option value="Escolarizada">Escolarizada</option>
                     <option value="Abierta">Abierta</option>

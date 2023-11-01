@@ -11,6 +11,9 @@ import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-datos-escolares/watch-datos-escolares.component';
+import { DatosIngresoComponent } from './components/admin/barra-opciones/datos-ingreso/datos-ingreso.component';
+import { RegistroDatosIngresoComponent } from './components/user/registro-aspirante/registro-datos-ingreso/registro-datos-ingreso.component';
+import { WatchDatosIngresoComponent } from './components/admin/panel/watch-datos-ingreso/watch-datos-ingreso.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -27,6 +30,10 @@ const routes: Routes = [
   {path: 'dados-baja', component: PersonalesBajaComponent},
   {path: 'registro-datos-escolares', component: RegistroDatosPersonalesComponent},
   {path: 'registro-datos-escolares/:id', component: RegistroDatosPersonalesComponent},
+  {path: 'datos-ingreso', component: DatosIngresoComponent},
+  {path: 'registro-datos-ingreso', component: RegistroDatosIngresoComponent},
+  {path: 'registro-datos-ingreso/:id', component: RegistroDatosIngresoComponent},
+  {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

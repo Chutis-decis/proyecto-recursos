@@ -38,7 +38,7 @@ export class RegistroDatosPersonalesComponent {
     this.ecolarService.createEscolar(this.escolares).subscribe(
       res=> this.getAll()
     );
-    this.route.navigate(['/home'])
+    this.route.navigate(['/registro-datos-ingreso'])
   }
 
   update():void{
