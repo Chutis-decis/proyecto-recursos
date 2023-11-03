@@ -26,4 +26,12 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/datos-ingreso']);
   }
 
+  datos_ftd(){
+    this.router.navigate(['/datos-ftd']);
+  }
+
+  datos_personales(){
+    this.router.navigate(['/admin']);
+  }
+
 }

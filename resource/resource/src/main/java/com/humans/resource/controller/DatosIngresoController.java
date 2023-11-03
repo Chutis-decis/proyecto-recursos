@@ -39,7 +39,7 @@ public class DatosIngresoController {
     @PutMapping("/{id}")
     public DatosIngreso updateDatosIngreso(@PathVariable Long id, @RequestBody DatosIngreso datosIngreso) {
         // Ensure that the ID in the request path matches the ID in the request body
-        if (!id.equals(datosIngreso.getId())) {
+        if (id.equals(datosIngreso.getId())) {
             throw new IllegalArgumentException("ID in the request path does not match the entity ID");
         }
         return datosIngresoService.saveDatosIngreso(datosIngreso);

@@ -23,6 +23,7 @@ import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-dat
 import { DatosIngresoComponent } from './components/admin/barra-opciones/datos-ingreso/datos-ingreso.component';
 import { RegistroDatosIngresoComponent } from './components/user/registro-aspirante/registro-datos-ingreso/registro-datos-ingreso.component';
 import { WatchDatosIngresoComponent } from './components/admin/panel/watch-datos-ingreso/watch-datos-ingreso.component';
+import { DatosFtdComponent } from './components/admin/barra-opciones/datos-ftd/datos-ftd.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { WatchDatosIngresoComponent } from './components/admin/panel/watch-datos
     DatosIngresoComponent,
     RegistroDatosIngresoComponent,
     WatchDatosIngresoComponent,
+    DatosFtdComponent,
   ],
   imports: [
     BrowserModule,

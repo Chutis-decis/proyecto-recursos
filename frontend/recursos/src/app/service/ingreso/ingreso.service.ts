@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingreso } from 'src/app/ingreso';
+import { Modalidad } from 'src/app/modalidad';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,28 @@ export class IngresoService {
   /* Eliminar */
   deleted(id: number):Observable<Ingreso>{
     return this.httpClient.delete<Ingreso>(`${this.url}/${id}`);
+  }
+
+  /* URL de la modalidad para los datos de ingreso */
+  urlModalidad = 'http://localhost:8081/modalidades';
+
+  /* Obtencion de la modalidad en los datos de ingreso */
+  obtencionModalidadIngreso ():Observable<Modalidad>{
+    return this.httpClient.get<Modalidad>(`${this.urlModalidad}`);
+  }
+
+  /* Creacion de un nuevo usuario con la modalidad */
+  createIngresoModalidad(modalidad: Modalidad):Observable<Ingreso>{
+    return this.httpClient.post<Ingreso>(`${this.urlModalidad}`, modalidad);
+  }
+
+  /* Obtenciòn de una sola modalidad */
+  getByIdModalidad(id: number):Observable<Modalidad>{
+    return this.httpClient.get<Modalidad>(`${this.urlModalidad}/${id}`);
+  }
+
+  /* Actualizar la modalidad */
+  editarIngresoModalidad(id: number, modalidad: Modalidad): Observable<Object>{
+    return this.httpClient.put<Modalidad>(`${this.urlModalidad}/${id}`, modalidad);
   }
 }

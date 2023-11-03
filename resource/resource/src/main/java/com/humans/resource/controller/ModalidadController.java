@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/modalidades")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ModalidadController {
 
     private final ModalidadService modalidadService;
