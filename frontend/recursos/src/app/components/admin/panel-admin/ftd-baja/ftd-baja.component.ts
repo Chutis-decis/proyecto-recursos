@@ -28,6 +28,6 @@ export class FtdBajaComponent {
       if(this.ftd.activo == false){
         this.getDatosFTD();
       }
-      this.router.navigate(['/detalles-ftd']);
+      this.router.navigate(['/detalle-ftd']);
     }
 }

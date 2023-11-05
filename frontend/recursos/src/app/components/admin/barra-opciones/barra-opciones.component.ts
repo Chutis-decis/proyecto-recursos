@@ -38,4 +38,7 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/dados-baja-ftd']);
   }
 
+  dados_baja_escolares(){
+    this.router.navigate(['/dados-baja-escolares']);
+  }
 }
