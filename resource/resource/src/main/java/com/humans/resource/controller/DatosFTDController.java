@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/datosftd")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DatosFTDController {
 
     private DatosFTDService datosFTDService;

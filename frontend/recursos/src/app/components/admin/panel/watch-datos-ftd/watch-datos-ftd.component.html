@@ -1,0 +1,49 @@
+<div class="mt-4 container-lg">
+    <h1 class="mt-5 font-weight-bold mb-4 text-center">Información Datos Escolares</h1>
+    <div class="table table-responsive" >
+        <table class="table table-striped table-bordered mt-5">
+            <thead class="mb-3 btn-primary">
+                <th class="col">ID</th>
+                <th class="col">Nombre del Proyecto</th>
+                <th class="col">Avance del Proyecto</th>
+                <th class="col">Evaluación del Proyecto</th>
+                <th class="col">Área de INFOTEC</th>
+                <th class="col">Tutor</th>
+                <th class="col">Beca</th>
+                <th class="col">Fecha de Ingreso</th>
+                <th class="col">Fecha de Término</th>
+                <th class="col">Grupo</th>
+                <th class="col">Enlace</th>
+                <th class="col">Matricula FTD</th>
+                <th class="col">Correo Becario</th>
+                <th class="col">Estatus del Trámite</th>
+                <th class="col">Cursos</th>
+                <th class="col">Activo/Desactivo</th>
+                <th class="col">Id de los Datos Personales</th>
+            </thead>
+            <tbody *ngFor="let datosFTD of datosFTD">
+                <tr>
+                    <td class="col">{{datosFTD.id}}</td>
+                    <td class="col">{{datosFTD.nombreProyecto}}</td>
+                    <td class="col">{{datosFTD.avanceProyecto}}</td>
+                    <td class="col">{{datosFTD.evaluacionProyecto}}</td>
+                    <td class="col">{{datosFTD.areaInfotec}}</td>
+                    <td class="col">{{datosFTD.tutor}}</td>
+                    <td class="col">{{datosFTD.beca}}</td>
+                    <td class="col">{{datosFTD.fechaIngreso}}</td>
+                    <td class="col">{{datosFTD.fechaTermino}}</td>
+                    <td class="col">{{datosFTD.grupo}}</td>
+                    <td class="col">{{datosFTD.enlace}}</td>
+                    <td class="col">{{datosFTD.matriculaFTD}}</td>
+                    <td class="col">{{datosFTD.correoBecario}}</td>
+                    <td class="col">{{datosFTD.estatusTramite}}</td>
+                    <td class="col">{{datosFTD.cursos}}</td>
+                    <td class="col">{{datosFTD.activo}}</td>
+                    <td class="col">{{datosFTD.datosPersonales}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <button type="button" class="btn btn-secondary btn-sm border-0 me-1 text-white col-1 mt-1" (click)="regresar()">Regresar</button>
+</div>

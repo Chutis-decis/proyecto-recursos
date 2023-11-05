@@ -24,6 +24,9 @@ import { DatosIngresoComponent } from './components/admin/barra-opciones/datos-i
 import { RegistroDatosIngresoComponent } from './components/user/registro-aspirante/registro-datos-ingreso/registro-datos-ingreso.component';
 import { WatchDatosIngresoComponent } from './components/admin/panel/watch-datos-ingreso/watch-datos-ingreso.component';
 import { DatosFtdComponent } from './components/admin/barra-opciones/datos-ftd/datos-ftd.component';
+import { RegistroDatosFtdComponent } from './components/user/registro-aspirante/registro-datos-ftd/registro-datos-ftd.component';
+import { WatchDatosFtdComponent } from './components/admin/panel/watch-datos-ftd/watch-datos-ftd.component';
+import { FtdBajaComponent } from './components/admin/panel-admin/ftd-baja/ftd-baja.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { DatosFtdComponent } from './components/admin/barra-opciones/datos-ftd/d
     RegistroDatosIngresoComponent,
     WatchDatosIngresoComponent,
     DatosFtdComponent,
+    RegistroDatosFtdComponent,
+    WatchDatosFtdComponent,
+    FtdBajaComponent,
   ],
   imports: [
     BrowserModule,

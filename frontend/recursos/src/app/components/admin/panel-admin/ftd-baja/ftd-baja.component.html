@@ -1,18 +1,14 @@
-<!-- Nav -->
-<app-navv></app-navv>
-
-<!-- Barra de Opciones -->
 <app-barra-opciones></app-barra-opciones>
 
 <!-- Panel del admin -->
 <div class="mt-3 container-lg">
-    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Datos Personales (Baja)</h1>
+    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Datos FTD (Baja)</h1>
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success border-0" type="submit">Buscar</button>
     </form>
     <div>
-        <button class="btn btn-danger btn-sm border-0 text-white me-1 col-1 mt-3" (click)="getAlumno()">Detalles</button>
+        <button class="btn btn-danger btn-sm border-0 text-white me-1 col-1 mt-3" (click)="getFtd()">Detalles</button>
     </div>
     <div class="mt-4">
         <div class="row btn-primary text-white text-center">
@@ -24,12 +20,12 @@
         </div>
     </div>
     <table class="table table-striped mt-3">
-        <tbody *ngFor="let Alumno of alumno">
-            <div class="row text-center" *ngIf="Alumno.activo == false">
-                <div class="col-1">{{Alumno.id}}</div>
-                <div class="col-2">{{Alumno.nombres}}</div>
-                <div class="col-2">{{Alumno.primerApellido}}</div>
-                <div class="col-2">{{Alumno.segundoApellido}}</div>
+        <tbody *ngFor="let ftddata of ftddata">
+            <div class="row text-center" *ngIf="ftddata.activo == false">
+                <div class="col-1">{{ftddata.id}}</div>
+                <div class="col-2">{{ftddata.nombreProyecto}}</div>
+                <div class="col-2">{{ftddata.activo}}</div>
+                <div class="col-2">{{ftddata.evaluacionProyecto}}</div>
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" >Dar Alta</button>
             </div>
         </tbody>

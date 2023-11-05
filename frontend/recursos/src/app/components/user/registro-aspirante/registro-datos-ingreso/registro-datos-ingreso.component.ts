@@ -29,7 +29,7 @@ export class RegistroDatosIngresoComponent implements OnInit {
     this.ingresoService.createIngreso(this.ingreso).subscribe(
       res=> this.getAll()
     );
-    this.route.navigate(['/aspirante'])
+    this.route.navigate(['/home'])
   }
 
   ngOnInit(): void {

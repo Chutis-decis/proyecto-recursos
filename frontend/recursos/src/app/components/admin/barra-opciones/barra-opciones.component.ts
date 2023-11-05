@@ -11,7 +11,7 @@ export class BarraOpcionesComponent {
   constructor(private router: Router) { this.router = router }
 
   inicio() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/admin']);
   }
 
   datos_escolares(){
@@ -32,6 +32,10 @@ export class BarraOpcionesComponent {
 
   datos_personales(){
     this.router.navigate(['/admin']);
+  }
+
+  datos_baja_ftd(){
+    this.router.navigate(['/dados-baja-ftd']);
   }
 
 }

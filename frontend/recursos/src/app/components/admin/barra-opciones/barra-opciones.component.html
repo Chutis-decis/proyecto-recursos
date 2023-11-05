@@ -14,5 +14,14 @@
             </ul>
         </div>
         <button type="button" class="btn btn-primary border-0">Gestionar Alumno</button>
-        <button type="button" class="btn btn-primary border-0" (click)="dados_baja()">Dados de Baja</button>
+            <button class="btn btn-primary dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                Dados de Baja
+            </button>
+            <ul class="dropdown-menu btn-light">
+                <li><a class="dropdown-item">Escolares</a></li>
+                <li><a class="dropdown-item">Ingreso</a></li>
+                <li><a class="dropdown-item" (click)="datos_baja_ftd()">FTD</a></li>
+                <li><a class="dropdown-item" (click)="dados_baja()">Personales</a></li>
+            </ul>
+        </div>
 </div>
