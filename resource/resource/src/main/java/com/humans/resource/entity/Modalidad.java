@@ -16,7 +16,7 @@ public class Modalidad {
      private Long id ;
      private String nombre;
 
-    @OneToMany(mappedBy = "modalidad")
+    @OneToMany(cascade =CascadeType.ALL, mappedBy = "modalidad")
     private List<DatosIngreso> datosIngresos;
 
 }

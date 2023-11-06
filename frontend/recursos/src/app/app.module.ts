@@ -28,6 +28,7 @@ import { RegistroDatosFtdComponent } from './components/user/registro-aspirante/
 import { WatchDatosFtdComponent } from './components/admin/panel/watch-datos-ftd/watch-datos-ftd.component';
 import { FtdBajaComponent } from './components/admin/panel-admin/ftd-baja/ftd-baja.component';
 import { EscolaresBajaComponent } from './components/admin/panel-admin/escolares-baja/escolares-baja.component';
+import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baja/ingreso-baja.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EscolaresBajaComponent } from './components/admin/panel-admin/escolares
     WatchDatosFtdComponent,
     FtdBajaComponent,
     EscolaresBajaComponent,
+    IngresoBajaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,14 @@
+import { Modalidad } from "./modalidad";
+import { Perfilamiento } from "./perfilamiento";
+import { Tramite } from "./tramite";
+
 export class Ingreso{
     id: number;
-    tramite: string;
-    perfilamiento: string;
+    tramite: Tramite;
+    perfilamiento: Perfilamiento;
     turno: string;
     horario: string;
-    modalidad: string;
+    modalidad: Modalidad;
     cv: string;
     historialAcademico: string;
     datosPersonales: number;

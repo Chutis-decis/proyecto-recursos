@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ingreso } from 'src/app/ingreso';
+import { Modalidad } from 'src/app/modalidad';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class RegistroDatosIngresoComponent implements OnInit {
   /* Atributos y Objetos */
   ingreso: Ingreso = new Ingreso();
   ingresados: Ingreso[];
-
+  modalidades: Modalidad = new Modalidad(); // Modalidad[];
+  modalidad: Modalidad [];
   /* Constructor */
   constructor(private ingresoService: IngresoService, private route: Router, private activateRouter: ActivatedRoute) { }
 
@@ -34,6 +36,9 @@ export class RegistroDatosIngresoComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargar();
+    this.ingresoService.obtencionModalidadIngreso().subscribe(res=> {
+      this.modalidades = res;
+    }, error => console.log(error));
   }
 
 

@@ -12,10 +12,7 @@ public class Perfilamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean programacionFrontend;
-    private boolean programacionBackend;
-    private boolean fullstack;
-    private boolean infraestructuraEnSpringBoot;
+    private String nombrePerfilamiento;
 
     @OneToMany(mappedBy = "perfilamiento")
     private List<DatosIngreso> datosIngresoList;

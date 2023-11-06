@@ -11,10 +11,7 @@ public class Tramite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ESTADIAS;
-    private String PRACTICAS_PROFESIONALES;
-    private String RESIDENCIAS;
-    private String SERVICIOSOCIAL;
+    private String nombreTramite;
 
     @OneToOne(mappedBy = "tramite", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private DatosIngreso datosIngreso;
