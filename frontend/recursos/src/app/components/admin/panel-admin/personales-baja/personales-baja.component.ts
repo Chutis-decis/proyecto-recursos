@@ -30,4 +30,9 @@ export class PersonalesBajaComponent implements OnInit{
     }
     this.route.navigate(['/detalles']);
   }
+
+  activarAlumno(){
+    this.alumnos.activo = true;
+  }
+
 }

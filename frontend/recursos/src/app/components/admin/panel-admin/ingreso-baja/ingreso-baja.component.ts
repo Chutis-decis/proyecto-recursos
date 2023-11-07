@@ -9,7 +9,7 @@ import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 })
 export class IngresoBajaComponent {
   /* Atributos y Objetos */
-  ingreso: Ingreso = new Ingreso();
+  ingreso: Ingreso [];
   ingresar = new Ingreso();
 
   /* Constructor */

@@ -2,6 +2,7 @@ package com.humans.resource.controller;
 
 import com.humans.resource.entity.DatosIngreso;
 import com.humans.resource.entity.Modalidad;
+import com.humans.resource.entity.Perfilamiento;
 import com.humans.resource.repository.DatosIngresoService;
 import com.humans.resource.service.ModalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class ModalidadController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping
+    public List<Modalidad> listarPerfilamientos() {
+        return modalidadService.listarTodos();
     }
 
     @GetMapping("/{id}")

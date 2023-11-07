@@ -6,6 +6,7 @@ import com.humans.resource.repository.ModalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,9 @@ public class ModalidadService {
         Optional<Modalidad> optionalModalidad = modalidadRepository.findById(id);
         return optionalModalidad.orElse(null);
     }
+    //Obtenciòn de todos la Modalida
+    public List<Modalidad> listarTodos() {return modalidadRepository.findAll();}
+
 
     // UPDATE - Actualizar una Modalidad por ID
     public Modalidad updateModalidad(Long id, Modalidad updatedModalidad) {

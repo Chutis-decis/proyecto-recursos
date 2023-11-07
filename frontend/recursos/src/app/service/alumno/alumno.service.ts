@@ -7,6 +7,7 @@ import { CPanel } from 'src/app/components/admin/CPanel';
   providedIn: 'root'
 })
 export class AlumnoService {
+  [x: string]: any;
 
   /* URL listado de  todos los empleados en el backend */
   baseUrl = 'http://localhost:8081/datos-personales';
