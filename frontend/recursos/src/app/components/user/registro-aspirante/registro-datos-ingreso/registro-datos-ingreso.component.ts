@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ingreso } from 'src/app/ingreso';
 import { Modalidad } from 'src/app/modalidad';
+import { Perfilamiento } from 'src/app/perfilamiento';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
+import { Tramite } from 'src/app/tramite';
 
 @Component({
   selector: 'app-registro-datos-ingreso',
@@ -13,8 +15,10 @@ export class RegistroDatosIngresoComponent implements OnInit {
   /* Atributos y Objetos */
   ingreso: Ingreso = new Ingreso();
   ingresados: Ingreso[];
-  modalidades: Modalidad = new Modalidad(); // Modalidad[];
-  modalidad: Modalidad [];
+  modalidad: Modalidad [] = [];
+  tramite: Tramite [] = [];
+  perfilamiento: Perfilamiento [] = [];
+
   /* Constructor */
   constructor(private ingresoService: IngresoService, private route: Router, private activateRouter: ActivatedRoute) { }
 
@@ -36,9 +40,6 @@ export class RegistroDatosIngresoComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargar();
-    this.ingresoService.obtencionModalidadIngreso().subscribe(res=> {
-      this.modalidades = res;
-    }, error => console.log(error));
   }
 
 
@@ -52,10 +53,31 @@ export class RegistroDatosIngresoComponent implements OnInit {
     });
   }
 
-
+  /* Modificacion de los datos de inngreso */
   update():void{
     this.ingresoService.editarIngreso(this.ingreso.id, this.ingreso).subscribe(
       e=> this.route.navigate(['/datos-ingreso'])
     );
+  }
+
+  compararModalidad(modalida1: Modalidad, modalidad2: Modalidad): boolean{
+    if(modalida1 === undefined && modalidad2 === undefined){
+      return true;
+    }
+    return modalida1 === null || modalidad2 === null || modalida1 === undefined || modalidad2 === undefined ? false : modalida1.id === modalidad2.id;
+  }
+
+  compararTramite(tramite1: Tramite, tramite2: Tramite): boolean{
+    if(tramite1 === undefined && tramite2 === undefined){
+      return true;
+    }
+    return tramite1 === null || tramite2 === null || tramite1 === undefined || tramite2 === undefined ? false : tramite1.id === tramite2.id;
+  }
+
+  compararPerfilamiento(perfilamiento1: Perfilamiento, perfilamiento2: Perfilamiento): boolean{
+    if(perfilamiento1 === undefined && perfilamiento2 === undefined){
+      return true;
+    }
+    return perfilamiento1 === null || perfilamiento2 === null || perfilamiento1 === undefined || perfilamiento2 === undefined ? false : perfilamiento1.id === perfilamiento2.id;
   }
 }

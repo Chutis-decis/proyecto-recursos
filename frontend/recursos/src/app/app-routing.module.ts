@@ -19,6 +19,7 @@ import { RegistroDatosFtdComponent } from './components/user/registro-aspirante/
 import { WatchDatosFtdComponent } from './components/admin/panel/watch-datos-ftd/watch-datos-ftd.component';
 import { FtdBajaComponent } from './components/admin/panel-admin/ftd-baja/ftd-baja.component';
 import { EscolaresBajaComponent } from './components/admin/panel-admin/escolares-baja/escolares-baja.component';
+import { UniversidadComponent } from './components/admin/barra-opciones/datos-escolares/universidad/universidad.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'registro-datos-ftd/:id', component: RegistroDatosFtdComponent},
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
+  {path: 'datos-escolares/universidad', component: UniversidadComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

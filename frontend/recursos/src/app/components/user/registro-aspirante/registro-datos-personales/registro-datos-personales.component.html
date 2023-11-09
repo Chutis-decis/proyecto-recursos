@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-4 mt-4">
             <label class="form-label">Universidad</label>
-            <input type="text" class="form-control" placeholder="Ingresa el nombre de tu universidad" id="universidad" name="universidad" [(ngModel)]="escolares.universidad">
+            <input type="text" class="form-control" placeholder="Ingresa el nombre de tu universidad" id="universidad" name="universidad" [(ngModel)]="escolares.universidad.nombre">
         </div>
         <div class="col-md-3 mt-4">
             <label class="form-label">Matricula Escolar</label>
@@ -46,11 +46,9 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="mod-escolar" class="form-label">Modalidad Escolar</label>
             <div>
-                <select class="form-select" id="mod-escolar" name="modalidad" [(ngModel)]="escolares.modalidadEscolar">
-                    <option selected disabled value="">Elige una de las opciones</option>
-                    <option value="Escolarizada">Escolarizada</option>
-                    <option value="Abierta">Abierta</option>
-                    <option value="En linea">En linea</option>
+                <select class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar">
+                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
+                    <option *ngFor="let modalidad of modalidad" [ngValue]="modalidad">{{escolares.modalidadEscolar.nombre}}</option>
                     <option>Otra</option>
                 </select>
             </div>
@@ -58,12 +56,9 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="plan-educativo" class="form-label">Plan Educativo</label>
             <div>
-                <select class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planEducativo">
-                    <option selected disabled value="">Elige una de las opciones</option>
-                    <option value="Semestral">Semestral</option>
-                    <option value="Cuatrimestral">Cuatrimestral</option>
-                    <option value="Trimestral">Trimestral</option>
-                    <option value="Bimestral">Bimestral</option>
+                <select class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
+                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
+                    <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{escolares.planesEducativos.nombre}}</option>>
                     <option>Otra</option>
                 </select>
             </div>

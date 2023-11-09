@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Escolares } from 'src/app/escolares';
+import { Escolares } from 'src/app/datos_escolares/escolares';
+import { universidad } from 'src/app/datos_escolares/universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class DatosEscolaresComponent {
   /* Atributos */
   escolares: Escolares[] = [];
   escolar = new Escolares();
+  universidad: universidad[] = [];
 
   constructor(private serviceEstudiante:EscolaresService, private  activateRouter: ActivatedRoute, private route: Router) { }
 

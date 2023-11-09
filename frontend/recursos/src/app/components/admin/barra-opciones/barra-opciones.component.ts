@@ -41,4 +41,8 @@ export class BarraOpcionesComponent {
   dados_baja_escolares(){
     this.router.navigate(['/dados-baja-escolares']);
   }
+
+  universidad(){
+    this.router.navigate(['/datos-escolares/universidad']);
+  }
 }

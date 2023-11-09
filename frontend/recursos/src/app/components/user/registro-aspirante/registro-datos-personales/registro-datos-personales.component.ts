@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Escolares } from 'src/app/escolares';
+import { Escolares } from 'src/app/datos_escolares/escolares';
+import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
+import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
 @Component({
@@ -11,6 +13,9 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 export class RegistroDatosPersonalesComponent {
   escolares = new Escolares();
   escolar : Escolares[];
+  modalidad: modalidadEscolar[];
+  modalidades: any;
+  planEducativo: planEducativo[];
 
   constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute) { }
 
@@ -20,8 +25,15 @@ export class RegistroDatosPersonalesComponent {
     )
   }
 
+  getModalidad():void{
+    this.ecolarService.getModalidadEscolar().subscribe(
+      e=> this.escolar = e
+    )
+  }
+
   ngOnInit(): void {
     this.cargar();
+    this.getModalidad();
   }
 
   cargar(){
@@ -33,6 +45,7 @@ export class RegistroDatosPersonalesComponent {
     });
   }
 
+  /* GGuardar los datos escolares */
   create():void{
     console.log(this.escolares);
     this.ecolarService.createEscolar(this.escolares).subscribe(

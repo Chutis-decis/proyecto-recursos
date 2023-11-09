@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../../admin/CPanel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
-import { Escolares } from 'src/app/escolares';
+import { Escolares } from 'src/app/datos_escolares/escolares';
 
 @Component({
   selector: 'app-registro-aspirante',

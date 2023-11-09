@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Escolares } from 'src/app/escolares';
+import { Escolares } from 'src/app/datos_escolares/escolares';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,38 @@ export class EscolaresService {
   /* Eliminar */
   deleted(id: number):Observable<Escolares>{
     return this.httpClient.delete<Escolares>(`${this.url}/${id}`);
+  }
+
+  /* ********************************************** PLAN EDUCATIVO ****************************** */
+  /* Obtencion de los planes educativos  */
+  getPlanEducativo():Observable<Escolares[]> {
+    return this.httpClient.get<Escolares[]>(`${this.url}/plan-educativo`);  
+  }
+
+  /* Creacion de un nuevo plan educativo */
+  createPlanEducativo(plan:Escolares):Observable<Escolares>{
+    return this.httpClient.post<Escolares>(`${this.url}/plan-educativo`, plan);
+  }
+
+  /* ***************************************** UNIVERSIDAD **************************************** */
+  /* Obtencion de las universidades  */
+  getUniversidad():Observable<Escolares[]> {
+    return this.httpClient.get<Escolares[]>(`${this.url}/universidad`);  
+  }
+
+  /* Creacion de una nueva universidad */
+  createUniversidad(universidad:Escolares):Observable<Escolares>{
+    return this.httpClient.post<Escolares>(`${this.url}/universidad`, universidad);
+  }
+
+  /* ***************************************************** MODALIDAD ESCOLAR ************************ */
+  /* Obtencion de las modalidades escolares  */
+  getModalidadEscolar():Observable<Escolares[]> {
+    return this.httpClient.get<Escolares[]>(`${this.url}/modalidad-escolar`);  
+  }
+
+  /* Creacion de una nueva modalidad escolar */
+  createModalidadEscolar(modalidad:Escolares):Observable<Escolares>{
+    return this.httpClient.post<Escolares>(`${this.url}/modalidad-escolar`, modalidad);
   }
 }
