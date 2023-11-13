@@ -47,6 +47,7 @@ const routes: Routes = [
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
   {path: 'datos-escolares/universidad', component: UniversidadComponent},
+  {path: 'datos-escolares/universidad/:id', component: UniversidadComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

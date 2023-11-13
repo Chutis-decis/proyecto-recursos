@@ -36,4 +36,20 @@ export class UniversidadComponent {
     );
     this.route.navigate(['/datos-escolares/universidad'])
   }
+
+  /* Editar Universidad */
+  /* Actializacion */
+  update():void{
+    this.uniService.editarUniversidad(this.uni.id, this.uni).subscribe(
+      e=> this.route.navigate(['/datos-escolares/universidadp'])
+    );
+  }
+
+  /* Eliminar */
+  deleteUni(id: number): void{
+    this.uniService.deleteUniversidad(id).subscribe(data => {
+      console.log("Alumno eliminado", data);
+      this.getUniversidad();
+    });
+  }
 }

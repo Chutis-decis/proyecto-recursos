@@ -21,4 +21,14 @@ export class UniversidadService {
   createUniversidad(universidad:universidad):Observable<universidad>{
     return this.httpClient.post<universidad>(`${this.url}`, universidad);
   }
+
+  /* Actualizar */
+  editarUniversidad(id: number, university: universidad): Observable<Object>{
+    return this.httpClient.put<universidad>(`${this.url}/${id}`, university);
+  } 
+
+  /* Delete */
+  deleteUniversidad(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.url}/${id}`);
+  }
 }
