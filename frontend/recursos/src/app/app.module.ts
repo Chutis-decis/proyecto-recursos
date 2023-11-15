@@ -33,6 +33,7 @@ import { UniversidadComponent } from './components/admin/barra-opciones/datos-es
 import { ModalidadEscolarComponent } from './components/admin/barra-opciones/datos-escolares/modalidad-escolar/modalidad-escolar.component';
 import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
+import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-
     ModalidadEscolarComponent,
     PlanEducativoComponent,
     PerfilamientoComponent,
+    TramiteComponent,
   ],
   imports: [
     BrowserModule,

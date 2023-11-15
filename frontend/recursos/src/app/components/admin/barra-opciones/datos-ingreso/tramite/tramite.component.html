@@ -5,21 +5,21 @@
 
 <div class="mt-3 container-lg">
     <!-- Titiulo -->
-    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Perfilamiento</h1>
+    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Trámite</h1>
 
-    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-perfilamiento">Agregar Perfilamiento</button>
+    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-perfilamiento">Agregar Trámite</button>
     <!-- Modal del boton agregar perfilamiento -->
     <div class="modal fade" id="modal-perfilamiento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Perfilamiento</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Trámote</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nombre del Perfilamiento</label>
-                    <input type="text" class="form-control" placeholder="Nombre del Plan Educativo" id="perfilamiento" name="perfilamiento" [(ngModel)]="perf.nombrePerfilamiento">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre del Trámite</label>
+                    <input type="text" class="form-control" placeholder="Nombre del Trámite" id="perfilamiento" name="perfilamiento" [(ngModel)]="tra.nombreTramite">
                 </div>
             </div>
             <div class="modal-footer">
@@ -34,19 +34,19 @@
     <div class="mt-4">
         <div class="row btn-primary text-white text-center">
             <div class="col-1">ID</div>
-            <div class="col-7">Nombre de la Universidad</div>
+            <div class="col-7">Nombre del Trámite</div>
             <div class="col-2">Editar</div>
             <div class="col-2">Eliminar</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
-        <tbody *ngFor="let perfilamiento of perfilamiento">
+        <tbody *ngFor="let tra of tramite">
             <div class="row text-center">
-                <div class="col-1">{{perfilamiento.id}}</div>
-                <div class="col-7">{{perfilamiento.nombrePerfilamiento}}</div>
+                <div class="col-1">{{tra.id}}</div>
+                <div class="col-7">{{tra.nombreTramite}}</div>
 
                 <!-- Editar perfilamiento -->
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-ingreso/perfilamiento', perfilamiento.id]" data-bs-toggle="modal" data-bs-target="#edit-plan">Editar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-ingreso/perfilamiento', tra.id]" data-bs-toggle="modal" data-bs-target="#edit-plan">Editar</button>
                 <!-- Modal -->
                 <div class="modal fade" id="edit-plan" tabindex="-1" aria-labelledby="editar" aria-hidden="true">
                     <div class="modal-dialog">
@@ -58,7 +58,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nombre del Perfilamiento</label>
-                                <input type="text" class="form-control" placeholder="Nombre del Perfilamiento" id="perfilamiento" name="perfilamiento" [(ngModel)]="perfilamiento.nombrePerfilamiento">
+                                <input type="text" class="form-control" placeholder="Nombre del Perfilamiento" id="perfilamiento" name="perfilamiento" [(ngModel)]="tra.nombreTramite">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -68,9 +68,8 @@
                     </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deletePerfilamineto(perfilamiento.id)">Eliminar</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deletePerfilamineto(tra.id)">Eliminar</button>
             </div>
         </tbody>
     </table>
 </div>
-

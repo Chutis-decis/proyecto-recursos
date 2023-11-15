@@ -55,6 +55,10 @@ export class BarraOpcionesComponent {
   }
 
   perfilamiento(){
-    this.router.navigate(['/datos-escolares/perfilamiento']);
+    this.router.navigate(['/datos-ingreso/perfilamiento']);
+  }
+
+  tramite(){
+    this.router.navigate(['/datos-ingreso/tramite']);
   }
 }

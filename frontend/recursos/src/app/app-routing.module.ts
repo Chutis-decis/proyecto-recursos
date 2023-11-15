@@ -23,6 +23,7 @@ import { UniversidadComponent } from './components/admin/barra-opciones/datos-es
 import { ModalidadEscolarComponent } from './components/admin/barra-opciones/datos-escolares/modalidad-escolar/modalidad-escolar.component';
 import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
+import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -55,8 +56,10 @@ const routes: Routes = [
   {path: 'datos-escolares/modalidad/:id', component: ModalidadEscolarComponent},
   {path: 'datos-escolares/plan-educativo', component: PlanEducativoComponent},
   {path: 'datos-escolares/plan-educativo/:id', component: PlanEducativoComponent},
-  {path: 'datos-escolares/perfilamiento/:id', component: PerfilamientoComponent},
-  {path: 'datos-escolares/perfilamiento', component: PerfilamientoComponent},
+  {path: 'datos-ingreso/perfilamiento/:id', component: PerfilamientoComponent},
+  {path: 'datos-ingreso/perfilamiento', component: PerfilamientoComponent},
+  {path: 'datos-ingreso/tramite/:id', component: TramiteComponent},
+  {path: 'datos-ingreso/tramite', component: TramiteComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

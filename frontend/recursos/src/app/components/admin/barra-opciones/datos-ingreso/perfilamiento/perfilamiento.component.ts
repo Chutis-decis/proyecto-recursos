@@ -32,12 +32,12 @@ export class PerfilamientoComponent {
     this.ingresoService.createIngresoPerfilamiento(this.perf).subscribe(
       res=> this.getPerfilamiento()
     );
-    this.route.navigate(['/datos-escolares/perfilamiento'])
+    this.route.navigate(['/datos-ingreso/perfilamiento'])
   }
 
   update():void{
     this.ingresoService.editarIngresoPerfilamiento(this.perf.id, this.perf).subscribe(
-      e=> this.route.navigate(['/datos-escolares/perfilamiento'])
+      e=> this.route.navigate(['/datos-ingreso/perfilamiento'])
     );
   }
   deletePerfilamineto(id: number){
