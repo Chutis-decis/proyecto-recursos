@@ -10,7 +10,6 @@
                 <li><a class="dropdown-item" (click)="datos_ingreso()">Ingreso</a></li>
                 <li><a class="dropdown-item" (click)="datos_ftd()">FTD</a></li>
                 <li><a class="dropdown-item" (click)="datos_personales()">Personales</a></li>
-                <li><a class="dropdown-item" (click)="universidad()">Universidad</a></li>
             </ul>
         </div>
         <div class="dropdown">
@@ -19,11 +18,14 @@
             </button>
             <ul class="dropdown-menu btn-light">
                 <li><a class="dropdown-item" (click)="universidad()">Universidad</a></li>
+                <li><a class="dropdown-item" (click)="modalidad()">Modalidad Escolar</a></li>
+                <li><a class="dropdown-item" (click)="plan_educativo()">Plan Educativo</a></li>
+                <li><a class="dropdown-item" (click)="perfilamiento()">Perfilamiento</a></li>
             </ul>
         </div>
+        <button type="button" class="btn btn-primary border-0">Gestionar Alumno</button>
         <div class="dropdown">
-            <button type="button" class="btn btn-primary border-0">Gestionar Alumno</button>
-                <button class="btn btn-primary dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+            <button class="btn btn-primary dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="true">
                     Dados de Baja
                 </button>
                 <ul class="dropdown-menu btn-light">

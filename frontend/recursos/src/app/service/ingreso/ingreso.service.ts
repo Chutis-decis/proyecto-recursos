@@ -47,8 +47,8 @@ export class IngresoService {
   urlModalidad = 'http://localhost:8081/modalidades';
 
   /* Obtencion de la modalidad en los datos de ingreso */
-  obtencionModalidadIngreso ():Observable<Modalidad>{
-    return this.httpClient.get<Modalidad>(`${this.urlModalidad}`);
+  obtencionModalidadIngreso ():Observable<Modalidad[]>{
+    return this.httpClient.get<Modalidad[]>(`${this.urlModalidad}`);
   }
 
   /* Creacion de un nuevo usuario con la modalidad */
@@ -76,8 +76,8 @@ export class IngresoService {
   urlPerfilamiento = 'http://localhost:8081/perfilamiento';
 
   /* Obtencion del perfilamiento de los datos de ingreso */
-  obtencionPerfilamientoIngreso ():Observable<Perfilamiento>{
-    return this.httpClient.get<Perfilamiento>(`${this.urlPerfilamiento}`);
+  obtencionPerfilamientoIngreso ():Observable<Perfilamiento[]>{
+    return this.httpClient.get<Perfilamiento[]>(`${this.urlPerfilamiento}`);
   }
   
   /* Creacion de un nuevo usuario con el perfilamiento */
@@ -104,8 +104,8 @@ export class IngresoService {
   urlTramite = 'http://localhost:8081/tramites';
 
   /* Obtencion del tramite de los datos de ingreso */
-  obtencionTramiteIngreso ():Observable<Tramite>{
-    return this.httpClient.get<Tramite>(`${this.urlTramite}`);
+  obtencionTramiteIngreso ():Observable<Tramite[]>{
+    return this.httpClient.get<Tramite[]>(`${this.urlTramite}`);
   }
 
   /* Creacion de un nuevo usuario con el tramite */

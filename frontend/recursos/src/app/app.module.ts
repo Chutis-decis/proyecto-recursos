@@ -30,6 +30,9 @@ import { FtdBajaComponent } from './components/admin/panel-admin/ftd-baja/ftd-ba
 import { EscolaresBajaComponent } from './components/admin/panel-admin/escolares-baja/escolares-baja.component';
 import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baja/ingreso-baja.component';
 import { UniversidadComponent } from './components/admin/barra-opciones/datos-escolares/universidad/universidad.component';
+import { ModalidadEscolarComponent } from './components/admin/barra-opciones/datos-escolares/modalidad-escolar/modalidad-escolar.component';
+import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
+import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { UniversidadComponent } from './components/admin/barra-opciones/datos-es
     EscolaresBajaComponent,
     IngresoBajaComponent,
     UniversidadComponent,
+    ModalidadEscolarComponent,
+    PlanEducativoComponent,
+    PerfilamientoComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,6 @@ public class ModalidadEscolar {
     private Long id;
 
     private String nombre;
-    private String descripcion;
 
     @OneToMany(mappedBy = "modalidadEscolar")
     private List<DatosEscolares> datosEscolares;

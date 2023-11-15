@@ -15,9 +15,12 @@ export class RegistroDatosIngresoComponent implements OnInit {
   /* Atributos y Objetos */
   ingreso: Ingreso = new Ingreso();
   ingresados: Ingreso[];
+  mod: Modalidad = new Modalidad();
   modalidad: Modalidad [] = [];
   tramite: Tramite [] = [];
+  tra: Tramite = new Tramite();
   perfilamiento: Perfilamiento [] = [];
+  per: Perfilamiento = new Perfilamiento();
 
   /* Constructor */
   constructor(private ingresoService: IngresoService, private route: Router, private activateRouter: ActivatedRoute) { }
@@ -28,6 +31,24 @@ export class RegistroDatosIngresoComponent implements OnInit {
       e=> this.ingresados = e
     )
   }
+  
+  /* obtener Perfilamiento */
+  getPerfilamiento(): void{
+    this.ingresoService.obtencionPerfilamientoIngreso().subscribe(perfil => 
+      this.perfilamiento = perfil);
+  }
+  
+  /* Obtener Tramite */
+  getTramite(): void{
+    this.ingresoService.obtencionTramiteIngreso().subscribe(tramite => 
+      this.tramite = tramite)
+  }
+
+  /* Obtener Modalidad Ingreso */
+  getModalidad(): void{
+    this.ingresoService.obtencionModalidadIngreso().subscribe(mod =>
+      this.modalidad = mod)
+  }
 
   /* Crear */
   create():void{
@@ -35,11 +56,15 @@ export class RegistroDatosIngresoComponent implements OnInit {
     this.ingresoService.createIngreso(this.ingreso).subscribe(
       res=> this.getAll()
     );
+    this.ingresoService.createIngresoModalidad(this.mod)
     this.route.navigate(['/home'])
   }
 
   ngOnInit(): void {
     this.cargar();
+    this.getModalidad();
+    this.getPerfilamiento();
+    this.getTramite();
   }
 
 
@@ -49,6 +74,15 @@ export class RegistroDatosIngresoComponent implements OnInit {
       let id = e['id'];
       if(id){
         this.ingresoService.getById(id).subscribe(data => this.ingreso=data);
+      }
+      if(id){
+        this.ingresoService.getByIdPerfilamiento(id).subscribe(data => this.per = data)
+      }
+      if(id){
+        this.ingresoService.getByIdModalidad(id).subscribe(data => this.mod = data)
+      }
+      if(id){
+        this.ingresoService.getByIdTramite(id).subscribe(data => this.tra = data)
       }
     });
   }

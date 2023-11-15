@@ -22,13 +22,13 @@ public class DatosEscolares {
 
     private String carrera;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "universidad_id")
     private Universidad universidad;
 
     private String matriculaEscolar;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "modalidad_id")
     private ModalidadEscolar modalidadEscolar;
 

@@ -20,6 +20,9 @@ import { WatchDatosFtdComponent } from './components/admin/panel/watch-datos-ftd
 import { FtdBajaComponent } from './components/admin/panel-admin/ftd-baja/ftd-baja.component';
 import { EscolaresBajaComponent } from './components/admin/panel-admin/escolares-baja/escolares-baja.component';
 import { UniversidadComponent } from './components/admin/barra-opciones/datos-escolares/universidad/universidad.component';
+import { ModalidadEscolarComponent } from './components/admin/barra-opciones/datos-escolares/modalidad-escolar/modalidad-escolar.component';
+import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
+import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -48,6 +51,12 @@ const routes: Routes = [
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
   {path: 'datos-escolares/universidad', component: UniversidadComponent},
   {path: 'datos-escolares/universidad/:id', component: UniversidadComponent},
+  {path: 'datos-escolares/modalidad', component: ModalidadEscolarComponent},
+  {path: 'datos-escolares/modalidad/:id', component: ModalidadEscolarComponent},
+  {path: 'datos-escolares/plan-educativo', component: PlanEducativoComponent},
+  {path: 'datos-escolares/plan-educativo/:id', component: PlanEducativoComponent},
+  {path: 'datos-escolares/perfilamiento/:id', component: PerfilamientoComponent},
+  {path: 'datos-escolares/perfilamiento', component: PerfilamientoComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -5,6 +5,8 @@ import com.humans.resource.repository.ModalidadEscolarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ModalidadEscolarService {
@@ -26,5 +28,9 @@ public class ModalidadEscolarService {
 
     public void darDeBajaModalidadEscolar(Long id) {
         modalidadEscolarRepository.deleteById(id);
+    }
+
+    public List<ModalidadEscolar> getModalidadEscolar(){
+        return modalidadEscolarRepository.findAll();
     }
 }

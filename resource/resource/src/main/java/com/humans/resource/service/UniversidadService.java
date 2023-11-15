@@ -36,5 +36,10 @@ public class UniversidadService {
 
         return universityRepository.save(existingUniversity);
     }
+
+    public List<Universidad> getUniversidad (){
+        return universityRepository.findAll();
+
+    }
 }
 

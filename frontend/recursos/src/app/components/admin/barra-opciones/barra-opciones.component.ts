@@ -45,4 +45,16 @@ export class BarraOpcionesComponent {
   universidad(){
     this.router.navigate(['/datos-escolares/universidad']);
   }
+
+  modalidad(){
+    this.router.navigate(['/datos-escolares/modalidad']);
+  }
+
+  plan_educativo(){
+    this.router.navigate(['/datos-escolares/plan-educativo']);
+  }
+
+  perfilamiento(){
+    this.router.navigate(['/datos-escolares/perfilamiento']);
+  }
 }

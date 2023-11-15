@@ -1,7 +1,9 @@
 package com.humans.resource.controller;
 
 import com.humans.resource.entity.DatosIngreso;
+import com.humans.resource.entity.PlanEducativo;
 import com.humans.resource.repository.DatosIngresoService;
+import com.humans.resource.repository.PlanEducativoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

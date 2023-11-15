@@ -6,6 +6,8 @@ import com.humans.resource.repository.PlanEducativoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlanEducativoServiceImpl implements PlanEducativoService {
     @Autowired
@@ -38,6 +40,11 @@ public class PlanEducativoServiceImpl implements PlanEducativoService {
     public PlanEducativo buscarPlanEducativoPorId(Long planEducativoId) {
         // Busca un plan educativo por su ID
         return planEducativoRepository.findById(planEducativoId).orElse(null);
+    }
+
+    @Override
+    public List<PlanEducativo> getPlanEducativo(){
+        return planEducativoRepository.findAll();
     }
 }
 

@@ -36,6 +36,7 @@ export class RegistroDatosPersonalesComponent {
     this.getModalidad();
   }
 
+  /* Cargar los datos escolares */
   cargar(){
     this.activateRouter.params.subscribe(e => {
       let id = e['id'];
@@ -44,6 +45,7 @@ export class RegistroDatosPersonalesComponent {
       }
     });
   }
+  
 
   /* GGuardar los datos escolares */
   create():void{

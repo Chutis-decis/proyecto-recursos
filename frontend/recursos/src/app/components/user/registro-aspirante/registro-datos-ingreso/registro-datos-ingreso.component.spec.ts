@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroDatosIngresoComponent } from './registro-datos-ingreso.component';
+import { RegistroDatosIngresoComponent } from './RegistroDatosIngresoComponent';
 
 describe('RegistroDatosIngresoComponent', () => {
   let component: RegistroDatosIngresoComponent;

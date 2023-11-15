@@ -13,7 +13,7 @@ public class PlanEducativo {
     private Long id;
     private String nombre;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "datos_escolares_id")
     private DatosEscolares datosEscolares;
 

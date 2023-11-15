@@ -41,7 +41,7 @@ export class UniversidadComponent {
   /* Actializacion */
   update():void{
     this.uniService.editarUniversidad(this.uni.id, this.uni).subscribe(
-      e=> this.route.navigate(['/datos-escolares/universidadp'])
+      e=> this.route.navigate(['/datos-escolares/universidad'])
     );
   }
 
