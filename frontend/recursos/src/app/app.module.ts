@@ -34,6 +34,7 @@ import { ModalidadEscolarComponent } from './components/admin/barra-opciones/dat
 import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
+import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { TramiteComponent } from './components/admin/barra-opciones/datos-ingres
     PlanEducativoComponent,
     PerfilamientoComponent,
     TramiteComponent,
+    ModalidadComponent,
   ],
   imports: [
     BrowserModule,

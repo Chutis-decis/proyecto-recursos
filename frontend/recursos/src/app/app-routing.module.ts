@@ -24,6 +24,7 @@ import { ModalidadEscolarComponent } from './components/admin/barra-opciones/dat
 import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-escolares/plan-educativo/plan-educativo.component';
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
+import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -60,6 +61,8 @@ const routes: Routes = [
   {path: 'datos-ingreso/perfilamiento', component: PerfilamientoComponent},
   {path: 'datos-ingreso/tramite/:id', component: TramiteComponent},
   {path: 'datos-ingreso/tramite', component: TramiteComponent},
+  {path: 'datos-ingreso/modalidad', component: ModalidadComponent},
+  {path: 'datos-ingreso/modalidad/:id', component: ModalidadComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

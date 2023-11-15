@@ -46,7 +46,7 @@ export class BarraOpcionesComponent {
     this.router.navigate(['/datos-escolares/universidad']);
   }
 
-  modalidad(){
+  modalidadEscolar(){
     this.router.navigate(['/datos-escolares/modalidad']);
   }
 
@@ -60,5 +60,9 @@ export class BarraOpcionesComponent {
 
   tramite(){
     this.router.navigate(['/datos-ingreso/tramite']);
+  }
+
+  modalidad(){
+    this.router.navigate(['/datos-ingreso/modalidad']);
   }
 }
