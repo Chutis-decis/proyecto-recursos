@@ -8,8 +8,7 @@ import java.util.Date;
 @Entity
 @Data
 @ToString
-
-@Table
+@Table(name ="datos_ftd")
 public class DatosFTD {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +18,19 @@ public class DatosFTD {
     private String avanceProyecto; // Puede ser "En progreso" o "Finalizado"
     private String evaluacionProyecto; // Enlace al archivo de evaluación
     private String areaInfotec;
-    private String tutor;
+
+    @ManyToOne
+    @JoinColumn(name = "tutor_id")
+    private Tutor tutor;
+
     private String beca; // Puede ser "No tiene", "Becas A", "Becas Bronce", "Becas Plata", "Desarrolladores del Bienestar"
     private Date fechaIngreso;
     private Date fechaTermino;
-    private String grupo;
+
+    @ManyToOne
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
+
     private String enlace;
     private String matriculaFTD; // En formato "aa-uu-gg-id"
     private String correoBecario;
