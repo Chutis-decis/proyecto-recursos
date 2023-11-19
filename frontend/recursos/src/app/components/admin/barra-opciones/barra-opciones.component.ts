@@ -47,7 +47,7 @@ export class BarraOpcionesComponent {
   }
 
   modalidadEscolar(){
-    this.router.navigate(['/datos-escolares/modalidad']);
+    this.router.navigate(['/datos-escolares/modalidad-escolar']);
   }
 
   plan_educativo(){

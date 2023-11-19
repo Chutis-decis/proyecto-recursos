@@ -37,14 +37,14 @@ export class ModalidadEscolarComponent {
     this.modalidadService.create(this.moda).subscribe(
       res=> this.getModalidad()
     );
-    this.route.navigate(['/datos-escolares/modalidad'])
+    this.route.navigate(['/datos-escolares/modalidad-escolar'])
   }
   
 
   //Editar modalidad
   update():void{
     this.modalidadService.editarModalidad(this.moda.id, this.moda).subscribe(
-      e=> this.route.navigate(['/datos-escolares/modalidad'])
+      e=> this.route.navigate(['/datos-escolares/modalidad-escolar'])
     );
   }
 }
