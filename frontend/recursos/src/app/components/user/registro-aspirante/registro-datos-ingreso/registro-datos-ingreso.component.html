@@ -35,14 +35,14 @@
             <select class="form-select" id="horario" name="horario" [(ngModel)]="ingreso.horario">
                 <option selected disabled value="">Elige una de las opciones</option>
                     <option value="9:00-14:00">9:00-14:00</option>
-                    <option value="14:00-19:00">14:00-19:00</option>
+                    <option value="14:00-19:00">14:00-19:00a</option>
             </select>
         </div> 
         <div class="col-md-4 position-relative mt-4">
             <label for="modalidad" class="form-label">Modalidad</label>
             <select [compareWith]="compararModalidad" class="form-select" id="modalidad" name="modalidad" [(ngModel)]="ingreso.modalidad">
                 <option [ngValue]="undefined" selected disabled value>Elige una de las modalidades</option>
-                <option value="mod.id" *ngFor="let mod of modalidad" [ngValue]="mod">{{mod.nombre}}</option>
+                <option value="mod.id" *ngFor="let mod of modalidad">{{mod.nombre}}</option>
             </select>
         </div>
         <div class="col-md-4 position-relative mt-4">
@@ -55,7 +55,7 @@
         </div>
 
         <!-- boton -->
-            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!ingreso.id else elseBlock">Siguiente</button>
+            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="guardado()" *ngIf="!ingreso.id else elseBlock">Siguiente</button>
             <ng-template #elseBlock>
                 <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
             </ng-template>

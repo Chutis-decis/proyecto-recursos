@@ -56,7 +56,7 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="plan-educativo" class="form-label">Plan Educativo</label>
             <div>
-                <select class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
+                <select [compareWith]="compararPlanEducativo" class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
                     <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
                     <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{escolares.planesEducativos.nombre}}</option>>
                     <option>Otra</option>

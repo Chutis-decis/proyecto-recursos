@@ -4,11 +4,11 @@ import { Tramite } from "./tramite";
 
 export class Ingreso{
     id: number;
-    tramite: Tramite;
-    perfilamiento: Perfilamiento;
+    tramite: Tramite = new Tramite();
+    perfilamiento: Perfilamiento = new Perfilamiento();
     turno: string;
     horario: string;
-    modalidad: Modalidad;
+    modalidad: Modalidad = new Modalidad();
     cv: string;
     historialAcademico: string;
     datosPersonales: number;

@@ -29,7 +29,7 @@ export class RegistroDatosIngresoComponent implements OnInit {
   getAll():void{
     this.ingresoService.obtenerIngreso().subscribe(
       e=> this.ingresados = e
-    )
+    );
   }
   
   /* obtener Perfilamiento */
@@ -56,9 +56,39 @@ export class RegistroDatosIngresoComponent implements OnInit {
     this.ingresoService.createIngreso(this.ingreso).subscribe(
       res=> this.getAll()
     );
-    this.ingresoService.createIngresoModalidad(this.mod)
     this.route.navigate(['/home'])
   }
+
+  /* Guardar datos de la modalidad */
+  createModalidad():void{
+    console.log(this.mod);
+      this.ingresoService.createIngresoModalidad(this.mod).subscribe(
+        res=> this.getModalidad()
+      );
+    }
+
+    /* Guardad datos del perfilamiento */
+    createPerfilamiento():void{
+      console.log(this.per);
+      this.ingresoService.createIngresoPerfilamiento(this.per).subscribe(
+        res=> this.getPerfilamiento()
+      );
+    }
+    /* Guardar datos del trámite */
+    createTramite():void{
+      console.log(this.tra);
+        this.ingresoService.createIngresoTramite(this.tra).subscribe(
+          res=> this.getTramite()
+        );
+    }
+    
+    /* Guuardado de todas las tablas */
+    guardado(){
+      this.create()
+      this.createModalidad()
+      this.createPerfilamiento()
+      this.createTramite()
+    }
 
   ngOnInit(): void {
     this.cargar();
@@ -75,15 +105,7 @@ export class RegistroDatosIngresoComponent implements OnInit {
       if(id){
         this.ingresoService.getById(id).subscribe(data => this.ingreso=data);
       }
-      if(id){
-        this.ingresoService.getByIdPerfilamiento(id).subscribe(data => this.per = data)
-      }
-      if(id){
-        this.ingresoService.getByIdModalidad(id).subscribe(data => this.mod = data)
-      }
-      if(id){
-        this.ingresoService.getByIdTramite(id).subscribe(data => this.tra = data)
-      }
+      
     });
   }
 

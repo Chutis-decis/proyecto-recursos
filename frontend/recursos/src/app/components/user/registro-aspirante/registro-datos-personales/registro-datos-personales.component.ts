@@ -14,8 +14,9 @@ export class RegistroDatosPersonalesComponent {
   escolares = new Escolares();
   escolar : Escolares[];
   modalidad: modalidadEscolar[];
-  modalidades: any;
+  modalidades: modalidadEscolar = new modalidadEscolar();
   planEducativo: planEducativo[];
+  planes: planEducativo = new planEducativo();
 
   constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute) { }
 
@@ -25,15 +26,16 @@ export class RegistroDatosPersonalesComponent {
     )
   }
 
-  getModalidad():void{
-    this.ecolarService.getModalidadEscolar().subscribe(
-      e=> this.escolar = e
-    )
+  /* obtener Perfilamiento */
+  getPlanEducativo(): void{
+    this.ecolarService.getPlanEducativo().subscribe(mod => 
+      this.planEducativo = mod);
   }
 
+  
   ngOnInit(): void {
     this.cargar();
-    this.getModalidad();
+    this.getPlanEducativo();
   }
 
   /* Cargar los datos escolares */
@@ -60,5 +62,19 @@ export class RegistroDatosPersonalesComponent {
     this.ecolarService.editarEscolar(this.escolares.id, this.escolares).subscribe(
       e=> this.route.navigate(['/datos-escolares'])
     );
+  }
+
+  compararModalidad(modalida1: modalidadEscolar, modalidad2: modalidadEscolar): boolean{
+    if(modalida1 === undefined && modalidad2 === undefined){
+      return true;
+    }
+    return modalida1 === null || modalidad2 === null || modalida1 === undefined || modalidad2 === undefined ? false : modalida1.id === modalidad2.id;
+  }
+
+  compararPlanEducativo(plan1: planEducativo, plan2: modalidadEscolar): boolean{
+    if(plan1 === undefined && plan2 === undefined){
+      return true;
+    }
+    return plan1 === null || plan2 === null || plan1 === undefined || plan2 === undefined ? false : plan1.id === plan2.id;
   }
 }

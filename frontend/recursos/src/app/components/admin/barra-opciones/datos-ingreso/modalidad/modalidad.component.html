@@ -4,71 +4,60 @@
 <app-barra-opciones></app-barra-opciones>
 
 <div class="mt-3 container-lg">
-    <!-- Titiulo -->
+
     <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Modalidad</h1>
 
-    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-perfilamiento">Agregar Modalidad</button>
-    <!-- Modal del boton agregar perfilamiento -->
-    <div class="modal fade" id="modal-perfilamiento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Modalidad</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nombre de la Modalidad</label>
-                    <input type="text" class="form-control" placeholder="Nombre de la Modalidad" id="modalidad" name="modalidad" [(ngModel)]="mod.nombre">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()">Guardar</button>
-            </div>
-        </div>
-        </div>
-    </div>
+    <button type="button" class="btn btn-primary my-4 border-0" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Agregar Modalidad</button>
 
-    <!-- Listar Universidad -->
-    <div class="mt-4">
-        <div class="row btn-primary text-white text-center">
-            <div class="col-1">ID</div>
-            <div class="col-7">Nombre de la Modalidad</div>
-            <div class="col-2">Editar</div>
-            <div class="col-2">Eliminar</div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="new">Registro de Modalidades</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onSubmit()">
+                        <label for="recipient-name" class="col-form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" [(ngModel)] = "mod.nombre" [ngModelOptions]="{standalone: true}">
+                        <button type="submit" class="btn btn-secondary my-3 border-0">Agregar</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="row btn-primary text-white">
+        <div class="col-md-1 text-center">ID</div>
+        <div class="col-md-2 text-center">Nombre</div>
+        <div class="col-md-4  text-center">Acciones</div>
+
     </div>
     <table class="table table-striped mt-3">
-        <tbody *ngFor="let modalidad of modalidad">
-            <div class="row text-center">
-                <div class="col-1">{{modalidad.id}}</div>
-                <div class="col-7">{{modalidad.nombre}}</div>
-
-                <!-- Editar perfilamiento -->
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-ingreso/modalidad', modalidad.id]" data-bs-toggle="modal" data-bs-target="#edit-modalidad">Editar</button>
-                <!-- Modal -->
-                <div class="modal fade" id="edit-modalidad" tabindex="-1" aria-labelledby="editar" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="editar">Editar Modalidad</h1>
+        <tbody>
+            <div class="row" *ngFor="let moda of modalidad">
+                <div class="col-md-1">{{moda.id}}</div>
+                <div class="col-md-2">{{moda.nombre}}</div>
+                <div class="col-md-4">
+                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Clientes</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                                <label for="recipient-name" class="col-form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" [(ngModel)] = "editModalidad.nombre" [ngModelOptions]="{standalone: true}">
+                                <button type="submit" class="btn btn-secondary my-3">Editar</button>
+                            </form>
+                          </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Nombre de la Modalidad</label>
-                                <input type="text" class="form-control" placeholder="Nombre del Perfilamiento" id="modalidad" name="modalidad" [(ngModel)]="modalidad.nombre">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Editar</button>
-                        </div>
+                      </div>
                     </div>
-                    </div>
+                    <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-7" [routerLink]="['/datos-ingreso/modalidad', moda.id]" data-bs-toggle="modal" data-bs-target="#editar" data-bs-whatever="@getbootstrap">Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm border-0 me-1 col-4" (click)="deleteModalidad(moda.id)">Eliminar</button>
                 </div>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deleteModalidad(modalidad.id)">Eliminar</button>
             </div>
         </tbody>
     </table>

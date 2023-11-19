@@ -34,7 +34,7 @@ export class TramiteComponent {
     this.ingresoService.createIngresoTramite(this.tra).subscribe(
       res=> this.getTramite()
     );
-    this.route.navigate(['/datos-ingreso/perfilamiento'])
+    this.route.navigate(['/datos-ingreso/tramite'])
   }
 
   update(){

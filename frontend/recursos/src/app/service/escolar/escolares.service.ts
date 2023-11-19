@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Escolares } from 'src/app/datos_escolares/escolares';
+import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 
 @Injectable({
   providedIn: 'root'
@@ -40,14 +41,18 @@ export class EscolaresService {
   }
 
   /* ********************************************** PLAN EDUCATIVO ****************************** */
+  /* url */
+  urlPlan = 'http://localhost:8081/plan-educativo'
+
+
   /* Obtencion de los planes educativos  */
-  getPlanEducativo():Observable<Escolares[]> {
-    return this.httpClient.get<Escolares[]>(`${this.url}/plan-educativo`);  
+  getPlanEducativo():Observable<planEducativo[]> {
+    return this.httpClient.get<planEducativo[]>(`${this.urlPlan}/plan-educativo`);  
   }
 
   /* Creacion de un nuevo plan educativo */
   createPlanEducativo(plan:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.url}/plan-educativo`, plan);
+    return this.httpClient.post<Escolares>(`${this.urlPlan}/plan-educativo`, plan);
   }
 
   /* ***************************************** UNIVERSIDAD **************************************** */
