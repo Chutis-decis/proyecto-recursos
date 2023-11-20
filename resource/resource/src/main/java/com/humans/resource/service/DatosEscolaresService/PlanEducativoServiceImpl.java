@@ -37,9 +37,9 @@ public class PlanEducativoServiceImpl implements PlanEducativoService {
     }
 
     @Override
-    public PlanEducativo buscarPlanEducativoPorId(Long planEducativoId) {
+    public PlanEducativo buscarPlanEducativoPorId(Long id) {
         // Busca un plan educativo por su ID
-        return planEducativoRepository.findById(planEducativoId).orElse(null);
+        return planEducativoRepository.findById(id).orElse(null);
     }
 
     @Override

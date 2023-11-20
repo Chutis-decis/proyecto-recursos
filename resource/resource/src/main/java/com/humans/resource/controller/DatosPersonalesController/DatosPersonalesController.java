@@ -53,5 +53,9 @@ import java.util.List;
         public void eliminarDatosPersonales(@PathVariable Long id) {
             datosPersonalesService.deleteDatosPersonales(id);
         }
-    }
+
+        @DeleteMapping("/recuperacion/{id}")
+        public void recuperarDatosPersonales(@PathVariable Long id){datosPersonalesService.activateDatosPersonales(id);}
+
+}
 

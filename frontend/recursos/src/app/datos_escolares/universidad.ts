@@ -1,4 +1,4 @@
-export class universidad{
+export class Universidad{
     id: number;
     nombre: string;
 }

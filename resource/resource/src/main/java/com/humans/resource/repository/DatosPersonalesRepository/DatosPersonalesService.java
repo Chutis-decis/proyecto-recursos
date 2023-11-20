@@ -10,6 +10,6 @@ public interface DatosPersonalesService {
     Beca.DatosPersonales createDatosPersonales(Beca.DatosPersonales datosPersonales);
     Beca.DatosPersonales updateDatosPersonales(Long id, Beca.DatosPersonales datosPersonales);
     void deleteDatosPersonales(Long id);
-
+     void activateDatosPersonales(Long id);
     Beca.DatosPersonales actualizarDatosPersonales(Long id, Beca.DatosPersonales datosNuevos);
 }

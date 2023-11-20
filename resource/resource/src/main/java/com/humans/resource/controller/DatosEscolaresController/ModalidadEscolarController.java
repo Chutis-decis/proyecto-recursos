@@ -18,6 +18,10 @@ public class ModalidadEscolarController {
     @GetMapping
     public List<ModalidadEscolar> getAllModalidadEscolar(){return modalidadEscolarService.getModalidadEscolar();}
 
+    @GetMapping ("/{id}")
+    public ModalidadEscolar agregarById(@PathVariable Long id){
+        return modalidadEscolarService.getModalidadEscolarById(id);
+    }
     @PostMapping
     public ModalidadEscolar agregarModalidadEscolar(@RequestBody ModalidadEscolar modalidadEscolar) {
         return modalidadEscolarService.agregarModalidadEscolar(modalidadEscolar);

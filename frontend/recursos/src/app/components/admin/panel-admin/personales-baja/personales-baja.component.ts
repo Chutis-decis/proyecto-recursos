@@ -30,9 +30,13 @@ export class PersonalesBajaComponent implements OnInit{
     }
     this.route.navigate(['/detalles']);
   }
-  act: boolean = true;
-  activarAlumno(){
-    this.alumnos.activo = this.act;
+  
+  /* Eliminacion de los alumnos */
+  deleteEstudiante(id: number): void{
+    this.serviceAlumno.deletedTrue(id).subscribe(data => {
+      console.log("Alumno eliminado", data);
+      this.getAlumnos();
+    });
   }
 
 }

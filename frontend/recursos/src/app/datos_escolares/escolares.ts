@@ -1,12 +1,12 @@
 import { modalidadEscolar } from "./ModalidadEscolar";
 import { planEducativo } from "./planEducativo";
-import { universidad } from "./universidad";
+import { Universidad } from "./Universidad"
 
 export class Escolares{
     id: number;
     correoEscolar: string;
     carrera: string;
-    universidad: universidad = new universidad();
+    universidad: Universidad = new Universidad();
     matriculaEscolar: string;
     modalidadEscolar: modalidadEscolar = new modalidadEscolar();
     planesEducativos: planEducativo = new planEducativo();

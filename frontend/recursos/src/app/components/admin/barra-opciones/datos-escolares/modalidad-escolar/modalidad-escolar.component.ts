@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
+import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ModalidadEscolarComponent {
   moda = new modalidadEscolar();
   
   /* Constructor */
-  constructor(private modalidadService: ModalidadService, private route: Router) { }
+  constructor(private serviceModalidadEscolar: ModalidadService, private route: Router) { }
 
   /* Inicializacion */
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class ModalidadEscolarComponent {
 
   /* Metodo para la obtencion de la modalidad*/
   getModalidad(){
-    this.modalidadService.getModalidad().subscribe(data => {
+    this.serviceModalidadEscolar.getModalidad().subscribe(data => {
       this.modalidad = data;
       console.log(this.modalidad);
     });
@@ -34,7 +35,7 @@ export class ModalidadEscolarComponent {
   /* Crear modalidad  */
   create():void{
     console.log(this.moda);
-    this.modalidadService.create(this.moda).subscribe(
+    this.serviceModalidadEscolar.create(this.moda).subscribe(
       res=> this.getModalidad()
     );
     this.route.navigate(['/datos-escolares/modalidad-escolar'])
@@ -43,7 +44,7 @@ export class ModalidadEscolarComponent {
 
   //Editar modalidad
   update():void{
-    this.modalidadService.editarModalidad(this.moda.id, this.moda).subscribe(
+    this.serviceModalidadEscolar.editarModalidad(this.moda.id, this.moda).subscribe(
       e=> this.route.navigate(['/datos-escolares/modalidad-escolar'])
     );
   }

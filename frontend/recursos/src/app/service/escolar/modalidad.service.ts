@@ -8,7 +8,7 @@ import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
 })
 export class ModalidadService {
   /* URL */
-  private url = 'http://localhost:8081/modalidades';
+  private url = 'http://localhost:8081/modalidad-escolar';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,5 +24,10 @@ export class ModalidadService {
   /* Editar Modalidad */
   editarModalidad(id: number, modalidad: modalidadEscolar): Observable<modalidadEscolar>{
     return this.httpClient.put<modalidadEscolar>(`${this.url}/${id}`, modalidad);
+  }
+
+  /* Eliminancion de la modalidad escolar */
+  deleteModalidad(id: number): Observable<modalidadEscolar>{
+    return this.httpClient.delete<modalidadEscolar>(`${this.url}/${id}`);
   }
 }

@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
 import { Escolares } from 'src/app/datos_escolares/escolares';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
+import { Universidad } from 'src/app/datos_escolares/Universidad';
 
 @Injectable({
   providedIn: 'root'
@@ -47,33 +49,57 @@ export class EscolaresService {
 
   /* Obtencion de los planes educativos  */
   getPlanEducativo():Observable<planEducativo[]> {
-    return this.httpClient.get<planEducativo[]>(`${this.urlPlan}/plan-educativo`);  
+    return this.httpClient.get<planEducativo[]>(`${this.urlPlan}`);  
   }
 
   /* Creacion de un nuevo plan educativo */
   createPlanEducativo(plan:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.urlPlan}/plan-educativo`, plan);
+    return this.httpClient.post<Escolares>(`${this.urlPlan}`, plan);
   }
 
   /* ***************************************** UNIVERSIDAD **************************************** */
+  urlUniversidad = 'http://localhost:8081/universidad'
+
   /* Obtencion de las universidades  */
-  getUniversidad():Observable<Escolares[]> {
-    return this.httpClient.get<Escolares[]>(`${this.url}/universidad`);  
+  getUniversidad():Observable<Universidad[]> {
+    return this.httpClient.get<Universidad[]>(`${this.url}`);  
   }
 
   /* Creacion de una nueva universidad */
-  createUniversidad(universidad:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.url}/universidad`, universidad);
+  createUniversidad(universidad:Universidad):Observable<Universidad>{
+    return this.httpClient.post<Universidad>(`${this.url}`, universidad);
+  }
+
+  /* delete universidad logic */
+  deleteUniversidad(id: number):Observable<Universidad>{
+    return this.httpClient.delete<Universidad>(`${this.url}/${id}`);
+  }
+
+  /* modifier university */
+  updateUniversidad(id: number, universidad: Universidad): Observable<Object>{
+    return this.httpClient.put<Universidad>(`${this.url}/${id}`, universidad);
   }
 
   /* ***************************************************** MODALIDAD ESCOLAR ************************ */
+  urlModalidad = 'http://localhost:8081/modalidad-escolar'
+
   /* Obtencion de las modalidades escolares  */
-  getModalidadEscolar():Observable<Escolares[]> {
-    return this.httpClient.get<Escolares[]>(`${this.url}/modalidad-escolar`);  
+  getModalidadEscolar():Observable<modalidadEscolar[]> {
+    return this.httpClient.get<modalidadEscolar[]>(`${this.url}`);  
   }
 
   /* Creacion de una nueva modalidad escolar */
-  createModalidadEscolar(modalidad:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.url}/modalidad-escolar`, modalidad);
+  createModalidadEscolar(modalidad:modalidadEscolar):Observable<modalidadEscolar>{
+    return this.httpClient.post<modalidadEscolar>(`${this.url}`, modalidad);
+  }
+
+  /* Delete logic modalidad escolar */
+  deleteModalidadEscolar(id: number):Observable<modalidadEscolar>{
+    return this.httpClient.delete<modalidadEscolar>(`${this.url}/${id}`);
+  }
+
+  /* Create modalidad escolar */
+  updateModalidadEscolar(id: number, modalidad: modalidadEscolar): Observable<Object>{
+    return this.httpClient.put<modalidadEscolar>(`${this.url}/${id}`, modalidad);
   }
 }

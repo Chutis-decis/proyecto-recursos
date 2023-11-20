@@ -33,4 +33,7 @@ public class ModalidadEscolarService {
     public List<ModalidadEscolar> getModalidadEscolar(){
         return modalidadEscolarRepository.findAll();
     }
+    public ModalidadEscolar getModalidadEscolarById(Long id){
+        return modalidadEscolarRepository.findById(id).orElse(null);
+    }
 }

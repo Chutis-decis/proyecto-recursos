@@ -80,4 +80,13 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
             datosPersonalesRepository.save(datosPersonales);
         }
     }
+
+    @Override
+    public void activateDatosPersonales(Long id) {
+        Beca.DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
+        if (datosPersonales != null){
+            datosPersonales.setActivo(true);
+            datosPersonalesRepository.save(datosPersonales);
+        }
+    }
 }

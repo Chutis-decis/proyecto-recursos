@@ -21,6 +21,7 @@
             <div class="col-2">Primer Apellido</div>
             <div class="col-2">Segundo Apellido</div>
             <div class="col">Alta</div>
+            <div class="col">Eliminar</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -30,7 +31,8 @@
                 <div class="col-2">{{Alumno.nombres}}</div>
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" (click)="activarAlumno()">Dar Alta</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3"(click)="deleteEstudiante(Alumno.id)">Dar Alta</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 col text-white mt-3">Eliminar</button>
             </div>
         </tbody>
     </table>

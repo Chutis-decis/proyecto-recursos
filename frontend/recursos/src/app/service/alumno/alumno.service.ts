@@ -35,8 +35,13 @@ export class AlumnoService {
     return this.httpClient.put<CPanel>(`${this.baseUrl}/${id}`, aspirante);
   } 
 
-  /* Eliminar */
+  /* Cambiar de estado a false */
   deleted(id: number):Observable<CPanel>{
     return this.httpClient.delete<CPanel>(`${this.baseUrl}/${id}`);
+  }
+
+  /* Cambiar de estado a true */
+  deletedTrue(id: number):Observable<CPanel>{
+    return this.httpClient.delete<CPanel>(`${this.baseUrl}/recuperacion/${id}`);
   }
 }

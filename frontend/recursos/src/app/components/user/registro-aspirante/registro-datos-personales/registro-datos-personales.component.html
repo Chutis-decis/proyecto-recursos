@@ -14,10 +14,16 @@
             <label class="form-label">Carrera</label>
             <input type="text" class="form-control" placeholder="Escribe tu carrera" id="carrera" name="carrera" [(ngModel)]="escolares.carrera">
         </div>
-        <div class="col-md-4 mt-4">
-            <label class="form-label">Universidad</label>
-            <input type="text" class="form-control" placeholder="Ingresa el nombre de tu universidad" id="universidad" name="universidad" [(ngModel)]="escolares.universidad.nombre">
-        </div>
+        <div class="col-md-3 position-relative mt-4">
+            <label for="univerity" class="form-label">Universidad</label>
+            <div>
+                <select [compareWith]="compararUniversidad" class="form-select" id="univerity" name="university" [(ngModel)]="escolares.universidad">
+                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
+                    <option *ngFor="let universidad of universidad" [ngValue]="universidad">{{universidad.nombre}}</option>
+                    <option>Otra</option>
+                </select>
+            </div>
+        </div> 
         <div class="col-md-3 mt-4">
             <label class="form-label">Matricula Escolar</label>
             <input type="text" class="form-control" placeholder="Escribe tu matricula Escolar" id="matricula-escolar" name="matricula-escolar" [(ngModel)]="escolares.matriculaEscolar">
@@ -46,9 +52,9 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="mod-escolar" class="form-label">Modalidad Escolar</label>
             <div>
-                <select class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar">
+                <select [compareWith]="compararModalidad" class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar">
                     <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
-                    <option *ngFor="let modalidad of modalidad" [ngValue]="modalidad">{{escolares.modalidadEscolar.nombre}}</option>
+                    <option *ngFor="let modalidad of modalidad" [ngValue]="modalidad">{{modalidad.nombre}}</option>
                     <option>Otra</option>
                 </select>
             </div>
@@ -58,7 +64,7 @@
             <div>
                 <select [compareWith]="compararPlanEducativo" class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
                     <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
-                    <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{escolares.planesEducativos.nombre}}</option>>
+                    <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{planEducativo.nombre}}</option>>
                     <option>Otra</option>
                 </select>
             </div>
