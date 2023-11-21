@@ -14,6 +14,8 @@ export class PanelAdminComponent implements OnInit {
   alumno: CPanel[];
   estudiante : CPanel = new CPanel();
 
+  searchTerm: string = '';
+
 
   /* Constructor */
   constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute) {this.rout = rout; }

@@ -35,7 +35,6 @@ import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
-
 @NgModule({
   declarations: [
     AppComponent,
