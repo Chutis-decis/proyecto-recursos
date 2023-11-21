@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class PersonalesBajaComponent implements OnInit{
   alumno: CPanel[];
   alumnos: CPanel = new CPanel();
+  searchTerm: string = ''
 
   constructor(private serviceAlumno: AlumnoService, private route: Router) { }
 
