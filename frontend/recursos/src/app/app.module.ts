@@ -12,7 +12,7 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { PanelAdminComponent } from './components/admin/panel-admin/panel-admin.component';
 import { BarraOpcionesComponent } from './components/admin/barra-opciones/barra-opciones.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormGroupName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WatchComponent } from './components/admin/panel/watch/watch.component';
 import { RegistroAspiranteComponent } from './components/user/registro-aspirante/registro-aspirante.component'
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
@@ -72,7 +72,8 @@ import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingr
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

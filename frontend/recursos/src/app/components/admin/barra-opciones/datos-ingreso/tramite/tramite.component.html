@@ -13,7 +13,7 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Trámote</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Trámite</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -46,7 +46,7 @@
                 <div class="col-7">{{tra.nombreTramite}}</div>
 
                 <!-- Editar perfilamiento -->
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-ingreso/perfilamiento', tra.id]" data-bs-toggle="modal" data-bs-target="#edit-plan">Editar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1"  data-bs-toggle="modal" data-bs-target="#edit-plan">Editar</button>
                 <!-- Modal -->
                 <div class="modal fade" id="edit-plan" tabindex="-1" aria-labelledby="editar" aria-hidden="true">
                     <div class="modal-dialog">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Editar</button>
+                            <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()" [routerLink]="['/datos-ingreso/perfilamiento', tra.id]">Editar</button>
                         </div>
                     </div>
                     </div>

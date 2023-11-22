@@ -42,7 +42,7 @@ export class RegistroDatosFtdComponent{
     this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(
       res=> this.getAll()
     );
-    this.router.navigate(['/admin'])
+    this.router.navigate(['/datos_ftd'])
   }
 
   update():void{

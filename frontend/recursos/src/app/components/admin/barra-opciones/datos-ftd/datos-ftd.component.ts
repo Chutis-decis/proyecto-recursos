@@ -47,6 +47,7 @@ export class DatosFtdComponent {
   }
 
 
+  /* Eliminacion Logica de los datos FTD */
   deleteDatosFTD(id: number): void{
     this.ftdService.deletedDatosFTD(id).subscribe(data => {
       console.log("Alumno eliminado", data);

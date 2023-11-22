@@ -59,4 +59,10 @@ export class PanelAdminComponent implements OnInit {
     this.getAlumnos();
     this.rout.navigate(['/detalles']);
   }
+
+
+  /* Registrar datos FTD */
+  registrarDatosFTD(): void{
+    this.rout.navigate(['/registro-datos-ftd']);
+  }
 }

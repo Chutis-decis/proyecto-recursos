@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ingreso } from 'src/app/ingreso';
 import { Modalidad } from 'src/app/modalidad';
@@ -21,7 +22,6 @@ export class RegistroDatosIngresoComponent implements OnInit {
   tra: Tramite = new Tramite();
   perfilamiento: Perfilamiento [] = [];
   per: Perfilamiento = new Perfilamiento();
-
   /* Constructor */
   constructor(private ingresoService: IngresoService, private route: Router, private activateRouter: ActivatedRoute) { }
 
@@ -59,42 +59,36 @@ export class RegistroDatosIngresoComponent implements OnInit {
     this.route.navigate(['/home'])
   }
 
-  /* Guardar datos de la modalidad */
-  createModalidad():void{
-    console.log(this.mod);
-      this.ingresoService.createIngresoModalidad(this.mod).subscribe(
-        res=> this.getModalidad()
-      );
-    }
-
-    /* Guardad datos del perfilamiento */
-    createPerfilamiento():void{
-      console.log(this.per);
-      this.ingresoService.createIngresoPerfilamiento(this.per).subscribe(
-        res=> this.getPerfilamiento()
-      );
-    }
-    /* Guardar datos del trámite */
-    createTramite():void{
-      console.log(this.tra);
-        this.ingresoService.createIngresoTramite(this.tra).subscribe(
-          res=> this.getTramite()
-        );
-    }
+  
     
     /* Guuardado de todas las tablas */
-    guardado(){
-      this.create()
-      this.createModalidad()
-      this.createPerfilamiento()
-      this.createTramite()
+    guardado():void{
+      
+      this.ingresoService.createIngresoModalidad(this.mod).subscribe(res =>
+        {console.log(`Datos guardados con exito ${res}`)},
+      err => console.log(`Error al guardar los datos ${err}`)
+      );
+      this.ingresoService.createIngresoPerfilamiento(this.per).subscribe(res =>
+        {console.log(`Datos guardados con exito ${res}`)},
+      err => console.log(`Error al guardar los datos ${err}`)
+      );
+      this.ingresoService.createIngresoTramite(this.tra).subscribe(res =>
+        {console.log(`Datos guardados con exito ${res}`)},
+      err => console.log(`Error al guardar los datos ${err}`)
+      );
+      
+    }
+
+    obtenerAll(){
+      this.getAll();
+      this.getModalidad();
+      this.getPerfilamiento();
+      this.getTramite();
     }
 
   ngOnInit(): void {
     this.cargar();
-    this.getModalidad();
-    this.getPerfilamiento();
-    this.getTramite();
+    this.obtenerAll();
   }
 
 

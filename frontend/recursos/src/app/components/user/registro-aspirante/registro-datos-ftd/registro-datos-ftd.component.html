@@ -94,7 +94,7 @@
             </select>
         </div>
         <!-- boton -->
-        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!datosFTD.id else elseBlock">Siguiente</button>
+        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!datosFTD.id else elseBlock">Registrar</button>
         <ng-template #elseBlock>
             <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
         </ng-template>

@@ -17,7 +17,7 @@
         </div>   
         <div class="col-md-3 position-relative mt-4">
             <label for="perfilamiento" class="form-label">Perfilamiento</label>
-            <select [compareWith]="compararPerfilamiento" class="form-select" id="perfilamiento" name="perfilamiento" [(ngModel)]="ingreso.perfilamiento">
+            <select [compareWith]="compararTramite" class="form-select" id="perfilamiento" name="perfilamiento" [(ngModel)]="ingreso.perfilamiento">
                 <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
                 <option *ngFor="let perfilamiento of perfilamiento" [ngValue]="perfilamiento">{{perfilamiento.nombrePerfilamiento}}</option>
             </select>

@@ -38,8 +38,13 @@ export class TramiteComponent {
   }
 
   update(){
-
+    this.ingresoService.editarIngresoTramite(this.tra.id, this.tra).subscribe(
+      data => {this.route.navigate(['/datos-ingreso/tramite'])},
+      error => console.log(error)
+      );
   }
+
+
   deletePerfilamineto(id:number){
     this.ingresoService.eliminarTramite(id).subscribe(data => {
       console.log("Alumno eliminado", data);

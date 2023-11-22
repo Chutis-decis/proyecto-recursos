@@ -21,8 +21,9 @@
             <div class="col-3">Nombre</div>
             <div class="col-2">Primer Apellido</div>
             <div class="col-2">Segundo Apellido</div>
-            <div class="col-2">Editar</div>
-            <div class="col-1">Dar de Baja</div>
+            <div class="col">Editar</div>
+            <div class="col">Dar de Baja</div>
+            <div class="col">FTD</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -32,8 +33,9 @@
                 <div class="col-3">{{Alumno.nombres}}</div>
                 <div class="col-2">{{Alumno.primerApellido}}</div>
                 <div class="col-2">{{Alumno.segundoApellido}}</div>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 col-2 text-white mt-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 text-white col-1 mt-1" (click) ="deleteEstudiante(Alumno.id)">Dar de Baja</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 col text-white mt-1" [routerLink]="['/estudiante', Alumno.id]">Editar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 text-white col mt-1" (click) ="deleteEstudiante(Alumno.id)">Dar de Baja</button>
+                <button type="button" class="btn btn-danger btn-sm border-0 me-1 text-white col mt-1" (click)="registrarDatosFTD()">Registrar Datos FTD</button>
             </div>
         </tbody>
     </table>
