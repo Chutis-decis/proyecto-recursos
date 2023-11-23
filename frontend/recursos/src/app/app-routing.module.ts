@@ -48,6 +48,7 @@ const routes: Routes = [
   {path: 'registro-datos-ingreso', component: RegistroDatosIngresoComponent},
   {path: 'registro-datos-ingreso/:id', component: RegistroDatosIngresoComponent},
   {path: 'registro-datos-ftd', component: RegistroDatosFtdComponent},
+  {path: 'registro-datos-ftd/:id', component: RegistroDatosFtdComponent},
   {path: 'datos_ftd', component: DatosFtdComponent},
   {path: 'datos_ftd/:id', component: DatosFtdComponent},
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},

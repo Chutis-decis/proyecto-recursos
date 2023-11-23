@@ -24,7 +24,9 @@ public class DatosFTD {
     private Tutor tutor;
 
     private String beca; // Puede ser "No tiene", "Becas A", "Becas Bronce", "Becas Plata", "Desarrolladores del Bienestar"
+    @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
+    @Temporal(TemporalType.DATE)
     private Date fechaTermino;
 
     @ManyToOne

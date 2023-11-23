@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Escolares } from 'src/app/datos_escolares/escolares';
+import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 
 @Component({
@@ -11,10 +13,11 @@ import { UniversidadService } from 'src/app/service/escolar/universidad.service'
 export class UniversidadComponent {
   /* Atributos */
   universidad: Universidad [] = [];
-  uni = new Universidad();
+  uni: Universidad = new Universidad();
 
+  escolarUni: Escolares = new Escolares();
   /* Constructor */
-  constructor(private uniService: UniversidadService, private  route: Router) { }
+  constructor(private uniService: UniversidadService, private  route: Router, private escService: EscolaresService) { }
 
   /* Inicializacion */
   ngOnInit(): void {
@@ -37,19 +40,22 @@ export class UniversidadComponent {
     this.route.navigate(['/datos-escolares/universidad'])
   }
 
-  /* Editar Universidad */
-  /* Actializacion */
-  update():void{
-    this.uniService.editarUniversidad(this.uni.id, this.uni).subscribe(
-      e=> this.route.navigate(['/datos-escolares/universidad'])
-    );
-  }
-
   /* Eliminar */
   deleteUni(id: number): void{
     this.uniService.deleteUniversidad(id).subscribe(data => {
       console.log("Alumno eliminado", data);
       this.getUniversidad();
     });
+  }
+  /* Editar Universidad */
+  /* Actializacion */
+  editarUniversidad(): void {
+    this.escService.updateUniversidad(this.uni.id , this.uni).subscribe(
+      res => {
+        console.log('Datos de universidad actualizados con éxito');
+        this.route.navigate(['/datos-escolares/universidad']);
+      },
+      err => console.log('Error al actualizar los datos de universidad')
+    );
   }
 }

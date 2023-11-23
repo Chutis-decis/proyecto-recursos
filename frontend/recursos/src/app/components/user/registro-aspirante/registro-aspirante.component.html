@@ -3,80 +3,99 @@
 
 <!-- Modal -->
         
-<form>
+<form #miFormulario="ngForm" (ngSubmit)="create()" novalidate>
     <div class="container-md mt-5">
         <h1 class="text-center mt-5 col-title">{{estudiante.id ? 'Edición': 'Registro'}} de Datos Personales</h1>
     <div class="row" (ngSubmit) = create()>
         <div class="col-md-4 mt-4">
             <label>Nombre</label>
-            <input type="text" class="form-control" placeholder="Escribe tu nombre" id="nombre" name="nombre" [(ngModel)]="estudiante.nombres">
+            <input type="text" class="form-control" placeholder="Escribe tu nombre" id="nombre" name="nombre" [(ngModel)]="estudiante.nombres" #name="ngModel" required>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">El Nombre es Requerido</div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Apellido Paterno</label>
-            <input type="text" class="form-control" placeholder="Escribe tu apellido paterno" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="estudiante.primerApellido">
+            <input type="text" class="form-control" placeholder="Escribe tu apellido paterno" id="apellidoPaterno" name="apellidoPaterno" [(ngModel)]="estudiante.primerApellido" #apellidoPa="ngModel" required>
+            <div *ngIf="apellidoPa.invalid && (apellidoPa.dirty || apellidoPa.touched)" class="alert alert-danger">El Apellido Paterno es Requerido</div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Apellido Materno</label>
-            <input type="text" class="form-control" placeholder="Escribe tu apellido materno" id="apellidoMaterno" name="apellidoMaterno" [(ngModel)]="estudiante.segundoApellido">
+            <input type="text" class="form-control" placeholder="Escribe tu apellido materno" id="apellidoMaterno" name="apellidoMaterno" [(ngModel)]="estudiante.segundoApellido" #apeMa="ngModel" required>
+            <div *ngIf="apeMa.invalid && (apeMa.dirty || apeMa.touched)" class="alert alert-danger">El Apellido Materno es Requerido</div>
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="genero" class="form-label">Genero</label>
             <div>
-                <select class="form-select" id="genero" name="genero" [(ngModel)]="estudiante.genero">
+                <select class="form-select" id="genero" name="genero" [(ngModel)]="estudiante.genero" #generos="ngModel" required>
                     <option selected disabled value="">Elige una de las opciones</option>
                     <option value="Escolarizada">Masculino</option>
                     <option value="Abierta">Femenino</option>
                 </select>
+                <div *ngIf="generos.invalid && (generos.dirty || generos.touched)" class="alert alert-danger">El Genero es Requerido</div>
             </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>CURP</label>
-            <input maxlength="18" type="text" class="form-control mayus" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp">
+            <input type="text" class="form-control mayus" placeholder="Escribe tu curp" id="curp" name="curp" [(ngModel)]="estudiante.curp" #curps="ngModel" required >
+            <div *ngIf="curps.invalid && (curps.dirty || curps.touched)" class="alert alert-danger">El Curp es Requerido
+            </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Estado</label>
-            <input type="text" class="form-control" placeholder="Escribe tu estado" id="estado" name="estado" [(ngModel)]="estudiante.estado">
+            <input type="text" class="form-control" placeholder="Escribe tu estado" id="estado" name="estado" [(ngModel)]="estudiante.estado" #estados="ngModel" required >
+            <div *ngIf="estados.invalid && (estados.dirty || estados.touched)" class="alert alert-danger">El Estado es Requerido
+            </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Ciudad</label>
-            <input type="text" class="form-control" placeholder="Escribe tu ciudad" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad">
+            <input type="text" class="form-control" placeholder="Escribe tu ciudad" id="ciudad" name="ciudad" [(ngModel)]="estudiante.ciudad"  #ciudades="ngModel" required>
+            <div *ngIf="ciudades.invalid && (ciudades.dirty || ciudades.touched)" class="alert alert-danger">La Ciudad es Requerida
+            </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Colonia</label>
-            <input type="text" class="form-control" placeholder="Escribe tu colonia" id="colonia" name="colonia" [(ngModel)]="estudiante.colonia">
+            <input type="text" class="form-control" placeholder="Escribe tu colonia" id="colonia" name="colonia" [(ngModel)]="estudiante.colonia"  #colonias="ngModel" required>
+            <div *ngIf="colonias.invalid && (colonias.dirty || colonias.touched)" class="alert alert-danger">La Colonia es Requerida
+            </div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Calle</label>
-            <input type="text" class="form-control" placeholder="Escribe tu calle" id="calle" name="calle" [(ngModel)]="estudiante.calle">
+            <input type="text" class="form-control" placeholder="Escribe tu calle" id="calle" name="calle" [(ngModel)]="estudiante.calle"  #calles="ngModel" required>
+            <div *ngIf="calles.invalid && (calles.dirty || calles.touched)" class="alert alert-danger">La Calle es Requerida</div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Numero Exterior</label>
-            <input type="number" class="form-control" placeholder="Escribe tu nùmero exterior" id="numExterior" name="numExterior" [(ngModel)]="estudiante.numeroExterior">
+            <input type="number" class="form-control" placeholder="Escribe tu nùmero exterior" id="numExterior" name="numExterior" [(ngModel)]="estudiante.numeroExterior" #nuExt="ngModel" required>
+            <div *ngIf="nuExt.invalid && (nuExt.dirty || nuExt.touched)" class="alert alert-danger">El Numero Exterior es Requerido</div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Numero Interior</label>
-            <input type="number" class="form-control" placeholder="Escribe tu nùmero interior" id="numInterior" name="numInterior" [(ngModel)]="estudiante.numeroInterior">
+            <input type="number" class="form-control" placeholder="Escribe tu nùmero interior" id="numInterior" name="numInterior" [(ngModel)]="estudiante.numeroInterior" #nuInt="ngModel" required>
+            <div *ngIf="nuInt.invalid && (nuInt.dirty || nuInt.touched)" class="alert alert-danger">El Numero Interior es Requerido</div>
         </div>
         <div class="col-md-4 mt-4">
             <label>Extra</label>
             <input type="text" class="form-control" placeholder="Escribe tu ubicaciòn" id="extra
             " name="extra
-            " [(ngModel)]="estudiante.extra">
+            " [(ngModel)]="estudiante.extra" #extras="ngModel" required>
+            <div *ngIf="extras.invalid && (extras.dirty || extras.touched)" class="alert alert-danger">La Ubicaciòn es Requerida</div>
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Celular</label>
-            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu nùmero de celular" id="celular" name="celular" [(ngModel)]="estudiante.celular">
+            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu número de celular" id="celular" name="celular" [(ngModel)]="estudiante.celular" #cel="ngModel" required>
+            <div *ngIf="cel.invalid && (cel.dirty || cel.touched)" class="alert alert-danger">El Celular es Requerido</div>
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Telefono</label>
-            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu nùmero de telefono" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono">
+            <input maxlength="10" type="number" class="form-control" placeholder="Escribe tu nùmero de telefono" id="telefono" name="telefono" [(ngModel)]="estudiante.telefono" #tel="ngModel" required>
+            <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">El Telefono es Requerido</div>
         </div>
         <div class="col-md-4 mt-4 mb-3">
             <label>Correo Personal</label>
-            <input type="email" class="form-control" placeholder="Escribe tu correo personal" id="email" name="email" [(ngModel)]="estudiante.correoPersonal">
+            <input type="email" class="form-control" placeholder="Escribe tu correo personal" id="email" name="email" [(ngModel)]="estudiante.correoPersonal" #email="ngModel" required>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">El Correo Personal es Requerido</div>
         </div>
         <!-- boton -->
-            <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" *ngIf="!estudiante.id else elseBlock">Siguiente</button>
+            <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" [disabled]="miFormulario.invalid" *ngIf="!estudiante.id else elseBlock">Siguiente</button>
             <ng-template #elseBlock>
                 <button type="button" class="btn btn-secondary border-0" role="button" (click)="update()">Actualizar</button>
             </ng-template>

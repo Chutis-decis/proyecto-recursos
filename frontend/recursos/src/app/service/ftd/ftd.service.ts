@@ -37,5 +37,9 @@ export class FtdService {
   deletedDatosFTD(id: number):Observable<ftd>{
     return this.httpClient.delete<ftd>(`${this.url}/${id}`);
   }
+
+  activarDatosFTD(id: number): Observable<Object>{
+    return this.httpClient.delete<ftd>(`${this.url}/recuperacion/${id}`);
+  }
   
 }

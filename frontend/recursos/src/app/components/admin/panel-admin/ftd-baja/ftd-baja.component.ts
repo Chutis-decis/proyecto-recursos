@@ -30,4 +30,12 @@ export class FtdBajaComponent {
       }
       this.router.navigate(['/detalle-ftd']);
     }
+
+    /* Alta a los estudiantes */
+    alta(id: number): void{
+      this.serviceFTD.activarDatosFTD(id).subscribe(data => {
+        console.log("Alumno activado", data);
+        this.getDatosFTD();
+      });
+    }
 }

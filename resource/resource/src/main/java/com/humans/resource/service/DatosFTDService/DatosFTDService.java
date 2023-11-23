@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DatosFTDService {
+public class DatosFTDService implements com.humans.resource.repository.DatosFTDRepository.DatosFTDService {
 
     private DatosFTDRepository datosFTDRepository;
 
@@ -37,5 +37,15 @@ public class DatosFTDService {
 
     public void deleteDatosFTD(Long id) {
         datosFTDRepository.deleteById(id);
+    }
+
+
+    @Override
+    public void activateDatosFTD(Long id) {
+        DatosFTD datosFTD = datosFTDRepository.findById(id).orElse(null);
+        if (datosFTD != null){
+            datosFTD.setActivo(true);
+            datosFTDRepository.save(datosFTD);
+        }
     }
 }

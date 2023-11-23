@@ -52,5 +52,8 @@ public class DatosFTDController {
         }
     }
 
+    @DeleteMapping("/recuperacion/{id}")
+    public void recuperarDatosPersonales(@PathVariable Long id){datosFTDService.activateDatosFTD(id);}
+
     }
 

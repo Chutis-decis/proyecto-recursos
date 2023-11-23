@@ -28,7 +28,8 @@
                 <div class="col-2">{{ftddata.nombreProyecto}}</div>
                 <div class="col-2">{{ftddata.activo}}</div>
                 <div class="col-2">{{ftddata.evaluacionProyecto}}</div>
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" >Dar Alta</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" (click)="alta(ftddata.id)">Dar Alta</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 col text-white mt-3">Eliminar</button>
             </div>
         </tbody>
     </table>
