@@ -3,8 +3,14 @@ package com.humans.resource.controller.DatosIngresoController;
 import com.humans.resource.entity.DatosIngreso.DatosIngreso;
 import com.humans.resource.repository.DatosIngresooRepository.DatosIngresoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
@@ -24,8 +30,22 @@ public class DatosIngresoController {
     }
 
     @GetMapping("/{id}")
-    public DatosIngreso getDatosIngresoById(@PathVariable Long id) {
-        return datosIngresoService.getDatosIngresoById(id);
+    public ResponseEntity<?> getDatosIngresoById(@PathVariable Long id) {
+        DatosIngreso datosIngreso =null;
+        Map<String,Object>response = new HashMap<>();
+
+        try{
+            datosIngreso =datosIngresoService.getDatosIngresoById(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al realizar la consulta a la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if(datosIngreso == null){
+            response.put("message", "Los datos de Ingreso con el ID: ".concat(id.toString().concat("no existe en la  base de datos")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+        return  new ResponseEntity<DatosIngreso>(datosIngreso, HttpStatus.OK);
     }
 
     @GetMapping

@@ -2,12 +2,16 @@ package com.humans.resource.controller.DatosPersonalesController;
 
 import com.humans.resource.entity.DatosFTD.Beca;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
     @RequestMapping("/datos-personales")
@@ -38,8 +42,21 @@ import java.util.List;
     }
 
         @GetMapping("/{id}")
-        public Beca.DatosPersonales obtenerDatosPersonalesPorId(@PathVariable Long id) {
-            return datosPersonalesService.getDatosPersonalesById(id);
+        public ResponseEntity<?> obtenerDatosPersonalesPorId(@PathVariable Long id) {
+            Beca.DatosPersonales datosPersonales = null;
+            Map<String, Object> response = new HashMap<>();
+            try {
+                datosPersonales = datosPersonalesService.getDatosPersonalesById(id);
+            }catch (DataAccessException e){
+                response.put("mensaje", "Error al realizar la consulta a la base de datos");
+                response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            if(datosPersonales == null){
+                response.put("mensaje", "el cliente ID ".concat(id.toString().concat(" no existe en la base de datos")));
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<Beca.DatosPersonales>(datosPersonales, HttpStatus.OK);
         }
 
         @GetMapping

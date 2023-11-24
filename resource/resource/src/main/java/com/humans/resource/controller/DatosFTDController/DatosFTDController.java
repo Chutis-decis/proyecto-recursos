@@ -3,9 +3,14 @@ package com.humans.resource.controller.DatosFTDController;
 import com.humans.resource.entity.DatosFTD.DatosFTD;
 import com.humans.resource.service.DatosFTDService.DatosFTDService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -26,8 +31,22 @@ public class DatosFTDController {
     }
 
     @GetMapping("/{id}")
-    public DatosFTD getDatosFTDById(@PathVariable Long id) {
-        return datosFTDService.getDatosFTDById(id);
+    public ResponseEntity<?> getDatosFTDById(@PathVariable Long id) {
+        DatosFTD datosFTD = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try{
+            datosFTD = datosFTDService.getDatosFTDById(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al realizar la consulta a la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if(datosFTD == null){
+            response.put("mensaje", "el cliente ID ".concat(id.toString().concat(" no existe en la base de datos")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<DatosFTD>(datosFTD, HttpStatus.OK);
     }
 
     @GetMapping

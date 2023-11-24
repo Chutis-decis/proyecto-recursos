@@ -63,7 +63,9 @@ export class RegistroDatosIngresoComponent implements OnInit {
     
     /* Guuardado de todas las tablas */
     guardado():void{
-      
+      this.ingresoService.createIngreso(this.ingreso).subscribe(res =>{
+        console.log(`Datos guardados con exito ${res}`)
+      }, err => console.log(`Error al guardar los datos ${err}`));
       this.ingresoService.createIngresoModalidad(this.mod).subscribe(res =>
         {console.log(`Datos guardados con exito ${res}`)},
       err => console.log(`Error al guardar los datos ${err}`)

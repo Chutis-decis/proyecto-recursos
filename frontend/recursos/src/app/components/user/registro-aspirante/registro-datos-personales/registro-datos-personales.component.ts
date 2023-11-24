@@ -5,6 +5,9 @@ import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
+import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
+import { PlanEducativoService } from 'src/app/service/escolar/plan-educativo.service';
+import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 
 @Component({
   selector: 'app-registro-datos-personales',
@@ -22,7 +25,7 @@ export class RegistroDatosPersonalesComponent {
   universidades: Universidad = new Universidad();
 
   /* Constructor */
-  constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute) { }
+  constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute, private univerSe: UniversidadService, private modEscService: ModalidadService, private planService: PlanEducativoService) { }
 
   getAll():void{
     this.ecolarService.obtenerEscolar().subscribe(
@@ -32,17 +35,17 @@ export class RegistroDatosPersonalesComponent {
 
   /* obtener Perfilamiento */
   getPlanEducativo(): void{
-    this.ecolarService.getPlanEducativo().subscribe(planEduca => 
+    this.planService.getPlanEducativo().subscribe(planEduca => 
       this.planEducativo = planEduca);
   }
 
   getModalidadEscolar(): void{
-    this.ecolarService.getModalidadEscolar().subscribe(mod => 
+    this.modEscService.getModalidad().subscribe(mod => 
       this.modalidad = mod);
   }
 
   getUniversidad(): void{
-    this.ecolarService.getUniversidad().subscribe(university =>
+    this.univerSe.getUniversidad().subscribe(university =>
       this.universidad = university)
   }
 
@@ -67,11 +70,24 @@ export class RegistroDatosPersonalesComponent {
 
   /* GGuardar los datos escolares */
   create():void{
-    console.log(this.escolares);
-    this.ecolarService.createEscolar(this.escolares).subscribe(
-      res=> this.getAll()
-    );
-    this.route.navigate(['/registro-datos-ingreso'])
+    this.modEscService.create(this.modalidades).subscribe(mod => {
+      this.modalidades = mod;
+      this.univerSe.createUniversidad(this.universidades).subscribe(uni => {
+        this.universidades = uni;
+        this.planService.postPlan(this.planes).subscribe(plan => {
+          this.planes = plan;
+          this.escolares.modalidadEscolar = this.modalidades;
+          this.escolares.universidad = this.universidades;
+          this.escolares.planesEducativos = this.planes;
+          this.ecolarService.createEscolar(this.escolares).subscribe(
+            res=> {
+              this.getAll();
+              this.route.navigate(['/registro-datos-ingreso'])
+            }
+          );
+        });
+      });
+    });
   }
 
   update():void{
