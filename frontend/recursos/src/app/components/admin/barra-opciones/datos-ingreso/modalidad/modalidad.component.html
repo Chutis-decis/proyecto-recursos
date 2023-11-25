@@ -49,7 +49,7 @@
                             <form>
                                 <label for="recipient-name" class="col-form-label">Nombre</label>
                                 <input type="text" class="form-control" id="name" [(ngModel)] = "editModalidad.nombre" [ngModelOptions]="{standalone: true}">
-                                <button type="submit" class="btn btn-secondary my-3">Editar</button>
+                                <button type="submit" class="btn btn-secondary my-3" (click)="update()">Editar</button>
                             </form>
                           </div>
                         </div>

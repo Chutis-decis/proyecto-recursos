@@ -3,6 +3,7 @@ import { CPanel } from '../../admin/CPanel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { Escolares } from 'src/app/datos_escolares/escolares';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-aspirante',
@@ -26,11 +27,11 @@ export class RegistroAspiranteComponent implements OnInit{
   }
 
   create():void{
-    console.log(this.estudiante);
     this.alumnoService.createAlumno(this.estudiante).subscribe(
-      res=> this.getAll()
+      res=> {this.route.navigate(['/registro-datos-escolares'])
+      Swal.fire('Nuevo usuario', `Usuario ${this.estudiante.nombres} creado con exito!`, 'success')
+    }
     );
-    this.route.navigate(['/registro-datos-escolares'])
   }
 
   ngOnInit(): void {
@@ -49,7 +50,10 @@ export class RegistroAspiranteComponent implements OnInit{
   
   update():void{
     this.alumnoService.editarAlumno(this.estudiante.id, this.estudiante).subscribe(
-      e=> this.route.navigate(['/admin'])
+      e=> {
+        this.route.navigate(['/admin'])
+        Swal.fire('Usuario actualizado', `Usuario ${this.estudiante.nombres} actualizado con exito!`, 'success')
+      }
     );
   }
 }

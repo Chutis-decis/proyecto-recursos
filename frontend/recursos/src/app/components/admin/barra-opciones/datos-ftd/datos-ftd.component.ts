@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ftd } from 'src/app/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-datos-ftd',
   templateUrl: './datos-ftd.component.html',
@@ -49,9 +49,44 @@ export class DatosFtdComponent {
 
   /* Eliminacion Logica de los datos FTD */
   deleteDatosFTD(id: number): void{
-    this.ftdService.deletedDatosFTD(id).subscribe(data => {
-      console.log("Alumno eliminado", data);
-      this.getDatosFTD();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Estas seguro?",
+      text: "Dar de baja al Aspirante!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, dalo de alta!",
+      cancelButtonText: "No, cancelar!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ftdService.deletedDatosFTD(id).subscribe(
+          response => {
+            swalWithBootstrapButtons.fire({
+              title: "Registro Alta!",
+              text: `Registro ${this.ftd.nombreProyecto} dado de baja!`,
+              icon: "success"
+            });
+            this.getDatosFTD();
+          }
+        );
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado dado de baja!",
+          text: "Cancelaste dar de baja!!! :)",
+          icon: "error"
+        });
+      }
     });
   }
 

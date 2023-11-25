@@ -24,8 +24,8 @@ export class FtdService {
   }
 
   /* Creacion de un nuevo usuario (alumno) */
-  createDatosFTD(datosFTD: ftd):Observable<ftd>{
-    return this.httpClient.post<ftd>(`${this.url}`, datosFTD);
+  createDatosFTD(datosFTD: ftd):Observable<any>{
+    return this.httpClient.post<any>(`${this.url}`, datosFTD);
   }
 
   /* Actualizar */

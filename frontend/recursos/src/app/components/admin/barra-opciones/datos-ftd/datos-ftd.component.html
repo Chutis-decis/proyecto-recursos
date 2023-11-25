@@ -16,8 +16,8 @@
             <div class="col-3">Nombre del Proyecto</div>
             <div class="col-3">Avance del Proyecto</div>
             <div class="col-2">Evaluación del Proyecto</div>
-            <div class="col-1">Editar</div>
-            <div class="col-1">Eliminar</div>
+            <div class="col">Editar</div>
+            <div class="col">Dar de Baja</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -27,8 +27,8 @@
                 <div class="col-3">{{datosFTD.nombreProyecto}}</div>
                 <div class="col-3">{{datosFTD.avanceProyecto}}</div>
                 <div class="col-2">{{datosFTD.evaluacionProyecto}}</div>
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/registro-datos-ftd', datosFTD.id]">Editar</button>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deleteDatosFTD(datosFTD.id)">Eliminar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-1" [routerLink]="['/registro-datos-ftd', datosFTD.id]">Editar</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col mt-1" (click)="deleteDatosFTD(datosFTD.id)">Dar de Baja</button>
             </div>
         </tbody>
     </table>

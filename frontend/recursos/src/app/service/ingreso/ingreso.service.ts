@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingreso } from 'src/app/ingreso';
@@ -13,6 +13,9 @@ export class IngresoService {
 
   /* URL datos de Ingreso */
   url = 'http://localhost:8081/datos-ingreso';
+
+  /* Cabeceras */
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   /* Constructor */
   constructor(private httpClient: HttpClient) { }
@@ -62,8 +65,8 @@ export class IngresoService {
   }
 
   /* Actualizar la modalidad */
-  editarIngresoModalidad(id: number, modalidad: Modalidad): Observable<Object>{
-    return this.httpClient.put<Modalidad>(`${this.urlModalidad}/${id}`, modalidad);
+  editarIngresoModalidad(modalidad: Modalidad): Observable<Object>{
+    return this.httpClient.put<Modalidad>(`${this.urlModalidad}/${modalidad.id}`, modalidad,{headers: this.httpHeaders});
   }
 
   /* Eliminar modalidad */

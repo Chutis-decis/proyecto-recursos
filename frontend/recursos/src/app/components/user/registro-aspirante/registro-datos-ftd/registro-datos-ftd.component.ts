@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CPanel } from 'src/app/components/admin/CPanel';
 import { ftd } from 'src/app/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-datos-ftd',
@@ -13,6 +15,7 @@ export class RegistroDatosFtdComponent{
   /* Atributos de los datos FTD */
   datosFTD= new ftd();
   ftd: ftd[] = [];
+  datosAspirante = new CPanel() ;
 
   /* Constructor */
   constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute) { } 
@@ -40,14 +43,18 @@ export class RegistroDatosFtdComponent{
   create():void{
     console.log(this.datosFTD);
     this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(
-      res=> this.getAll()
+      res=> {this.router.navigate(['/datos_ftd'])
+      Swal.fire('Nuevos datos ftd', `Datos FTD de:  ${this.datosFTD.nombreProyecto} creado con exito!`, 'success')
+    }
     );
-    this.router.navigate(['/datos_ftd'])
   }
 
   update():void{
     this.datosFTDService.editarDatosFTD(this.datosFTD.id, this.datosFTD).subscribe(
-      e=> this.router.navigate(['/datos-ftd'])
+      e=> {
+        this.router.navigate(['/datos-ftd'])
+        Swal.fire('Datos FTD actualizados', `Datos ${this.datosFTD.nombreProyecto} actualizado con exito!`, 'success')
+      }
     );
   }
 }
