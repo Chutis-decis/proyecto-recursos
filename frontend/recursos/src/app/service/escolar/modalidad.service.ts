@@ -22,12 +22,16 @@ export class ModalidadService {
   }
 
   /* Editar Modalidad */
-  editarModalidad(id: number, modalidad: modalidadEscolar): Observable<modalidadEscolar>{
-    return this.httpClient.put<modalidadEscolar>(`${this.url}/${id}`, modalidad);
+  editarModalidad(modalidad: modalidadEscolar): Observable<modalidadEscolar>{
+    return this.httpClient.put<modalidadEscolar>(`${this.url}/${modalidad.id}`, modalidad);
   }
 
   /* Eliminancion de la modalidad escolar */
-  deleteModalidad(id: number): Observable<modalidadEscolar>{
-    return this.httpClient.delete<modalidadEscolar>(`${this.url}/${id}`);
+  deleteModalidad(modalidad: modalidadEscolar): Observable<modalidadEscolar>{
+    return this.httpClient.delete<modalidadEscolar>(`${this.url}/${modalidad.id}`);
+  }
+
+  getModalidadById(id: number): Observable<modalidadEscolar>{
+    return this.httpClient.get<modalidadEscolar>(`${this.url}/${id}`);
   }
 }

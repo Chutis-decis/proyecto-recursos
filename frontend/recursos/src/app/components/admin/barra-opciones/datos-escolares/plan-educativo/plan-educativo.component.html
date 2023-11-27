@@ -7,9 +7,12 @@
     <!-- Titiulo -->
     <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Plan Educativo</h1>
 
-    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-universidad">Agregar Plan Educativo</button>
-    <!-- Modal del boton agregar universidad -->
-    <div class="modal fade" id="modal-universidad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-plan" *ngIf="!plan.id else elseBlock">Agregar Plan Educativo</button>
+    <ng-template #elseBlock>
+        <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-plan">Editar</button>
+    </ng-template>
+    <!-- Modal del boton agregar plan -->
+    <div class="modal fade" id="modal-plan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +27,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()">Guardar</button>
+                <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()" *ngIf="!plan.id else elseBloc">Guardar</button>
+                <ng-template #elseBloc>
+                    <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Actualizar</button>
+                </ng-template>
             </div>
         </div>
         </div>
@@ -45,30 +51,11 @@
                 <div class="col-1">{{plan.id}}</div>
                 <div class="col-7">{{plan.nombre}}</div>
 
-                <!-- Editar universidad -->
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-escolares/plan-educativo', plan.id]" data-bs-toggle="modal" data-bs-target="#edit-plan">Editar</button>
+                <!-- Editar planEducativo -->
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-escolares/plan-educativo', plan.id]" data-bs-toggle="modal" data-bs-target="#modal-plan">Editar</button>
 
-                <div class="modal fade" id="edit-plan" tabindex="-1" aria-labelledby="editar" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="editar">Editar Plan Educativo</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Nombre del Plan Educativo</label>
-                                <input type="text" class="form-control" placeholder="Nombre de la Universidad" id="email" name="email" [(ngModel)]="plan.nombre">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Editar</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deletePlan(plan.id)">Eliminar</button>
+                
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="delete(plan)">Eliminar</button>
             </div>
         </tbody>
     </table>

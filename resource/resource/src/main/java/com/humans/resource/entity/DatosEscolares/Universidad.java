@@ -12,12 +12,8 @@ import java.util.List;
 public class Universidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     private String nombre;
-
-    @OneToMany(mappedBy = "universidad", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DatosEscolares> datosEscolares;
 
 
 }

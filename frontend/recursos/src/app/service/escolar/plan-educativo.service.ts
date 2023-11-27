@@ -23,12 +23,16 @@ export class PlanEducativoService {
   }
 
   /* Eliminacion de Plan Educativo */
-  deletePlan(id: number): Observable<planEducativo>{
-    return this.httpClient.delete<planEducativo>(`${this.url}/${id}`);
+  deletePlan(planEducativo: planEducativo): Observable<planEducativo>{
+    return this.httpClient.delete<planEducativo>(`${this.url}/${planEducativo.id}`);
   }
 
   /* Modificacion del plan educativo  */
-  editarPlan(id: number, plan: planEducativo): Observable<planEducativo>{
-    return this.httpClient.put<planEducativo>(`${this.url}/${id}`, plan);
+  editarPlan(plan: planEducativo): Observable<planEducativo>{
+    return this.httpClient.put<planEducativo>(`${this.url}/${plan.id}`, plan);
+  }
+
+  getPlanById(id: number): Observable<planEducativo>{
+    return this.httpClient.get<planEducativo>(`${this.url}/${id}`);
   }
 }

@@ -23,12 +23,16 @@ export class UniversidadService {
   }
 
   /* Actualizar */
-  editarUniversidad(id: number, university: Universidad): Observable<Object>{
-    return this.httpClient.put<Universidad>(`${this.url}/${id}`, university);
+  editarUniversidad(university: Universidad): Observable<Object>{
+    return this.httpClient.put<Universidad>(`${this.url}/${university.id}`, university);
   } 
 
   /* Delete */
-  deleteUniversidad(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.url}/${id}`);
+  deleteUniversidad(universidad: Universidad): Observable<Object>{
+    return this.httpClient.delete(`${this.url}/${universidad.id}`);
+  }
+
+  getUniversidadById(id: number): Observable<Universidad>{
+    return this.httpClient.get<Universidad>(`${this.url}/${id}`);
   }
 }
