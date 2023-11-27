@@ -1,13 +1,17 @@
 package com.humans.resource.controller.DatosIngresoController;
 
+import com.humans.resource.entity.DatosEscolares.PlanEducativo;
 import com.humans.resource.entity.DatosIngreso.Tramite;
 import com.humans.resource.service.DatosIngresoService.TramiteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -29,10 +33,23 @@ import java.util.Optional;
 
         // Create endpoint for retrieving a specific Tramite by ID
         @GetMapping("/{id}")
-        public ResponseEntity<Tramite> getTramite(@PathVariable Long id) {
-            Optional<Tramite> optionalTramite = tramiteService.getTramiteById(id);
-            return optionalTramite.map(tramite -> new ResponseEntity<>(tramite, HttpStatus.OK))
-                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        public ResponseEntity<?> getTramiteById(@PathVariable Long id) {
+            Tramite tramite = null;
+            Map<String, Object> response = new HashMap<>();
+
+            try {
+                tramite = tramiteService.getTramiteById(id);
+            }catch (DataAccessException e){
+                response.put("message", "Error al realizar la consulta en la base de datos");
+                response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            if (tramite == null){
+                response.put("mensaje", "El tramite con el ID ".concat(id.toString().concat(" no existe en la base de datos")));
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+            }
+
+            return new ResponseEntity<Tramite>(tramite, HttpStatus.OK);
         }
         // Create endpoint for creating a new Tramite
         @PostMapping

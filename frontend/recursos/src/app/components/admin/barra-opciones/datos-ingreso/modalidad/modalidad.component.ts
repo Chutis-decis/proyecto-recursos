@@ -50,23 +50,45 @@ export class ModalidadComponent {
     );
   }
 
-  guardar(){
-    this.ingresoService.createIngresoModalidad(this.mod).subscribe(data => {
-      console.log(data)
-    })
-  }
-
-  deleteModalidad(id: number){
-    this.ingresoService.eliminarModalidad(id).subscribe(data => {
-      console.log("Alumno eliminado", data);
-      this.getModalida();
+  deleteModalidad(modalidad: Modalidad){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
     });
-  }
-
-  onSubmit(){
-    this.guardar()
-    
-    this.route.navigate(['/datos-ingreso/modalidad']);
+    swalWithBootstrapButtons.fire({
+      title: "Estas Seguro?",
+      text: `¿Seguro que desea eliminar la modalidad ${modalidad.nombre}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, eliminar!",
+      cancelButtonText: "No, cancelar!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ingresoService.eliminarModalidad(modalidad).subscribe(
+          response => {
+            this.modalidad = this.modalidad.filter(cli => cli !== modalidad)
+            swalWithBootstrapButtons.fire({
+              title: "Modalidad Eliminada",
+              text: `Modalidad ${modalidad.nombre} eliminado con éxito!`,
+              icon: "success"
+            });
+          }
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado",
+          text: "Cancelado parra el guardado de los datos de la modalidad:)",
+          icon: "error"
+        });
+      }
+    });
   }
 
   update(): void{

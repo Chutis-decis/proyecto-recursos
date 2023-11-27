@@ -70,8 +70,8 @@ export class IngresoService {
   }
 
   /* Eliminar modalidad */
-  eliminarModalidad(id: number):Observable<Modalidad>{
-    return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/${id}`);
+  eliminarModalidad(modalidad: Modalidad):Observable<Modalidad>{
+    return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/${modalidad.id}`);
   }
 
 
@@ -94,13 +94,13 @@ export class IngresoService {
   }
 
   /* Actualizar el perfilamiento */
-  editarIngresoPerfilamiento(id: number, perfilamiento: Perfilamiento): Observable<Object>{
-    return this.httpClient.put<Perfilamiento>(`${this.urlPerfilamiento}/${id}`, perfilamiento);
+  editarIngresoPerfilamiento(perfilamiento: Perfilamiento): Observable<Object>{
+    return this.httpClient.put<Perfilamiento>(`${this.urlPerfilamiento}/${perfilamiento.id}`, perfilamiento);
   }
 
   /* Eliminar perfilamiento */
-  eliminarPerfilamiento(id: number):Observable<Perfilamiento>{
-    return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/${id}`);
+  eliminarPerfilamiento(perfilamiento: Perfilamiento):Observable<Perfilamiento>{
+    return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/${perfilamiento.id}`);
   }
 
   /* ************************************************ TRAMITE ***************************************** */
@@ -122,12 +122,12 @@ export class IngresoService {
   }
 
   /* Actualizar el tramite */
-  editarIngresoTramite(id: number, tramite: Tramite): Observable<Object>{
-    return this.httpClient.put<Tramite>(`${this.urlTramite}/${id}`, tramite);
+  editarIngresoTramite(tramite: Tramite): Observable<Object>{
+    return this.httpClient.put<Tramite>(`${this.urlTramite}/${tramite.id}`, tramite);
   }
 
   /* Eliminar tramite */
-  eliminarTramite(id: number):Observable<Tramite>{
-    return this.httpClient.delete<Tramite>(`${this.urlTramite}/${id}`);
+  eliminarTramite(tramite: Tramite):Observable<Tramite>{
+    return this.httpClient.delete<Tramite>(`${this.urlTramite}/${tramite.id}`);
   }
 }

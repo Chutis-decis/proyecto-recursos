@@ -5,11 +5,14 @@ import com.humans.resource.entity.DatosIngreso.Modalidad;
 import com.humans.resource.repository.DatosIngresooRepository.DatosIngresoService;
 import com.humans.resource.service.DatosIngresoService.ModalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
@@ -41,13 +44,24 @@ public class ModalidadController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Modalidad> getModalidadById(@PathVariable Long id) {
-        Modalidad modalidad = modalidadService.getModalidadById(id);
-        if (modalidad != null) {
-            return ResponseEntity.ok(modalidad);
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> getModalidadById(@PathVariable Long id) {
+        Modalidad modalidad = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            modalidad = modalidadService.getModalidadById(id);
+        }catch (DataAccessException e){
+            response.put("message", "Error al realizar la consulta en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        if (modalidad == null){
+            response.put("mensaje", "El tramite con el ID ".concat(id.toString().concat(" no existe en la base de datos")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Modalidad>(modalidad, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

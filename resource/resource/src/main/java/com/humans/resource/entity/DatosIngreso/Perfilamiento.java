@@ -16,7 +16,4 @@ public class Perfilamiento {
     private Long id;
     private String nombrePerfilamiento;
 
-    @OneToMany(mappedBy = "perfilamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<DatosIngreso> datosIngresoList;
-
 }

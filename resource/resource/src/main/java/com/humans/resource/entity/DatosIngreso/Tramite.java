@@ -14,7 +14,4 @@ public class Tramite {
     private Long id;
 
     private String nombreTramite;
-
-    @OneToOne(mappedBy = "tramite", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private DatosIngreso datosIngreso;
 }

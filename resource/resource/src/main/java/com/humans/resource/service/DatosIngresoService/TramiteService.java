@@ -25,8 +25,8 @@ public class TramiteService {
         return tramiteRepository.findAll();
     }
 
-    public Optional<Tramite> getTramiteById(Long id) {
-        return tramiteRepository.findById(id);
+    public Tramite getTramiteById(Long id) {
+        return tramiteRepository.findById(id).orElse(null);
     }
 
     public Tramite createTramite(Tramite tramite) {

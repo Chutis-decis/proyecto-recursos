@@ -3,11 +3,14 @@ package com.humans.resource.controller.DatosIngresoController;
 import com.humans.resource.entity.DatosIngreso.Perfilamiento;
 import com.humans.resource.service.DatosIngresoService.PerfilamientoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
@@ -26,13 +29,23 @@ public class PerfilamientoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Perfilamiento> obtenerPerfilamiento(@PathVariable Long id) {
-        Perfilamiento perfilamiento = perfilamientoService.buscarPorId(id);
-        if (perfilamiento != null) {
-            return new ResponseEntity<>(perfilamiento, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> obtenerPerfilamiento(@PathVariable Long id) {
+        Perfilamiento perfilamiento = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            perfilamiento = perfilamientoService.buscarPorId(id);
+        }catch (DataAccessException e){
+            response.put("message", "Error al realizar la consulta en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        if (perfilamiento == null){
+            response.put("mensaje", "El perfilamiento con el ID ".concat(id.toString().concat(" no existe en la base de datos")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Perfilamiento>(perfilamiento, HttpStatus.OK);
     }
 
     @PostMapping
