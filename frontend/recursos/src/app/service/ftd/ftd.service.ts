@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ftd } from 'src/app/ftd';
+import { Beca } from 'src/app/FTD/Beca';
+import { ftd } from 'src/app/FTD/ftd';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,29 @@ export class FtdService {
 
   activarDatosFTD(id: number): Observable<Object>{
     return this.httpClient.delete<ftd>(`${this.url}/recuperacion/${id}`);
+  }
+
+  /* ****************************************Becas ********************************* */
+  urlBecas = 'http://localhost:8081/becas';
+
+  /* Obtencion de todos los datos de la beca  */
+  obtenerBecas():Observable<Beca[]> {
+    return this.httpClient.get<Beca[]>(`${this.urlBecas}`);  
+  }
+
+  /* Obtencion de un dato ftd  */
+  getByIdBecas(id: number):Observable<Beca>{
+    return this.httpClient.get<Beca>(`${this.urlBecas}/${id}`);
+  }
+
+  /* Creacion de un nuevo usuario (alumno) */
+  createDatosFTDBecas(datosFTD: Beca):Observable<any>{
+    return this.httpClient.post<any>(`${this.urlBecas}`, datosFTD);
+  }
+
+  /* Actualizar */
+  editarDatosFTDBecas(id: number, beca: Beca): Observable<Object>{
+    return this.httpClient.put<Beca>(`${this.urlBecas}/${id}`, beca);
   }
   
 }

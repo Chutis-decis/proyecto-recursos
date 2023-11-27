@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ftd } from 'src/app/ftd';
+import { ftd } from 'src/app/FTD/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
 import Swal from 'sweetalert2';
 @Component({

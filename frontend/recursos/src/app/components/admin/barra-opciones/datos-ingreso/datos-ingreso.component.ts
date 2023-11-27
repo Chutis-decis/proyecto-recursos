@@ -47,7 +47,7 @@ export class DatosIngresoComponent implements OnInit {
 
   /* Modificar */
   update():void{
-    this.serviceIngreso.editarIngreso(this.ingreso.id, this.ingreso).subscribe(
+    this.serviceIngreso.editarIngreso(this.ingreso).subscribe(
       e=> this.route.navigate(['/registro-datos-ingreso'])
     );
   }

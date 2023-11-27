@@ -1,4 +1,7 @@
-import { CPanel } from "./components/admin/CPanel";
+import { CPanel } from "../components/admin/CPanel";
+import { Beca } from "./Beca";
+import { Grupo } from "./Grupo";
+import { Tutor } from "./Tutor";
 
 export class ftd{
     id: number;
@@ -6,16 +9,16 @@ export class ftd{
     avanceProyecto: string;
     evaluacionProyecto: string;
     areaInfotec: string;
-    tutor: string;
-    beca: string;
+    tutor: Tutor = new Tutor();
+    beca: Beca = new Beca();
     fechaIngreso: Date;
     fechaTermino: Date;
-    grupo: string;
+    grupo: Grupo = new Grupo();
     enlace: string;
     matriculaFTD: string;
     correoBecario: string;
     estatusTramite: string;
     cursos: string;
     activo: boolean;
-    datosPersonales: CPanel;
+    datosPersonales: CPanel = new CPanel();
 }

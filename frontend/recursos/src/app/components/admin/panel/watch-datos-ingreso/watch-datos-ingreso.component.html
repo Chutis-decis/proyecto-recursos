@@ -11,6 +11,9 @@
                 <th class="col">Modalidad</th>
                 <th class="col">Curriculum Vitae (CV)</th>
                 <th class="col">Historial Académico</th>
+                <th class="clo">Trámite</th>
+                <th class="clo">Perfilamiento</th>
+                <th class="clo">Modalidad</th>
             </thead>
             <tbody *ngFor="let ingresados of ingresar">
                 <tr>
@@ -22,7 +25,9 @@
                     <td class="col">{{ingresados.modalidad}}</td>
                     <td class="col">{{ingresados.cv}}</td>
                     <td class="col">{{ingresados.historialAcademico}}</td>
-                
+                    <td class="col">{{ingresados.tramite.nombreTramite}}</td>
+                    <td class="col">{{ingresados.perfilamiento.nombrePerfilamiento}}</td>
+                    <td class="col">{{ingresados.modalidad.nombre}}</td>
                 </tr>
             </tbody>
         </table>

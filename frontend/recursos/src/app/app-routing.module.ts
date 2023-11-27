@@ -25,6 +25,7 @@ import { PlanEducativoComponent } from './components/admin/barra-opciones/datos-
 import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-ingreso/perfilamiento/perfilamiento.component';
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
+import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/beca.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -65,6 +66,8 @@ const routes: Routes = [
   {path: 'datos-ingreso/tramite', component: TramiteComponent},
   {path: 'datos-ingreso/modalidad', component: ModalidadComponent},
   {path: 'datos-ingreso/modalidad/:id', component: ModalidadComponent},
+  {path: 'datos-ingreso/modalidad/:id', component: BecaComponent},
+  {path: 'datos-ingreso/modalidad/', component: BecaComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

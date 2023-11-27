@@ -4,7 +4,7 @@ import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { Escolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-universidad',
   templateUrl: './universidad.component.html',
@@ -35,9 +35,11 @@ export class UniversidadComponent {
   create():void{
     console.log(this.uni);
     this.uniService.createUniversidad(this.uni).subscribe(
-      res=> this.getUniversidad()
+      create => {
+        Swal.fire('Nueva Universidad', `${create.nombre}`, 'success');
+        this.route.navigate(['/datos-escolares/universidad']);
+      }
     );
-    this.route.navigate(['/datos-escolares/universidad'])
   }
 
   /* Eliminar */

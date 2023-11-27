@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CPanel } from 'src/app/components/admin/CPanel';
-import { ftd } from 'src/app/ftd';
+import { ftd } from 'src/app/FTD/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
 import Swal from 'sweetalert2';
 

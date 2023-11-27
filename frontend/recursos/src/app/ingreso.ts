@@ -11,5 +11,4 @@ export class Ingreso{
     modalidad: Modalidad = new Modalidad();
     cv: string;
     historialAcademico: string;
-    datosPersonales: number;
 }

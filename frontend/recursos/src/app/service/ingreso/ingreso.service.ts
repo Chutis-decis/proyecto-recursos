@@ -36,8 +36,8 @@ export class IngresoService {
   }
 
   /* Actualizar */
-  editarIngreso(id: number, aspirante: Ingreso): Observable<Object>{
-    return this.httpClient.put<Ingreso>(`${this.url}/${id}`, aspirante);
+  editarIngreso(aspirante: Ingreso): Observable<Object>{
+    return this.httpClient.put<Ingreso>(`${this.url}/${aspirante.id}`, aspirante);
   } 
 
   /* Eliminar */
