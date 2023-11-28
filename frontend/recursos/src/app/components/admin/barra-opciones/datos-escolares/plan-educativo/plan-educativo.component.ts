@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
+import { Perfilamiento } from 'src/app/perfilamiento';
 import { PlanEducativoService } from 'src/app/service/escolar/plan-educativo.service';
 import Swal from 'sweetalert2';
 
@@ -51,46 +52,26 @@ export class PlanEducativoComponent {
 
   /* Delete */
   /* Eliminar */
-  delete(planEducativo: planEducativo): void {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que deseas eliminar al plan educativo: ${planEducativo.nombre}`,
-      icon: "warning",
+  delete(plan: planEducativo): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar el Plan Educativo ${plan.nombre} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.planService.deletePlan(planEducativo).subscribe(
-          response => {
-            this.planEducativo = this.planEducativo.filter(cli => cli !== planEducativo)
-            swalWithBootstrapButtons.fire({
-              title: "Plan Educativo Eliminado",
-              text: `Plan Educativo ${planEducativo
-                .nombre} eliminado con éxito!`,
-              icon: "success"
-            });
+      if(result.value){
+        this.planService.deletePlan(plan).subscribe(
+          res => {
+            this.planEducativo = this.planEducativo.filter(b => b !== plan)
+            Swal.fire('Plan Educativo Eliminado', `Plan Educativo ${plan.nombre} eliminado con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Cancelado la eliminacion de plan educativo :)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
 
   /* Editar plan educativo() */

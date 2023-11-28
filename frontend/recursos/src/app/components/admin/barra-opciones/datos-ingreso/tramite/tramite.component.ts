@@ -61,44 +61,25 @@ export class TramiteComponent {
   }
 
 
-  deletePerfilamineto(tramite: Tramite){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que desea eliminar el tramite ${tramite.nombreTramite}`,
-      icon: "warning",
+  deleteTramite(tramite: Tramite): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar el trámite ${tramite.nombreTramite} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
+      if(result.value){
         this.ingresoService.eliminarTramite(tramite).subscribe(
-          response => {
-            this.tramite = this.tramite.filter(cli => cli !== tramite)
-            swalWithBootstrapButtons.fire({
-              title: "Universidad Eliminada",
-              text: `Trámite ${tramite.nombreTramite} eliminado con éxito!`,
-              icon: "success"
-            });
+          res => {
+            this.tramite = this.tramite.filter(b => b !== tramite)
+            Swal.fire('Trámite Eliminado', `Trámite ${tramite.nombreTramite} eliminado con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Cancelado parra el guardado de los datos del trámite:)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
 }

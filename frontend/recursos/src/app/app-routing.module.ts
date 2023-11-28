@@ -52,6 +52,8 @@ const routes: Routes = [
   {path: 'registro-datos-ftd/:id', component: RegistroDatosFtdComponent},
   {path: 'datos_ftd', component: DatosFtdComponent},
   {path: 'datos_ftd/:id', component: DatosFtdComponent},
+  {path: 'datos-ftd/becas/:id', component: BecaComponent},
+  {path: 'datos-ftd/becas', component: BecaComponent},
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
   {path: 'datos-escolares/universidad', component: UniversidadComponent},

@@ -50,45 +50,26 @@ export class ModalidadComponent {
     );
   }
 
-  deleteModalidad(modalidad: Modalidad){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que desea eliminar la modalidad ${modalidad.nombre}`,
-      icon: "warning",
+  deleteModalidad(modalidad:Modalidad): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar la modalidad ${modalidad.nombre} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
+      if(result.value){
         this.ingresoService.eliminarModalidad(modalidad).subscribe(
-          response => {
-            this.modalidad = this.modalidad.filter(cli => cli !== modalidad)
-            swalWithBootstrapButtons.fire({
-              title: "Modalidad Eliminada",
-              text: `Modalidad ${modalidad.nombre} eliminado con éxito!`,
-              icon: "success"
-            });
+          res => {
+            this.modalidad = this.modalidad.filter(b => b !== modalidad)
+            Swal.fire('Modalidad Eliminada', `Modalidad ${modalidad.nombre} eliminada con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Cancelado parra el guardado de los datos de la modalidad:)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
 
   update(): void{

@@ -62,8 +62,13 @@ export class FtdService {
   }
 
   /* Actualizar */
-  editarDatosFTDBecas(id: number, beca: Beca): Observable<Object>{
-    return this.httpClient.put<Beca>(`${this.urlBecas}/${id}`, beca);
+  editarDatosFTDBecas(beca: Beca): Observable<Object>{
+    return this.httpClient.put<Beca>(`${this.urlBecas}/${beca.id}`, beca);
+  }
+
+  /* Eliminar la beca */
+  deletedDatosFTDBecas(beca:Beca):Observable<Beca>{
+    return this.httpClient.delete<Beca>(`${this.urlBecas}/${beca.id}`);
   }
   
 }

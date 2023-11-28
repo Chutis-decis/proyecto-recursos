@@ -65,4 +65,8 @@ export class BarraOpcionesComponent {
   modalidad(){
     this.router.navigate(['/datos-ingreso/modalidad']);
   }
+
+  beca(){
+    this.router.navigate(['/datos-ftd/becas']);
+  }
 }

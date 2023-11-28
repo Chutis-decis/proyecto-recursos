@@ -1,1 +1,62 @@
-<p>beca works!</p>
+<app-navv></app-navv>
+
+<!-- Barra de Opciones -->
+<app-barra-opciones></app-barra-opciones>
+
+
+<div class="mt-3 container-lg">
+  <!-- Titiulo -->
+  <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Becas</h1>
+
+  <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-beca" *ngIf="!beca.id else elseBlock">Agregar Tipo de Beca</button>
+  <ng-template #elseBlock>
+      <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-beca">Editar</button>
+  </ng-template>
+  <!-- Modal del boton agregar beca -->
+  <div class="modal fade" id="modal-beca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Tipo de Beca</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Nombre de la Modalidad</label>
+                  <input type="text" class="form-control" placeholder="Nombre del Trámite" id="perfilamiento" name="perfilamiento" [(ngModel)]="beca.tipo">
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()" *ngIf="!beca.id else elseBloc">Guardar</button>
+              <ng-template #elseBloc>
+                  <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Actualizar</button>
+              </ng-template>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  <!-- Listar Universidad -->
+  <div class="mt-4">
+      <div class="row btn-primary text-white text-center">
+          <div class="col-1">ID</div>
+          <div class="col-7">Nombre del Tipo de Beca</div>
+          <div class="col-2">Editar</div>
+          <div class="col-2">Eliminar</div>
+      </div>
+  </div>
+  <table class="table table-striped mt-3">
+      <tbody *ngFor="let beca of becas">
+          <div class="row text-center">
+              <div class="col-1">{{beca.id}}</div>
+              <div class="col-7">{{beca.tipo}}</div>
+
+              <!-- Editar perfilamiento -->
+              <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1"  data-bs-toggle="modal" data-bs-target="#modal-beca" [routerLink]="['/datos-ftd/becas', beca.id]">Editar</button>
+              
+              <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="delete(beca)">Eliminar</button>
+          </div>
+      </tbody>
+  </table>
+</div>

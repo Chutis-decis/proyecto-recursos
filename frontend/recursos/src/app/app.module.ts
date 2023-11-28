@@ -36,6 +36,7 @@ import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/beca.component';
+import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grupo/grupo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/
     TramiteComponent,
     ModalidadComponent,
     BecaComponent,
+    GrupoComponent,
   ],
   imports: [
     BrowserModule,

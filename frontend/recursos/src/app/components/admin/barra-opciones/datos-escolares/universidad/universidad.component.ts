@@ -53,45 +53,26 @@ export class UniversidadComponent {
   }
 
   /* Eliminar */
-  deleteUni(universidad: Universidad): void {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que desea eliminar a la universidad ${universidad.nombre}`,
-      icon: "warning",
+  deleteUni(university: Universidad): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar la universidad ${university.nombre} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.uniService.deleteUniversidad(universidad).subscribe(
-          response => {
-            this.universidad = this.universidad.filter(cli => cli !== universidad)
-            swalWithBootstrapButtons.fire({
-              title: "Universidad Eliminada",
-              text: `Universidad ${universidad.nombre} eliminado con éxito!`,
-              icon: "success"
-            });
+      if(result.value){
+        this.uniService.deleteUniversidad(university).subscribe(
+          res => {
+            this.universidad = this.universidad.filter(b => b !== university)
+            Swal.fire('Univiersidad Eliminada', `Universidad ${university.nombre} eliminada con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Cancelado parra el guardado de los datos de la universidad :)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
   /* Editar Universidad */
   /* Actializacion */

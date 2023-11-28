@@ -56,44 +56,25 @@ export class PerfilamientoComponent {
       }
     );
   }
-  deletePerfilamineto(perfilamiento: Perfilamiento):void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que desea eliminar el perfilamiento: ${perfilamiento.nombrePerfilamiento}`,
-      icon: "warning",
+  deletePerfilamineto(perfilamiento: Perfilamiento): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar el perfilamiento ${perfilamiento.nombrePerfilamiento} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
+      if(result.value){
         this.ingresoService.eliminarPerfilamiento(perfilamiento).subscribe(
-          response => {
-            this.perfilamiento = this.perfilamiento.filter(cli => cli !== perfilamiento)
-            swalWithBootstrapButtons.fire({
-              title: "Perfilamiento Eliminado",
-              text: `Perfilamiento ${perfilamiento.nombrePerfilamiento} eliminado con éxito!`,
-              icon: "success"
-            });
+          res => {
+            this.perfilamiento = this.perfilamiento.filter(b => b !== perfilamiento)
+            Swal.fire('Perfilamiento Eliminado', `Perfilamiento ${perfilamiento.nombrePerfilamiento} eliminad0 con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Cancelado parra el guardado de los datos del perfilamiento:)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
 }

@@ -67,44 +67,25 @@ export class ModalidadEscolarComponent {
 
 
   /* Delete */
-  delete(modalidad: modalidadEscolar): void {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas Seguro?",
-      text: `¿Seguro que desea eliminar al cliente ${modalidad.nombre}`,
-      icon: "warning",
+  delete(modalidad: modalidadEscolar): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar la modalidad escolar ${modalidad.nombre} ?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
+      if(result.value){
         this.serviceModalidadEscolar.deleteModalidad(modalidad).subscribe(
-          response => {
-            this.modalidad = this.modalidad.filter(cli => cli !== modalidad)
-            swalWithBootstrapButtons.fire({
-              title: "Cliente Eliminado",
-              text: `Cliente ${modalidad.nombre} eliminado con éxito!`,
-              icon: "success"
-            });
+          res => {
+            this.modalidad = this.modalidad.filter(b => b !== modalidad)
+            Swal.fire('Modalidad Escolar Eliminada', `Modalidad Escolarizada ${modalidad.nombre} eliminada con éxito`, 'success');
           }
         )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Your imaginary file is safe :)",
-          icon: "error"
-        });
       }
-    });
+    })
   }
 }
