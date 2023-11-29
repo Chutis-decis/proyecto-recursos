@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 })
 export class DatosIngresoComponent implements OnInit {
   /* Atributos y objetos */
-  ingreso: Ingreso = new Ingreso();
-  ingresados: Ingreso[] = [];
+  ingreso: DatosIngreso = new DatosIngreso();
+  ingresados: DatosIngreso[] = [];
 
   /* Constructor */
   constructor(private serviceIngreso: IngresoService, private activatedRouter: ActivatedRoute, private route: Router) { }

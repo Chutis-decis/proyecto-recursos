@@ -4,11 +4,8 @@
         <table class="table table-striped table-bordered mt-5">
             <thead class="mb-3 btn-primary">
                 <th class="col">ID</th>
-                <th class="col">Trámite</th>
-                <th class="col">Perfilamiento</th>
                 <th class="col">Turno</th>
                 <th class="col">Horario</th>
-                <th class="col">Modalidad</th>
                 <th class="col">Curriculum Vitae (CV)</th>
                 <th class="col">Historial Académico</th>
                 <th class="clo">Trámite</th>
@@ -18,11 +15,8 @@
             <tbody *ngFor="let ingresados of ingresar">
                 <tr>
                     <td class="col">{{ingresados.id}}</td>
-                    <td class="col">{{ingresados.tramite}}</td>
-                    <td class="col">{{ingresados.perfilamiento}}</td>
                     <td class="col">{{ingresados.turno}}</td>
                     <td class="col">{{ingresados.horario}}</td>
-                    <td class="col">{{ingresados.modalidad}}</td>
                     <td class="col">{{ingresados.cv}}</td>
                     <td class="col">{{ingresados.historialAcademico}}</td>
                     <td class="col">{{ingresados.tramite.nombreTramite}}</td>

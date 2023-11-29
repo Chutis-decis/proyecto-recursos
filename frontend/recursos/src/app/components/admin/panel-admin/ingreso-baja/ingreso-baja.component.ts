@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 })
 export class IngresoBajaComponent {
   /* Atributos y Objetos */
-  ingreso: Ingreso [];
-  ingresar = new Ingreso();
+  ingreso: DatosIngreso [];
+  ingresar = new DatosIngreso();
 
   /* Constructor */
   constructor(private ingresoService: IngresoService) { }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { Modalidad } from 'src/app/modalidad';
 import { Perfilamiento } from 'src/app/perfilamiento';
 import { Tramite } from 'src/app/tramite';
@@ -11,7 +11,7 @@ import { Tramite } from 'src/app/tramite';
 })
 export class IngresoService {
 
-  /* URL datos de Ingreso */
+  /* URL datos de DatosIngreso */
   url = 'http://localhost:8081/datos-ingreso';
 
   /* Cabeceras */
@@ -21,28 +21,29 @@ export class IngresoService {
   constructor(private httpClient: HttpClient) { }
 
   /* Obtencion de los alumnos  */
-  obtenerIngreso():Observable<Ingreso[]> {
-    return this.httpClient.get<Ingreso[]>(`${this.url}`);  
+  obtenerIngreso():Observable<DatosIngreso[]> {
+    return this.httpClient.get<DatosIngreso[]>(`${this.url}`);  
   }
 
   /* Creacion de un nuevo usuario (datos de ingreso) */
-  createIngreso(aspirante:Ingreso):Observable<Ingreso>{
-    return this.httpClient.post<Ingreso>(`${this.url}`, aspirante);
+  createIngreso(aspirante:DatosIngreso):Observable<DatosIngreso>{
+    console.log(aspirante);
+    return this.httpClient.post<DatosIngreso>(this.url, aspirante, {headers: this.httpHeaders});
   }
 
   /* Obtencion de un solo alumno */
-  getById(id: number):Observable<Ingreso>{
-    return this.httpClient.get<Ingreso>(`${this.url}/${id}`);
+  getById(id: number):Observable<DatosIngreso>{
+    return this.httpClient.get<DatosIngreso>(`${this.url}/${id}`);
   }
 
   /* Actualizar */
-  editarIngreso(aspirante: Ingreso): Observable<Object>{
-    return this.httpClient.put<Ingreso>(`${this.url}/${aspirante.id}`, aspirante);
+  editarIngreso(aspirante: DatosIngreso): Observable<Object>{
+    return this.httpClient.put<DatosIngreso>(`${this.url}/${aspirante.id}`, aspirante);
   } 
 
   /* Eliminar */
-  deleted(id: number):Observable<Ingreso>{
-    return this.httpClient.delete<Ingreso>(`${this.url}/${id}`);
+  deleted(id: number):Observable<DatosIngreso>{
+    return this.httpClient.delete<DatosIngreso>(`${this.url}/${id}`);
   }
 
   /* ************************** Modalidad *************************************************************** */
@@ -55,8 +56,8 @@ export class IngresoService {
   }
 
   /* Creacion de un nuevo usuario con la modalidad */
-  createIngresoModalidad(modalidad: Modalidad):Observable<Ingreso>{
-    return this.httpClient.post<Ingreso>(`${this.urlModalidad}`, modalidad);
+  createIngresoModalidad(modalidad: Modalidad):Observable<DatosIngreso>{
+    return this.httpClient.post<DatosIngreso>(`${this.urlModalidad}`, modalidad);
   }
 
   /* Obtenciòn de una sola modalidad */
@@ -84,8 +85,8 @@ export class IngresoService {
   }
   
   /* Creacion de un nuevo usuario con el perfilamiento */
-  createIngresoPerfilamiento(perfilamiento: Perfilamiento):Observable<Ingreso>{
-    return this.httpClient.post<Ingreso>(`${this.urlPerfilamiento}`, perfilamiento);
+  createIngresoPerfilamiento(perfilamiento: Perfilamiento):Observable<DatosIngreso>{
+    return this.httpClient.post<DatosIngreso>(`${this.urlPerfilamiento}`, perfilamiento);
   }
 
   /* Obtenciòn de un solo perfilamiento */
@@ -112,8 +113,8 @@ export class IngresoService {
   }
 
   /* Creacion de un nuevo usuario con el tramite */
-  createIngresoTramite(tramite: Tramite):Observable<Ingreso>{
-    return this.httpClient.post<Ingreso>(`${this.urlTramite}`, tramite);
+  createIngresoTramite(tramite: Tramite):Observable<DatosIngreso>{
+    return this.httpClient.post<DatosIngreso>(`${this.urlTramite}`, tramite);
   }
 
   /* Obtenciòn de un solo tramite */

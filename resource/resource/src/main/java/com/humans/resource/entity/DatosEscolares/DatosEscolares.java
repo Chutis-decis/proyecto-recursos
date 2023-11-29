@@ -23,18 +23,19 @@ public class DatosEscolares {
 
     private String carrera;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "universidad_id")
     private Universidad universidad;
 
     private String matriculaEscolar;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "modalidad_id")
     private ModalidadEscolar modalidadEscolar;
 
-    @OneToMany(mappedBy = "datosEscolares")
-    private List<PlanEducativo> planesEducativos;
+    @ManyToOne
+    @JoinColumn(name = "plan_educativo_id")
+    private PlanEducativo planesEducativos;
 
     private String periodo;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { Modalidad } from 'src/app/modalidad';
 import { Perfilamiento } from 'src/app/perfilamiento';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro-datos-ingreso.component.css']
 })
 export class RegistroDatosIngresoComponent implements OnInit {
-  ingreso: Ingreso = new Ingreso();
+  ingreso: DatosIngreso = new DatosIngreso();
   tramite: Tramite[];
   perfilamiento: Perfilamiento[];
   modalidad: Modalidad[];
@@ -49,12 +49,20 @@ export class RegistroDatosIngresoComponent implements OnInit {
   }
 
   create(): void{
+    console.log(this.ingreso);
     this.ingresoService.createIngreso(this.ingreso).subscribe(ingreso => { 
-      Swal.fire('Nuevo Dato de Ingreso', `${ingreso.turno}`, 'success');
       this.router.navigate(['/home'])
+      Swal.fire('Nuevo Dato de Ingreso', `${ingreso.tramite}`, 'success');
     }, 
     err => {
       console.error('Código del error desde el backend: ' + err.status);
+    });
+  }
+
+  crear(): void{
+    this.ingresoService.createIngreso(this.ingreso).subscribe(ingreso => { 
+      this.router.navigate(['/datos/ingreso'])
+      Swal.fire('Nuevo Dato de Ingreso', `${ingreso.tramite}`, 'success');
     });
   }
 

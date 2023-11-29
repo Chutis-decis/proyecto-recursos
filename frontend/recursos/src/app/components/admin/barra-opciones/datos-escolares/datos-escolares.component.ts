@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
@@ -11,19 +11,19 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 })
 export class DatosEscolaresComponent {
   /* Atributos */
-  escolares: Escolares[] = [];
-  escolar = new Escolares();
+  escolares: DatosEscolares[] = [];
+  escolar = new DatosEscolares();
   universidad: Universidad[] = [];
 
   constructor(private serviceEstudiante:EscolaresService, private  activateRouter: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
-    this.getUniversidad();
+    this.getEscolar();
     this.cargar();
   }
 
   /* Mostrar los datos Escolares */
-  getUniversidad(){
+  getEscolar(){
     this.serviceEstudiante.obtenerEscolar().subscribe(data => {
       this.escolares = data;
     });
@@ -50,12 +50,12 @@ export class DatosEscolaresComponent {
   deleteEstudiante(id: number): void{
     this.serviceEstudiante.deleted(id).subscribe(data => {
       console.log("Alumno eliminado", data);
-      this.getUniversidad();
+      this.getEscolar();
     });
   }
 
   obtenerEscolares(): void{
-    this.getUniversidad();
+    this.getEscolar();
     this.route.navigate(['/detalle-escolares']);
   }
 }

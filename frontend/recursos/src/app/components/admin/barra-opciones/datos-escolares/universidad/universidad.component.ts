@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ export class UniversidadComponent {
   universidad: Universidad [] = [];
   uni: Universidad = new Universidad();
 
-  escolarUni: Escolares = new Escolares();
+  escolarUni: DatosEscolares = new DatosEscolares();
   /* Constructor */
   constructor(private uniService: UniversidadService, private  route: Router, private escService: EscolaresService, private activatedRouter: ActivatedRoute) { }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CPanel } from '../../admin/CPanel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +15,7 @@ export class RegistroAspiranteComponent implements OnInit{
   estudiante : CPanel = new CPanel();
   estudiantes: CPanel[];
   /* Atributo para crear un nuevo dato escolar */
-  escolares: Escolares = new Escolares();
+  escolares: DatosEscolares = new DatosEscolares();
 
   /* Constructor */
   constructor(private route: Router, public alumnoService: AlumnoService, private activateRouter: ActivatedRoute) { this.route = route }

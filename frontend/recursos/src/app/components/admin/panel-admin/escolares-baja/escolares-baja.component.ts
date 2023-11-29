@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
   styleUrls: ['./escolares-baja.component.css']
 })
 export class EscolaresBajaComponent {
-  escolares: Escolares[] = [];
-  escolar = new Escolares();
+  escolares: DatosEscolares[] = [];
+  escolar = new DatosEscolares();
 
   constructor(private escolarService: EscolaresService, private router: Router) { } // constructor
 

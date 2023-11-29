@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 import { Tramite } from 'src/app/tramite';
 import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ export class TramiteComponent {
   /* Atributos */
   tramite: Tramite [] = []
   tra: Tramite = new Tramite();
-  ingreso: Ingreso = new Ingreso();
+  ingreso: DatosIngreso = new DatosIngreso();
 
   /* Constructor */
   constructor(private ingresoService: IngresoService, private route: Router, private activatedRouter: ActivatedRoute){}

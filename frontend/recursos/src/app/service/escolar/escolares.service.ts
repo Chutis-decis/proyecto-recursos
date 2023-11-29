@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 
@@ -18,28 +18,28 @@ export class EscolaresService {
 
 
    /* Obtencion de los alumnos  */
-  obtenerEscolar():Observable<Escolares[]> {
-    return this.httpClient.get<Escolares[]>(`${this.url}`);  
+  obtenerEscolar():Observable<DatosEscolares[]> {
+    return this.httpClient.get<DatosEscolares[]>(`${this.url}`);  
   }
 
   /* Creacion de un nuevo usuario (alumno) */
-  createEscolar(aspirante:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.url}`, aspirante);
+  createEscolar(aspirante:DatosEscolares):Observable<DatosEscolares>{
+    return this.httpClient.post<DatosEscolares>(`${this.url}`, aspirante);
   }
 
   /* Obtencion de un solo alumno */
-  getById(id: number):Observable<Escolares>{
-    return this.httpClient.get<Escolares>(`${this.url}/${id}`);
+  getById(id: number):Observable<DatosEscolares>{
+    return this.httpClient.get<DatosEscolares>(`${this.url}/${id}`);
   }
 
   /* Actualizar */
-  editarEscolar(id: number, aspirante: Escolares): Observable<Object>{
-    return this.httpClient.put<Escolares>(`${this.url}/${id}`, aspirante);
+  editarEscolar(id: number, aspirante: DatosEscolares): Observable<Object>{
+    return this.httpClient.put<DatosEscolares>(`${this.url}/${id}`, aspirante);
   } 
 
   /* Eliminar */
-  deleted(id: number):Observable<Escolares>{
-    return this.httpClient.delete<Escolares>(`${this.url}/${id}`);
+  deleted(id: number):Observable<DatosEscolares>{
+    return this.httpClient.delete<DatosEscolares>(`${this.url}/${id}`);
   }
 
   /* ********************************************** PLAN EDUCATIVO ****************************** */
@@ -53,8 +53,8 @@ export class EscolaresService {
   }
 
   /* Creacion de un nuevo plan educativo */
-  createPlanEducativo(plan:Escolares):Observable<Escolares>{
-    return this.httpClient.post<Escolares>(`${this.urlPlan}`, plan);
+  createPlanEducativo(plan:DatosEscolares):Observable<DatosEscolares>{
+    return this.httpClient.post<DatosEscolares>(`${this.urlPlan}`, plan);
   }
 
   /* ***************************************** UNIVERSIDAD **************************************** */

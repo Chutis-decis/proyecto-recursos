@@ -2,16 +2,17 @@
 
 <!-- Modal -->
         
-<form>
+<form #miFormulario="ngForm" novalidate>
     <div class="container-md mt-5">
         <h1 class="text-center mt-5 col-title">{{ingreso.id ? 'Edición': 'Registro'}} de Datos de Ingreso</h1>
     <div class="row" (ngSubmit) = cargar()>
         <div class="col-md-3 position-relative mt-4">
             <label for="tramite" class="form-label">Trámite</label>
             <div>
-                <select [compareWith]="compararTramite" class="form-select" id="tramite" name="tramite" [(ngModel)]="ingreso.tramite">
+                <select [compareWith]="compararTramite" class="form-select" id="tramite" name="tramite" [(ngModel)]="ingreso.tramite"  #tramites="ngModel" required>
                     <option *ngFor="let tramite of tramite" [ngValue]="tramite">{{tramite.nombreTramite}}</option>
                 </select>
+                <div *ngIf="tramites.invalid && (tramites.dirty || tramites.touched)" class="alert alert-danger">El Trámite es Requerido</div>
             </div>
         </div> 
         <div class="col-md-3 position-relative mt-4">
@@ -55,9 +56,9 @@
         </div>
 
         <!-- boton -->
-        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!ingreso.id else elseBlock">Siguiente</button>
+        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)='crear()' *ngIf="!ingreso.id else elseBlock" [disabled]="miFormulario.invalid">Siguiente</button>
         <ng-template #elseBlock>
-            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
+            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()" [disabled]="miFormulario.invalid">Actualizar</button>
         </ng-template>
     </div>
     </div>

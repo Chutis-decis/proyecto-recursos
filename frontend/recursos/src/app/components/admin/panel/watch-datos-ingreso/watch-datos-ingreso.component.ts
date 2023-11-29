@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingreso } from 'src/app/ingreso';
+import { DatosIngreso } from 'src/app/ingreso';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 export class WatchDatosIngresoComponent implements OnInit{
 
   /* Atributos */
-  ingreso: Ingreso = new Ingreso();
-  ingresar: Ingreso[];
+  ingreso: DatosIngreso = new DatosIngreso();
+  ingresar: DatosIngreso[];
 
 
   /* Constructor */

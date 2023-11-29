@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 })
 export class WatchDatosEscolaresComponent {
   /* Atributos */
-  ecolar = new Escolares();
-  escolar : Escolares[];
+  ecolar = new DatosEscolares();
+  escolar : DatosEscolares[];
 
   /* Constructor */
   constructor(private route: Router, private escolarService: EscolaresService) { }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Escolares } from 'src/app/datos_escolares/escolares';
+import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
@@ -8,6 +8,7 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
 import { PlanEducativoService } from 'src/app/service/escolar/plan-educativo.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-datos-personales',
@@ -15,8 +16,8 @@ import { UniversidadService } from 'src/app/service/escolar/universidad.service'
   styleUrls: ['./registro-datos-personales.component.css']
 })
 export class RegistroDatosPersonalesComponent {
-  escolares = new Escolares();
-  escolar : Escolares[];
+  escolares = new DatosEscolares();
+  escolar : DatosEscolares[];
   modalidad: modalidadEscolar[];
   modalidades: modalidadEscolar = new modalidadEscolar();
   planEducativo: planEducativo[];
@@ -70,24 +71,13 @@ export class RegistroDatosPersonalesComponent {
 
   /* GGuardar los datos escolares */
   create():void{
-    this.modEscService.create(this.modalidades).subscribe(mod => {
-      this.modalidades = mod;
-      this.univerSe.createUniversidad(this.universidades).subscribe(uni => {
-        this.universidades = uni;
-        this.planService.postPlan(this.planes).subscribe(plan => {
-          this.planes = plan;
-          this.escolares.modalidadEscolar = this.modalidades;
-          this.escolares.universidad = this.universidades;
-          this.escolares.planesEducativos = this.planes;
-          this.ecolarService.createEscolar(this.escolares).subscribe(
-            res=> {
-              this.getAll();
-              this.route.navigate(['/registro-datos-ingreso'])
-            }
-          );
-        });
-      });
-    });
+    console.log(this.escolares);
+    this.ecolarService.createEscolar(this.escolares).subscribe(
+      res=> {
+        this.route.navigate(['/login'])
+        Swal.fire('Nuevo Dato Escolar', 'success');
+      }
+    );
   }
 
   update():void{

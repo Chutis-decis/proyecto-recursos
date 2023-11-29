@@ -24,7 +24,7 @@
         <tbody *ngFor="let ingreso of ingresados">
             <div class="row text-center">
                 <div class="col-1">{{ingreso.id}}</div>
-                <div class="col-3">{{ingreso.tramite}}</div>
+                <div class="col-3">{{ingreso.tramite.nombreTramite}}</div>
                 <div class="col-3">{{ingreso.turno}}</div>
                 <div class="col-2">{{ingreso.horario}}</div>
                 <button type="button" class="btn btn-primary btn-sm border-0 me-1 col-1 text-white mt-1" [routerLink]="['/registro-datos-ingreso', ingreso.id]">Editar</button>

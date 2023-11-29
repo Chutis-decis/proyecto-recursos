@@ -18,7 +18,6 @@
             <label for="univerity" class="form-label">Universidad</label>
             <div>
                 <select [compareWith]="compararUniversidad" class="form-select" id="univerity" name="university" [(ngModel)]="escolares.universidad">
-                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
                     <option *ngFor="let universidad of universidad" [ngValue]="universidad">{{universidad.nombre}}</option>
                     <option>Otra</option>
                 </select>
@@ -53,7 +52,6 @@
             <label for="mod-escolar" class="form-label">Modalidad Escolar</label>
             <div>
                 <select [compareWith]="compararModalidad" class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar">
-                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
                     <option *ngFor="let modalidad of modalidad" [ngValue]="modalidad">{{modalidad.nombre}}</option>
                     <option>Otra</option>
                 </select>
@@ -63,7 +61,6 @@
             <label for="plan-educativo" class="form-label">Plan Educativo</label>
             <div>
                 <select [compareWith]="compararPlanEducativo" class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
-                    <option selected disabled value="" [ngValue]="undefined">Elige una de las opciones</option>
                     <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{planEducativo.nombre}}</option>>
                     <option>Otra</option>
                 </select>

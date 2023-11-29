@@ -3,9 +3,15 @@ package com.humans.resource.controller.DatosFTDController;
 import com.humans.resource.entity.DatosFTD.Beca;
 import com.humans.resource.service.DatosFTDService.BecaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 
 @RestController
@@ -25,8 +31,25 @@ public class BecaController {
     }
 
     @GetMapping("/{id}")
-    public Beca getBecaById(@PathVariable Long id) {
-        return becaService.getBecaById(id);
+    public ResponseEntity<?> getBecaById(@PathVariable Long id) {
+        Beca becas = null;
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            becas = becaService.getBecaById(id);
+        }catch (DataAccessException e){
+            //Errores desde el servidor de la bd
+            response.put("mensaje", "Error al realizar la consulta en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if(becas == null){
+            response.put("mensaje", "El tipo de beca con el ID ".concat(id.toString().concat(" no existe en la base de datos")));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Beca>(becas, HttpStatus.OK);
     }
 
     @PostMapping

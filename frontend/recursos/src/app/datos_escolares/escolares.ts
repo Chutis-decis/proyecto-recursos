@@ -2,7 +2,7 @@ import { modalidadEscolar } from "./ModalidadEscolar";
 import { planEducativo } from "./planEducativo";
 import { Universidad } from "./Universidad"
 
-export class Escolares{
+export class DatosEscolares{
     id: number;
     correoEscolar: string;
     carrera: string;
