@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CPanel } from 'src/app/components/admin/CPanel';
 import { DatosIngreso } from 'src/app/ingreso';
 import { Modalidad } from 'src/app/modalidad';
 import { Perfilamiento } from 'src/app/perfilamiento';
@@ -17,6 +18,7 @@ export class RegistroDatosIngresoComponent implements OnInit {
   tramite: Tramite[];
   perfilamiento: Perfilamiento[];
   modalidad: Modalidad[];
+  personales: CPanel = new CPanel();
 
   constructor(private ingresoService: IngresoService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -51,7 +53,7 @@ export class RegistroDatosIngresoComponent implements OnInit {
   create(): void{
     console.log(this.ingreso);
     this.ingresoService.createIngreso(this.ingreso).subscribe(ingreso => { 
-      this.router.navigate(['/home'])
+      this.router.navigate(['/login'])
       Swal.fire('Nuevo Dato de Ingreso', `${ingreso.tramite}`, 'success');
     }, 
     err => {
@@ -68,8 +70,8 @@ export class RegistroDatosIngresoComponent implements OnInit {
 
   update(): void{
     this.ingresoService.editarIngreso(this.ingreso).subscribe(resp => {
-      this.router.navigate(['/datos/ingreso']);
-      Swal.fire('Cliente Actualizado', 'success');
+      this.router.navigate(['/datos-ingreso']);
+      Swal.fire('Cliente Actualizado',`Los datos de ingreso de ${this.personales.nombres}`, 'success');
     }, 
     err => {
       console.error('Código del error desde el backend: ' + err.status);

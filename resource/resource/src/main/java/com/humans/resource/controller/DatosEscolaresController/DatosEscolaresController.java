@@ -70,5 +70,10 @@ public class DatosEscolaresController {
     public void eliminarDatosEscolares(@PathVariable Long id) {
         datosEscolaresService.deleteDatosEscolares(id);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public void activatedDatosEscolares(@PathVariable Long id){
+        datosEscolaresService.activatedDatosEscolares(id);
+    }
 }
 

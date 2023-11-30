@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatosIngreso } from 'src/app/ingreso';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-datos-ingreso',
@@ -38,11 +39,26 @@ export class DatosIngresoComponent implements OnInit {
 
   /* Deleted */
   /* Eliminacion de los datos de ingreso */
-  deleteIngreso(id: number): void{
-    this.serviceIngreso.deleted(id).subscribe(data => {
-      console.log("Alumno eliminado", data);
-      this.getAllIngreso;
-    });
+  deleteIngreso(ingreso: DatosIngreso): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que deseas mover el trámite ${ingreso.tramite.nombreTramite} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, mover',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        this.serviceIngreso.deleted(ingreso).subscribe(
+          res => {
+            this.ingresados = this.ingresados.filter(b => b !== ingreso)
+            Swal.fire('Datos Ingreso Movido', `Datos de Ingreso ${ingreso.tramite.nombreTramite} eliminada con éxito`, 'success');
+          }
+        )
+      }
+    })
   }
 
   /* Modificar */

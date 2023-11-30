@@ -21,12 +21,12 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let escolares of escolares">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="escolares.activo == false">
                 <div class="col-1">{{escolares.id}}</div>
                 <div class="col-2">{{escolares.carrera}}</div>
                 <div class="col-2">{{escolares.correoEscolar}}</div>
                 <div class="col-2">{{escolares.matriculaEscolar}}</div>
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" >Dar Alta</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" (click)="ativar(escolares)" >Dar Alta</button>
             </div>
         </tbody>
     </table>

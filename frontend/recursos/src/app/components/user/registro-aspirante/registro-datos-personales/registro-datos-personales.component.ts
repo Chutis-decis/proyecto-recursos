@@ -74,7 +74,7 @@ export class RegistroDatosPersonalesComponent {
     console.log(this.escolares);
     this.ecolarService.createEscolar(this.escolares).subscribe(
       res=> {
-        this.route.navigate(['/login'])
+        this.route.navigate(['/registro-datos-ingreso'])
         Swal.fire('Nuevo Dato Escolar', 'success');
       }
     );

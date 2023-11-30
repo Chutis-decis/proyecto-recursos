@@ -31,7 +31,7 @@ public class DatosIngreso {
     private String cv;
     private String historialAcademico;
 
-
+    private boolean activo = true;
     @ManyToOne
     @JoinColumn(name = "datos_personales_id")
     private Beca.DatosPersonales datosPersonales;

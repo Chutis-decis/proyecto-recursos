@@ -9,5 +9,7 @@ public interface DatosIngresoService {
     List<DatosIngreso> getAllDatosIngreso();
     void deleteDatosIngreso(Long id);
 
+    void activatedIngreso(Long id);
+
     List<DatosIngreso>getDatosIngresoByModalidadId(Long modalidadId);
 }

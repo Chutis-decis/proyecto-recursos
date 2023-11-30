@@ -38,7 +38,20 @@ public class DatosIngresoServiceImpl implements DatosIngresoService {
 
     @Override
     public void deleteDatosIngreso(Long id) {
-        datosIngresoRepository.deleteById(id);
+        DatosIngreso datosIngreso = datosIngresoRepository.findById(id).orElse(null);
+        if (datosIngreso != null){
+            datosIngreso.setActivo(false);
+            datosIngresoRepository.save(datosIngreso);
+        }
+    }
+
+    @Override
+    public void activatedIngreso(Long id) {
+        DatosIngreso datosIngreso = datosIngresoRepository.findById(id).orElse(null);
+        if (datosIngreso != null){
+            datosIngreso.setActivo(true);
+            datosIngresoRepository.save(datosIngreso);
+        }
     }
 
 }

@@ -80,4 +80,9 @@ public class DatosIngresoController {
     public void deleteDatosIngreso(@PathVariable Long id) {
         datosIngresoService.deleteDatosIngreso(id);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public void activateIngreso(@PathVariable Long id){
+        datosIngresoService.activatedIngreso(id);
+    }
 }

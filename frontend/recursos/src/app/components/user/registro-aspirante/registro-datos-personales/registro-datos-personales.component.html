@@ -2,35 +2,42 @@
 
 <!-- Modal -->
         
-<form>
+<form #miFormulario="ngForm" (ngSubmit)="create()" novalidate>
     <div class="container-md mt-5">
         <h1 class="text-center mt-5 col-title">{{escolares.id ? 'Edición': 'Registro'}} de Datos Escolares</h1>
     <div class="row" (ngSubmit) = cargar()>
         <div class="col-md-3 mt-4">
             <label class="form-label">Correo Escolar</label>
-            <input type="text" class="form-control" placeholder="Escribe tu correo escolar" id="nombre" name="nombre" [(ngModel)]="escolares.correoEscolar">
+            <input type="text" class="form-control" placeholder="Escribe tu correo escolar" id="nombre" name="nombre" [(ngModel)]="escolares.correoEscolar" #correoPer="ngModel" required>
+            <div *ngIf="correoPer.invalid && (correoPer.dirty || correoPer.touched)" class="alert alert-danger">El Correo Escolar es Requerido</div>
         </div>
         <div class="col-md-5 mt-4">
             <label class="form-label">Carrera</label>
-            <input type="text" class="form-control" placeholder="Escribe tu carrera" id="carrera" name="carrera" [(ngModel)]="escolares.carrera">
+            <input type="text" class="form-control" placeholder="Escribe tu carrera" id="carrera" name="carrera" [(ngModel)]="escolares.carrera" #carrera="ngModel" required>
+            <div *ngIf="carrera.invalid && (carrera.dirty || carrera.touched)" class="alert alert-danger">
+                La Carrera es requerida
+            </div>
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="univerity" class="form-label">Universidad</label>
             <div>
-                <select [compareWith]="compararUniversidad" class="form-select" id="univerity" name="university" [(ngModel)]="escolares.universidad">
+                <select [compareWith]="compararUniversidad" class="form-select" id="univerity" name="university" [(ngModel)]="escolares.universidad" #uni="ngModel" required>
                     <option *ngFor="let universidad of universidad" [ngValue]="universidad">{{universidad.nombre}}</option>
-                    <option>Otra</option>
                 </select>
+                <div *ngIf="uni.invalid && (uni.dirty || uni.touched)" class="alert alert-danger">
+                    La Universidad es requerida
+                </div>
             </div>
         </div> 
         <div class="col-md-3 mt-4">
             <label class="form-label">Matricula Escolar</label>
-            <input type="text" class="form-control" placeholder="Escribe tu matricula Escolar" id="matricula-escolar" name="matricula-escolar" [(ngModel)]="escolares.matriculaEscolar">
+            <input type="text" class="form-control" placeholder="Escribe tu matricula Escolar" id="matricula-escolar" name="matricula-escolar" [(ngModel)]="escolares.matriculaEscolar" #matricula="ngModel" required>
+            <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="alert alert-danger">La Matricula Escolar es Requerida</div>
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="periodo" class="form-label">Periodo</label>
             <div>
-                <select class="form-select" id="periodo" name="periodo" [(ngModel)]="escolares.periodo">
+                <select class="form-select" id="periodo" name="periodo" [(ngModel)]="escolares.periodo" #periodo="ngModel" required>
                     <option selected disabled value="">Elige una de las opciones</option>
                     <option value="Primero">1ro</option>
                     <option value="Segundo">2do</option>
@@ -46,31 +53,34 @@
                     <option value="Doceavo">12vo</option>
                     <option>Otra</option>
                 </select>
+                <div *ngIf="periodo.invalid && (periodo.dirty || periodo.touched)" class="alert alert-danger">El Periodo Escolar es Requerido</div>
             </div>
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="mod-escolar" class="form-label">Modalidad Escolar</label>
             <div>
-                <select [compareWith]="compararModalidad" class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar">
+                <select [compareWith]="compararModalidad" class="form-select" id="mod-escolar" name="modalidad"[(ngModel)]="escolares.modalidadEscolar" #moda="ngModel" required>
                     <option *ngFor="let modalidad of modalidad" [ngValue]="modalidad">{{modalidad.nombre}}</option>
                     <option>Otra</option>
                 </select>
+                <div *ngIf="moda.invalid && (moda.dirty || moda.touched)" class="alert alert-danger">La Modalidad Escolar es Requerida</div>
             </div>
         </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="plan-educativo" class="form-label">Plan Educativo</label>
             <div>
-                <select [compareWith]="compararPlanEducativo" class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos">
+                <select [compareWith]="compararPlanEducativo" class="form-select" id="plan-educativo" name="plan-educativo" [(ngModel)]="escolares.planesEducativos" #plan="ngModel" required>
                     <option *ngFor="let planEducativo of planEducativo" [ngValue]="planEducativo">{{planEducativo.nombre}}</option>>
                     <option>Otra</option>
                 </select>
+                <div *ngIf="plan.invalid && (plan.dirty || plan.touched)" class="alert alert-danger">El Plan Educativo es Requerido</div>
             </div>
         </div>
 
         <!-- boton -->
-        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!escolares.id else elseBlock">Siguiente</button>
+        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" [disabled]="miFormulario.invalid" *ngIf="!escolares.id else elseBlock">Siguiente</button>
         <ng-template #elseBlock>
-            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
+            <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()" [disabled]="miFormulario.invalid">Actualizar</button>
         </ng-template>
     </div>
     </div>

@@ -39,7 +39,8 @@ public class DatosEscolares {
 
     private String periodo;
 
-
+    @Column(name = "activo")
+    private boolean activo = true;
     // Relacion u Mapeo
     @ManyToOne
     @JoinColumn(name = "id_datosPersonales")

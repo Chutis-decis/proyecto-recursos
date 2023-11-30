@@ -26,6 +26,7 @@ import { PerfilamientoComponent } from './components/admin/barra-opciones/datos-
 import { TramiteComponent } from './components/admin/barra-opciones/datos-ingreso/tramite/tramite.component';
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/beca.component';
+import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baja/ingreso-baja.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'dados-baja', component: PersonalesBajaComponent},
   {path: 'dados-baja-ftd', component: FtdBajaComponent},
   {path: 'dados-baja-escolares', component: EscolaresBajaComponent},
+  {path: 'dados-baja-ingreso', component: IngresoBajaComponent},
   {path: 'registro-datos-escolares', component: RegistroDatosPersonalesComponent},
   {path: 'registro-datos-escolares/:id', component: RegistroDatosPersonalesComponent},
   {path: 'datos-ingreso', component: DatosIngresoComponent},

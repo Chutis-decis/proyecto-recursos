@@ -42,10 +42,13 @@ export class IngresoService {
   } 
 
   /* Eliminar */
-  deleted(id: number):Observable<DatosIngreso>{
-    return this.httpClient.delete<DatosIngreso>(`${this.url}/${id}`);
+  deleted(ingreso: DatosIngreso):Observable<DatosIngreso>{
+    return this.httpClient.delete<DatosIngreso>(`${this.url}/${ingreso.id}`);
   }
 
+  activated(ingreso: DatosIngreso):Observable<DatosIngreso>{
+    return this.httpClient.delete<DatosIngreso>(`${this.url}/recuperacion/${ingreso.id}`);
+  }
   /* ************************** Modalidad *************************************************************** */
   /* URL de la modalidad para los datos de ingreso */
   urlModalidad = 'http://localhost:8081/modalidades';

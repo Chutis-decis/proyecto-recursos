@@ -10,4 +10,6 @@ public interface DatosEscolaresService {
     List<DatosEscolares> getAllDatosEscolares();
     DatosEscolares getDatosEscolaresById(Long id);
     void deleteDatosEscolares(Long id);
+
+    void activatedDatosEscolares(Long id);
 }

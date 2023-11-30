@@ -11,5 +11,6 @@ export class DatosEscolares{
     modalidadEscolar: modalidadEscolar = new modalidadEscolar();
     planesEducativos: planEducativo = new planEducativo();
     periodo: string;
+    activo: boolean;
     datosPersonales: number;
 }

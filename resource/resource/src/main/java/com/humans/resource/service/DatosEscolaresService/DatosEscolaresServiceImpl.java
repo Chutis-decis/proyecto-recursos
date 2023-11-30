@@ -42,7 +42,23 @@ public class DatosEscolaresServiceImpl implements DatosEscolaresService {
 
     @Override
     public void deleteDatosEscolares(Long id) {
-        datosEscolaresRepository.deleteById(id);
+        DatosEscolares datosEscolares = datosEscolaresRepository.findById(id).orElse(null);
+
+        if (datosEscolares != null){
+            datosEscolares.setActivo(false);
+            datosEscolaresRepository.save(datosEscolares);
+        }
+    }
+
+    @Override
+    public void activatedDatosEscolares(Long id){
+        DatosEscolares datosEscolares = datosEscolaresRepository.findById(id).orElse(null);
+
+        if (datosEscolares != null){
+            datosEscolares.setActivo(true);
+            datosEscolaresRepository.save(datosEscolares);
+        }
+
     }
 }
 

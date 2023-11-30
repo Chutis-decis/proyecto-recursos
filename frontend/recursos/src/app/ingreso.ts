@@ -10,5 +10,6 @@ export class DatosIngreso{
     horario: string;
     modalidad: Modalidad = new Modalidad();
     cv: string;
+    activo: boolean;
     historialAcademico: string;
 }
