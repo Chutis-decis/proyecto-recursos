@@ -31,18 +31,19 @@
         </div>
         <div class="col-md-5 mt-4">
             <label class="form-label">Tutor</label>
-            <input type="text" class="form-control" placeholder="Nombre del Tutor" id="tutor" name="tutor" [(ngModel)]="datosFTD.tutor">
+            <div>
+                <select [compareWith]="compararTutorial" class="form-select" id="tutor" name="tutor" [(ngModel)]="datosFTD.tutor"  #tutores="ngModel" required>
+                    <option *ngFor="let tutor of tutor" [ngValue]="tutor">{{tutor.nombre}}</option>
+                </select>
+                <div *ngIf="tutores.invalid && (tutores.dirty || tutores.touched)" class="alert alert-danger">El Tutor es Requerido</div>
+            </div>
         </div>
         <div class="col-md-4 position-relative mt-4">
             <label for="beca" class="form-label">Beca</label>
-            <select class="form-select" id="beca" name="beca" [(ngModel)]="datosFTD.beca">
-                <option selected disabled value="">Elige una de las opciones</option>
-                <option value="No Tiene">No Tiene</option>
-                <option value="Becas A">Becas A</option>
-                <option value="Becas Bronce">Becas Bronce</option>
-                <option value="Becas Plata">Becas Plata</option>
-                <option value="Desarrolladores del Bienestar">Desarrolladores del Bienestar</option>
+            <select [compareWith]="compararBeca" class="form-select" id="beca" name="beca" [(ngModel)]="datosFTD.beca" #becas="ngModel" required="">
+                <option *ngFor="let beca of beca" [ngValue]="beca">{{beca.tipo}}</option>
             </select>
+            <div *ngIf="becas.invalid && (becas.dirty || becas.touched)" class="alert alert-danger">El Trámite es Requerido</div>
         </div>
         <div class="col-md-3 mt-4">
             <label class="form-label">Fecha de Ingreso</label>
@@ -54,7 +55,11 @@
         </div>
         <div class="col-md-2 mt-4">
             <label class="form-label">Grupo</label>
-            <input type="text" class="form-control" placeholder="Grupo" id="grupo" name="grupo" [(ngModel)]="datosFTD.grupo">
+            <div>
+                <select [compareWith]="compararGrupo" class="form-select" id="grupo" name="grupo"  [(ngModel)]="datosFTD.grupo" #grupos="ngModel" required="">
+                    <option *ngFor="let grupo of grupo" [ngValue]="grupo">{{grupo.nombre}}</option>
+                </select>
+            </div>
         </div>
         <div class="col-md-4 position-relative mt-4">
             <label for="enlace" class="form-label">Enlace</label>
@@ -94,7 +99,7 @@
             </select>
         </div>
         <!-- boton -->
-        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="create()" *ngIf="!datosFTD.id else elseBlock">Registrar</button>
+        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="crear()" *ngIf="!datosFTD.id else elseBlock">Registrar</button>
         <ng-template #elseBlock>
             <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
         </ng-template>

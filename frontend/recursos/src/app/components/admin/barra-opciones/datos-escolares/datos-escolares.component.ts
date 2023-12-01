@@ -15,6 +15,8 @@ export class DatosEscolaresComponent {
   escolar = new DatosEscolares();
   universidad: Universidad[] = [];
 
+  searchTerm: string = '';
+
   constructor(private serviceEstudiante:EscolaresService, private  activateRouter: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {

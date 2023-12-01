@@ -6,7 +6,7 @@
 <div class="mt-3 container-lg">
     <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Datos Escolares </h1>
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" name="searchTerm" placeholder="Search" [(ngModel)]="searchTerm" aria-label="Search">
         <button class="btn btn-outline-success border-0" type="submit">Buscar</button>
     </form>
     <button class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" (click)="obtenerEscolares()">Detalles</button>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <table class="table table-striped mt-3">
-        <tbody *ngFor="let escolares of escolares">
+        <tbody *ngFor="let escolares of escolares |pipesEscolares: searchTerm">
             <div class="row text-center"  *ngIf="escolares.activo == true" >
                 <div class="col-1">{{escolares.id}}</div>
                 <div class="col-3">{{escolares.correoEscolar}}</div>

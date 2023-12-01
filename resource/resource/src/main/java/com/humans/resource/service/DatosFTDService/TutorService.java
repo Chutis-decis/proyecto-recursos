@@ -23,8 +23,8 @@ public class TutorService {
         return tutorRepository.findAll();
     }
 
-    public Optional<Tutor> getTutorById(Long id) {
-        return tutorRepository.findById(id);
+    public Tutor getTutorById(Long id) {
+        return tutorRepository.findById(id).orElse(null);
     }
 
     public Tutor saveTutor(Tutor tutor) {

@@ -26,7 +26,4 @@ public class Tutor{
 
     @Column(name = "activo")
     private boolean activo = true;
-
-    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
-    private List<DatosFTD> datosFTDList;
 }

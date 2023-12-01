@@ -1,8 +1,11 @@
 package com.humans.resource.entity.DatosFTD;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -25,9 +28,9 @@ public class DatosFTD {
 
     private String beca; // Puede ser "No tiene", "Becas A", "Becas Bronce", "Becas Plata", "Desarrolladores del Bienestar"
     @Temporal(TemporalType.DATE)
-    private Date fechaIngreso;
+    private LocalDate fechaIngreso;
     @Temporal(TemporalType.DATE)
-    private Date fechaTermino;
+    private LocalDate fechaTermino;
 
     @ManyToOne
     @JoinColumn(name = "grupo_id")

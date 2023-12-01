@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-beca',
-  templateUrl: './beca.component.html',
-  styleUrls: ['./beca.component.css']
+  templateUrl: './beca.component.html'
 })
 export class BecaComponent {
   beca: Beca = new Beca();

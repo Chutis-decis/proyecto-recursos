@@ -18,7 +18,7 @@ import { RegistroAspiranteComponent } from './components/user/registro-aspirante
 import { DatosEscolaresComponent } from './components/admin/barra-opciones/datos-escolares/datos-escolares.component';
 import { RegistroDatosPersonalesComponent } from './components/user/registro-aspirante/registro-datos-personales/registro-datos-personales.component';
 import { PersonalesBajaComponent } from './components/admin/panel-admin/personales-baja/personales-baja.component';
-import { PipesPipe } from './pipes.pipe';
+import { PipesPipe } from './pipe/datos-personales/pipes.pipe';
 import { WatchDatosEscolaresComponent } from './components/admin/panel/watch-datos-escolares/watch-datos-escolares.component';
 import { DatosIngresoComponent } from './components/admin/barra-opciones/datos-ingreso/datos-ingreso.component';
 import { RegistroDatosIngresoComponent } from './components/user/registro-aspirante/registro-datos-ingreso/registro-datos-ingreso.component';
@@ -37,6 +37,9 @@ import { TramiteComponent } from './components/admin/barra-opciones/datos-ingres
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/beca.component';
 import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grupo/grupo.component';
+import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tutor/tutor.component';
+import { DatosEscolaresPipe } from './pipe/datos-escolares/datos-escolares.pipe';
+import { DatosIngresoPipe } from './pipe/datos-ingreso/datos-ingreso.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +74,9 @@ import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grup
     ModalidadComponent,
     BecaComponent,
     GrupoComponent,
+    TutorComponent,
+    DatosEscolaresPipe,
+    DatosIngresoPipe,
   ],
   imports: [
     BrowserModule,

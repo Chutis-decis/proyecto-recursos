@@ -14,6 +14,7 @@ export class DatosIngresoComponent implements OnInit {
   ingreso: DatosIngreso = new DatosIngreso();
   ingresados: DatosIngreso[] = [];
 
+  searchTerm: string;
   /* Constructor */
   constructor(private serviceIngreso: IngresoService, private activatedRouter: ActivatedRoute, private route: Router) { }
 

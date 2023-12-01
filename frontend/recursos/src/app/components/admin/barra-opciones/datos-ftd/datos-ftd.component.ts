@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ftd } from 'src/app/FTD/ftd';
+import { DatosFTD } from 'src/app/FTD/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 export class DatosFtdComponent {
 
   /* Atributos de los datos FTD */
-  datosFTD: ftd[] = [];
-  ftd = new ftd();
+  datosFTD: DatosFTD[] = [];
+  ftd = new DatosFTD();
 
   /* Constructor de los datos FTD */
   constructor(private ftdService: FtdService, private activateRouter: ActivatedRoute, private router: Router) { }
@@ -39,59 +39,42 @@ export class DatosFtdComponent {
     });
   }
 
+
+  /* Eliminacion Logica de los datos FTD */
+  deleteDatosFTD(dFtd: DatosFTD): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que deseas mover el dato Ftd ${dFtd.nombreProyecto} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, mover',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        this.ftdService.deletedDatosFTD(dFtd).subscribe(
+          res => {
+            this.datosFTD = this.datosFTD.filter(b => b !== dFtd)
+            Swal.fire('Datos Ftd movidos', `Datos FTD ${dFtd.nombreProyecto} movido con éxito`, 'success');
+          }
+        )
+      }
+    })
+  }
+
+
   /* Actializacion */
   update():void{
-    this.ftdService.editarDatosFTD(this.ftd.id, this.ftd).subscribe(
+    this.ftdService.editarDatosFTD(this.ftd).subscribe(
       e=> this.router.navigate(['/registro-datos-ftd'])
     );
   }
 
-
-  /* Eliminacion Logica de los datos FTD */
-  deleteDatosFTD(id: number): void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas seguro?",
-      text: "Dar de baja al Aspirante!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Si, dalo de alta!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.ftdService.deletedDatosFTD(id).subscribe(
-          response => {
-            swalWithBootstrapButtons.fire({
-              title: "Registro Alta!",
-              text: `Registro ${this.ftd.nombreProyecto} dado de baja!`,
-              icon: "success"
-            });
-            this.getDatosFTD();
-          }
-        );
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado dado de baja!",
-          text: "Cancelaste dar de baja!!! :)",
-          icon: "error"
-        });
-      }
-    });
-  }
-
+  /* Obtener los datos FTD */
   obtenerDatosFTD(): void{
     this.getDatosFTD();
-    this.router.navigate(['/detalle-ftd']);
+    this.router.navigate(['/detalle-datos-ftd']);
   }
+  
 }

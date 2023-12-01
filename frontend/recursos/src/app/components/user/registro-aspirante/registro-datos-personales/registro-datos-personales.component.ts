@@ -12,8 +12,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-datos-personales',
-  templateUrl: './registro-datos-personales.component.html',
-  styleUrls: ['./registro-datos-personales.component.css']
+  templateUrl: './registro-datos-personales.component.html'
 })
 export class RegistroDatosPersonalesComponent {
   escolares = new DatosEscolares();

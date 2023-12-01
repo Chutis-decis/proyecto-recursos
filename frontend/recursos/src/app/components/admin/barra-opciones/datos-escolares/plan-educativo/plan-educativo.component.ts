@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
-import { Perfilamiento } from 'src/app/perfilamiento';
 import { PlanEducativoService } from 'src/app/service/escolar/plan-educativo.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-plan-educativo',
-  templateUrl: './plan-educativo.component.html',
-  styleUrls: ['./plan-educativo.component.css']
+  templateUrl: './plan-educativo.component.html'
 })
 export class PlanEducativoComponent {
   /* Atributos */

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ftd } from 'src/app/FTD/ftd';
+import { DatosFTD } from 'src/app/FTD/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ftd-baja.component.css']
 })
 export class FtdBajaComponent {
-  ftddata: ftd [] = [];
-  ftd = new ftd();
+  ftd = new DatosFTD();
+  ftddata:  DatosFTD [] = [];
 
     constructor(private serviceFTD: FtdService, private router: Router) { }
   
@@ -32,7 +32,7 @@ export class FtdBajaComponent {
     }
 
     /* Alta a los estudiantes */
-    alta(id: number): void{
+    alta(datosFTD: DatosFTD): void{
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: "btn btn-success",
@@ -50,7 +50,7 @@ export class FtdBajaComponent {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-          this.serviceFTD.activarDatosFTD(id).subscribe(
+          this.serviceFTD.activarDatosFTD(datosFTD).subscribe(
             response => {
               swalWithBootstrapButtons.fire({
                 title: "Registro Alta!",

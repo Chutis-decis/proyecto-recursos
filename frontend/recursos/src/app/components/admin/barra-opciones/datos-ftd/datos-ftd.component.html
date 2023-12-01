@@ -28,7 +28,7 @@
                 <div class="col-3">{{datosFTD.avanceProyecto}}</div>
                 <div class="col-2">{{datosFTD.evaluacionProyecto}}</div>
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-1" [routerLink]="['/registro-datos-ftd', datosFTD.id]">Editar</button>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col mt-1" (click)="deleteDatosFTD(datosFTD.id)">Dar de Baja</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col mt-1" (click)="deleteDatosFTD(datosFTD)">Dar de Baja</button>
             </div>
         </tbody>
     </table>

@@ -7,8 +7,7 @@ import { UniversidadService } from 'src/app/service/escolar/universidad.service'
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-universidad',
-  templateUrl: './universidad.component.html',
-  styleUrls: ['./universidad.component.css']
+  templateUrl: './universidad.component.html'
 })
 export class UniversidadComponent {
   /* Atributos */

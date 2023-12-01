@@ -1,3 +1,4 @@
+
 <app-navv></app-navv>
 
 <!-- Barra de Opciones -->
@@ -5,33 +6,34 @@
 
 
 <div class="mt-3 container-lg">
-    <!-- Titiulo -->
-    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Grupo</h1>
+    <!-- Beca -->
+    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Tutor</h1>
 
     <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal"
-        data-bs-target="#modal-grupo" *ngIf="!group.id else elseBlock">Agregar Grupo</button>
+        data-bs-target="#modal-tutores" *ngIf="!tutores.id else elseBlock">Agregar Tutor</button>
     <ng-template #elseBlock>
         <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal"
-            data-bs-target="#modal-grupo">Editar</button>
+            data-bs-target="#modal-tutores">Editar</button>
     </ng-template>
-    <!-- Modal del boton agregar beca -->
-    <div class="modal fade" id="modal-grupo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal del boton agregar tutores -->
+    <div class="modal fade" id="modal-tutores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Grupo</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Tipo de Beca</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nombre del Grupo</label>
-                        <input type="text" class="form-control" placeholder="Nombre del Trámite" id="perfilamiento"
-                            name="perfilamiento" [(ngModel)]="group.nombre">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre de la Modalidad</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la Beca" id="tutores"
+                            name="tutores" [(ngModel)]="tutores.nombre">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()" *ngIf="!group.id else elseBloc">Guardar</button>
+                    <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()"
+                        *ngIf="!tutores.id else elseBloc">Guardar</button>
                     <ng-template #elseBloc>
                         <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal"
                             (click)="update()">Actualizar</button>
@@ -51,18 +53,18 @@
         </div>
     </div>
     <table class="table table-striped mt-3">
-        <tbody *ngFor="let grupo of grupo">
+        <tbody *ngFor="let tutores of tutor">
             <div class="row text-center">
-                <div class="col-1">{{grupo.id}}</div>
-                <div class="col-7">{{grupo.nombre}}</div>
+                <div class="col-1">{{tutores.id}}</div>
+                <div class="col-7">{{tutores.nombre}}</div>
 
                 <!-- Editar perfilamiento -->
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1"
-                    data-bs-toggle="modal" data-bs-target="#modal-grupo"
-                    [routerLink]="['/datos-ftd/grupo', grupo.id]">Editar</button>
+                    data-bs-toggle="modal" data-bs-target="#modal-tutores"
+                    [routerLink]="['/datos-ftd/tutor', tutores.id]">Editar</button>
 
                 <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1"
-                    (click)="delete(grupo)">Eliminar</button>
+                    (click)="delete(tutores)">Eliminar</button>
             </div>
         </tbody>
     </table>

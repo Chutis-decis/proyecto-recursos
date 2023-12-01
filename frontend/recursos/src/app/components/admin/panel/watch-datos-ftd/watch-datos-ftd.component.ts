@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ftd } from 'src/app/FTD/ftd';
+import { DatosFTD } from 'src/app/FTD/ftd';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { FtdService } from 'src/app/service/ftd/ftd.service';
   styleUrls: ['./watch-datos-ftd.component.css']
 })
 export class WatchDatosFtdComponent {
-  datosFTD: ftd[] = [];
-  ftd = new ftd();
+  datosFTD: DatosFTD [] = [];
+  ftd = new DatosFTD ();
 
   constructor(private router: Router, private FtdService: FtdService) { }
 

@@ -73,4 +73,12 @@ export class BarraOpcionesComponent {
   beca(){
     this.router.navigate(['/datos-ftd/becas']);
   }
+
+  grupo(){
+    this.router.navigate(['/datos-ftd/grupo']);
+  }
+
+  tutor(){
+    this.router.navigate(['/datos-ftd/tutor']);
+  }
 }

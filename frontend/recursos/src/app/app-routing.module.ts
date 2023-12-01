@@ -27,6 +27,8 @@ import { TramiteComponent } from './components/admin/barra-opciones/datos-ingres
 import { ModalidadComponent } from './components/admin/barra-opciones/datos-ingreso/modalidad/modalidad.component';
 import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/beca.component';
 import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baja/ingreso-baja.component';
+import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grupo/grupo.component';
+import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tutor/tutor.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -56,6 +58,10 @@ const routes: Routes = [
   {path: 'datos_ftd/:id', component: DatosFtdComponent},
   {path: 'datos-ftd/becas/:id', component: BecaComponent},
   {path: 'datos-ftd/becas', component: BecaComponent},
+  {path: 'datos-ftd/grupo', component: GrupoComponent},
+  {path: 'datos-ftd/grupo/:id', component: GrupoComponent},
+  {path: 'datos-ftd/tutor/:id', component: TutorComponent},
+  {path: 'datos-ftd/tutor', component: TutorComponent},
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
   {path: 'datos-escolares/universidad', component: UniversidadComponent},

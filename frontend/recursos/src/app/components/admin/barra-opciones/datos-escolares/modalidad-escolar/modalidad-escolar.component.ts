@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
-import { Modalidad } from 'src/app/modalidad';
-import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modalidad-escolar',
-  templateUrl: './modalidad-escolar.component.html',
-  styleUrls: ['./modalidad-escolar.component.css']
+  templateUrl: './modalidad-escolar.component.html'
 })
 export class ModalidadEscolarComponent {
 

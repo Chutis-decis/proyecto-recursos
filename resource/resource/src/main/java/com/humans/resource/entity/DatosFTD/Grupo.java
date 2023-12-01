@@ -25,7 +25,4 @@ public class Grupo {
 
     @Column(name = "activo")
     private boolean activo = true;
-
-    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
-    private List<DatosFTD> datosFTDList;
 }

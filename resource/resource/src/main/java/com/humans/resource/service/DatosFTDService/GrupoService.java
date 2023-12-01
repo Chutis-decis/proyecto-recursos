@@ -20,8 +20,8 @@ public class GrupoService {
         return grupoRepository.findAll();
     }
 
-    public Optional<Grupo> getGrupoById(Long id) {
-        return grupoRepository.findById(id);
+    public Grupo getGrupoById(Long id) {
+        return grupoRepository.findById(id).orElse(null);
     }
 
     public Grupo saveGrupo(Grupo grupo) {

@@ -3,7 +3,7 @@ import { Beca } from "./Beca";
 import { Grupo } from "./Grupo";
 import { Tutor } from "./Tutor";
 
-export class ftd{
+export class DatosFTD{
     id: number;
     nombreProyecto: string;
     avanceProyecto: string;
@@ -11,8 +11,8 @@ export class ftd{
     areaInfotec: string;
     tutor: Tutor = new Tutor();
     beca: Beca = new Beca();
-    fechaIngreso: Date;
-    fechaTermino: Date;
+    fechaIngreso: string;
+    fechaTermino: string;
     grupo: Grupo = new Grupo();
     enlace: string;
     matriculaFTD: string;

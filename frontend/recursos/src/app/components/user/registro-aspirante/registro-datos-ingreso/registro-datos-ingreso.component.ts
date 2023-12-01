@@ -10,8 +10,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-datos-ingreso',
-  templateUrl: './registro-datos-ingreso.component.html',
-  styleUrls: ['./registro-datos-ingreso.component.css']
+  templateUrl: './registro-datos-ingreso.component.html'
 })
 export class RegistroDatosIngresoComponent implements OnInit {
   ingreso: DatosIngreso = new DatosIngreso();

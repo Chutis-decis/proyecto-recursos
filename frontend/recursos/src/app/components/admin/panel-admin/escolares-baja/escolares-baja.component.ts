@@ -12,7 +12,9 @@ import Swal from 'sweetalert2';
 export class EscolaresBajaComponent {
   escolares: DatosEscolares[] = [];
   escolar = new DatosEscolares();
-
+  
+  searchTerm: string = '';
+  
   constructor(private escolarService: EscolaresService, private router: Router) { } // constructor
 
   ngOnInit(): void {
