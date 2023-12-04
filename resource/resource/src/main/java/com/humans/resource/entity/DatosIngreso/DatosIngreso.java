@@ -1,5 +1,5 @@
 package com.humans.resource.entity.DatosIngreso;
-import com.humans.resource.entity.DatosFTD.Beca;
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -34,5 +34,5 @@ public class DatosIngreso {
     private boolean activo = true;
     @ManyToOne
     @JoinColumn(name = "datos_personales_id")
-    private Beca.DatosPersonales datosPersonales;
+    private DatosPersonales datosPersonales;
 }

@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosPersonalesService;
 
 import com.humans.resource.entity.DatosFTD.Beca;
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesRepository;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +21,18 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
     }
 
     @Override
-    public Beca.DatosPersonales createDatosPersonales(Beca.DatosPersonales datosPersonales) {
+    public DatosPersonales createDatosPersonales(DatosPersonales datosPersonales) {
         return datosPersonalesRepository.save(datosPersonales);
     }
 
     @Override
-    public Beca.DatosPersonales updateDatosPersonales(Long id, Beca.DatosPersonales datosPersonales) {
+    public DatosPersonales updateDatosPersonales(Long id, DatosPersonales datosPersonales) {
         return null;
     }
 
     @Override
-    public Beca.DatosPersonales actualizarDatosPersonales(Long id, Beca.DatosPersonales datosNuevos) {
-        Beca.DatosPersonales datosActuales = datosPersonalesRepository.findById(id).orElse(null);
+    public DatosPersonales actualizarDatosPersonales(Long id, DatosPersonales datosNuevos) {
+        DatosPersonales datosActuales = datosPersonalesRepository.findById(id).orElse(null);
 
         if (datosActuales != null) {
             // Actualiza todos los campos con los valores del objeto datosNuevos
@@ -62,18 +63,18 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
 
 
     @Override
-    public List<Beca.DatosPersonales> getAllDatosPersonales() {
+    public List<DatosPersonales> getAllDatosPersonales() {
         return datosPersonalesRepository.findAll();
     }
 
     @Override
-    public Beca.DatosPersonales getDatosPersonalesById(Long id) {
+    public DatosPersonales getDatosPersonalesById(Long id) {
         return datosPersonalesRepository.findById(id).orElse(null);
     }
 
     @Override
     public void deleteDatosPersonales(Long id) {
-        Beca.DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
+        DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
         if (datosPersonales != null) {
             // Perform logical deletion (set an inactive flag, etc.)
             datosPersonales.setActivo(false);
@@ -83,7 +84,7 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
 
     @Override
     public void activateDatosPersonales(Long id) {
-        Beca.DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
+        DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
         if (datosPersonales != null){
             datosPersonales.setActivo(true);
             datosPersonalesRepository.save(datosPersonales);

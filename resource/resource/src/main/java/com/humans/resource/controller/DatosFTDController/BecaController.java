@@ -14,10 +14,20 @@ import java.util.Map;
 import java.util.Objects;
 
 
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.http.HttpStatus;
+        import org.springframework.http.ResponseEntity;
+        import org.springframework.web.bind.annotation.*;
+
+        import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/becas")
 public class BecaController {
+
     private final BecaService becaService;
 
     @Autowired
@@ -26,45 +36,45 @@ public class BecaController {
     }
 
     @GetMapping
-    public List<Beca> getAllBecas() {
-        return becaService.getAllBecas();
+    public ResponseEntity<List<Beca>> getAllBecas() {
+        List<Beca> becas = becaService.getAllBecas();
+        return new ResponseEntity<>(becas, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getBecaById(@PathVariable Long id) {
-        Beca becas = null;
-        Map<String, Object> response = new HashMap<>();
-
-        try {
-            becas = becaService.getBecaById(id);
-        }catch (DataAccessException e){
-            //Errores desde el servidor de la bd
-            response.put("mensaje", "Error al realizar la consulta en la base de datos");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        if(becas == null){
-            response.put("mensaje", "El tipo de beca con el ID ".concat(id.toString().concat(" no existe en la base de datos")));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<Beca>(becas, HttpStatus.OK);
+    public ResponseEntity<Beca> getBecaById(@PathVariable Long id) {
+        Beca beca = becaService.getBecaById(id);
+        return beca != null ? new ResponseEntity<>(beca, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public Beca createBeca(@RequestBody Beca beca) {
-        return becaService.createBeca(beca);
+    public ResponseEntity<Beca> createBeca(@RequestBody Beca beca) {
+        Beca savedBeca = becaService.saveBeca(beca);
+        return new ResponseEntity<>(savedBeca, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public Beca updateBeca(@PathVariable Long id, @RequestBody Beca beca) {
-        beca.setId(id);
-        return becaService.updateBeca(beca);
+    public ResponseEntity<Beca> updateBeca(@PathVariable Long id, @RequestBody Beca beca) {
+        Beca existingBeca = becaService.getBecaById(id);
+
+        if (existingBeca != null) {
+            beca.setId(id);
+            Beca updatedBeca = becaService.saveBeca(beca);
+            return new ResponseEntity<>(updatedBeca, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBeca(@PathVariable Long id) {
-        becaService.deleteBeca(id);
+    public ResponseEntity<Void> deleteBeca(@PathVariable Long id) {
+        Beca existingBeca = becaService.getBecaById(id);
+
+        if (existingBeca != null) {
+            becaService.deleteBeca(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

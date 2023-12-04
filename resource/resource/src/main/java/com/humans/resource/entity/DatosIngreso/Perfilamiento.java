@@ -1,10 +1,7 @@
 package com.humans.resource.entity.DatosIngreso;
 
-import com.humans.resource.entity.DatosIngreso.DatosIngreso;
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Entity

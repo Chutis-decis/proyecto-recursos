@@ -3,6 +3,7 @@ package com.humans.resource.entity.DatosEscolares;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.humans.resource.entity.DatosFTD.Beca;
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -44,6 +45,6 @@ public class DatosEscolares {
     // Relacion u Mapeo
     @ManyToOne
     @JoinColumn(name = "id_datosPersonales")
-    private Beca.DatosPersonales datosPersonales;
+    private DatosPersonales datosPersonales;
 
 }

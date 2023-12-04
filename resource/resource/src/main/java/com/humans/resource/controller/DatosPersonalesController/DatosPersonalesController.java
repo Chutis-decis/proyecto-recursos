@@ -1,8 +1,8 @@
 package com.humans.resource.controller.DatosPersonalesController;
 
 import com.humans.resource.entity.DatosFTD.Beca;
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -26,14 +26,14 @@ import java.util.Map;
         }
 
         @PostMapping
-        public Beca.DatosPersonales crearDatosPersonales(@RequestBody Beca.DatosPersonales datosPersonales) {
+        public DatosPersonales crearDatosPersonales(@RequestBody DatosPersonales datosPersonales) {
             return datosPersonalesService.createDatosPersonales(datosPersonales);
         }
 
     // Endpoint para actualizar todos los datos de una instancia de DatosPersonales
     @PutMapping("/{id}")
-    public ResponseEntity<Beca.DatosPersonales> actualizarDatosPersonales(@PathVariable Long id, @RequestBody Beca.DatosPersonales datosNuevos) {
-        Beca.DatosPersonales datosActualizados = datosPersonalesService.actualizarDatosPersonales(id, datosNuevos);
+    public ResponseEntity<DatosPersonales> actualizarDatosPersonales(@PathVariable Long id, @RequestBody DatosPersonales datosNuevos) {
+        DatosPersonales datosActualizados = datosPersonalesService.actualizarDatosPersonales(id, datosNuevos);
         if (datosActualizados != null) {
             return new ResponseEntity<>(datosActualizados, HttpStatus.OK);
         } else {
@@ -43,7 +43,7 @@ import java.util.Map;
 
         @GetMapping("/{id}")
         public ResponseEntity<?> obtenerDatosPersonalesPorId(@PathVariable Long id) {
-            Beca.DatosPersonales datosPersonales = null;
+            DatosPersonales datosPersonales = null;
             Map<String, Object> response = new HashMap<>();
             try {
                 datosPersonales = datosPersonalesService.getDatosPersonalesById(id);
@@ -56,11 +56,11 @@ import java.util.Map;
                 response.put("mensaje", "el cliente ID ".concat(id.toString().concat(" no existe en la base de datos")));
                 return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<Beca.DatosPersonales>(datosPersonales, HttpStatus.OK);
+            return new ResponseEntity<DatosPersonales>(datosPersonales, HttpStatus.OK);
         }
 
         @GetMapping
-        public List<Beca.DatosPersonales> listarDatosPersonales() {
+        public List<DatosPersonales> listarDatosPersonales() {
             return datosPersonalesService.getAllDatosPersonales();
         }
 

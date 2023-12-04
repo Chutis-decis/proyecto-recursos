@@ -22,7 +22,9 @@ public class Grupo {
     private Long id;
 
     private String nombre;
-
-    @Column(name = "activo")
     private boolean activo = true;
+
+    public Grupo(String nombre ) {
+        this.nombre = nombre;
+    }
 }

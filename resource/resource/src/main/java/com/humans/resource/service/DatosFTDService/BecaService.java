@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
 @Service
 public class BecaService {
+
     private final BecaRepository becaRepository;
 
     @Autowired
@@ -26,19 +31,15 @@ public class BecaService {
         return becaRepository.findById(id).orElse(null);
     }
 
-    public Beca createBeca(Beca beca) {
-        return becaRepository.save(beca);
-    }
-
-    public Beca updateBeca(Beca beca) {
+    public Beca saveBeca(Beca beca) {
         return becaRepository.save(beca);
     }
 
     public void deleteBeca(Long id) {
-        Beca beca = becaRepository.findById(id).orElse(null);
-        if (beca != null) {
-            beca.setActivo(false);
-            becaRepository.save(beca);
-        }
+        becaRepository.deleteById(id);
     }
+
+    // Additional methods as needed...
+
 }
+
