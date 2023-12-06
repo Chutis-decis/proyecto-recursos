@@ -1,29 +1,22 @@
 package com.humans.resource.entity.DatosFTD;
 
 
-import com.humans.resource.entity.DatosFTD.DatosFTD;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.util.List;
 
 @Data
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-
 @Entity
-@Table(name = "tutor")
-public class Tutor{
-    @Id
+@NoArgsConstructor
+@Table (name = "tutor")
+public class Tutor {
+
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String nombre;
+     private Long id;
 
-    @Column(name = "activo")
-    private boolean activo = true;
+     private String nombre;
+
 }

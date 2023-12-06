@@ -8,34 +8,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class TutorService {
 
     private final TutorRepository tutorRepository;
 
     @Autowired
-    public TutorService(TutorRepository tutorRepository) {
-        this.tutorRepository = tutorRepository;
-    }
+    public TutorService(TutorRepository tutorRepository)
+    { this.tutorRepository = tutorRepository;}
 
-    public List<Tutor> getAllTutors() {
-        return tutorRepository.findAll();
-    }
 
-    public Tutor getTutorById(Long id) {
-        return tutorRepository.findById(id).orElse(null);
-    }
+    public List<Tutor> getAlltutores()
+    { return tutorRepository.findAll();}
 
-    public Tutor saveTutor(Tutor tutor) {
-        return tutorRepository.save(tutor);
-    }
+    public Optional<Tutor> getTutorById( Long id)
+    {return tutorRepository.findById(id);}
 
-    public void deleteTutor(Long id) {
-        Tutor tutor = tutorRepository.findById(id).orElse(null);
-        if (tutor != null) {
-            tutor.setActivo(false);
-            tutorRepository.save(tutor);
-        }
-    }
+
+    public Tutor saveTutor( Tutor tutor )
+    {return tutorRepository.save(tutor);}
+
+
+    public void deleteTutor(Long id){
+        tutorRepository.deleteById(id);}
 }

@@ -1,14 +1,12 @@
 package com.humans.resource.entity.DatosFTD;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
 @Data
@@ -34,29 +32,25 @@ public class DatosFTD {
     @JoinColumn(name = "beca_id")
     private Beca beca; // Puede ser "No tiene", "Becas A", "Becas Bronce", "Becas Plata", "Desarrolladores del Bienestar"
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "curso_id")
+    private Curso curso;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "grupo_id")
+    private  Grupo grupo;
+
     @Temporal(TemporalType.DATE)
     private LocalDate fechaIngreso;
     @Temporal(TemporalType.DATE)
     private LocalDate fechaTermino;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "grupo_id")
-    private Grupo grupo;
 
     private String enlace;
     private String matriculaFTD; // En formato "aa-uu-gg-id"
     private String correoBecario;
     private String estatusTramite;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Curso cursos; // Puede contener múltiples cursos separados por comas
-
     @Column(name = "activo")
     private boolean activo = true;
-
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "datos_personales_id")
-    private DatosPersonales datosPersonales;
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping("/datosftd")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,50 +24,41 @@ public class DatosFTDController {
         this.datosFTDService = datosFTDService;
     }
 
-    // Create
-    @PostMapping
-    public ResponseEntity<DatosFTD> createDatosFTD(@RequestBody DatosFTD datosFTD) {
-        DatosFTD createdDatosFTD = datosFTDService.saveDatosFTD(datosFTD);
-        return new ResponseEntity<>(createdDatosFTD, HttpStatus.CREATED);
+    @GetMapping
+    public ResponseEntity<List<DatosFTD>> getAllDatosFTD() {
+        List<DatosFTD> datosFTDList = datosFTDService.getAllDatosFTD();
+        return new ResponseEntity<>(datosFTDList, HttpStatus.OK);
     }
 
-    // Read
     @GetMapping("/{id}")
     public ResponseEntity<DatosFTD> getDatosFTDById(@PathVariable Long id) {
-        Optional<DatosFTD> datosFTD = datosFTDService.getDatosFTDById(id);
-        return datosFTD.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+        Optional<DatosFTD> datosFTDOptional = datosFTDService.getDatosFTDById(id);
+        return datosFTDOptional.map(datosFTD -> new ResponseEntity<>(datosFTD, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
-    public ResponseEntity<List<DatosFTD>> getAllDatosFTD() {
-        List<DatosFTD> allDatosFTD = datosFTDService.getAllDatosFTD();
-        return new ResponseEntity<>(allDatosFTD, HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<DatosFTD> createDatosFTD(@RequestBody DatosFTD datosFTD) {
+        DatosFTD savedDatosFTD = datosFTDService.saveDatosFTD(datosFTD);
+        return new ResponseEntity<>(savedDatosFTD, HttpStatus.CREATED);
     }
 
-    // Update
     @PutMapping("/{id}")
     public ResponseEntity<DatosFTD> updateDatosFTD(@PathVariable Long id, @RequestBody DatosFTD datosFTD) {
-        Optional<DatosFTD> existingDatosFTD = datosFTDService.getDatosFTDById(id);
-        if (existingDatosFTD.isPresent()) {
-            datosFTD.setId(id);
-            DatosFTD updatedDatosFTD = datosFTDService.saveDatosFTD(datosFTD);
-            return new ResponseEntity<>(updatedDatosFTD, HttpStatus.OK);
-        } else {
+        if (!datosFTDService.getDatosFTDById(id).isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        datosFTD.setId(id);
+        DatosFTD updatedDatosFTD = datosFTDService.saveDatosFTD(datosFTD);
+        return new ResponseEntity<>(updatedDatosFTD, HttpStatus.OK);
     }
 
-    // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDatosFTD(@PathVariable Long id) {
-        Optional<DatosFTD> datosFTD = datosFTDService.getDatosFTDById(id);
-        if (datosFTD.isPresent()) {
-            datosFTDService.deleteDatosFTD(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
+        if (!datosFTDService.getDatosFTDById(id).isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        datosFTDService.deleteDatosFTD(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-

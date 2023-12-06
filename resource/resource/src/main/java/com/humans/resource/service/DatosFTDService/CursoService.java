@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class CursoService {
 
@@ -18,10 +17,6 @@ public class CursoService {
         this.cursoRepository = cursoRepository;
     }
 
-    public Curso saveCurso(Curso curso) {
-        return cursoRepository.save(curso);
-    }
-
     public List<Curso> getAllCursos() {
         return cursoRepository.findAll();
     }
@@ -30,13 +25,11 @@ public class CursoService {
         return cursoRepository.findById(id);
     }
 
-    public Curso updateCurso(Curso curso) {
+    public Curso saveCurso(Curso curso) {
         return cursoRepository.save(curso);
     }
 
-    public void deleteCursoById(Long id) {
+    public void deleteCurso(Long id) {
         cursoRepository.deleteById(id);
     }
-
 }
-

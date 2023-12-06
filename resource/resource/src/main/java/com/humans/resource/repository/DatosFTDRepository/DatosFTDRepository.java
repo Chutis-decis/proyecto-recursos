@@ -1,15 +1,14 @@
 package com.humans.resource.repository.DatosFTDRepository;
 
 import com.humans.resource.entity.DatosFTD.DatosFTD;
-import com.humans.resource.entity.DatosIngreso.DatosIngreso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
+
 
 public interface DatosFTDRepository extends JpaRepository<DatosFTD, Long> {
-    List<DatosFTD> findByActivo(boolean activo);
+    List<DatosFTD> findAllByActivoTrue();
 
-    List<DatosIngreso> findByActivoTrue();
-
-    List<DatosFTD> findByNombreProyecto(String nombreProyecto);
+    Optional<DatosFTD> findByIdAndActivoTrue(Long id);
 }

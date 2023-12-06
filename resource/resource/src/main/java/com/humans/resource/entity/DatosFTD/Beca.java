@@ -5,18 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
+@Data
 @Table(name = "beca")
 public class Beca {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
-    private String tipo;
-
-
-    public Beca(String tipo) {
-        this.tipo = tipo;
-    }
+    private String nombre;
 }

@@ -1,17 +1,12 @@
 package com.humans.resource.service.DatosFTDService;
 
 import com.humans.resource.entity.DatosFTD.Beca;
-
 import com.humans.resource.repository.DatosFTDRepository.BecaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BecaService {
@@ -27,8 +22,8 @@ public class BecaService {
         return becaRepository.findAll();
     }
 
-    public Beca getBecaById(Long id) {
-        return becaRepository.findById(id).orElse(null);
+    public Optional<Beca> getBecaById(Long id) {
+        return becaRepository.findById(id);
     }
 
     public Beca saveBeca(Beca beca) {
@@ -39,7 +34,4 @@ public class BecaService {
         becaRepository.deleteById(id);
     }
 
-    // Additional methods as needed...
-
 }
-
