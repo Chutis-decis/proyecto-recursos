@@ -1,5 +1,6 @@
 package com.humans.resource.entity.DatosFTD;
 
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -52,5 +53,9 @@ public class DatosFTD {
 
     @Column(name = "activo")
     private boolean activo = true;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "datos_personales_id")
+    private DatosPersonales datosPersonales;
 
 }
