@@ -5,8 +5,7 @@ import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modalidad',
-  templateUrl: './modalidad.component.html',
-  styleUrls: ['./modalidad.component.css']
+  templateUrl: './modalidad.component.html'
 })
 export class ModalidadComponent {
   /* Atributos */
@@ -44,8 +43,9 @@ export class ModalidadComponent {
     console.log(this.mod);
     this.ingresoService.createIngresoModalidad(this.mod).subscribe(
       res=> {
+      this.getModalida();
       this.route.navigate(['/datos-ingreso/modalidad']);
-      Swal.fire('Nuevo cliente', `Cliente creado con éxito`, 'success');
+      Swal.fire('Nuevo cliente', `Modalidad creada con éxito`, 'success');
       }
     );
   }

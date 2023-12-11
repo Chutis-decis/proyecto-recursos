@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
     @Entity
     @Data
-    @NoArgsConstructor
     @Table(name = "grupo")
     public class Grupo {
         @Id

@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tramite',
-  templateUrl: './tramite.component.html',
-  styleUrls: ['./tramite.component.css']
+  templateUrl: './tramite.component.html'
 })
 export class TramiteComponent {
   /* Atributos */
@@ -45,7 +44,11 @@ export class TramiteComponent {
   create():void{
     console.log(this.tra);
     this.ingresoService.createIngresoTramite(this.tra).subscribe(
-      res=> this.getTramite()
+      res=>{
+        this.getTramite();
+        this.route.navigate(['/datos-ingreso/tramite'])
+        Swal.fire('Agregaste un Tramite', `Tramite Agregado Correctamente`, 'success');
+      }
     );
     this.route.navigate(['/datos-ingreso/tramite'])
   }

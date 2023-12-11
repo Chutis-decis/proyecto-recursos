@@ -40,6 +40,7 @@ import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grup
 import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tutor/tutor.component';
 import { DatosEscolaresPipe } from './pipe/datos-escolares/datos-escolares.pipe';
 import { DatosIngresoPipe } from './pipe/datos-ingreso/datos-ingreso.pipe';
+import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cursos/cursos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { DatosIngresoPipe } from './pipe/datos-ingreso/datos-ingreso.pipe';
     TutorComponent,
     DatosEscolaresPipe,
     DatosIngresoPipe,
+    CursosComponent,
   ],
   imports: [
     BrowserModule,

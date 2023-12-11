@@ -41,7 +41,7 @@
         <div class="col-md-4 position-relative mt-4">
             <label for="beca" class="form-label">Beca</label>
             <select [compareWith]="compararBeca" class="form-select" id="beca" name="beca" [(ngModel)]="datosFTD.beca" #becas="ngModel" required="">
-                <option *ngFor="let beca of beca" [ngValue]="beca">{{beca.tipo}}</option>
+                <option *ngFor="let beca of beca" [ngValue]="beca">{{beca.nombre}}</option>
             </select>
             <div *ngIf="becas.invalid && (becas.dirty || becas.touched)" class="alert alert-danger">El Trámite es Requerido</div>
         </div>
@@ -88,14 +88,8 @@
         </div>
         <div class="col-md-2 position-relative mt-4">
             <label for="cursos" class="form-label">Cursos</label>
-            <select class="form-select" id="cursos" name="cursos" [(ngModel)]="datosFTD.cursos">
-                <option selected disabled value="">Elige una de las opciones</option>
-                <option value="Fundamentos de Java">Fundamentos de Java</option>
-                <option value="Frontend">Frontend</option>
-                <option value="Backend">Backend</option>
-                <option value="Infraestructura">Infraestructura</option>
-                <option value="Bases de Datos">Bases de Datos</option>
-                <option value="PHP">PHP</option>
+            <select [compareWith]="compararCurso" class="form-select" id="cursos" name="cursos" [(ngModel)]="datosFTD.cursos" #course="ngModel" required="">
+                <option *ngFor="let curso of curso" [ngValue]="curso">{{curso.nombre}}</option>
             </select>
         </div>
         <!-- boton -->

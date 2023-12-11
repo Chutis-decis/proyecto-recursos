@@ -1,5 +1,6 @@
 package com.humans.resource.entity.DatosFTD;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -11,7 +12,6 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@NoArgsConstructor
 @ToString
 @Table(name ="datos_ftd")
 public class DatosFTD {
@@ -25,19 +25,19 @@ public class DatosFTD {
     private String evaluacionProyecto; // Enlace al archivo de evaluación
     private String areaInfotec;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "tutor_id")
     private Tutor tutor;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "beca_id")
     private Beca beca; // Puede ser "No tiene", "Becas A", "Becas Bronce", "Becas Plata", "Desarrolladores del Bienestar"
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "curso_id")
     private Curso curso;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "grupo_id")
     private  Grupo grupo;
 

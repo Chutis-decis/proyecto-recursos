@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CPanel } from 'src/app/components/admin/CPanel';
 import { Beca } from 'src/app/FTD/Beca';
+import { Curso } from 'src/app/FTD/Curso';
 import { DatosFTD } from 'src/app/FTD/ftd';
 import { Grupo } from 'src/app/FTD/Grupo';
 import { Tutor } from 'src/app/FTD/Tutor';
@@ -20,6 +21,7 @@ export class RegistroDatosFtdComponent{
   beca: Beca[] = [];
   tutor: Tutor[] = [];
   grupo: Grupo[] = [];
+  curso: Curso[] = [];
   datosAspirante = new CPanel() ;
 
   /* Constructor */
@@ -42,10 +44,16 @@ export class RegistroDatosFtdComponent{
     this.datosFTDService.obtenerGrupo().subscribe(grupo => this.grupo = grupo);
   }
 
+  /* Obtener Curso */
+  obtenerCurso(): void{
+    this.datosFTDService.obtenerCurso().subscribe(curso => this.curso = curso);
+  }
+
   ngOnInit(): void {
     this.obtenerBeca();
     this.obtenerTutor();
     this.obtenerGrupo();
+    this.obtenerCurso();
     this.cargar();
   }
 
@@ -97,6 +105,10 @@ export class RegistroDatosFtdComponent{
   }
 
   compararGrupo(o1: Grupo, o2: Grupo): boolean{
+    return o1 === null || o2 === null ? false: o1.id === o2.id;
+  }
+
+  compararCurso(o1: Curso, o2: Curso): boolean{
     return o1 === null || o2 === null ? false: o1.id === o2.id;
   }
   

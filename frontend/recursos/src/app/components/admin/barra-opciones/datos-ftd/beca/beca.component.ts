@@ -24,10 +24,10 @@ export class BecaComponent {
   }
 
   cargar(): void{
-    this.activatedRouter.params.subscribe(e => {
-      let id = e['id'];
+    this.activatedRouter.params.subscribe(params => {
+      let id = params['id']
       if(id){
-        this.ftdService.getByIdBecas(id).subscribe(data => this.beca=data);
+        this.ftdService.getByIdBecas(id).subscribe((becas) => this.beca = becas)
       }
     });
   }
@@ -36,6 +36,7 @@ export class BecaComponent {
     console.log(this.beca);
     this.ftdService.createDatosFTDBecas(this.beca).subscribe(
       res=> {
+      this.getBecas();
       this.router.navigate(['/datos-ftd/becas']);
       Swal.fire('Nueva Beca', `Beca creada con éxito`, 'success');
       }
@@ -55,7 +56,7 @@ export class BecaComponent {
   delete(beca: Beca): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar la beca ${beca.tipo} ?`,
+      text: `¿Seguro que desea eliminar la beca ${beca.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar',
@@ -67,7 +68,7 @@ export class BecaComponent {
         this.ftdService.deletedDatosFTDBecas(beca).subscribe(
           res => {
             this.becas = this.becas.filter(b => b !== beca)
-            Swal.fire('Beca Eliminada', `Beca ${beca.tipo} eliminada con éxito`, 'success');
+            Swal.fire('Beca Eliminada', `Beca ${beca.nombre} eliminada con éxito`, 'success');
           }
         )
       }

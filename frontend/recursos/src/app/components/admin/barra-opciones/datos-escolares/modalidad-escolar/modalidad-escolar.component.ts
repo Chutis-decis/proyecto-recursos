@@ -45,6 +45,7 @@ export class ModalidadEscolarComponent {
     console.log(this.moda);
     this.serviceModalidadEscolar.create(this.moda).subscribe(
       res => {
+        this.getModalidad();
         this.route.navigate(['/datos-escolares/modalidad-escolar']);
         Swal.fire('Nueva Modalidad', `${res.nombre}`, 'success');
       }

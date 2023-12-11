@@ -52,7 +52,7 @@
                 <div class="col-7">{{mod.nombre}}</div>
 
                 <!-- Editar universidad -->
-                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" data-bs-toggle="modal" data-bs-target="#modal-modalidad">Editar</button>
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" data-bs-toggle="modal" [routerLink]="['/datos-escolares/modalidad-escolar', mod.id]"data-bs-target="#modal-modalidad">Editar</button>
 
                 <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="delete(mod)">Eliminar</button>
             </div>

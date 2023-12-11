@@ -29,6 +29,7 @@ import { BecaComponent } from './components/admin/barra-opciones/datos-ftd/beca/
 import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baja/ingreso-baja.component';
 import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grupo/grupo.component';
 import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tutor/tutor.component';
+import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cursos/cursos.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -62,6 +63,8 @@ const routes: Routes = [
   {path: 'datos-ftd/grupo/:id', component: GrupoComponent},
   {path: 'datos-ftd/tutor/:id', component: TutorComponent},
   {path: 'datos-ftd/tutor', component: TutorComponent},
+  {path: 'datos-ftd/cursos', component: CursosComponent},
+  {path: 'datos-ftd/cursos/:id', component: CursosComponent},
   {path: 'detalle-ingreso', component: WatchDatosIngresoComponent},
   {path: 'detalle-ftd', component: WatchDatosFtdComponent},
   {path: 'datos-escolares/universidad', component: UniversidadComponent},

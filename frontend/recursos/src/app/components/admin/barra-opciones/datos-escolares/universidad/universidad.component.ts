@@ -45,6 +45,7 @@ export class UniversidadComponent {
     console.log(this.uni);
     this.uniService.createUniversidad(this.uni).subscribe(
       create => {
+        this.getUniversidad();
         this.route.navigate(['/datos-escolares/universidad']);
         Swal.fire('Nueva Universidad', `${create.nombre}`, 'success');
       }

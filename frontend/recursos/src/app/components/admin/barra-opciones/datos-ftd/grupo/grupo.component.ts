@@ -18,6 +18,7 @@ export class GrupoComponent {
 
   ngOnInit(): void {
     this.getGrupo();
+    this.cargar();
   }
 
   /* Obtencion del grupo */
@@ -38,6 +39,7 @@ export class GrupoComponent {
     console.log(this.group);
     this.serviceGrupo.createDatosFTDGrupo(this.group).subscribe(
       res=> {
+        this.getGrupo();
         Swal.fire('Nuevo Grupo', `Grupo creado con éxito`, 'success');
       this.router.navigate(['/datos-ftd/grupo']);
       }
@@ -48,6 +50,7 @@ export class GrupoComponent {
     console.log(this.group);
     this.serviceGrupo.editarDatosFTDGrupo(this.group).subscribe(
       res=> {
+        Swal.fire('Grupo Actualizado', `Grupo actualizado con éxito`, 'success');
       this.router.navigate(['/datos-ftd/grupo']);
       }
     );

@@ -42,6 +42,7 @@ export class PlanEducativoComponent {
     console.log(this.plan);
     this.planService.postPlan(this.plan).subscribe(
       res=> {
+        this.getPlanEducativo();
         this.route.navigate(['/datos-escolares/plan-educativo'])
         Swal.fire('Nuevo Plan Educativo', `${res.nombre}`, 'success');
       }

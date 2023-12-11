@@ -5,8 +5,7 @@ import { FtdService } from 'src/app/service/ftd/ftd.service';
 
 @Component({
   selector: 'app-watch-datos-ftd',
-  templateUrl: './watch-datos-ftd.component.html',
-  styleUrls: ['./watch-datos-ftd.component.css']
+  templateUrl: './watch-datos-ftd.component.html'
 })
 export class WatchDatosFtdComponent {
   datosFTD: DatosFTD [] = [];

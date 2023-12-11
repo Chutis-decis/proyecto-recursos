@@ -1,5 +1,6 @@
 import { CPanel } from "../components/admin/CPanel";
 import { Beca } from "./Beca";
+import { Curso } from "./Curso";
 import { Grupo } from "./Grupo";
 import { Tutor } from "./Tutor";
 
@@ -18,7 +19,6 @@ export class DatosFTD{
     matriculaFTD: string;
     correoBecario: string;
     estatusTramite: string;
-    cursos: string;
+    cursos: Curso = new Curso();
     activo: boolean;
-    datosPersonales: CPanel = new CPanel();
 }

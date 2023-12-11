@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
     @Table(name = "curso")
     public class Curso {
         @Id

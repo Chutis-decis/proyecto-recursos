@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfilamiento',
-  templateUrl: './perfilamiento.component.html',
-  styleUrls: ['./perfilamiento.component.css']
+  templateUrl: './perfilamiento.component.html'
 })
 export class PerfilamientoComponent {
   perfilamiento: Perfilamiento[] = [];
@@ -42,8 +41,9 @@ export class PerfilamientoComponent {
     console.log(this.perf);
     this.ingresoService.createIngresoPerfilamiento(this.perf).subscribe(
       res=> {
+        this.getPerfilamiento();
         this.route.navigate(['/datos-ingreso/perfilamiento'])
-        Swal.fire('Agregaste un Perfilamiento', `${res.perfilamiento.nombrePerfilamiento}`, 'success');
+        Swal.fire('Agregaste un Perfilamiento', `Perfilamiento Agregado Correctamente`, 'success');
       }
     );
   }

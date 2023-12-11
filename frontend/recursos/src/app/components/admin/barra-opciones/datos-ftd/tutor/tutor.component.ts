@@ -36,6 +36,7 @@ export class TutorComponent {
     console.log(this.tutores);
     this.serviceTutor.createDatosFTDTutor(this.tutores).subscribe(
       res=> {
+        this.getTutor();
       Swal.fire('Nuevo Tutor', `Tutor creado con éxito`, 'success');
       this.route.navigate(['/datos-ftd/tutor']);
       }

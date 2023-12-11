@@ -81,4 +81,8 @@ export class BarraOpcionesComponent {
   tutor(){
     this.router.navigate(['/datos-ftd/tutor']);
   }
+
+  curso(){
+    this.router.navigate(['/datos-ftd/cursos']);
+  }
 }

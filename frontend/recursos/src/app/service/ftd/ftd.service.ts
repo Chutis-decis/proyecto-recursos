@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Beca } from 'src/app/FTD/Beca';
+import { Curso } from 'src/app/FTD/Curso';
 import { Grupo } from 'src/app/FTD/Grupo';
 import { Tutor } from 'src/app/FTD/Tutor';
 import { DatosFTD } from 'src/app/FTD/ftd';
@@ -22,8 +23,8 @@ export class FtdService {
   }
 
   /* Obtencion de un dato DatosFTD  */
-  getById(ftd: DatosFTD):Observable<DatosFTD>{
-    return this.httpClient.get<DatosFTD>(`${this.url}/${ftd.id}`);
+  getById(id: number):Observable<DatosFTD>{
+    return this.httpClient.get<DatosFTD>(`${this.url}/${id}`);
   }
 
   /* Creacion de un nuevo usuario (alumno) */
@@ -54,8 +55,8 @@ export class FtdService {
   }
 
   /* Obtencion de un dato DatosFTD  */
-  getByIdBecas(beca: Beca):Observable<Beca>{
-    return this.httpClient.get<Beca>(`${this.urlBecas}/${beca.id}`);
+  getByIdBecas(id: number):Observable<Beca>{
+    return this.httpClient.get<Beca>(`${this.urlBecas}/${id}`);
   }
 
   /* Creacion de un nuevo usuario (alumno) */
@@ -74,7 +75,7 @@ export class FtdService {
   }
   
   /* ***************************************************+++ TUTOR ****************************************** */
-  urlTutor = 'http://localhost:8081/api/tutors';
+  urlTutor = 'http://localhost:8081/tutor';
 
   /* Obtencion de todos los datos del tutor  */
   obtenerTutor():Observable<Tutor[]> {
@@ -82,8 +83,8 @@ export class FtdService {
   }
 
   /* Obtencio por id de los tutores */
-  getByIdTutor(tutor: Tutor):Observable<Tutor>{
-    return this.httpClient.get<Tutor>(`${this.urlTutor}/${tutor.id}`);
+  getByIdTutor(id:number):Observable<Tutor>{
+    return this.httpClient.get<Tutor>(`${this.urlTutor}/${id}`);
   }
 
   /* creacion de un nuevo tutor */
@@ -103,7 +104,7 @@ export class FtdService {
 
   /* ************************************************ GRUPO ********************************************* */
 
-  urlGrupo = 'http://localhost:8081/api/grupos';
+  urlGrupo = 'http://localhost:8081/grupos';
 
   /* Obtencion de todos los datos del grupo  */
   obtenerGrupo():Observable<Grupo[]> {
@@ -111,8 +112,8 @@ export class FtdService {
   }
 
   /* Obtencion de grupo por ID */
-  getByIdGrupo(grupo: Grupo):Observable<Grupo>{
-    return this.httpClient.get<Grupo>(`${this.urlGrupo}/${grupo.id}`);
+  getByIdGrupo(id: number):Observable<Grupo>{
+    return this.httpClient.get<Grupo>(`${this.urlGrupo}/${id}`);
   }
 
   /* Crear Grupo */
@@ -129,5 +130,32 @@ export class FtdService {
   deletedDatosFTDGrupo(grupo: Grupo):Observable<Grupo>{
     return this.httpClient.delete<Grupo>(`${this.urlGrupo}/${grupo.id}`);
   }
+  
+  /* ********************************************************* CRUSOS ********************************** */
+  urlCurso = 'http://localhost:8081/cursos';
 
+  /* Obtencion de todos los datos del grupo  */
+  obtenerCurso():Observable<Curso[]> {
+    return this.httpClient.get<Curso[]>(`${this.urlCurso}`);  
+  }
+
+  /* Obtencion de grupo por ID */
+  getByIdCurso(id: number):Observable<Curso>{
+    return this.httpClient.get<Curso>(`${this.urlCurso}/${id}`);
+  }
+
+  /* Crear Grupo */
+  createDatosFTDCurso(curso: Curso):Observable<any>{
+    return this.httpClient.post<any>(`${this.urlCurso}`, curso);
+  }
+
+  /* Actualizar Grupo */
+  editarDatosFTDCurso(curso: Curso): Observable<Object>{
+    return this.httpClient.put<Curso>(`${this.urlCurso}/${curso.id}`, curso);
+  }
+
+  /* Eliminar Grupo */
+  deletedDatosFTDCurso(curso: Curso):Observable<Curso>{
+    return this.httpClient.delete<Curso>(`${this.urlCurso}/${curso.id}`);
+  }
 }

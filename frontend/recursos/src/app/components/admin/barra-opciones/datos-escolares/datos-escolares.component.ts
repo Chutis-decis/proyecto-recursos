@@ -6,8 +6,7 @@ import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 
 @Component({
   selector: 'app-datos-escolares',
-  templateUrl: './datos-escolares.component.html',
-  styleUrls: ['./datos-escolares.component.css']
+  templateUrl: './datos-escolares.component.html'
 })
 export class DatosEscolaresComponent {
   /* Atributos */
