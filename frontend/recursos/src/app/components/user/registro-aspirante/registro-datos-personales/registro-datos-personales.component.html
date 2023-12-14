@@ -37,23 +37,11 @@
         <div class="col-md-3 position-relative mt-4">
             <label for="periodo" class="form-label">Periodo</label>
             <div>
-                <select class="form-select" id="periodo" name="periodo" [(ngModel)]="escolares.periodo" #periodo="ngModel" required>
-                    <option selected disabled value="">Elige una de las opciones</option>
-                    <option value="Primero">1ro</option>
-                    <option value="Segundo">2do</option>
-                    <option value="Tercero">3ro</option>
-                    <option value="Cuarto">4to</option>
-                    <option value="Quinto">5to</option>
-                    <option value="Sexto">6to</option>
-                    <option value="Septimo">7mo</option>
-                    <option value="Octavo">8vo</option>
-                    <option value="Noveno">9no</option>
-                    <option value="Decimo">10mo</option>
-                    <option value="Onceavo">11vo</option>
-                    <option value="Doceavo">12vo</option>
-                    <option>Otra</option>
+                <select [compareWith]="compararPeriodo" class="form-select" id="periodo" name="periodo" [(ngModel)]="escolares.periodo" #peri="ngModel" required>
+                    <option *ngFor="let periodo of periodo" [ngValue]="periodo">
+                        {{periodo.nombre}}
+                    </option>
                 </select>
-                <div *ngIf="periodo.invalid && (periodo.dirty || periodo.touched)" class="alert alert-danger">El Periodo Escolar es Requerido</div>
             </div>
         </div>
         <div class="col-md-3 position-relative mt-4">

@@ -41,6 +41,10 @@ import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tuto
 import { DatosEscolaresPipe } from './pipe/datos-escolares/datos-escolares.pipe';
 import { DatosIngresoPipe } from './pipe/datos-ingreso/datos-ingreso.pipe';
 import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cursos/cursos.component';
+import { LoginAlumnoComponent } from './components/alumno/login-alumno/login-alumno.component';
+import { BarraAlumnoComponent } from './components/alumno/barra-alumno/barra-alumno.component';
+import { PanelAlumnoComponent } from './components/alumno/panel-alumno/panel-alumno.component';
+import { PeriodoComponent } from './components/admin/barra-opciones/datos-escolares/periodo/periodo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +83,10 @@ import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cur
     DatosEscolaresPipe,
     DatosIngresoPipe,
     CursosComponent,
+    LoginAlumnoComponent,
+    BarraAlumnoComponent,
+    PanelAlumnoComponent,
+    PeriodoComponent,
   ],
   imports: [
     BrowserModule,

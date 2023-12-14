@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
+import { Periodo } from 'src/app/datos_escolares/Periodo';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
+import { PeriodoService } from 'src/app/service/escolar/periodo.service';
 import { PlanEducativoService } from 'src/app/service/escolar/plan-educativo.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 import Swal from 'sweetalert2';
@@ -23,9 +25,11 @@ export class RegistroDatosPersonalesComponent {
   planes: planEducativo = new planEducativo();
   universidad: Universidad[];
   universidades: Universidad = new Universidad();
+  periodo: Periodo[];
+  periodos: Periodo = new Periodo();
 
   /* Constructor */
-  constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute, private univerSe: UniversidadService, private modEscService: ModalidadService, private planService: PlanEducativoService) { }
+  constructor(private ecolarService: EscolaresService, private route: Router, private activateRouter: ActivatedRoute, private univerSe: UniversidadService, private modEscService: ModalidadService, private planService: PlanEducativoService, private periodoService: PeriodoService) { }
 
   getAll():void{
     this.ecolarService.obtenerEscolar().subscribe(
@@ -49,12 +53,18 @@ export class RegistroDatosPersonalesComponent {
       this.universidad = university)
   }
 
+  getPeriodo(): void{
+    this.periodoService.getPeriodo().subscribe(periodo =>
+      this.periodo = periodo)
+  }
+
   
   ngOnInit(): void {
     this.cargar();
     this.getPlanEducativo();
     this.getModalidadEscolar();
     this.getUniversidad();
+    this.getPeriodo();
   }
 
   /* Cargar los datos escolares */
@@ -104,5 +114,12 @@ export class RegistroDatosPersonalesComponent {
       return true;
     }
     return uni1 === null || uni2 === null || uni1 === undefined || uni2 === undefined ? false : uni1.id === uni2.id;
+  }
+
+  compararPeriodo(per1: Periodo, per2: Periodo): boolean{
+    if(per1 === undefined && per2 === undefined){
+      return true;
+    }
+    return per1 === null || per2 === null || per1 === undefined || per2 === undefined ? false : per1.id === per2.id;
   }
 }

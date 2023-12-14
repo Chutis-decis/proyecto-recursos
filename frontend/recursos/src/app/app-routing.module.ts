@@ -30,6 +30,9 @@ import { IngresoBajaComponent } from './components/admin/panel-admin/ingreso-baj
 import { GrupoComponent } from './components/admin/barra-opciones/datos-ftd/grupo/grupo.component';
 import { TutorComponent } from './components/admin/barra-opciones/datos-ftd/tutor/tutor.component';
 import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cursos/cursos.component';
+import { LoginAlumnoComponent } from './components/alumno/login-alumno/login-alumno.component';
+import { PanelAlumnoComponent } from './components/alumno/panel-alumno/panel-alumno.component';
+import { PeriodoComponent } from './components/admin/barra-opciones/datos-escolares/periodo/periodo.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -38,6 +41,8 @@ const routes: Routes = [
   {path: 'crear', component: RegistroAspiranteComponent},
   {path: 'ayuda', component:AyudaComponent},
   {path: 'login', component:LoginComponent },
+  {path: "login-alumno", component: LoginAlumnoComponent},
+  {path: "panel-alumno", component: PanelAlumnoComponent},
   {path: "admin", component: PanelAdminComponent},
   {path: 'detalles', component: WatchComponent},
   {path: 'detalle-escolares', component: WatchDatosEscolaresComponent},
@@ -81,6 +86,8 @@ const routes: Routes = [
   {path: 'datos-ingreso/modalidad/:id', component: ModalidadComponent},
   {path: 'datos-ingreso/modalidad/:id', component: BecaComponent},
   {path: 'datos-ingreso/modalidad/', component: BecaComponent},
+  {path: 'datos-escolares/periodo', component: PeriodoComponent},
+  {path: 'datos-escolares/periodo/:id', component: PeriodoComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

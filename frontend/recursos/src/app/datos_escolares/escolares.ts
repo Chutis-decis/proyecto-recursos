@@ -1,4 +1,5 @@
 import { modalidadEscolar } from "./ModalidadEscolar";
+import { Periodo } from "./Periodo";
 import { planEducativo } from "./planEducativo";
 import { Universidad } from "./Universidad"
 
@@ -10,7 +11,7 @@ export class DatosEscolares{
     matriculaEscolar: string;
     modalidadEscolar: modalidadEscolar = new modalidadEscolar();
     planesEducativos: planEducativo = new planEducativo();
-    periodo: string;
+    periodo: Periodo = new Periodo();
     activo: boolean;
     datosPersonales: number;
 }

@@ -38,7 +38,9 @@ public class DatosEscolares {
     @JoinColumn(name = "plan_educativo_id")
     private PlanEducativo planesEducativos;
 
-    private String periodo;
+    @ManyToOne
+    @JoinColumn(name = "periodo_id")
+    private Periodo periodo;
 
     @Column(name = "activo")
     private boolean activo = true;

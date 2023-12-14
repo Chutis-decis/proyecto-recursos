@@ -85,4 +85,8 @@ export class BarraOpcionesComponent {
   curso(){
     this.router.navigate(['/datos-ftd/cursos']);
   }
+
+  periodo(){
+    this.router.navigate(['/datos-escolares/periodo']);
+  }
 }

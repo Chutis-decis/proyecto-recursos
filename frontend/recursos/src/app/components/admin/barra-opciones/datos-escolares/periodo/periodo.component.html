@@ -1,0 +1,62 @@
+<app-navv></app-navv>
+
+<!-- Barra de Opciones -->
+<app-barra-opciones></app-barra-opciones>
+
+<div class="mt-3 container-lg">
+    <!-- Titiulo -->
+    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Periodo</h1>
+
+    <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-plan" *ngIf="!periodo.id else elseBlock">Agregar Periodo</button>
+    <ng-template #elseBlock>
+        <button type="button" class="btn btn-danger btn-sm border-0 text-white me-1 mt-3" data-bs-toggle="modal" data-bs-target="#modal-plan">Editar</button>
+    </ng-template>
+    <!-- Modal del boton agregar plan -->
+    <div class="modal fade" id="modal-plan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Periodos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre del Periodo</label>
+                    <input type="text" class="form-control" placeholder="Nombre del Periodo" id="plan-educativo" name="plan-educativo" [(ngModel)]="periodo.nombre">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary border-0" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="create()" *ngIf="!periodo.id else elseBloc">Guardar</button>
+                <ng-template #elseBloc>
+                    <button type="button" class="btn btn-primary border-0" data-bs-dismiss="modal" (click)="update()">Actualizar</button>
+                </ng-template>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Listar Universidad -->
+    <div class="mt-4">
+        <div class="row btn-primary text-white text-center">
+            <div class="col-1">ID</div>
+            <div class="col-7">Nombre de la Universidad</div>
+            <div class="col-2">Editar</div>
+            <div class="col-2">Eliminar</div>
+        </div>
+    </div>
+    <table class="table table-striped mt-3">
+        <tbody *ngFor="let periodo of periodos">
+            <div class="row text-center">
+                <div class="col-1">{{periodo.id}}</div>
+                <div class="col-7">{{periodo.nombre}}</div>
+
+                <!-- Editar planEducativo -->
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" [routerLink]="['/datos-escolares/periodo', periodo.id]" data-bs-toggle="modal" data-bs-target="#modal-plan">Editar</button>
+
+                
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="delete(periodo)">Eliminar</button>
+            </div>
+        </tbody>
+    </table>
+</div>

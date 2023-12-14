@@ -18,4 +18,8 @@ export class PrincipalComponent {
   login() {
     this.route.navigate(['/login']);
   }
+
+  loginAlumno() {
+    this.route.navigate(['/login-alumno']);
+  }
 }
