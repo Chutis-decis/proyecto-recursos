@@ -6,7 +6,9 @@ import { Curso } from 'src/app/FTD/Curso';
 import { DatosFTD } from 'src/app/FTD/ftd';
 import { Grupo } from 'src/app/FTD/Grupo';
 import { Tutor } from 'src/app/FTD/Tutor';
+import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
+import { MatriculaService } from 'src/app/service/matricula/matricula.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -25,7 +27,7 @@ export class RegistroDatosFtdComponent{
   datosAspirante = new CPanel() ;
 
   /* Constructor */
-  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute) { } 
+  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService) { } 
 
   /* Obtener Beca */
   obtenerBeca(): void{
@@ -80,7 +82,7 @@ export class RegistroDatosFtdComponent{
   crear(): void{
     console.log(this.datosFTD);
     this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(ftd => { 
-      this.router.navigate(['/login'])
+      this.router.navigate(['/datos-ftd'])
       Swal.fire('Nuevo Dato de Ingreso', `Datos Ftd del proyecto: ${this.datosFTD.nombreProyecto} creado con exito!!!`, 'success');
     }, 
     err => {
@@ -110,6 +112,14 @@ export class RegistroDatosFtdComponent{
 
   compararCurso(o1: Curso, o2: Curso): boolean{
     return o1 === null || o2 === null ? false: o1.id === o2.id;
+  }
+
+
+  /* Generacion automatica de la matricula ftd */
+
+  generarMatricula(){
+    const year = new Date(this.matriculaService.fechaIngreso).getFullYear();
+    this.datosFTD.matriculaFTD = `${year}-${this.matriculaService.idUniversidad}-${this.matriculaService.idGrupo}-${this.matriculaService.idControlAlumno}`;
   }
   
 }

@@ -47,13 +47,13 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let univ of universidad">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="univ.activo == true">
                 <div class="col-1">{{univ.id}}</div>
                 <div class="col-7">{{univ.nombre}}</div>
 
                 <!-- Editar universidad -->
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" data-bs-toggle="modal" data-bs-target="#modal-universidad"[routerLink]="['/datos-escolares/universidad', univ.id]">Editar</button>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deleteUni(univ)">Eliminar</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="deleteUni(univ)">Dar de Baja</button>
             </div>
         </tbody>
     </table>

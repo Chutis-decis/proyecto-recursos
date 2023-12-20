@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grupo } from 'src/app/FTD/Grupo';
 import { FtdService } from 'src/app/service/ftd/ftd.service';
+import { MatriculaService } from 'src/app/service/matricula/matricula.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +15,7 @@ export class GrupoComponent {
   group = new Grupo();
 
 
-  constructor(private serviceGrupo: FtdService, private router: Router, private activatedRouter: ActivatedRoute) { }
+  constructor(private serviceGrupo: FtdService, private router: Router, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
 
   ngOnInit(): void {
     this.getGrupo();
@@ -81,4 +82,8 @@ export class GrupoComponent {
     });
   }
 
+
+  actualizarIdGrupo() {
+    this.matriculaService.idGrupo = this.group.id.toString();
+  }
 }

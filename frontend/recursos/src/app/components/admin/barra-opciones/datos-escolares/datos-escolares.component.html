@@ -17,7 +17,7 @@
             <div class="col-3">Carrera</div>
             <div class="col-2">Modalidad Escolar</div>
             <div class="col">Editar</div>
-            <div class="col">Eliminar</div>
+            <div class="col">Dar de Baja</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -28,7 +28,7 @@
                 <div class="col-3">{{escolares.carrera}}</div>
                 <div class="col-2">{{escolares.modalidadEscolar.nombre}}</div>
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-1" [routerLink]="['/registro-datos-escolares', escolares.id]">Editar</button>
-                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col mt-1" (click) ="deleteEstudiante(escolares.id)">Dar de Baja</button>
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col mt-1" (click)="delete(escolares)">Dar de Baja</button>
             </div>
         </tbody>
     </table>

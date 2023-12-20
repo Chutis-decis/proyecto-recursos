@@ -4,6 +4,7 @@ import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
+import { MatriculaService } from 'src/app/service/matricula/matricula.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-universidad',
@@ -16,7 +17,7 @@ export class UniversidadComponent {
 
   escolarUni: DatosEscolares = new DatosEscolares();
   /* Constructor */
-  constructor(private uniService: UniversidadService, private  route: Router, private escService: EscolaresService, private activatedRouter: ActivatedRoute) { }
+  constructor(private uniService: UniversidadService, private  route: Router, private escService: EscolaresService, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
 
   /* Inicializacion */
   ngOnInit(): void {
@@ -84,5 +85,9 @@ export class UniversidadComponent {
       },
       err => console.log('Error al actualizar los datos de universidad')
     );
+  }
+
+  actualizarUniversidad() {
+    this.matriculaService.idUniversidad = this.uni.id.toString();
   }
 }

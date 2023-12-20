@@ -3,6 +3,7 @@ import { CPanel } from '../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MatriculaService } from 'src/app/service/matricula/matricula.service';
 @Component({
   selector: 'app-panel-admin',
   templateUrl: './panel-admin.component.html',
@@ -18,7 +19,7 @@ export class PanelAdminComponent implements OnInit {
 
 
   /* Constructor */
-  constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute) {this.rout = rout; }
+  constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) {this.rout = rout; }
   
   /* Metodos para el crud */
   ngOnInit(): void {
@@ -100,5 +101,9 @@ export class PanelAdminComponent implements OnInit {
   /* Registrar datos FTD */
   registrarDatosFTD(): void{
     this.rout.navigate(['/registro-datos-ftd']);
+  }
+
+  actualizarIdControl() {
+    this.matriculaService.idControlAlumno = this.estudiante.id.toString();
   }
 }

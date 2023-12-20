@@ -36,7 +36,7 @@ export class EscolaresBajaComponent {
   ativar(escolar: DatosEscolares): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que deseas activar al alumno ${escolar.datosPersonales}?`,
+      text: `¿Seguro que deseas activar al alumno con el ID: ${escolar.id} y la carrera de ${escolar.carrera}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, activar',
@@ -49,7 +49,7 @@ export class EscolaresBajaComponent {
         this.escolarService.activated(escolar).subscribe(
           res => {
             this.escolares = this.escolares.filter(b => b !== escolar)
-            Swal.fire('Alumno Activado', `Alumno ${escolar.datosPersonales} activado con éxito`, 'success');
+            Swal.fire('Alumno Activado', `Alumno con el id ${escolar.id} y con la carrera de ${escolar.carrera} activado con éxito`, 'success');
           }
         )
       }

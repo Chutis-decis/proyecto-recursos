@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
+import Swal from 'sweetalert2';
+import { CPanel } from '../../CPanel';
 
 @Component({
   selector: 'app-datos-escolares',
@@ -48,11 +50,27 @@ export class DatosEscolaresComponent {
   }
 
   /* Eliminacion de los datos escolares */
-  deleteEstudiante(id: number): void{
-    this.serviceEstudiante.deleted(id).subscribe(data => {
-      console.log("Alumno eliminado", data);
-      this.getEscolar();
-    });
+  delete(escolar: DatosEscolares): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que deseas desactivar al alumno con el id: ${escolar.id} y la carrera de: ${escolar.carrera}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, desactivar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        escolar.activo = true;
+        this.serviceEstudiante.deleted(escolar).subscribe(
+          res => {
+            this.escolares = this.escolares.filter(b => b !== escolar)
+            Swal.fire('Alumno Activado', `Carrea ${escolar.carrera} desactivado con éxito`, 'success');
+          }
+        )
+      }
+    })
   }
 
   obtenerEscolares(): void{

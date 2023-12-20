@@ -1,1 +1,30 @@
-<p>barra-alumno works!</p>
+<div class="mt-4 container">
+    <!-- Barra de Opciones -->
+    <div class="btn-group w-100 mt-5" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary border-0">Reporte de Asistencia</button>
+        <button type="button" class="btn btn-secondary border-0" type="file">Reporte de Actividades</button>
+        <a href="ruta/a/tu/archivo.pdf" target="_blank" class="btn btn-secondary border-0">Reporte de Actividades</a>
+        <button type="button" class="btn btn-secondary border-0" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Firma</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Firma</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas #signaturePad class="colum"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary border" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary border-0"
+                            (click)="saveSignature()">Guardar</button>
+                        <button type="button" class="btn btn-primary border-0"
+                            (click)="clearSignature()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

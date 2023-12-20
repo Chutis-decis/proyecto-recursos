@@ -38,8 +38,8 @@ export class EscolaresService {
   } 
 
   /* Eliminar */
-  deleted(id: number):Observable<DatosEscolares>{
-    return this.httpClient.delete<DatosEscolares>(`${this.url}/${id}`);
+  deleted(datos:DatosEscolares):Observable<DatosEscolares>{
+    return this.httpClient.delete<DatosEscolares>(`${this.url}/${datos.id}`);
   }
 
   activated(datos:DatosEscolares):Observable<DatosEscolares>{
