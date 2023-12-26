@@ -33,6 +33,17 @@ import { CursosComponent } from './components/admin/barra-opciones/datos-ftd/cur
 import { LoginAlumnoComponent } from './components/alumno/login-alumno/login-alumno.component';
 import { PanelAlumnoComponent } from './components/alumno/panel-alumno/panel-alumno.component';
 import { PeriodoComponent } from './components/admin/barra-opciones/datos-escolares/periodo/periodo.component';
+import { UnuversidadBajaComponent } from './components/admin/panel-admin/escolares-baja/unuversidad-baja/unuversidad-baja.component';
+import { ModalidadEscolarBajaComponent } from './components/admin/panel-admin/escolares-baja/modalidad-escolar-baja/modalidad-escolar-baja.component';
+import { PlanEducativoBajaComponent } from './components/admin/panel-admin/escolares-baja/plan-educativo-baja/plan-educativo-baja.component';
+import { PeriodoBajaComponent } from './components/admin/panel-admin/escolares-baja/periodo-baja/periodo-baja.component';
+import { PerfilamientoBajaComponent } from './components/admin/panel-admin/ingreso-baja/perfilamiento-baja/perfilamiento-baja.component';
+import { TramiteBajaComponent } from './components/admin/panel-admin/ingreso-baja/tramite-baja/tramite-baja.component';
+import { ModalidadBajaComponent } from './components/admin/panel-admin/ingreso-baja/modalidad-baja/modalidad-baja.component';
+import { BecaBajaComponent } from './components/admin/panel-admin/ftd-baja/beca-baja/beca-baja.component';
+import { GrupoBajaComponent } from './components/admin/panel-admin/ftd-baja/grupo-baja/grupo-baja.component';
+import { TutorBajaComponent } from './components/admin/panel-admin/ftd-baja/tutor-baja/tutor-baja.component';
+import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curso-baja/curso-baja.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -88,6 +99,18 @@ const routes: Routes = [
   {path: 'datos-ingreso/modalidad/', component: BecaComponent},
   {path: 'datos-escolares/periodo', component: PeriodoComponent},
   {path: 'datos-escolares/periodo/:id', component: PeriodoComponent},
+  {path: 'baja-universidad', component: UnuversidadBajaComponent},
+  {path: 'baja-universidad/:id', component: UnuversidadBajaComponent},
+  {path: 'baja-modalidad-escolar', component: ModalidadEscolarBajaComponent},
+  {path: 'baja-plan-educativo', component: PlanEducativoBajaComponent},
+  {path: 'baja-periodo', component: PeriodoBajaComponent},
+  {path: 'baja-perfilamiento', component: PerfilamientoBajaComponent},
+  {path: 'baja-tramite', component: TramiteBajaComponent},
+  {path: 'baja-modalidad', component: ModalidadBajaComponent},
+  {path: 'baja-beca', component: BecaBajaComponent},
+  {path: 'baja-grupo', component: GrupoBajaComponent},
+  {path: 'baja-tutor', component: TutorBajaComponent},
+  {path: 'baja-curso', component: CursoBajaComponent},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

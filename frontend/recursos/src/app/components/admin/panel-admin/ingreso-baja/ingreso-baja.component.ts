@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingreso-baja',
-  templateUrl: './ingreso-baja.component.html',
-  styleUrls: ['./ingreso-baja.component.css']
+  templateUrl: './ingreso-baja.component.html'
 })
 export class IngresoBajaComponent {
   /* Atributos y Objetos */

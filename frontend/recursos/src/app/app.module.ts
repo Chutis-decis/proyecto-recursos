@@ -45,6 +45,17 @@ import { LoginAlumnoComponent } from './components/alumno/login-alumno/login-alu
 import { BarraAlumnoComponent } from './components/alumno/barra-alumno/barra-alumno.component';
 import { PanelAlumnoComponent } from './components/alumno/panel-alumno/panel-alumno.component';
 import { PeriodoComponent } from './components/admin/barra-opciones/datos-escolares/periodo/periodo.component';
+import { UnuversidadBajaComponent } from './components/admin/panel-admin/escolares-baja/unuversidad-baja/unuversidad-baja.component';
+import { ModalidadEscolarBajaComponent } from './components/admin/panel-admin/escolares-baja/modalidad-escolar-baja/modalidad-escolar-baja.component';
+import { PlanEducativoBajaComponent } from './components/admin/panel-admin/escolares-baja/plan-educativo-baja/plan-educativo-baja.component';
+import { PeriodoBajaComponent } from './components/admin/panel-admin/escolares-baja/periodo-baja/periodo-baja.component';
+import { PerfilamientoBajaComponent } from './components/admin/panel-admin/ingreso-baja/perfilamiento-baja/perfilamiento-baja.component';
+import { TramiteBajaComponent } from './components/admin/panel-admin/ingreso-baja/tramite-baja/tramite-baja.component';
+import { ModalidadBajaComponent } from './components/admin/panel-admin/ingreso-baja/modalidad-baja/modalidad-baja.component';
+import { BecaBajaComponent } from './components/admin/panel-admin/ftd-baja/beca-baja/beca-baja.component';
+import { GrupoBajaComponent } from './components/admin/panel-admin/ftd-baja/grupo-baja/grupo-baja.component';
+import { TutorBajaComponent } from './components/admin/panel-admin/ftd-baja/tutor-baja/tutor-baja.component';
+import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curso-baja/curso-baja.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +98,17 @@ import { PeriodoComponent } from './components/admin/barra-opciones/datos-escola
     BarraAlumnoComponent,
     PanelAlumnoComponent,
     PeriodoComponent,
+    UnuversidadBajaComponent,
+    ModalidadEscolarBajaComponent,
+    PlanEducativoBajaComponent,
+    PeriodoBajaComponent,
+    PerfilamientoBajaComponent,
+    TramiteBajaComponent,
+    ModalidadBajaComponent,
+    BecaBajaComponent,
+    GrupoBajaComponent,
+    TutorBajaComponent,
+    CursoBajaComponent,
   ],
   imports: [
     BrowserModule,

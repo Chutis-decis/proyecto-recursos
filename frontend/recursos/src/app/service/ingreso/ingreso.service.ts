@@ -78,7 +78,9 @@ export class IngresoService {
     return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/${modalidad.id}`);
   }
 
-
+  activatedModalidad(modalidad: Modalidad):Observable<Modalidad>{
+    return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/recuperacion/${modalidad.id}`);
+  }
   /* ************************************************ PERFILAMIENTO ************************************* */
   urlPerfilamiento = 'http://localhost:8081/perfilamiento';
 
@@ -107,6 +109,9 @@ export class IngresoService {
     return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/${perfilamiento.id}`);
   }
 
+  activatedPerfilamiento(perfilamiento: Perfilamiento):Observable<Perfilamiento>{
+    return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/recuperacion/${perfilamiento.id}`);
+  }
   /* ************************************************ TRAMITE ***************************************** */
   urlTramite = 'http://localhost:8081/tramites';
 
@@ -133,5 +138,9 @@ export class IngresoService {
   /* Eliminar tramite */
   eliminarTramite(tramite: Tramite):Observable<Tramite>{
     return this.httpClient.delete<Tramite>(`${this.urlTramite}/${tramite.id}`);
+  }
+
+  activatedTramite(tramite: Tramite):Observable<Tramite>{
+    return this.httpClient.delete<Tramite>(`${this.urlTramite}/recuperacion/${tramite.id}`);
   }
 }

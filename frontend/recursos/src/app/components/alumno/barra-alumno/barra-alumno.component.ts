@@ -25,15 +25,14 @@ export class BarraAlumnoComponent implements AfterViewInit {
   }
 
   saveSignature() {
-    // Obtener la imagen de la firma en formato base64
-    const signatureImage = this.signaturePad.toDataURL();
-    console.log(signatureImage);
+    const firmaDataUrl = this.signaturePad.toDataURL("image/svg+xml");
 
-    // Aquí puedes realizar acciones adicionales, como enviar la imagen a un servidor, etc.
-    const doc = new jsPDF();
+    // Crear un nuevo documento PDF
+    const pdf = new jsPDF();
+    pdf.text('', 10, 10);
+    pdf.addImage(firmaDataUrl, 'PNG', 10, 20, 100, 50); // Ajusta el tamaño y la posición según tus necesidades
     
-    doc.addImage(signatureImage, 'PNG', 70, 10, 100, 70);
-
-    doc.save('firma.pdf');
+    // Guardar el PDF o mostrar en una nueva ventana
+    pdf.save('documento_con_firma.pdf');
   }
 }

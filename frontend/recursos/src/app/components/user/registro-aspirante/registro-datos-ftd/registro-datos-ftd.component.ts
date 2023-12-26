@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CPanel } from 'src/app/components/admin/CPanel';
+import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { Beca } from 'src/app/FTD/Beca';
 import { Curso } from 'src/app/FTD/Curso';
 import { DatosFTD } from 'src/app/FTD/ftd';
@@ -22,8 +23,10 @@ export class RegistroDatosFtdComponent{
   Ftd: DatosFTD[];
   beca: Beca[] = [];
   tutor: Tutor[] = [];
-  grupo: Grupo[] = [];
+  grupo: Grupo = new Grupo();
   curso: Curso[] = [];
+  group: Grupo[] = [];
+  universidad: Universidad = new Universidad();
   datosAspirante = new CPanel() ;
 
   /* Constructor */
@@ -43,7 +46,7 @@ export class RegistroDatosFtdComponent{
 
   /* Obtener Grupo */
   obtenerGrupo(): void{
-    this.datosFTDService.obtenerGrupo().subscribe(grupo => this.grupo = grupo);
+    this.datosFTDService.obtenerGrupo().subscribe(grupo => this.group = grupo);
   }
 
   /* Obtener Curso */
@@ -118,8 +121,7 @@ export class RegistroDatosFtdComponent{
   /* Generacion automatica de la matricula ftd */
 
   generarMatricula(){
-    const year = new Date(this.matriculaService.fechaIngreso).getFullYear();
-    this.datosFTD.matriculaFTD = `${year}-${this.matriculaService.idUniversidad}-${this.matriculaService.idGrupo}-${this.matriculaService.idControlAlumno}`;
+    this.datosFTD.matriculaFTD =this.datosFTD.id + this.universidad.id.toString() + this.grupo.id + this.datosAspirante.id;
   }
   
 }

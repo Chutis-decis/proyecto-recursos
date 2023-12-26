@@ -54,6 +54,8 @@ export class FtdService {
     return this.httpClient.get<Beca[]>(`${this.urlBecas}`);  
   }
 
+  
+
   /* Obtencion de un dato DatosFTD  */
   getByIdBecas(id: number):Observable<Beca>{
     return this.httpClient.get<Beca>(`${this.urlBecas}/${id}`);
@@ -74,6 +76,10 @@ export class FtdService {
     return this.httpClient.delete<Beca>(`${this.urlBecas}/${beca.id}`);
   }
   
+
+  activarDatosFTDBecas(beca: Beca): Observable<Beca>{
+    return this.httpClient.delete<Beca>(`${this.urlBecas}/recuperacion/${beca.id}`);
+  }
   /* ***************************************************+++ TUTOR ****************************************** */
   urlTutor = 'http://localhost:8081/tutor';
 
@@ -100,6 +106,10 @@ export class FtdService {
   /* Eliminar tutor */
   deletedDatosFTDTutor(tutor: Tutor):Observable<Tutor>{
     return this.httpClient.delete<Tutor>(`${this.urlTutor}/${tutor.id}`);
+  }
+
+  activarDatosFTDTutor(tutor: Tutor): Observable<Tutor>{
+    return this.httpClient.delete<Tutor>(`${this.urlTutor}/recuperacion/${tutor.id}`);
   }
 
   /* ************************************************ GRUPO ********************************************* */
@@ -130,7 +140,9 @@ export class FtdService {
   deletedDatosFTDGrupo(grupo: Grupo):Observable<Grupo>{
     return this.httpClient.delete<Grupo>(`${this.urlGrupo}/${grupo.id}`);
   }
-  
+  activatedDatosFTDGrupo(grupo: Grupo): Observable<Grupo>{
+    return this.httpClient.delete<Grupo>(`${this.urlGrupo}/recuperacion/${grupo.id}`);
+  }
   /* ********************************************************* CRUSOS ********************************** */
   urlCurso = 'http://localhost:8081/cursos';
 
@@ -157,5 +169,9 @@ export class FtdService {
   /* Eliminar Grupo */
   deletedDatosFTDCurso(curso: Curso):Observable<Curso>{
     return this.httpClient.delete<Curso>(`${this.urlCurso}/${curso.id}`);
+  }
+
+  activatedDatosFTDCurso(curso: Curso): Observable<Curso>{
+    return this.httpClient.delete<Curso>(`${this.urlCurso}/recuperacion/${curso.id}`);
   }
 }

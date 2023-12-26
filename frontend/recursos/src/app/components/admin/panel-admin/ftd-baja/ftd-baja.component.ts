@@ -5,8 +5,7 @@ import { FtdService } from 'src/app/service/ftd/ftd.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-ftd-baja',
-  templateUrl: './ftd-baja.component.html',
-  styleUrls: ['./ftd-baja.component.css']
+  templateUrl: './ftd-baja.component.html'
 })
 export class FtdBajaComponent {
   ftd = new DatosFTD();

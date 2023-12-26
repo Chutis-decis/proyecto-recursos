@@ -34,4 +34,8 @@ export class ModalidadService {
   getModalidadById(id: number): Observable<modalidadEscolar>{
     return this.httpClient.get<modalidadEscolar>(`${this.url}/${id}`);
   }
+
+  actvatedModalidad(modalidad: modalidadEscolar): Observable<modalidadEscolar>{
+    return this.httpClient.delete<modalidadEscolar>(`${this.url}/recuperacion/${modalidad.id}`);
+  }
 }
