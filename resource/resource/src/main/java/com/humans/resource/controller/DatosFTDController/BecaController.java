@@ -68,12 +68,18 @@ public class BecaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBeca(@PathVariable Long id) {
-        if (!becaService.getBecaById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> deleteTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            becaService.deleteBeca(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        becaService.deleteBeca(id);
-        return ResponseEntity.noContent().build();
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

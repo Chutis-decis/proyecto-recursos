@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosFTDService;
 
 import com.humans.resource.entity.DatosFTD.Curso;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosFTDRepository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,12 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    public void deleteCurso(Long id) {
-        cursoRepository.deleteById(id);
+
+    public void eliminarCurso (Long id) {
+        Curso curso  = cursoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        curso.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        cursoRepository.save(curso);
     }
 }

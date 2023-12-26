@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosEscolaresService;
 
 import com.humans.resource.entity.DatosEscolares.ModalidadEscolar;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosEscolaresRepository.ModalidadEscolarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,13 @@ public class ModalidadEscolarService {
     }
     public ModalidadEscolar getModalidadEscolarById(Long id){
         return modalidadEscolarRepository.findById(id).orElse(null);
+    }
+
+    public void eliminarModalidadEscolar (Long id) {
+        ModalidadEscolar modalidadEscolar = modalidadEscolarRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        modalidadEscolar.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        modalidadEscolarRepository.save(modalidadEscolar);
     }
 }

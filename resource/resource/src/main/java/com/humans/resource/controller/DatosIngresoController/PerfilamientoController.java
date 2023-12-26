@@ -66,14 +66,20 @@ public class PerfilamientoController {
         }
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarPerfilamiento(@PathVariable Long id) {
-        Perfilamiento existente = perfilamientoService.buscarPorId(id);
-        if (existente != null) {
-            perfilamientoService.eliminarPerfilamiento(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> eliminarPerfilamiento(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            perfilamientoService.deletePerfilamiento(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

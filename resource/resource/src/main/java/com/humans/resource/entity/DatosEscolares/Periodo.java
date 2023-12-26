@@ -13,4 +13,7 @@ public class Periodo {
 
     private Long id;
     private String nombre;
+
+    private boolean activo;
+
 }

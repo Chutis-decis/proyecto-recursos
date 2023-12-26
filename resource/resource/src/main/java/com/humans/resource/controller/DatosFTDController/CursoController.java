@@ -3,11 +3,14 @@ package com.humans.resource.controller.DatosFTDController;
 import com.humans.resource.entity.DatosFTD.Curso;
 import com.humans.resource.service.DatosFTDService.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -58,11 +61,18 @@ public class CursoController {
 
     // Delete a curso
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCurso(@PathVariable Long id) {
-        if (!cursoService.getCursoById(id).isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> deleteTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            cursoService.eliminarCurso(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        cursoService.deleteCurso(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
 @Service
 public class TramiteService {
 
@@ -19,29 +17,35 @@ public class TramiteService {
         this.tramiteRepository = tramiteRepository;
     }
 
-    // Service methods for Tramite entity
-
     public List<Tramite> getAllTramites() {
-        return tramiteRepository.findAll();
+        return tramiteRepository.findByActivoTrue();
     }
 
     public Tramite getTramiteById(Long id) {
-        return tramiteRepository.findById(id).orElse(null);
+        return tramiteRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite with ID " + id + " not found"));
     }
 
     public Tramite createTramite(Tramite tramite) {
+        tramite.setActivo(true);
         return tramiteRepository.save(tramite);
     }
+
     public Tramite updateTramite(Long id, Tramite tramite) {
-        if (tramiteRepository.existsById(id)) {
+        if (tramiteRepository.existsByIdAndActivoTrue(id)) {
             tramite.setId(id);
+            tramite.setActivo(true);  // Marcar como activo durante la actualización
             return tramiteRepository.save(tramite);
         } else {
             throw new ResourceNotFoundException("Tramite with ID " + id + " not found");
         }
     }
+
     public void deleteTramite(Long id) {
-        tramiteRepository.deleteById(id);
+        Tramite tramite = tramiteRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite with ID " + id + " not found"));
+
+        tramite.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        tramiteRepository.save(tramite);
     }
 }
-

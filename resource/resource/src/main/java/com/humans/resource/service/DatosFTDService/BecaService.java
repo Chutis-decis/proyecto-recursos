@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosFTDService;
 
 import com.humans.resource.entity.DatosFTD.Beca;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosFTDRepository.BecaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,11 @@ public class BecaService {
         return becaRepository.save(beca);
     }
 
-    public void deleteBeca(Long id) {
-        becaRepository.deleteById(id);
-    }
+    public void deleteBeca (Long id) {
+        Beca beca = becaRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
 
+        beca.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        becaRepository.save(beca);
+    }
 }

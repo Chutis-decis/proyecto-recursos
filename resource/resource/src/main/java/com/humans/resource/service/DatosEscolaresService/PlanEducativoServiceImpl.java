@@ -47,4 +47,3 @@ public class PlanEducativoServiceImpl implements PlanEducativoService {
         return planEducativoRepository.findAll();
     }
 }
-

@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosFTDService;
 
 import com.humans.resource.entity.DatosFTD.Grupo;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosFTDRepository.GrupoRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,10 @@ public class GrupoService {
     }
 
     public void deleteGrupo(Long id) {
-        grupoRepository.deleteById(id);
+        Grupo grupo = grupoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        grupo.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        grupoRepository.save(grupo);
     }
-
 }
-

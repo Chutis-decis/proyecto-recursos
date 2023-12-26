@@ -57,16 +57,26 @@ import java.util.Optional;
             return tramiteService.createTramite(tramite);
         }
 
-        // Create endpoint for updating an existing Tramite
+
         @PutMapping("/{id}")
         public Tramite updateTramite(@PathVariable Long id, @RequestBody Tramite tramite) {
             return tramiteService.updateTramite(id, tramite);
         }
 
-        // Create endpoint for deleting a Tramite by ID
-        @DeleteMapping("/{id}")
-        public void deleteTramite(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
             tramiteService.deleteTramite(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+}
 

@@ -14,5 +14,7 @@ import lombok.NoArgsConstructor;
         @Column(name = "nombre")
         private String nombre;
 
+
+        private boolean activo;
     }
 

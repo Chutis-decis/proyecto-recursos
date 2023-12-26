@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosIngresoService;
 
 import com.humans.resource.entity.DatosIngreso.Perfilamiento;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosIngresooRepository.PerfilamientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,16 @@ public class PerfilamientoService {
         return perfilamientoRepository.save(perfilamiento);
     }
 
-    public void eliminarPerfilamiento(Long id) {
-        perfilamientoRepository.deleteById(id);
+    public void deletePerfilamiento (Long id) {
+        Perfilamiento perfilamiento = perfilamientoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        perfilamiento.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        perfilamientoRepository.save(perfilamiento);
     }
 
     public Perfilamiento buscarPorId(Long id) {
         return perfilamientoRepository.findById(id).orElse(null);
     }
 }
+

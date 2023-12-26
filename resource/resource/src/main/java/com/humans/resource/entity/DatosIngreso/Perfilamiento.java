@@ -13,4 +13,6 @@ public class Perfilamiento {
     private Long id;
     private String nombrePerfilamiento;
 
+    private boolean activo;
+
 }

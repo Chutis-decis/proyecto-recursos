@@ -17,4 +17,7 @@ public class ModalidadEscolar {
     private Long id;
 
     private String nombre;
+
+    private boolean activo;
+
 }

@@ -2,6 +2,7 @@ package com.humans.resource.service.DatosIngresoService;
 
 
 import com.humans.resource.entity.DatosIngreso.Modalidad;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosIngresooRepository.ModalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,14 +43,11 @@ public class ModalidadService {
         return null; // O manejar el caso donde la entidad con el ID no existe
     }
 
-    // DELETE - Eliminar una Modalidad por ID
-    public boolean deleteModalidad(Long id) {
-        if (modalidadRepository.existsById(id)) {
-            modalidadRepository.deleteById(id);
-            return true;
-        }
-        return false; // O manejar el caso donde la entidad con el ID no existe
-    }
+    public void deleteModalidad(Long id) {
+        Modalidad modalidad = modalidadRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
 
-    // Otras operaciones personalizadas según sea necesario
+        modalidad.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        modalidadRepository.save(modalidad);
+    }
 }

@@ -34,11 +34,6 @@ public class UniversidadController {
         return universidadService.updateUniversity(id, universidad);
     }
 
-    @DeleteMapping ("/{id}")
-    public void deleteuniversidad(@PathVariable Long id) {
-        universidadService.deleteUniversity(id);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
         Universidad universidad = null;
@@ -59,5 +54,22 @@ public class UniversidadController {
         }
 
         return new ResponseEntity<Universidad>(universidad, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            universidadService.EliminarUniversidad(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

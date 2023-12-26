@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosFTDService;
 
 import com.humans.resource.entity.DatosFTD.Tutor;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosFTDRepository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,14 @@ public class TutorService {
     public Tutor saveTutor( Tutor tutor )
     {return tutorRepository.save(tutor);}
 
+    public void deleteTutor (Long id) {
+        Tutor tutor = tutorRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
 
-    public void deleteTutor(Long id){
-        tutorRepository.deleteById(id);}
+        tutor.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        tutorRepository.save(tutor);
+    }
 }
+
+
+

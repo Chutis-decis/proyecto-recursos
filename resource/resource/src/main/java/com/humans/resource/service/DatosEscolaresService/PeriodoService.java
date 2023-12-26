@@ -1,6 +1,7 @@
 package com.humans.resource.service.DatosEscolaresService;
 
 import com.humans.resource.entity.DatosEscolares.Periodo;
+import com.humans.resource.error.ResourceNotFoundException;
 import com.humans.resource.repository.DatosEscolaresRepository.PeriodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +21,6 @@ public class PeriodoService {
         return periodoRepository.save(periodo);
     }
 
-    public void deletePeriodo(Long id){
-        periodoRepository.deleteById(id);
-    }
 
     public Periodo updatePeriodo(Long id, Periodo periodo) {
         Periodo existingPeriodo = periodoRepository.findById(id).orElse(null);
@@ -38,5 +36,15 @@ public class PeriodoService {
         // Actualiza otros campos según sea necesario
 
         return periodoRepository.save(existingPeriodo);
+    }
+
+
+
+    public void deletePeriodo (Long id) {
+        Periodo periodo = periodoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        periodo.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
+        periodoRepository.save(periodo);
     }
 }
