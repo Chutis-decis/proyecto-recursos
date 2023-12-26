@@ -57,7 +57,7 @@
             <label class="form-label">Grupo</label>
             <div>
                 <select [compareWith]="compararGrupo" class="form-select" id="grupo" name="grupo"  [(ngModel)]="datosFTD.grupo" #grupos="ngModel" required="">
-                    <option *ngFor="let grupo of grupo" [ngValue]="grupo">{{grupo.nombre}}</option>
+                    <option *ngFor="let grupo of group" [ngValue]="grupo">{{grupo.nombre}}</option>
                 </select>
             </div>
         </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="col-md-3 mt-4">
             <label class="form-label">Matricula FTD</label>
-            <input type="text" class="form-control" placeholder="Matricula FTD" id="matriculaFTD" name="matriculaFTD" [(ngModel)]="datosFTD.matriculaFTD" (click)="generarMatricula()">
+            <input type="text" class="form-control" placeholder="Matricula FTD" id="matriculaFTD" name="matriculaFTD" [(ngModel)]="datosFTD.matriculaFTD" (input)="generarMatricula()">
         </div>
         <div class="col-md-4 mt-4">
             <label class="form-label">Correo Becario</label>

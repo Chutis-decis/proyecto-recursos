@@ -7,7 +7,6 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-escolares-baja',
   templateUrl: './escolares-baja.component.html',
-  styleUrls: ['./escolares-baja.component.css']
 })
 export class EscolaresBajaComponent {
   escolares: DatosEscolares[] = [];

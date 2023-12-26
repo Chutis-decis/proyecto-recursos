@@ -35,4 +35,8 @@ export class PlanEducativoService {
   getPlanById(id: number): Observable<planEducativo>{
     return this.httpClient.get<planEducativo>(`${this.url}/${id}`);
   }
+
+  activatedPlan(plan: planEducativo): Observable<planEducativo>{
+    return this.httpClient.delete<planEducativo>(`${this.url}/recuperacion/${plan.id}`);
+  }
 }

@@ -1,0 +1,33 @@
+<app-navv></app-navv>
+
+<!-- Barra de Opciones -->
+<app-barra-opciones></app-barra-opciones>
+
+
+<div class="mt-3 container-lg">
+    <!-- Titiulo -->
+    <h1 class="mt-5 font-weight-bold mb-4 text-center col-title">Plan Educativo</h1>
+
+    <div class="mt-4">
+        <div class="row btn-primary text-white text-center">
+            <div class="col-1">ID</div>
+            <div class="col-7">Nombre de la Universidad</div>
+            <div class="col-2">Eliminar</div>
+            <div class="col-2">Mover</div>
+        </div>
+    </div>
+    <table class="table table-striped mt-3">
+        <tbody *ngFor="let plan of planEducativo">
+            <div class="row text-center">
+                <div class="col-1">{{plan.id}}</div>
+                <div class="col-7">{{plan.nombre}}</div>
+    
+                <!-- Editar planEducativo -->
+                <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1">Eliminar</button>
+    
+                
+                <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1" (click)="delete(plan)">Mover</button>
+            </div>
+        </tbody>
+    </table>
+</div>

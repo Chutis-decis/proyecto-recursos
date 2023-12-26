@@ -17,7 +17,7 @@ export class UniversidadComponent {
 
   escolarUni: DatosEscolares = new DatosEscolares();
   /* Constructor */
-  constructor(private uniService: UniversidadService, private  route: Router, private escService: EscolaresService, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
+  constructor(private uniService: UniversidadService, private  route: Router, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
 
   /* Inicializacion */
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class UniversidadComponent {
   deleteUni(university: Universidad): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar la universidad ${university.nombre} ?`,
+      text: `¿Seguro que desea mover la universidad ${university.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar',
@@ -69,7 +69,7 @@ export class UniversidadComponent {
         this.uniService.deleteUniversidad(university).subscribe(
           res => {
             this.universidad = this.universidad.filter(b => b !== university)
-            Swal.fire('Univiersidad Eliminada', `Universidad ${university.nombre} eliminada con éxito`, 'success');
+            Swal.fire('Univiersidad Movida', `Universidad ${university.nombre} movida con éxito`, 'success');
           }
         )
       }

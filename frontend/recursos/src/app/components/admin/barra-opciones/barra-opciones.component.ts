@@ -89,4 +89,47 @@ export class BarraOpcionesComponent {
   periodo(){
     this.router.navigate(['/datos-escolares/periodo']);
   }
+
+  baja_universidad(){
+    this.router.navigate(['/baja-universidad']);
+  }
+  baja_modalidad_escolar(){
+    this.router.navigate(['/baja-modalidad-escolar']);
+  }
+
+  baja_plan_educativo(){
+    this.router.navigate(['/baja-plan-educativo']);
+  }
+
+  baja_periodo(){
+    this.router.navigate(['/baja-periodo']);
+  }
+
+  baja_perfilamiento(){
+    this.router.navigate(['/baja-perfilamiento']);
+  }
+
+  baja_tramite(){
+    this.router.navigate(['/baja-tramite']);
+  }
+
+  baja_modalidad(){
+    this.router.navigate(['/baja-modalidad']);
+  }
+
+  baja_beca(){
+    this.router.navigate(['/baja-beca']);
+  }
+
+  baja_grupo(){
+    this.router.navigate(['/baja-grupo']);
+  }
+
+  baja_tutor(){
+    this.router.navigate(['/baja-tutor']);
+  }
+
+  baja_curso(){
+    this.router.navigate(['/baja-curso']);
+  }
 }
