@@ -68,12 +68,11 @@ public class DatosFTD {
 
     @PrePersist
     public void generateMatricula() {
-        // Generate matricula based on initials, current year, and a random 4-digit number
-        String initials = "INF"; // Replace with actual school initials
+        // Generate matricula
+        String initials = "INF";
         String year = String.valueOf(LocalDate.now().getYear());
         String random4DigitNumber = String.format("%04d", new Random().nextInt(10000));
 
-        // Concatenate the parts to form the matricula
         this.matriculaFTD = initials + "-" + year + "-" + random4DigitNumber;
     }
 }
