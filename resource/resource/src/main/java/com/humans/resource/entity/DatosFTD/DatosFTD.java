@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.Random;
+import java.util.UUID;
 
 
 @Entity
@@ -39,7 +41,7 @@ public class DatosFTD {
 
     @ManyToOne
     @JoinColumn(name = "grupo_id")
-    private  Grupo grupo;
+    private Grupo grupo;
 
     @Temporal(TemporalType.DATE)
     private LocalDate fechaIngreso;
@@ -47,7 +49,10 @@ public class DatosFTD {
     private LocalDate fechaTermino;
 
     private String enlace;
-    private String matriculaFTD; // En formato "aa-uu-gg-id"
+
+    @Column(unique = true)
+    private String matriculaFTD;
+
     private String correoBecario;
     private String estatusTramite;
 
@@ -58,4 +63,18 @@ public class DatosFTD {
     @JoinColumn(name = "datos_personales_id")
     private DatosPersonales datosPersonales;
 
+    public DatosFTD() {
+    }
+
+    @PrePersist
+    public void generateMatricula() {
+        // Generate matricula based on initials, current year, and a random 4-digit number
+        String initials = "INF"; // Replace with actual school initials
+        String year = String.valueOf(LocalDate.now().getYear());
+        String random4DigitNumber = String.format("%04d", new Random().nextInt(10000));
+
+        // Concatenate the parts to form the matricula
+        this.matriculaFTD = initials + "-" + year + "-" + random4DigitNumber;
+    }
 }
+
