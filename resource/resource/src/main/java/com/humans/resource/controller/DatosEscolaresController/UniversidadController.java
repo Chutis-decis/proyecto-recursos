@@ -58,7 +58,7 @@ public class UniversidadController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTramite(@PathVariable Long id) {
+    public ResponseEntity<?> deleteUniversidad(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
 
         try {
