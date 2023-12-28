@@ -34,6 +34,18 @@ public class PerfilamientoService {
         perfilamientoRepository.save(perfilamiento);
     }
 
+    public void activatePerfilamiento(Long id) {
+        Perfilamiento perfilamiento = perfilamientoRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        perfilamiento.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        perfilamientoRepository.save(perfilamiento);
+    }
+
+    public void eliminarPerfilamiento(Long id) {
+        perfilamientoRepository.deleteById(id);
+    }
+
     public Perfilamiento buscarPorId(Long id) {
         return perfilamientoRepository.findById(id).orElse(null);
     }

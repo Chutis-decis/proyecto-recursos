@@ -108,4 +108,34 @@ public class ModalidadController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activateModalidad(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            modalidadService.activateModalidad(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Recuperación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity <?> eliminarModalidad(@PathVariable Long id) {
+        Map<String, Object>response = new HashMap<>();
+        try{
+            modalidadService.eliminarModalidad(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al eliminar el tramite");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("mensaje", "Tramite eliminado con exito");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }

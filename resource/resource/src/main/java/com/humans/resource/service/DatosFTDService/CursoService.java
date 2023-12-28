@@ -38,4 +38,19 @@ public class CursoService {
         curso.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         cursoRepository.save(curso);
     }
+
+    public void activateCurso(Long id) {
+        Curso curso = cursoRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        curso.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        cursoRepository.save(curso);
+    }
+
+    public void deleteCurso(Long id) {
+        Curso curso = cursoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        cursoRepository.delete(curso);
+    }
 }

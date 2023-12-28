@@ -60,10 +60,10 @@ export class GrupoComponent {
   delete(group: Grupo): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar el grupo ${group.nombre}?`,
+      text: `¿Seguro que desea mover el grupo ${group.nombre}?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
+      confirmButtonText: 'Sí, mover',
       cancelButtonText: 'No, cancelar',
       reverseButtons: true
     }).then((result) => {
@@ -72,8 +72,8 @@ export class GrupoComponent {
           response => {
             this.grupo = this.grupo.filter(servi => servi !== group)
             Swal.fire(
-              'Grupo Eliminado',
-              `Grupo ${group.nombre} eliminado con éxito`,
+              'Grupo Movido',
+              `Grupo ${group.nombre} movido con éxito`,
               'success'
             )
           }

@@ -17,7 +17,7 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let tra of tramite">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="tra.activo == false">
                 <div class="col-1">{{tra.id}}</div>
                 <div class="col-7">{{tra.nombreTramite}}</div>
 

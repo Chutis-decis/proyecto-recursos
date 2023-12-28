@@ -13,4 +13,8 @@ public interface UniversidadRepository extends JpaRepository<Universidad, Long> 
     Optional<Universidad> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Universidad> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

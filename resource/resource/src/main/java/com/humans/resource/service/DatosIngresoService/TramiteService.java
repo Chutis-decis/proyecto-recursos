@@ -48,4 +48,16 @@ public class TramiteService {
         tramite.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         tramiteRepository.save(tramite);
     }
+
+    public void activateTramite(Long id) {
+        Tramite tramite = tramiteRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite with ID " + id + " not found"));
+
+        tramite.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        tramiteRepository.save(tramite);
+    }
+    //Eliminación fisica
+    public void eliminarTramite(Long id) {
+        tramiteRepository.deleteById(id);
+    }
 }

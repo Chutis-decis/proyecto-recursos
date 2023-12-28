@@ -13,4 +13,8 @@ public interface TramiteRepository extends JpaRepository<Tramite,Long> {
     Optional<Tramite> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Tramite> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

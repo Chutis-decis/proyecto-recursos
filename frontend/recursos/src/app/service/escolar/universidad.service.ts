@@ -39,4 +39,8 @@ export class UniversidadService {
   activatedUniversidad(universidad: Universidad): Observable<Universidad>{
     return this.httpClient.delete<Universidad>(`${this.url}/recuperacion/${universidad.id}`);
   }
+
+  eliminarUniversidad(universidad: Universidad): Observable<Universidad>{ 
+    return this.httpClient.delete<Universidad>(`${this.url}/delete/${universidad.id}`);
+  }
 }

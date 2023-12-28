@@ -80,6 +80,10 @@ export class FtdService {
   activarDatosFTDBecas(beca: Beca): Observable<Beca>{
     return this.httpClient.delete<Beca>(`${this.urlBecas}/recuperacion/${beca.id}`);
   }
+
+  eliminarDatosFTDBecas(beca: Beca): Observable<Beca>{
+    return this.httpClient.delete<Beca>(`${this.urlBecas}/eliminar/${beca.id}`);
+  }
   /* ***************************************************+++ TUTOR ****************************************** */
   urlTutor = 'http://localhost:8081/tutor';
 
@@ -110,6 +114,10 @@ export class FtdService {
 
   activarDatosFTDTutor(tutor: Tutor): Observable<Tutor>{
     return this.httpClient.delete<Tutor>(`${this.urlTutor}/recuperacion/${tutor.id}`);
+  }
+
+  eliminacionLogicaDatosFTDTutor(tutor: Tutor): Observable<Tutor>{
+    return this.httpClient.delete<Tutor>(`${this.urlTutor}/eliminar/${tutor.id}`);
   }
 
   /* ************************************************ GRUPO ********************************************* */
@@ -143,6 +151,10 @@ export class FtdService {
   activatedDatosFTDGrupo(grupo: Grupo): Observable<Grupo>{
     return this.httpClient.delete<Grupo>(`${this.urlGrupo}/recuperacion/${grupo.id}`);
   }
+
+  eliminarDatosFTDGrupo(grupo: Grupo): Observable<Grupo>{
+    return this.httpClient.delete<Grupo>(`${this.urlGrupo}/eliminar/${grupo.id}`);
+  }
   /* ********************************************************* CRUSOS ********************************** */
   urlCurso = 'http://localhost:8081/cursos';
 
@@ -173,5 +185,9 @@ export class FtdService {
 
   activatedDatosFTDCurso(curso: Curso): Observable<Curso>{
     return this.httpClient.delete<Curso>(`${this.urlCurso}/recuperacion/${curso.id}`);
+  }
+
+  eliminarDatosFTDCurso(curso: Curso): Observable<Curso>{
+    return this.httpClient.delete<Curso>(`${this.urlCurso}/eliminar/${curso.id}`);
   }
 }

@@ -49,4 +49,16 @@ public class UniversidadService {
         universidad.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         universityRepository.save(universidad);
     }
+
+    public void activateUniversity(Long id) {
+        Universidad universidad = universityRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        universidad.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        universityRepository.save(universidad);
+    }
+
+    public void eliminarUniversity(Long id) {
+        universityRepository.deleteById(id);
+    }
 }

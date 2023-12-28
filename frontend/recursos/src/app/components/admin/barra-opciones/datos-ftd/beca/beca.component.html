@@ -48,12 +48,12 @@
                 <div class="col-1">ID</div>
                 <div class="col-7">Nombre del Tipo de Beca</div>
                 <div class="col-2">Editar</div>
-                <div class="col-2">Eliminar</div>
+                <div class="col-2">Dar de Baja</div>
             </div>
         </div>
         <table class="table table-striped mt-3">
             <tbody *ngFor="let beca of becas">
-                <div class="row text-center">
+                <div class="row text-center" *ngIf="beca.activo == true">
                     <div class="col-1">{{beca.id}}</div>
                     <div class="col-7">{{beca.nombre}}</div>
 
@@ -61,7 +61,7 @@
                     <button type="button" class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" data-bs-toggle="modal" data-bs-target="#modal-beca" [routerLink]="['/datos-ftd/becas', beca.id]">Editar</button>
 
                     <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1"
-                        (click)="delete(beca)">Eliminar</button>
+                        (click)="delete(beca)">Dar de Baja</button>
                 </div>
             </tbody>
         </table>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'pdf-lib';
 import { Modalidad } from 'src/app/modalidad';
 import { IngresoService } from 'src/app/service/ingreso/ingreso.service';
 import Swal from 'sweetalert2';
@@ -53,10 +54,10 @@ export class ModalidadComponent {
   deleteModalidad(modalidad:Modalidad): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar la modalidad ${modalidad.nombre} ?`,
+      text: `¿Seguro que desea dar de baja la modalidad ${modalidad.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, darla de baja',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -65,7 +66,9 @@ export class ModalidadComponent {
         this.ingresoService.eliminarModalidad(modalidad).subscribe(
           res => {
             this.modalidad = this.modalidad.filter(b => b !== modalidad)
-            Swal.fire('Modalidad Eliminada', `Modalidad ${modalidad.nombre} eliminada con éxito`, 'success');
+            Swal.fire('Modalidad Dada de Baja', `Modalidad ${modalidad.nombre} dada de baja con éxito`, 'success');
+          }, error  => {
+            Swal.fire('Error', `Modalidad ${modalidad.nombre} no dada de baja`, 'error');
           }
         )
       }

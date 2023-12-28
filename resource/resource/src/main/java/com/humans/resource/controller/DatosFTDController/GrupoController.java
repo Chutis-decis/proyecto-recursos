@@ -69,6 +69,38 @@ public class GrupoController {
         response.put("mensaje", "Eliminación lógica exitosa");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activateGrupo(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            grupoService.activateGrupo(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarGrupo(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            grupoService.eliminarGrupo(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }
 
 

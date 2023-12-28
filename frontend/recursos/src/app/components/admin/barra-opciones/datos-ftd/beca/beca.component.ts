@@ -56,10 +56,10 @@ export class BecaComponent {
   delete(beca: Beca): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar la beca ${beca.nombre} ?`,
+      text: `¿Seguro que desea mover la beca ${beca.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, mover',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -68,7 +68,7 @@ export class BecaComponent {
         this.ftdService.deletedDatosFTDBecas(beca).subscribe(
           res => {
             this.becas = this.becas.filter(b => b !== beca)
-            Swal.fire('Beca Eliminada', `Beca ${beca.nombre} eliminada con éxito`, 'success');
+            Swal.fire('Beca Movida', `Beca ${beca.nombre} movida con éxito`, 'success');
           }
         )
       }

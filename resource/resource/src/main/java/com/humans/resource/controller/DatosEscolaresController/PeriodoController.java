@@ -108,4 +108,34 @@ public class PeriodoController {
         response.put("mensaje", "El periodo ha sido eliminado con exito!!!");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activiatedPeriodo (@PathVariable Long id){
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            periodoService.activatePeriodo(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al delete la bases de datos");
+            response.put("error",e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "El periodo ha sido eliminado con exito!!!");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity <?> eliminarPeriodo(@PathVariable Long id) {
+        Map<String, Object>response = new HashMap<>();
+        try{
+            periodoService.eliminarPeriodo(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al eliminar el periodo");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("mensaje", "Periodo eliminado con exito");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }

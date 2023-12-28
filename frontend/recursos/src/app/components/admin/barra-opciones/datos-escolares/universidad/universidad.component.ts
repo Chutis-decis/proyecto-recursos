@@ -60,7 +60,7 @@ export class UniversidadComponent {
       text: `¿Seguro que desea mover la universidad ${university.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, dar de baja',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'

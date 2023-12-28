@@ -31,7 +31,7 @@ export class TramiteBajaComponent {
       text: `¿Seguro que desea mover el trámite ${tramite.nombreTramite} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, mover',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'

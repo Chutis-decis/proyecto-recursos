@@ -59,7 +59,7 @@ export class TutorComponent {
       text: `¿Seguro que desea dar de baja al tutor ${tutores.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, dar de baja',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -68,7 +68,7 @@ export class TutorComponent {
         this.serviceTutor.deletedDatosFTDTutor(tutores).subscribe(
           res => {
             this.tutor = this.tutor.filter(b => b !== tutores)
-            Swal.fire('Tutor Eliminado', `Tutor ${tutores.nombre} eliminado con éxito`, 'success');
+            Swal.fire('Tutor Dado de Baja', `Tutor ${tutores.nombre} dado de baja  con éxito`, 'success');
           }
         )
       }

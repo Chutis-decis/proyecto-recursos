@@ -45,4 +45,12 @@ public class ModalidadEscolarService {
         modalidadEscolar.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         modalidadEscolarRepository.save(modalidadEscolar);
     }
+
+    public void activateModalidadEscolar(Long id) {
+        ModalidadEscolar modalidadEscolar = modalidadEscolarRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("modalidad escolar Con ID " + id + " no Existe"));
+
+        modalidadEscolar.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        modalidadEscolarRepository.save(modalidadEscolar);
+    }
 }

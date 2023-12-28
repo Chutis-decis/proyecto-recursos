@@ -14,4 +14,8 @@ public interface PeriodoRepository extends JpaRepository <Periodo, Long> {
 
     boolean existsByIdAndActivoTrue(Long id);
 
+    Optional<Periodo> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
+
 }

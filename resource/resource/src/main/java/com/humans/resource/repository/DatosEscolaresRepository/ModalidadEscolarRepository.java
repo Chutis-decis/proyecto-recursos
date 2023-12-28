@@ -13,4 +13,8 @@ public interface ModalidadEscolarRepository extends JpaRepository<ModalidadEscol
     Optional<ModalidadEscolar> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<ModalidadEscolar> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

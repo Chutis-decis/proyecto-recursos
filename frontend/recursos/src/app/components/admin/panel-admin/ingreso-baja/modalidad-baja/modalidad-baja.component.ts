@@ -31,7 +31,7 @@ export class ModalidadBajaComponent {
       text: `¿Seguro que desea mover la modalidad ${modalidad.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, darla de alta',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -41,6 +41,30 @@ export class ModalidadBajaComponent {
           res => {
             this.modalidad = this.modalidad.filter(b => b !== modalidad)
             Swal.fire('Modalidad Movida', `Modalidad ${modalidad.nombre} movida con éxito`, 'success');
+          }
+        )
+      }
+    })
+  }
+
+  eliminarModalidad(modalidad:Modalidad): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar la modalidad ${modalidad.nombre} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        this.ingresoService.deleteModalidadTotal(modalidad).subscribe(
+          res => {
+            this.modalidad = this.modalidad.filter(b => b !== modalidad)
+            Swal.fire('Modalidad Eliminada', `Modalidad ${modalidad.nombre} eliminada con éxito`, 'success');
+          }, error  => {
+            Swal.fire('Error', `Modalidad ${modalidad.nombre} no eliminada`, 'error');
           }
         )
       }

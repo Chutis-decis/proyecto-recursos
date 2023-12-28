@@ -48,12 +48,12 @@
             <div class="col-1">ID</div>
             <div class="col-7">Nombre de la Modalidad</div>
             <div class="col-2">Editar</div>
-            <div class="col-2">Eliminar</div>
+            <div class="col-2">Dar de Baja</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let moda of modalidad">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="moda.activo == true">
                 <div class="col-1">{{moda.id}}</div>
                 <div class="col-7">{{moda.nombre}}</div>
 
@@ -63,7 +63,7 @@
                     [routerLink]="['/datos-ingreso/modalidad', moda.id]">Editar</button>
 
                 <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1"
-                    (click)="deleteModalidad(moda)">Eliminar</button>
+                    (click)="deleteModalidad(moda)">Dar de Baja</button>
             </div>
         </tbody>
     </table>

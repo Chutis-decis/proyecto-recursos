@@ -39,4 +39,8 @@ export class PeriodoService {
   activatedPeriodo(periodo: Periodo): Observable<Periodo>{
     return this.httpClient.delete<Periodo>(`${this.url}/recuperacion/${periodo.id}`);
   }
+
+  eliminarPeriodo(periodo: Periodo): Observable<Periodo>{ 
+    return this.httpClient.delete<Periodo>(`${this.url}/delete/${periodo.id}`);
+  }
 }

@@ -14,4 +14,8 @@ public interface BecaRepository extends JpaRepository<Beca, Long> {
 
     boolean existsByIdAndActivoTrue(Long id);
 
+    Optional<Beca> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
+
 }

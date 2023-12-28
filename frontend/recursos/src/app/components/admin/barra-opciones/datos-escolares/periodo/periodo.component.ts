@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-periodo',
-  templateUrl: './periodo.component.html',
-  styleUrls: ['./periodo.component.css']
+  templateUrl: './periodo.component.html'
 })
 export class PeriodoComponent {
   periodo: Periodo = new Periodo();
@@ -54,10 +53,10 @@ export class PeriodoComponent {
   delete(periodo: Periodo){
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar el Periodo ${periodo.nombre} ?`,
+      text: `¿Seguro que desea dar de baja el Periodo ${periodo.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, dar de baja',
       cancelButtonText: 'No, cancelar',
       reverseButtons: true
     }).then((result) => {
@@ -65,7 +64,7 @@ export class PeriodoComponent {
         this.periodoService.deletePeriodo(periodo).subscribe(
           res => {
             this.getPeriodo();
-            Swal.fire('Periodo Eliminado', `${periodo.nombre}`, 'success');
+            Swal.fire('Periodo Dado de Baja', `El periono: ${periodo.nombre} ha sido dado de baja con exito!!`, 'success');
           }
         )
       }

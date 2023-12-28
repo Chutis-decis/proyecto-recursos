@@ -50,4 +50,16 @@ public class ModalidadService {
         modalidad.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         modalidadRepository.save(modalidad);
     }
+
+    public void activateModalidad(Long id) {
+        Modalidad modalidad = modalidadRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        modalidad.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        modalidadRepository.save(modalidad);
+    }
+
+    public void eliminarModalidad(Long id) {
+        modalidadRepository.deleteById(id);
+    }
 }

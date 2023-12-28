@@ -47,7 +47,7 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let perfilamiento of perfilamiento">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="perfilamiento.activo == true">
                 <div class="col-1">{{perfilamiento.id}}</div>
                 <div class="col-7">{{perfilamiento.nombrePerfilamiento}}</div>
 

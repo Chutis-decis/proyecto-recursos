@@ -75,4 +75,36 @@ public class TutorController {
         response.put("mensaje", "Eliminación lógica exitosa");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activatedTutor(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            tutorService.activateTutor(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarTutor(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            tutorService.eliminarTutor(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }

@@ -38,4 +38,20 @@ public class BecaService {
         beca.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         becaRepository.save(beca);
     }
+
+    public void activateBeca(Long id) {
+        Beca beca = becaRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        beca.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        becaRepository.save(beca);
+    }
+
+    public void eliminarBeca(Long id) {
+        Beca beca = becaRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        becaRepository.delete(beca);
+    }
+
 }

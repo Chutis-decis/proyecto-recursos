@@ -81,6 +81,10 @@ export class IngresoService {
   activatedModalidad(modalidad: Modalidad):Observable<Modalidad>{
     return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/recuperacion/${modalidad.id}`);
   }
+
+  deleteModalidadTotal(modalidad: Modalidad):Observable<Modalidad>{
+    return this.httpClient.delete<Modalidad>(`${this.urlModalidad}/delete/${modalidad.id}`);
+  }
   /* ************************************************ PERFILAMIENTO ************************************* */
   urlPerfilamiento = 'http://localhost:8081/perfilamiento';
 
@@ -111,6 +115,10 @@ export class IngresoService {
 
   activatedPerfilamiento(perfilamiento: Perfilamiento):Observable<Perfilamiento>{
     return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/recuperacion/${perfilamiento.id}`);
+  }
+
+  eliminarPerfilamientoTotal(perfilamiento: Perfilamiento):Observable<Perfilamiento>{
+    return this.httpClient.delete<Perfilamiento>(`${this.urlPerfilamiento}/eliminar/${perfilamiento.id}`);
   }
   /* ************************************************ TRAMITE ***************************************** */
   urlTramite = 'http://localhost:8081/tramites';

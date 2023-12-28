@@ -16,4 +16,8 @@ public interface GrupoRepository extends JpaRepository<Grupo, Long> {
     Optional<Grupo> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Grupo> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

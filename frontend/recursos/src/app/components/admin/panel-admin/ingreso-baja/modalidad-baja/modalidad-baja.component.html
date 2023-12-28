@@ -18,13 +18,13 @@
     </div>
     <table class="table table-striped mt-3">
         <tbody *ngFor="let moda of modalidad">
-            <div class="row text-center">
+            <div class="row text-center" *ngIf="moda.activo == false">
                 <div class="col-1">{{moda.id}}</div>
                 <div class="col-7">{{moda.nombre}}</div>
 
                 <!-- Editar perfilamiento -->
                 <button type="button"
-                    class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1">Eliminar</button>
+                    class="btn btn-secondary btn-sm border-0 me-5 col-2 text-white mt-1" (click)="eliminarModalidad(moda)">Eliminar</button>
 
                 <button type="button" class="btn btn-success btn-sm border-0 me-1 text-white col-1 mt-1"
                     (click)="deleteModalidad(moda)">Mover</button>

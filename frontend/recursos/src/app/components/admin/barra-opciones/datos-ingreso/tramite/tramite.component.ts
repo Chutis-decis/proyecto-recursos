@@ -67,10 +67,10 @@ export class TramiteComponent {
   deleteTramite(tramite: Tramite): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar el trámite ${tramite.nombreTramite} ?`,
+      text: `¿Seguro que desea mover el trámite ${tramite.nombreTramite} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, mover',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -79,7 +79,7 @@ export class TramiteComponent {
         this.ingresoService.eliminarTramite(tramite).subscribe(
           res => {
             this.tramite = this.tramite.filter(b => b !== tramite)
-            Swal.fire('Trámite Eliminado', `Trámite ${tramite.nombreTramite} eliminado con éxito`, 'success');
+            Swal.fire('Trámite Movido', `Trámite ${tramite.nombreTramite} movido con éxito`, 'success');
           }
         )
       }

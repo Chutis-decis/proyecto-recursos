@@ -15,4 +15,8 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
     Optional<Tutor> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Tutor> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

@@ -45,4 +45,35 @@ export class CursoBajaComponent {
       }
     });
   }
+
+  eliminar(course: Curso): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que desea eliminar el curso ${course.nombre}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.courseService.eliminarDatosFTDCurso(course).subscribe(
+          res => {
+            this.getCurso();
+            Swal.fire(
+              'Curso eliminado',
+              `Curso ${course.nombre} eliminado con éxito`,
+              'success'
+            );
+          }, error => {
+            Swal.fire(
+              'Curso no eliminado',
+              `Curso ${course.nombre} no se puede eliminar porque tiene grupos asignados`,
+              'error'
+            );
+          }
+        );
+      }
+    });
+  }
 }

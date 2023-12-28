@@ -13,4 +13,8 @@ public interface PerfilamientoRepository extends JpaRepository<Perfilamiento, Lo
     Optional<Perfilamiento> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Perfilamiento> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

@@ -68,10 +68,10 @@ export class ModalidadEscolarComponent {
   delete(modalidad: modalidadEscolar): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que desea eliminar la modalidad escolar ${modalidad.nombre} ?`,
+      text: `¿Seguro que desea dar de baja la modalidad escolar ${modalidad.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, dar de baja',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -80,7 +80,7 @@ export class ModalidadEscolarComponent {
         this.serviceModalidadEscolar.deleteModalidad(modalidad).subscribe(
           res => {
             this.modalidad = this.modalidad.filter(b => b !== modalidad)
-            Swal.fire('Modalidad Escolar Eliminada', `Modalidad Escolarizada ${modalidad.nombre} eliminada con éxito`, 'success');
+            Swal.fire('Modalidad Escolar Dada de Baja', `Modalidad Escolarizada ${modalidad.nombre} dada de baja con éxito`, 'success');
           }
         )
       }

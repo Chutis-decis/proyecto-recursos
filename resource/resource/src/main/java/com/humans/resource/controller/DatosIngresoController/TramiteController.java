@@ -78,5 +78,35 @@ import java.util.Optional;
         response.put("mensaje", "Eliminación lógica exitosa");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activateTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            tramiteService.activateTramite(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity <?> eliminarTramite(@PathVariable Long id) {
+        Map<String, Object>response = new HashMap<>();
+        try{
+            tramiteService.eliminarTramite(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al eliminar el tramite");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("mensaje", "Tramite eliminado con exito");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }
 

@@ -36,6 +36,21 @@ public class TutorService {
         tutor.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         tutorRepository.save(tutor);
     }
+
+    public void activateTutor(Long id) {
+        Tutor tutor = tutorRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        tutor.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        tutorRepository.save(tutor);
+    }
+
+    public void eliminarTutor(Long id) {
+        Tutor tutor = tutorRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        tutorRepository.delete(tutor);
+    }
 }
 
 

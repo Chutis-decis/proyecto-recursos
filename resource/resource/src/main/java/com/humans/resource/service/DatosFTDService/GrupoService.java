@@ -39,4 +39,19 @@ public class GrupoService {
         grupo.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         grupoRepository.save(grupo);
     }
+
+    public void activateGrupo(Long id) {
+        Grupo grupo = grupoRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        grupo.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        grupoRepository.save(grupo);
+    }
+
+    public void eliminarGrupo(Long id) {
+        Grupo grupo = grupoRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        grupoRepository.delete(grupo);
+    }
 }

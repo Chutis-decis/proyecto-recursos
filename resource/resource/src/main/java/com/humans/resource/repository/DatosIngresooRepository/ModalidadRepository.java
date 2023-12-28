@@ -15,4 +15,8 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
     Optional<Modalidad> findByIdAndActivoTrue(Long id);
 
     boolean existsByIdAndActivoTrue(Long id);
+
+    Optional<Modalidad> findByIdAndActivoFalse(Long id);
+
+    boolean existsByIdAndActivoFalse(Long id);
 }

@@ -121,7 +121,12 @@ export class RegistroDatosFtdComponent{
   /* Generacion automatica de la matricula ftd */
 
   generarMatricula(){
-    this.datosFTD.matriculaFTD =this.datosFTD.id + this.universidad.id.toString() + this.grupo.id + this.datosAspirante.id;
+    const universidad = this.universidad.id;
+    const grupoId = this.grupo.id;
+    const adminId = this.datosAspirante.id;
+    const year = new Date().getFullYear();
+
+    this.datosFTD.matriculaFTD = `${universidad}${grupoId}${adminId}${year}`;
   }
   
 }

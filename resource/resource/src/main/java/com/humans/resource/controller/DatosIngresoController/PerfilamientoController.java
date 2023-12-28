@@ -82,4 +82,34 @@ public class PerfilamientoController {
         response.put("mensaje", "Eliminación lógica exitosa");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activarPerfilamiento(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            perfilamientoService.activatePerfilamiento(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity <?> eliminaPerfilamiento(@PathVariable Long id) {
+        Map<String, Object>response = new HashMap<>();
+        try{
+            perfilamientoService.eliminarPerfilamiento(id);
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al eliminar el perfilamiento");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("mensaje", "Perfilamiento eliminado con exito");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }

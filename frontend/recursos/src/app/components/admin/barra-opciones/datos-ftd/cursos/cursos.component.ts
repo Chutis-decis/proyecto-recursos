@@ -57,10 +57,10 @@ export class CursosComponent {
     delete(course: Curso): void{
       Swal.fire({
         title: '¿Está seguro?',
-        text: `¿Seguro que desea eliminar el curso ${course.nombre}?`,
+        text: `¿Seguro que desea mover el curso ${course.nombre}?`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
+        confirmButtonText: 'Sí, moverlo',
         cancelButtonText: 'No, cancelar',
         cancelButtonColor: '#d33',
         confirmButtonColor: '#3085d6'
@@ -70,8 +70,8 @@ export class CursosComponent {
             res => {
               this.getCurso();
               Swal.fire(
-                'Curso eliminado',
-                `Curso ${course.nombre}  eliminado con éxito`,
+                'Curso movido',
+                `Curso ${course.nombre} movido con éxito`,
                 'success'
               );
             }

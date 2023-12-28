@@ -82,4 +82,36 @@ public class BecaController {
         response.put("mensaje", "Eliminación lógica exitosa");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
+
+    @DeleteMapping("/recuperacion/{id}")
+    public ResponseEntity<?> activateTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            becaService.activateBeca(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación lógica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarTramite(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            becaService.eliminarBeca(id);
+        } catch (DataAccessException e) {
+            response.put("message", "Error al realizar la eliminación fisica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "Eliminación fisica exitosa");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    }
 }

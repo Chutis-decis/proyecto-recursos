@@ -47,4 +47,16 @@ public class PeriodoService {
         periodo.setActivo(false);  // Marcar como inactivo en lugar de eliminar físicamente
         periodoRepository.save(periodo);
     }
+
+    public void activatePeriodo(Long id) {
+        Periodo periodo = periodoRepository.findByIdAndActivoFalse(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Tramite Con ID " + id + " no Existe"));
+
+        periodo.setActivo(true);  // Marcar como inactivo en lugar de eliminar físicamente
+        periodoRepository.save(periodo);
+    }
+
+    public void eliminarPeriodo(Long id) {
+        periodoRepository.deleteById(id);
+    }
 }

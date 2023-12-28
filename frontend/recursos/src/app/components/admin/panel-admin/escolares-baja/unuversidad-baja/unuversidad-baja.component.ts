@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { error } from 'pdf-lib';
 import { Universidad } from 'src/app/datos_escolares/Universidad';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 import Swal from 'sweetalert2';
@@ -39,10 +40,10 @@ export class UnuversidadBajaComponent {
   deleteUni(university: Universidad): void{
     Swal.fire({
       title: '¿Está seguro?',
-      text: `¿Seguro que deseas move la universidad ${university.nombre} ?`,
+      text: `¿Seguro que deseas mover la universidad ${university.nombre} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar',
+      confirmButtonText: 'Si, dar de alta',
       cancelButtonText: 'No, cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
@@ -54,6 +55,32 @@ export class UnuversidadBajaComponent {
             Swal.fire('Univiersidad Movida', `Universidad ${university.nombre} mmovida con éxito`, 'success');
           }
         )
+      }
+    })
+  }
+
+  eliminarUni(university: Universidad): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que deseas eliminar la universidad ${university.nombre} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        this.uniService.eliminarUniversidad(university).subscribe(
+          res => {
+            this.universidad = this.universidad.filter(b => b !== university)
+            Swal.fire('Univiersidad Eliminada', `Universidad ${university.nombre} eliminada con éxito`, 'success');
+          }, error => {
+            Swal.fire('Error', `Universidad ${university.nombre} no se puede eliminar porque tiene registros asociados`, 'error');
+          }
+        )
+      }else{
+        Swal.fire('Cancelado', 'Cancelado a petición del usuario', 'error');
       }
     })
   }
