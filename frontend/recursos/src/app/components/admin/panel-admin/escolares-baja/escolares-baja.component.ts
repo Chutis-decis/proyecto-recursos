@@ -54,4 +54,31 @@ export class EscolaresBajaComponent {
       }
     })
   }
+
+  eliminar(escolar: DatosEscolares): void{
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `¿Seguro que deseas eliminar al alumno con el ID: ${escolar.id} y la carrera de ${escolar.carrera}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    }).then((result) => {
+      if(result.value){
+        escolar.activo = false;
+        this.escolarService.eliminar(escolar).subscribe(
+          res => {
+            this.escolares = this.escolares.filter(b => b !== escolar)
+            Swal.fire('Alumno Eliminado', `Alumno con el id ${escolar.id} y con la carrera de ${escolar.carrera} eliminado con éxito`, 'success');
+          },error => {
+            Swal.fire('Error', `Alumno con el id ${escolar.id} y con la carrera de ${escolar.carrera} no se pudo eliminar`, 'error');
+          }
+        )
+      }else{
+        Swal.fire('Alumno no eliminado', `Alumno con el id ${escolar.id} y con la carrera de ${escolar.carrera} no se pudo eliminar`, 'error');
+      }
+    })
+  }
 }

@@ -36,12 +36,16 @@ export class AlumnoService {
   } 
 
   /* Cambiar de estado a false */
-  deleted(id: number):Observable<CPanel>{
-    return this.httpClient.delete<CPanel>(`${this.baseUrl}/${id}`);
+  deleted(alumno: CPanel):Observable<CPanel>{
+    return this.httpClient.delete<CPanel>(`${this.baseUrl}/${alumno.id}`);
   }
 
   /* Cambiar de estado a true */
-  deletedTrue(id: number):Observable<CPanel>{
-    return this.httpClient.delete<CPanel>(`${this.baseUrl}/recuperacion/${id}`);
+  deletedTrue(alumno: CPanel):Observable<CPanel>{
+    return this.httpClient.delete<CPanel>(`${this.baseUrl}/recuperacion/${alumno.id}`);
+  }
+
+  eliminarAlumno(alumno: CPanel):Observable<Object>{
+    return this.httpClient.delete(`${this.baseUrl}/eliminar/${alumno.id}`);
   }
 }

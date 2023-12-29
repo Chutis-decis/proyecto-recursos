@@ -3,10 +3,10 @@ import { CPanel } from '../../CPanel';
 import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { error } from 'pdf-lib';
 @Component({
   selector: 'app-personales-baja',
-  templateUrl: './personales-baja.component.html',
-  styleUrls: ['./personales-baja.component.css']
+  templateUrl: './personales-baja.component.html'
 })
 export class PersonalesBajaComponent implements OnInit{
   alumno: CPanel[];
@@ -34,46 +34,80 @@ export class PersonalesBajaComponent implements OnInit{
   
   /* Eliminacion de los alumnos */
   /* Eliminacion de los alumnos */
-  deleteEstudiante(id: number): void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas seguro?",
-      text: "Dar de alta al Aspirante!",
-      icon: "warning",
+  deleteEstudiante(alumno: CPanel): void{
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: `¿Seguro que desea dar de alta al alumno ${alumno.nombres} ${alumno.primerApellido}?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, dalo de alta!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, dalo de alta',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.serviceAlumno.deletedTrue(id).subscribe(
+      if(result.value){
+        this.serviceAlumno.deletedTrue(alumno).subscribe(
           response => {
-            swalWithBootstrapButtons.fire({
-              title: "Registro Alta!",
-              text: `Registro ${this.alumnos.nombres} dado de alta!`,
-              icon: "success"
-            });
-            this.getAlumnos();
+            this.alumno = this.alumno.filter(alum => alum !== alumno)
+            Swal.fire(
+              'Alumno dado de alta',
+              `Alumno ${alumno.nombres} dado de alta con exito.`,
+              'success'
+            )
+          }, error => {
+            Swal.fire(
+              'Error al dar de alta',
+              `Alumno ${alumno.nombres} no dado de alta.`,
+              'error'
+            )
           }
-        );
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado dado de alta!",
-          text: "Cancelaste dar de alta!!! :)",
-          icon: "error"
-        });
+        )
+      }else{
+        Swal.fire(
+          'Cancelado',
+          `Alumno ${alumno.nombres} no dado de alta.`,
+          'error'
+        )
       }
-    });
+    })
+  }
+
+  eliminarAlumno(alumno: CPanel): void{
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: `¿Seguro que desea eliminar al alumno ${alumno.nombres} ${alumno.primerApellido}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if(result.value){
+        this.serviceAlumno.eliminarAlumno(alumno).subscribe(
+          response => {
+            this.alumno = this.alumno.filter(alum => alum !== alumno)
+            Swal.fire(
+              'Alumno eliminado',
+              `Alumno ${alumno.nombres} eliminado con exito.`,
+              'success'
+            )
+          }, error => {
+            Swal.fire(
+              'Error al eliminar',
+              `Alumno ${alumno.nombres} no eliminado.`,
+              'error'
+            )
+          }
+        )
+      }else{
+        Swal.fire(
+          'Cancelado',
+          `Alumno ${alumno.nombres} no eliminado.`,
+          'error'
+        )
+      }
+    })
   }
 
 

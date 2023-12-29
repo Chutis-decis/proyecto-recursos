@@ -49,6 +49,10 @@ export class IngresoService {
   activated(ingreso: DatosIngreso):Observable<DatosIngreso>{
     return this.httpClient.delete<DatosIngreso>(`${this.url}/recuperacion/${ingreso.id}`);
   }
+
+  eliminar(ingreso: DatosIngreso):Observable<DatosIngreso>{
+    return this.httpClient.delete<DatosIngreso>(`${this.url}/eliminar/${ingreso.id}`);
+  }
   /* ************************** Modalidad *************************************************************** */
   /* URL de la modalidad para los datos de ingreso */
   urlModalidad = 'http://localhost:8081/modalidades';

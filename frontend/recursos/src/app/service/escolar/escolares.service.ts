@@ -46,6 +46,10 @@ export class EscolaresService {
     return this.httpClient.delete<DatosEscolares>(`${this.url}/recuperacion/${datos.id}`);
   }
 
+  eliminar(datos:DatosEscolares):Observable<DatosEscolares>{
+    return this.httpClient.delete<DatosEscolares>(`${this.url}/eliminar/${datos.id}`);
+  }
+
   /* ********************************************** PLAN EDUCATIVO ****************************** */
   /* url */
   urlPlan = 'http://localhost:8081/plan-educativo'

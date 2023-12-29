@@ -37,4 +37,15 @@ public class DatosFTDService {
             datosFTDRepository.save(datosFTD);
         });
     }
+
+    public void activatedDatosFTD(Long id) {
+        datosFTDRepository.findById(id).ifPresent(datosFTD -> {
+            datosFTD.setActivo(true);
+            datosFTDRepository.save(datosFTD);
+        });
+    }
+
+    public void delete(Long id){
+        datosFTDRepository.deleteById(id);
+    }
 }

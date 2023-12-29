@@ -90,4 +90,9 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
             datosPersonalesRepository.save(datosPersonales);
         }
     }
+
+    @Override
+    public void eliminarDatosPersonales(Long id) {
+        datosPersonalesRepository.deleteById(id);
+    }
 }

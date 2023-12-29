@@ -11,4 +11,8 @@ public interface DatosFTDRepository extends JpaRepository<DatosFTD, Long> {
     List<DatosFTD> findAllByActivoTrue();
 
     Optional<DatosFTD> findByIdAndActivoTrue(Long id);
+
+    List<DatosFTD> findByIdAndActivoFalse(Long id);
+
+
 }

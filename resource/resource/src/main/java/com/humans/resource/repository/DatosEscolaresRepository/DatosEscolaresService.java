@@ -12,4 +12,6 @@ public interface DatosEscolaresService {
     void deleteDatosEscolares(Long id);
 
     void activatedDatosEscolares(Long id);
+
+    void eliminarDatosEscolares(Long id);
 }

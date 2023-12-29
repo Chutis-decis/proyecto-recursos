@@ -11,5 +11,7 @@ public interface DatosPersonalesService {
     DatosPersonales updateDatosPersonales(Long id, DatosPersonales datosPersonales);
     void deleteDatosPersonales(Long id);
     void activateDatosPersonales(Long id);
+
+    void eliminarDatosPersonales(Long id);
     DatosPersonales actualizarDatosPersonales(Long id,DatosPersonales datosNuevos);
 }

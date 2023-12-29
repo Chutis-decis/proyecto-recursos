@@ -60,5 +60,10 @@ public class DatosEscolaresServiceImpl implements DatosEscolaresService {
         }
 
     }
+
+    @Override
+    public void eliminarDatosEscolares(Long id){
+        datosEscolaresRepository.deleteById(id);
+    }
 }
 

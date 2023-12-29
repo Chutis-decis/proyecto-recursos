@@ -11,6 +11,8 @@ import java.util.*;
 
 import org.springframework.http.HttpStatus;
 
+import javax.xml.crypto.Data;
+
 
 @RestController
 @RequestMapping("/datosftd")
@@ -74,5 +76,29 @@ public class DatosFTDController {
         }
         datosFTDService.deleteDatosFTD(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("recuperacion/{id}")
+    public ResponseEntity<Void> recuperacionDatosFtd(@PathVariable Long id){
+        if (!datosFTDService.getDatosFTDById(id).isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        datosFTDService.activatedDatosFTD(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("eliminar/{id}")
+    public ResponseEntity<?> eliminacionDatosFtd(@PathVariable Long id){
+        Map<String, Object> response = new HashMap<>();
+
+        try{
+            datosFTDService.delete(id);
+        }catch (DataAccessException e){
+            response.put("message", "Error al realizar la eliminación lógica en la base de datos");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("message", "Eliminacion exitosa!!!");
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 }

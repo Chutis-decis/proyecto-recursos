@@ -72,4 +72,47 @@ export class FtdBajaComponent {
         }
       });
     }
+
+    /* Eliminación física de los datos ftd de los estudiantes */
+    delete(datosFTD: DatosFTD): void{
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Estas seguro?",
+        text: "No podras revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "No, cancelar!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.serviceFTD.deletedDatosFTD(datosFTD).subscribe(
+            response => {
+              swalWithBootstrapButtons.fire({
+                title: "Eliminado!",
+                text: `Registro ${this.ftd.nombreProyecto} eliminado!`,
+                icon: "success"
+              });
+              this.getDatosFTD();
+            }
+          );
+          
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado!",
+            text: "Cancelaste la eliminación!!! :)",
+            icon: "error"
+          });
+        }
+      });
+    }
 }

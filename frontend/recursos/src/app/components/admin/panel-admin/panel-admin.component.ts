@@ -4,6 +4,7 @@ import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatriculaService } from 'src/app/service/matricula/matricula.service';
+import { error } from 'pdf-lib';
 @Component({
   selector: 'app-panel-admin',
   templateUrl: './panel-admin.component.html',
@@ -35,46 +36,42 @@ export class PanelAdminComponent implements OnInit {
   }
 
   /* Eliminacion de los alumnos */
-  deleteEstudiante(id: number): void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estas seguro?",
-      text: "Dar de alta al Aspirante!",
-      icon: "warning",
+  deleteEstudiante(alumno: CPanel): void{
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: `¿Seguro que desea dar de baja al alumno ${alumno.nombres} ${alumno.primerApellido}?`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Si, dalo de alta!",
-      cancelButtonText: "No, cancelar!",
-      reverseButtons: true
+      confirmButtonText: 'Si, dalo de baja',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.alumnoService.deleted(id).subscribe(
+      if(result.value){
+        this.alumnoService.deleted(alumno).subscribe(
           response => {
-            swalWithBootstrapButtons.fire({
-              title: "Registro Alta!",
-              text: `Registro ${this.estudiante.nombres} dado de baja!`,
-              icon: "success"
-            });
-            this.getAlumnos();
+            this.alumno = this.alumno.filter(alum => alum !== alumno)
+            Swal.fire(
+              'Alumno dado de baja',
+              `Alumno ${alumno.nombres} dado de baja con exito.`,
+              'success'
+            )
+          }, error => {
+            Swal.fire(
+              'Alumno no dado de baja',
+              `Alumno ${alumno.nombres} no dado de baja con exito.`,
+              'error'
+            )
           }
-        );
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado dado de baja!",
-          text: "Cancelaste dar de baja!!! :)",
-          icon: "error"
-        });
+        )
+      }else{
+        Swal.fire(
+          'Alumno no dado de baja',
+          `Alumno ${alumno.nombres} no dado de baja con exito.`,
+          'error'
+        )
       }
-    });
+    })
   }
 
 

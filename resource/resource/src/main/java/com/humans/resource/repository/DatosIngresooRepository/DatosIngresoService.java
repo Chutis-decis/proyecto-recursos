@@ -11,5 +11,7 @@ public interface DatosIngresoService {
 
     void activatedIngreso(Long id);
 
+    void eliminarDatosIngreso(Long id);
+
     List<DatosIngreso>getDatosIngresoByModalidadId(Long modalidadId);
 }

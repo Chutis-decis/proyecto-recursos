@@ -54,4 +54,9 @@ public class DatosIngresoServiceImpl implements DatosIngresoService {
         }
     }
 
+    @Override
+    public void eliminarDatosIngreso(Long id) {
+        datosIngresoRepository.deleteById(id);
+    }
+
 }

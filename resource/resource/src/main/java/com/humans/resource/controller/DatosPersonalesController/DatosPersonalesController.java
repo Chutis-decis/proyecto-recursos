@@ -74,5 +74,7 @@ import java.util.Map;
         @DeleteMapping("/recuperacion/{id}")
         public void recuperarDatosPersonales(@PathVariable Long id){datosPersonalesService.activateDatosPersonales(id);}
 
+        @DeleteMapping("/eliminar/{id}")
+        public void eliminarDatosPersonalesDefinitivamente(@PathVariable Long id){datosPersonalesService.eliminarDatosPersonales(id);}
 }
 

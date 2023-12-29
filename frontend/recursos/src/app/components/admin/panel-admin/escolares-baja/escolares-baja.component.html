@@ -17,6 +17,7 @@
             <div class="col-2">Correo Escolar</div>
             <div class="col-2">Matricula Escolar</div>
             <div class="col">Alta</div>
+            <div class="col">Eliminar</div>
         </div>
     </div>
     <table class="table table-striped mt-3">
@@ -27,6 +28,7 @@
                 <div class="col-2">{{escolares.correoEscolar}}</div>
                 <div class="col-2">{{escolares.matriculaEscolar}}</div>
                 <button type="button" class="btn btn-secondary btn-sm border-0 me-1 col text-white mt-3" (click)="ativar(escolares)" >Dar Alta</button>
+                <button type="button" class="btn btn-danger btn-sm border-0 me-1 col text-white mt-3" (click)="eliminar(escolares)">Eliminar</button>
             </div>
         </tbody>
     </table>
