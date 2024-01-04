@@ -46,6 +46,10 @@ export class FtdService {
     return this.httpClient.delete<DatosFTD>(`${this.url}/recuperacion/${datosFTD.id}`);
   }
 
+  eliminarDatosFTD(datosFTD: DatosFTD): Observable<Object>{
+    return this.httpClient.delete<DatosFTD>(`${this.url}/eliminar/${datosFTD.id}`);
+  }
+
   /* ****************************************Becas ********************************* */
   urlBecas = 'http://localhost:8081/becas';
 

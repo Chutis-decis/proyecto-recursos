@@ -120,10 +120,11 @@ export class RegistroDatosFtdComponent{
 
   /* Generacion automatica de la matricula ftd */
 
-  generarMatricula(){
+  generarMatricula(){ 
     const year = new Date().getFullYear();
-
-    this.datosFTD.matriculaFTD = `${year}`;
+    const day = new Date().getDate();
+    const numAle= Math.round(Math.random()*1000);
+    this.datosFTD.matriculaFTD = `INFO-${day}-${year}-${numAle}`;
   }
   
 }
