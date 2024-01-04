@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatosEscolares } from 'src/app/datos_escolares/escolares';
-import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Universidad } from 'src/app/datos_escolares/universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import Swal from 'sweetalert2';
 import { CPanel } from '../../CPanel';

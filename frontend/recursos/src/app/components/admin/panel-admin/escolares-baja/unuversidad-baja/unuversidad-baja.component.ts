@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'pdf-lib';
-import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Universidad } from 'src/app/datos_escolares/universidad';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,7 @@ export class UnuversidadBajaComponent {
       (universidad) => this.universidad = universidad
     );
   }
-  
+
   ngOnInit(): void {
     this.getUniversidad();
   }

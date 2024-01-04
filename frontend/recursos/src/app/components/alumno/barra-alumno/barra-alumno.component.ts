@@ -31,8 +31,13 @@ export class BarraAlumnoComponent implements AfterViewInit {
     const pdf = new jsPDF();
     pdf.text('', 10, 10);
     pdf.addImage(firmaDataUrl, 'PNG', 10, 20, 100, 50); // Ajusta el tamaño y la posición según tus necesidades
-    
+
     // Guardar el PDF o mostrar en una nueva ventana
     pdf.save('documento_con_firma.pdf');
   }
+
+  // Documentos Mensuales
+
+
+
 }

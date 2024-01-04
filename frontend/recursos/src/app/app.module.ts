@@ -56,6 +56,7 @@ import { BecaBajaComponent } from './components/admin/panel-admin/ftd-baja/beca-
 import { GrupoBajaComponent } from './components/admin/panel-admin/ftd-baja/grupo-baja/grupo-baja.component';
 import { TutorBajaComponent } from './components/admin/panel-admin/ftd-baja/tutor-baja/tutor-baja.component';
 import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curso-baja/curso-baja.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +115,7 @@ import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curs
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

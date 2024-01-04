@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CPanel } from 'src/app/components/admin/CPanel';
-import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Universidad } from 'src/app/datos_escolares/universidad';
 import { Beca } from 'src/app/FTD/Beca';
 import { Curso } from 'src/app/FTD/Curso';
 import { DatosFTD } from 'src/app/FTD/ftd';
@@ -30,7 +30,7 @@ export class RegistroDatosFtdComponent{
   datosAspirante = new CPanel() ;
 
   /* Constructor */
-  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService) { } 
+  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
 
   /* Obtener Beca */
   obtenerBeca(): void{
@@ -77,17 +77,17 @@ export class RegistroDatosFtdComponent{
     this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(
       res=> {this.router.navigate(['/datos_ftd'])
       Swal.fire('Nuevos datos ftd', `Datos FTD de:  ${this.datosFTD.nombreProyecto} creado con exito!`, 'success')
-    }, 
+    },
     err => {
       console.error('Código de error desde el backend: ' + err.status);
     });
   }
   crear(): void{
     console.log(this.datosFTD);
-    this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(ftd => { 
+    this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(ftd => {
       this.router.navigate(['/datos-ftd'])
       Swal.fire('Nuevo Dato de Ingreso', `Datos Ftd del proyecto: ${this.datosFTD.nombreProyecto} creado con exito!!!`, 'success');
-    }, 
+    },
     err => {
       console.error('Código del error desde el backend: ' + err.status);
     });
@@ -126,5 +126,5 @@ export class RegistroDatosFtdComponent{
     const numAle= Math.round(Math.random()*1000);
     this.datosFTD.matriculaFTD = `INFO-${day}-${year}-${numAle}`;
   }
-  
+
 }
