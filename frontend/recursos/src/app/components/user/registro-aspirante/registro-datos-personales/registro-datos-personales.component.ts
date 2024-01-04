@@ -4,7 +4,7 @@ import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { modalidadEscolar } from 'src/app/datos_escolares/ModalidadEscolar';
 import { Periodo } from 'src/app/datos_escolares/Periodo';
 import { planEducativo } from 'src/app/datos_escolares/planEducativo';
-import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Universidad } from 'src/app/datos_escolares/universidad';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { ModalidadService } from 'src/app/service/escolar/modalidad.service';
 import { PeriodoService } from 'src/app/service/escolar/periodo.service';
@@ -39,12 +39,12 @@ export class RegistroDatosPersonalesComponent {
 
   /* obtener Perfilamiento */
   getPlanEducativo(): void{
-    this.planService.getPlanEducativo().subscribe(planEduca => 
+    this.planService.getPlanEducativo().subscribe(planEduca =>
       this.planEducativo = planEduca);
   }
 
   getModalidadEscolar(): void{
-    this.modEscService.getModalidad().subscribe(mod => 
+    this.modEscService.getModalidad().subscribe(mod =>
       this.modalidad = mod);
   }
 
@@ -58,7 +58,7 @@ export class RegistroDatosPersonalesComponent {
       this.periodo = periodo)
   }
 
-  
+
   ngOnInit(): void {
     this.cargar();
     this.getPlanEducativo();
@@ -76,7 +76,7 @@ export class RegistroDatosPersonalesComponent {
       }
     });
   }
-  
+
 
   /* GGuardar los datos escolares */
   create():void{

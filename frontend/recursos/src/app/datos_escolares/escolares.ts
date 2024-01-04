@@ -1,7 +1,7 @@
 import { modalidadEscolar } from "./ModalidadEscolar";
 import { Periodo } from "./Periodo";
 import { planEducativo } from "./planEducativo";
-import { Universidad } from "./Universidad"
+import { Universidad } from "./universidad";
 
 export class DatosEscolares{
     id: number;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Universidad } from 'src/app/datos_escolares/Universidad';
+import { Universidad } from 'src/app/datos_escolares/universidad';
 import { DatosEscolares } from 'src/app/datos_escolares/escolares';
 import { EscolaresService } from 'src/app/service/escolar/escolares.service';
 import { UniversidadService } from 'src/app/service/escolar/universidad.service';
@@ -24,7 +24,7 @@ export class UniversidadComponent {
     this.getUniversidad();
     this.cargar();
   }
-  
+
   cargar(): void{
     this.activatedRouter.params.subscribe(params => {
       let id = params['id']
