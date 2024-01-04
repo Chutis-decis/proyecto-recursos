@@ -18,6 +18,6 @@ public class ModalidadEscolar {
 
     private String nombre;
 
-    private boolean activo;
+    private boolean activo = true;
 
 }

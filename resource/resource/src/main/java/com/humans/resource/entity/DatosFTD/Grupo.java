@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
         private String nombre;
 
 
-        private boolean activo;
+        private boolean activo = true;
     }
 

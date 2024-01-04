@@ -14,5 +14,5 @@ public class Modalidad {
      private Long id ;
      private String nombre;
 
-    private boolean activo;
+    private boolean activo = true;
 }

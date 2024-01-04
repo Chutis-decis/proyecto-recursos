@@ -18,6 +18,6 @@ public class Tutor {
 
      private String nombre;
 
-     private  boolean activo;
+     private  boolean activo = true;
 
 }

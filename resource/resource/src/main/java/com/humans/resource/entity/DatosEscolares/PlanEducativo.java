@@ -12,5 +12,5 @@ public class PlanEducativo {
     private Long id;
     private String nombre;
 
-    private boolean activo;
+    private boolean activo = true;
 }

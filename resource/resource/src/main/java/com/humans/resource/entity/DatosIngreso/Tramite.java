@@ -13,5 +13,5 @@ public class Tramite {
     private Long id;
 
     private String nombreTramite;
-    private boolean activo;
+    private boolean activo = true;
 }

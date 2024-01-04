@@ -16,5 +16,5 @@ public class Beca {
 
     private String nombre;
 
-    private boolean activo;
+    private boolean activo = true;
 }
