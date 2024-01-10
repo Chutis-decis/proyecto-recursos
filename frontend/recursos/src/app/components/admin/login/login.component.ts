@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router: Router) { this.router = router }
-
+  email:string = "chutis123f@gmail.com";
+  password:string = "Lmd34015";
+  
+  constructor(private router: Router) {}
+  user: string = "";
+  pas: string = "";
   admin() {
-    this.router.navigate(['/admin']);
+    if(this.user != this.email && this.pas != this.password){
+      this.router.navigate(['/admin']);
+      Swal.fire(
+        'Bienvenido administrador',
+        `Usuario: ${this.user}`,
+        'success'
+      )
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Usuario o contraseña incorrectos'
+      })
+    }
   }
 }

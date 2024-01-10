@@ -116,7 +116,7 @@ import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curs
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,17 +12,17 @@
                 <!-- Titulo -->
                 <h1 class="mt-5 font-weight-bold mb-4 text-center">Alumno</h1>
                 <!-- Formulario -->
-                <form>
+                <form (ngSubmit)="alumn()">
                     <div class="mb-4">
                         <label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
-                        <input type="email" class="form-control" placeholder="Ingresa tu email" id="exampleInputEmail1" aria-describedby="emailHelp">   
+                        <input type="email" class="form-control" placeholder="Ingresa tu email" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)] ="user" [ngModelOptions]="{standalone: true}">   
                     </div>
                     <div class="mb-4">
                         <label for="exampleInputPassword1" class="form-label font-weight-bold">Password</label>
-                        <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1">
+                        <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1" [(ngModel)] = "pas" [ngModelOptions]="{standalone: true}">
                         <a href="" id="emailHelp" class="form-text text-muted text-decoration-none mt-3">Has olvidado tu contraseña</a>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 border-0" (click)="alumn()">Iniciar Sesion</button>
+                    <button type="submit" class="btn btn-primary w-100 border-0">Iniciar Sesion</button>
                 </form>
             </div>
         </div>
