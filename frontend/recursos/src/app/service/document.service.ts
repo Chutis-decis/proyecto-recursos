@@ -7,41 +7,35 @@ import {Document} from '../Document'
   providedIn: 'root'
 })
 export class DocumentService {
-  apiUrl = 'http://localhost:8081/api/documents'
+  private apiUrl = 'http://localhost:8081/api/documents';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  /* Obtencion de todos los documentos */
-  getDocumentById(id: number): Observable<Document> {
-    return this.http.get<Document>(`${this.apiUrl}/${id}`);
+  getAllDocuments(): Observable<Document[]> {
+    return this.http.get<Document[]>(this.apiUrl);
+  }
+
+  addDocument(file: File, name: string, status: string, documentType: string): Observable<Document> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('name', name);
+    formData.append('status', status);
+    formData.append('documentType', documentType);
+
+    return this.http.post<Document>(this.apiUrl, formData);
   }
 
   deleteDocument(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  downloadDocument(id: number): Observable<Blob> {
-    const headers = new HttpHeaders({
-      'Accept': 'application/octet-stream',
-    });
+  updateDocument(id: number, file: File, name: string, status: string, documentType: string): Observable<Document> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('name', name);
+    formData.append('status', status);
+    formData.append('documentType', documentType);
 
-    return this.http.get(`${this.apiUrl}/download/${id}`, { responseType: 'blob', headers });
-  }
-
-  approveDocument(id: number): Observable<Document> {
-    return this.http.post<Document>(`${this.apiUrl}/approve/${id}`, {});
-  }
-
-  disapproveDocument(id: number): Observable<Document> {
-    return this.http.post<Document>(`${this.apiUrl}/disapprove/${id}`, {});
-  }
-
-  addComment(id: number, comment: string): Observable<string> {
-    return this.http.post<{ comment: string }>(`${this.apiUrl}/comment/${id}`, { comment })
-      .pipe(map(response => response.comment));
-  }
-
-  clearComments(documentId: number): Observable<Document> {
-    return this.http.post<Document>(`${this.apiUrl}/clear-comments/${documentId}`, {});
+    return this.http.put<Document>(`${this.apiUrl}/${id}`, formData);
   }
 }

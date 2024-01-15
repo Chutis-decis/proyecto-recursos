@@ -44,6 +44,7 @@ import { BecaBajaComponent } from './components/admin/panel-admin/ftd-baja/beca-
 import { GrupoBajaComponent } from './components/admin/panel-admin/ftd-baja/grupo-baja/grupo-baja.component';
 import { TutorBajaComponent } from './components/admin/panel-admin/ftd-baja/tutor-baja/tutor-baja.component';
 import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curso-baja/curso-baja.component';
+import { DocumentDetailComponent } from './components/alumno/panel-alumno/document-detail/document-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -111,6 +112,7 @@ const routes: Routes = [
   {path: 'baja-grupo', component: GrupoBajaComponent},
   {path: 'baja-tutor', component: TutorBajaComponent},
   {path: 'baja-curso', component: CursoBajaComponent},
+  { path: 'documents/:id', component: DocumentDetailComponent },
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
