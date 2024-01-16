@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Document } from 'src/app/Document';
 import { DocumentDetailService } from 'src/app/service/document-detail.service';
-import { Document } from './document.model';
 
 @Component({
   selector: 'app-document-detail',
   templateUrl: './document-detail.component.html',
   styleUrls: ['./document-detail.component.css']
 })
-export class DocumentDetailComponent{
-  /* document: Document | null = null;
+export class DocumentDetailComponent implements OnInit{
+  document: Document | undefined;
   comment = '';
 
 
@@ -24,7 +24,7 @@ export class DocumentDetailComponent{
   }
 
   getDocumentDetails(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.documentDetailService.getDocumentById(id)
       .subscribe(document => this.document = document);
   }
@@ -91,6 +91,6 @@ export class DocumentDetailComponent{
           }
         });
     }
-  } */
+  } 
   
 }

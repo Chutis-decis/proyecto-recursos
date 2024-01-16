@@ -3,7 +3,7 @@
 <app-barra-alumno></app-barra-alumno>
 
 <div class="container mt-3">
-    <h2 class="text-primary mb-4">Documentos Mensuales</h2>
+    <h2 class="mb-4 col-title">Documentos Mensuales</h2>
   
     <!-- Add Document Form -->
     <div class="mb-4">
@@ -28,7 +28,7 @@
         <input type="text" id="typeInput" class="form-control" placeholder="Enter Document Type" [(ngModel)]="newDocumentType" />
       </div>
   
-      <button class="btn btn-primary" (click)="addDocument()">Subir</button>
+      <button class="btn btn-primary border-0" (click)="addDocument()">Subir</button>
     </div>
   
     <!-- src/app/document/document.component.html -->
@@ -36,10 +36,9 @@
   <ul class="list-group">
     <li *ngFor="let document of documents" class="list-group-item">
       {{ document.name }} ({{ document.documentType }}) - {{ document.status }}
-      <a routerLink="/documents/{{ document.id }}" class="btn btn-primary btn-sm float-end mx-1">Detalles</a>
-      <button class="btn btn-danger btn-sm float-end mx-1" (click)="deleteDocument(document.id)">Eliminar</button>
-      <button class="btn btn-warning btn-sm float-end mx-1" (click)="updateDocument(document.id)">Modificar</button>
-    </li>
+      <a routerLink="/documents/{{ document.id }}" class="btn btn-primary btn-sm float-end mx-1 border-0">Detalles</a>
+      <button class="btn btn-warning btn-sm float-end mx-1 border-0" (click)="deleteDocument(document.id)">Eliminar</button>
+    </li> 
   </ul>
   
   

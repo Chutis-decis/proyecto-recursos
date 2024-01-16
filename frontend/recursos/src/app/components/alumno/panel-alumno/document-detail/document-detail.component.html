@@ -1,7 +1,8 @@
-<!-- <div class="container mt-3" *ngIf="document">
+<app-navv></app-navv>
+<div class="container mt-5 pt-5" *ngIf="document">
   <div class="card">
     <div class="card-header">
-      <h2>Documentos </h2>
+      <h2 class="col-title">Documentos </h2>
     </div>
     <div class="card-body">
       <div class="mb-3">
@@ -13,10 +14,10 @@
       </div>
 
       <div class="mb-3">
-        <button class="btn btn-danger" (click)="deleteDocument()">Eliminar</button>
-        <button class="btn btn-primary" (click)="downloadDocument()">Descargar</button>
-        <button class="btn btn-success" (click)="approveDocument()">Aprovar</button>
-        <button class="btn btn-warning" (click)="disapproveDocument()">Desaprovar</button>
+        <button class="btn btn-danger border-0" (click)="deleteDocument()">Eliminar</button>
+        <button class="btn btn-primary border-0 pl-2" (click)="downloadDocument()">Descargar</button>
+        <button class="btn btn-success border-0 pl-2" (click)="approveDocument()">Aprovar</button>
+        <button class="btn btn-warning border-0 pl-2" (click)="disapproveDocument()">Desaprovar</button>
       </div>
 
       <div class="mb-3">
@@ -32,4 +33,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div> 
