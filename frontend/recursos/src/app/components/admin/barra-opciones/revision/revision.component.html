@@ -1,0 +1,37 @@
+<app-navv></app-navv>
+<div class="container mt-5 pt-5" *ngIf="document">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="col-title text-center">Documentos </h2>
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <h4 class="card-title">{{ document.name }}</h4> <br>
+          <p class="card-text"><strong>Estatus:</strong> {{ document.status }}</p>
+          <p class="card-text"><strong>Servicio:</strong> {{ document.documentType }}</p>
+          <p class="card-text"><strong>Fecha:</strong> {{ document.uploadDate | date }}</p>
+          <p class="card-text"><strong>Activo:</strong> {{ document.validated ? 'Si' : 'No' }}</p>
+        </div>
+  
+        <div class="mb-3">
+          <button class="btn btn-danger border-0 me-3" (click)="deleteDocument()">Eliminar</button>
+          <button class="btn btn-primary border-0 pl-2" (click)="downloadDocument()">Descargar</button>
+          <button class="btn btn-success border-0 pl-2" (click)="approveDocument()">Aprovar</button>
+          <button class="btn btn-warning border-0 pl-2" (click)="disapproveDocument()">Desaprovar</button>
+        </div>
+  
+        <div class="mb-3">
+          <h4 class="card-title">Agregar Comentario </h4>
+          <ul class="list-group">
+            <li *ngFor="let comment of document.comments" class="list-group-item">{{ comment }}</li>
+          </ul>
+          <div class="input-group mt-3">
+            <input type="text" class="form-control" placeholder="Agregar aqui " [(ngModel)]="comment" />
+            <button class="btn btn-info" (click)="addComment()">Comentario</button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div> 
+  

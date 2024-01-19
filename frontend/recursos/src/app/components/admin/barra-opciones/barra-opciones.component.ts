@@ -132,4 +132,8 @@ export class BarraOpcionesComponent {
   baja_curso(){
     this.router.navigate(['/baja-curso']);
   }
+
+  revision(){
+    this.router.navigate(['/revision']);
+  }
 }

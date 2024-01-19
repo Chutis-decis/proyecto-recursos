@@ -57,6 +57,7 @@ import { GrupoBajaComponent } from './components/admin/panel-admin/ftd-baja/grup
 import { TutorBajaComponent } from './components/admin/panel-admin/ftd-baja/tutor-baja/tutor-baja.component';
 import { CursoBajaComponent } from './components/admin/panel-admin/ftd-baja/curso-baja/curso-baja.component';
 import { DocumentDetailComponent } from './components/alumno/panel-alumno/document-detail/document-detail.component';
+import { RevisionComponent } from './components/admin/barra-opciones/revision/revision.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +113,7 @@ import { DocumentDetailComponent } from './components/alumno/panel-alumno/docume
     TutorBajaComponent,
     CursoBajaComponent,
     DocumentDetailComponent,
+    RevisionComponent,
   ],
   imports: [
     BrowserModule,
