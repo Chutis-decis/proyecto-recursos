@@ -53,7 +53,12 @@
 			<version>4.1.0</version>
 		</dependency>
 
-
+		<!-- dependencia para la encriptación de la contraseña -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>0.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

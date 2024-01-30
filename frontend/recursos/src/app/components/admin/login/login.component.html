@@ -12,14 +12,14 @@
                 <!-- Titulo -->
                 <h1 class="mt-5 font-weight-bold mb-4 text-center">Administración</h1>
                 <!-- Formulario -->
-                <form (ngSubmit)="admin()">
+                <form (ngSubmit)="login()">
                     <div class="mb-4">
                         <label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
-                        <input type="email" class="form-control" placeholder="Ingresa tu email" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)] = "user" [ngModelOptions]="{standalone: true}">
+                        <input type="email" class="form-control" placeholder="Ingresa tu email" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)] = "usuario.username" [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="mb-4">
                         <label for="exampleInputPassword1" class="form-label font-weight-bold">Password</label>
-                        <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1"[(ngModel)] = "pas" >
+                        <input type="password" class="form-control mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1"[(ngModel)] = "usuario.password" [ngModelOptions]="{standalone: true}">
                     </div>
                     <button type="submit" class="btn btn-primary w-100 border-0">Iniciar Sesion</button>
                 </form>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { error } from 'pdf-lib';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Usuario } from 'src/app/auth/Usuario';
 import { CPanel } from 'src/app/components/admin/CPanel';
 import { Universidad } from 'src/app/datos_escolares/universidad';
 import { Beca } from 'src/app/FTD/Beca';
@@ -29,8 +32,19 @@ export class RegistroDatosFtdComponent{
   universidad: Universidad = new Universidad();
   datosAspirante = new CPanel() ;
 
+  /* registro de un nuevo aspirante */
+  user: Usuario[] = [];
+  usuario: Usuario = new Usuario();
+
   /* Constructor */
-  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService) { }
+  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService, private authService: AuthService) { }
+
+  registro(){
+    this.authService.registrarUsuario(this.usuario.username, this.usuario.password).subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+  }
 
   /* Obtener Beca */
   obtenerBeca(): void{
