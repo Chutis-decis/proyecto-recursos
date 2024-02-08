@@ -2,13 +2,21 @@ package com.humans.resource.controller.DatosPersonalesController;
 
 import com.humans.resource.entity.DatosFTD.Beca;
 import com.humans.resource.entity.DatosPersonales.DatosPersonales;
+import com.humans.resource.reportes.DatosExporterPDF;
+import com.humans.resource.reportes.EXCEL.DatosExporterExcel;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,5 +84,40 @@ import java.util.Map;
 
         @DeleteMapping("/eliminar/{id}")
         public void eliminarDatosPersonalesDefinitivamente(@PathVariable Long id){datosPersonalesService.eliminarDatosPersonales(id);}
+
+    @GetMapping("/exportarPDF")
+    public void exportarListadoDatosPersonalesPDF(HttpServletResponse response) throws IOException, DocumentException {
+        response.setContentType("application/pdf");
+
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String fechaActual = dateFormatter.format(new java.util.Date());
+
+        String cabecera = "Content-Disposition";
+        String valor = "attachment; filename=DatosPersonales_" + fechaActual + ".pdf";
+        response.setHeader(cabecera, valor);
+
+        List<DatosPersonales> listaDatosPersonales = datosPersonalesService.getAllDatosPersonales();
+
+        DatosExporterPDF exporterPDF = new DatosExporterPDF(listaDatosPersonales);
+        exporterPDF.exportar(response);
+    }
+
+    @GetMapping("/exportarExcel")
+    public void exportarListadoDeDatosPersonalesEnExcel(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/octet-stream");
+
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String fechaActual = dateFormatter.format(new Date());
+
+        String cabecera = "Content-Disposition";
+        String valor = "attachment; filename=DatosPersonales_" + fechaActual + ".xml";
+
+        response.setHeader(cabecera, valor);
+
+        List<DatosPersonales> personas = datosPersonalesService.getAllDatosPersonales();
+
+        DatosExporterExcel exporter = new DatosExporterExcel(personas);
+        exporter.exportar(response);
+    }
 }
 

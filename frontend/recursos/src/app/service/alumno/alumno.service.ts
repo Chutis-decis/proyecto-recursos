@@ -48,4 +48,13 @@ export class AlumnoService {
   eliminarAlumno(alumno: CPanel):Observable<Object>{
     return this.httpClient.delete(`${this.baseUrl}/eliminar/${alumno.id}`);
   }
+
+  generarPDF(): Observable<Blob> {
+    
+    return this.httpClient.get(`${this.baseUrl}/exportarPDF`, { responseType: 'blob' });
+  }
+
+  generarExcel(): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}/exportarExcel`, { responseType: 'blob' });
+  }
 }

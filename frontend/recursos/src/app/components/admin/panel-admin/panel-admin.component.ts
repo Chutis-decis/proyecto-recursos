@@ -103,4 +103,33 @@ export class PanelAdminComponent implements OnInit {
   actualizarIdControl() {
     this.matriculaService.idControlAlumno = this.estudiante.id.toString();
   }
+
+
+  /* Generacion de PDF */
+  generarPDF() {
+    this.alumnoService.generarPDF().subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error => {
+        console.error('Error al generar el PDF', error);
+      }
+    );
+  }
+
+  /* Generacion del archivo Excel */
+  generarExcel() {
+    this.alumnoService.generarExcel().subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error => {
+        console.error('Error al generar el Excel', error);
+      }
+    );
+  }
 }
