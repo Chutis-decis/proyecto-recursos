@@ -111,4 +111,17 @@ export class EscolaresService {
   updateModalidadEscolar(id: number, modalidad: modalidadEscolar): Observable<Object>{
     return this.httpClient.put<modalidadEscolar>(`${this.url}/${id}`, modalidad);
   }
+
+
+  /* Generacion PDF  */
+  generarPDF(): Observable<Blob> {
+    
+    return this.httpClient.get(`${this.url}/exportar/pdf`, { responseType: 'blob' });
+  }
+
+  /* Generacion de Excel */
+  generarExcel(): Observable<Blob> {
+    return this.httpClient.get(`${this.url}/exportar/excel`, { responseType: 'blob' });
+  }
+
 }

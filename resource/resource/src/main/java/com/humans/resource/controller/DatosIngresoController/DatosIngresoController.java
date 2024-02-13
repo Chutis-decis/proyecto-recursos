@@ -1,13 +1,22 @@
 package com.humans.resource.controller.DatosIngresoController;
 
+import com.humans.resource.entity.DatosEscolares.DatosEscolares;
 import com.humans.resource.entity.DatosIngreso.DatosIngreso;
+import com.humans.resource.reportes.DatosEscolares.EscolaresExporterPDF;
+import com.humans.resource.reportes.DatosIngreso.IngresoExcel;
+import com.humans.resource.reportes.DatosIngreso.IngresoPDF;
 import com.humans.resource.repository.DatosIngresooRepository.DatosIngresoService;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,5 +97,33 @@ public class DatosIngresoController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarDatosIngreso(@PathVariable Long id){
         datosIngresoService.eliminarDatosIngreso(id);
+    }
+
+    @GetMapping("/reporte/pdf")
+    public void exportarPDF(HttpServletResponse response) throws IOException, DocumentException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new java.util.Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=DatosIngreso_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<DatosIngreso> listaDatosEscolares = datosIngresoService.getAllDatosIngreso();
+        IngresoPDF exporter = new IngresoPDF(listaDatosEscolares);
+        exporter.exportar(response);
+    }
+
+    @GetMapping("/reporte/excel")
+    public void exportarExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new java.util.Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=DatosIngreso_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<DatosIngreso> listaDatosIngreso = datosIngresoService.getAllDatosIngreso();
+        IngresoExcel exporter = new IngresoExcel(listaDatosIngreso);
+        exporter.exportar(response);
     }
 }

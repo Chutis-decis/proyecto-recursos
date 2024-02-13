@@ -1,13 +1,22 @@
 package com.humans.resource.controller.DatosEscolaresController;
 
 import com.humans.resource.entity.DatosEscolares.DatosEscolares;
+import com.humans.resource.entity.DatosPersonales.DatosPersonales;
+import com.humans.resource.reportes.DatosEscolares.EscolaresExcel;
+import com.humans.resource.reportes.DatosEscolares.EscolaresExporterPDF;
+import com.humans.resource.reportes.DatosExporterPDF;
 import com.humans.resource.repository.DatosEscolaresRepository.DatosEscolaresService;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +88,34 @@ public class DatosEscolaresController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarDatosEscolaresDefinitivamente(@PathVariable Long id){
         datosEscolaresService.eliminarDatosEscolares(id);
+    }
+
+    @GetMapping("/exportar/pdf")
+    public void exportarPDF(HttpServletResponse response) throws IOException, DocumentException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new java.util.Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=DatosEscolares_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<DatosEscolares> listaDatosEscolares = datosEscolaresService.getAllDatosEscolares();
+        EscolaresExporterPDF exporter = new EscolaresExporterPDF(listaDatosEscolares);
+        exporter.exportar(response);
+    }
+
+    @GetMapping("/exportar/excel")
+    public void exportarExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormat.format(new java.util.Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=DatosEscolares_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<DatosEscolares> listaDatosEscolares = datosEscolaresService.getAllDatosEscolares();
+        EscolaresExcel exporter = new EscolaresExcel(listaDatosEscolares);
+        exporter.exportar(response);
     }
 }
 

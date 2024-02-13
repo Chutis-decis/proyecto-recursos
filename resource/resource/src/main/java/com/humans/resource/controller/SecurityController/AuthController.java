@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
         Map<String, Object> response = new HashMap<>();
-        if (!usuarioService.validarCredenciales(username, password)) {
+        if (usuarioService.validarCredenciales(username, password)) {
             response.put("mensaje", "Inicio de sesión exitoso.");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         } else {

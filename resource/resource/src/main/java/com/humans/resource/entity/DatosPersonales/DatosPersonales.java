@@ -45,6 +45,8 @@ public  class DatosPersonales {
     private String correoPersonal;
     private boolean activo = true;
 
+
+    @Column(unique = true)
     private String username; // Nuevo campo para almacenar el nombre de usuario
     private String password;
 

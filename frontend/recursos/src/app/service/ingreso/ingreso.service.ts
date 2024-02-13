@@ -155,4 +155,16 @@ export class IngresoService {
   activatedTramite(tramite: Tramite):Observable<Tramite>{
     return this.httpClient.delete<Tramite>(`${this.urlTramite}/recuperacion/${tramite.id}`);
   }
+
+
+
+  /* Generacion de pdf */
+  generarPDF() {
+    return this.httpClient.get(`${this.url}/reporte/pdf`, { responseType: 'blob' });
+  }
+
+  /* Generacion de excel */
+  generarExcel() {
+    return this.httpClient.get(`${this.url}/reporte/excel`, { responseType: 'blob' });
+  }
 }

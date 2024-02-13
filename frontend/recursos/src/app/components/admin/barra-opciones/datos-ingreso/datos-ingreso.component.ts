@@ -73,4 +73,32 @@ export class DatosIngresoComponent implements OnInit {
     this.getAllIngreso();
     this.route.navigate(['/detalle-ingreso']);
   }
+
+  /* Reporte en pdf */
+  generarPdf(){
+    this.serviceIngreso.generarPDF().subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error => {
+        console.error('Error al generar el PDF', error);
+      }
+    );
+  }
+
+  /* Reporte en excel */
+  generarExcel(){
+    this.serviceIngreso.generarExcel().subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error => {
+        console.error('Error al generar el Excel', error);
+      }
+    );
+  }
 }
