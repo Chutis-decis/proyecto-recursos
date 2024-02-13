@@ -74,14 +74,6 @@
             <label class="form-label">Matricula FTD</label>
             <input type="text" class="form-control" placeholder="Matricula FTD" id="matriculaFTD" name="matriculaFTD" [(ngModel)]="datosFTD.matriculaFTD">
         </div>
-        <div class="col-md-4 mt-4">
-            <label class="form-label">Correo Becario</label>
-            <input type="text" class="form-control" placeholder="Correo del Becario" id="correoBecario" name="correoBecario" [(ngModel)]="usuario.username">
-        </div>
-        <div class="col-md-4 mt-4">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" placeholder="Contraseña del correo" id="correoBecario" name="correoBecario" [(ngModel)]="usuario.password">
-        </div>
         <div class="col-md-3 position-relative mt-4">
             <label for="estatusTramite" class="form-label">Estatus del Trámite</label>
             <select class="form-select" id="estatusTramite" name="estatusTramite" [(ngModel)]="datosFTD.estatusTramite">
@@ -97,7 +89,7 @@
             </select>
         </div>
         <!-- boton -->
-        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="registro()" (click)="crear()" *ngIf="!datosFTD.id else elseBlock">Registrar</button>
+        <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="crear()" *ngIf="!datosFTD.id else elseBlock">Registrar</button>
         <ng-template #elseBlock>
             <button type="button" class="btn btn-secondary border-0 mt-4" role="button" (click)="update()">Actualizar</button>
         </ng-template>

@@ -4,13 +4,18 @@ import com.humans.resource.entity.DatosFTD.Beca;
 import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import com.humans.resource.reportes.DatosExporterPDF;
 import com.humans.resource.reportes.EXCEL.DatosExporterExcel;
+import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesRepository;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
+import com.humans.resource.service.DatosPersonalesService.DatosPersonalesServiceImpl;
+import com.humans.resource.service.securityService.UsuarioService;
 import com.lowagie.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -27,6 +32,11 @@ import java.util.Map;
     public class DatosPersonalesController {
 
         private final DatosPersonalesService datosPersonalesService;
+    @Autowired
+    private DatosPersonalesRepository datosPersonalesRepository;
+
+    @Autowired
+    private DatosPersonalesServiceImpl datosPersonalesServiceImpl;
 
         @Autowired
         public DatosPersonalesController(DatosPersonalesService datosPersonalesService) {
@@ -119,5 +129,43 @@ import java.util.Map;
         DatosExporterExcel exporter = new DatosExporterExcel(personas);
         exporter.exportar(response);
     }
+
+    @PutMapping("/{id}/username")
+    public ResponseEntity<?> actualizarUsername(@PathVariable Long id, @RequestBody String nuevoUsername) {
+        DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
+        if (datosPersonales == null) {
+            return ResponseEntity.notFound().build();
+        }
+        datosPersonales.setUsername(nuevoUsername);
+        datosPersonalesRepository.save(datosPersonales);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}/password")
+    public ResponseEntity<?> actualizarPassword(@PathVariable Long id, @RequestBody String nuevoPassword) {
+        DatosPersonales datosPersonales = datosPersonalesRepository.findById(id).orElse(null);
+        if (datosPersonales == null) {
+            return ResponseEntity.notFound().build();
+        }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        datosPersonales.setPassword(passwordEncoder.encode(nuevoPassword));
+        datosPersonalesRepository.save(datosPersonales);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> findByUsernames(@RequestParam String username, @RequestParam String password) {
+        Map<String, Object> response = new HashMap<>();
+        if (datosPersonalesServiceImpl.validarCredenciales(username, password)) {
+            response.put("mensaje", "Inicio de sesión exitoso.");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+        } else {
+            response.put("mensaje", "Credenciales incorrectas.");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.UNAUTHORIZED);
+
+        }
+    }
+
+
 }
 

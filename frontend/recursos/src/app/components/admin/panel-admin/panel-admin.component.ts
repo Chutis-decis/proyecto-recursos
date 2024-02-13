@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatriculaService } from 'src/app/service/matricula/matricula.service';
 import { error } from 'pdf-lib';
+import { FtdService } from 'src/app/service/ftd/ftd.service';
+import { DatosFTD } from 'src/app/FTD/ftd';
 @Component({
   selector: 'app-panel-admin',
   templateUrl: './panel-admin.component.html',
@@ -20,7 +22,7 @@ export class PanelAdminComponent implements OnInit {
 
 
   /* Constructor */
-  constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService) {this.rout = rout; }
+  constructor(private alumnoService: AlumnoService, private rout: Router, private activatedRouter: ActivatedRoute, private matriculaService: MatriculaService, private datosFTDService: FtdService) {this.rout = rout; }
   
   /* Metodos para el crud */
   ngOnInit(): void {
@@ -98,6 +100,16 @@ export class PanelAdminComponent implements OnInit {
   /* Registrar datos FTD */
   registrarDatosFTD(): void{
     this.rout.navigate(['/registro-datos-ftd']);
+  }
+
+  datosFTD: DatosFTD = new DatosFTD();
+  update():void{
+    this.datosFTDService.editarDatosFTD(this.datosFTD).subscribe(
+      e=> {
+        this.rout.navigate(['/datos-ftd'])
+        Swal.fire('Datos FTD actualizados', `Datos ${this.datosFTD.nombreProyecto} actualizado con exito!`, 'success')
+      }
+    );
   }
 
   actualizarIdControl() {

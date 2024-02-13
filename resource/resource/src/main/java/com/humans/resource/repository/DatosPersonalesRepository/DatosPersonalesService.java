@@ -1,6 +1,8 @@
 package com.humans.resource.repository.DatosPersonalesRepository;
 
 import com.humans.resource.entity.DatosPersonales.DatosPersonales;
+import com.humans.resource.service.securityService.PasswordEncoderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -14,4 +16,6 @@ public interface DatosPersonalesService {
 
     void eliminarDatosPersonales(Long id);
     DatosPersonales actualizarDatosPersonales(Long id,DatosPersonales datosNuevos);
+
+    DatosPersonales findByUsernames(String username);
 }

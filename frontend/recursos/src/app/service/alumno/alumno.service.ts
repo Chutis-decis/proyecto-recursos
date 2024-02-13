@@ -57,4 +57,17 @@ export class AlumnoService {
   generarExcel(): Observable<Blob> {
     return this.httpClient.get(`${this.baseUrl}/exportarExcel`, { responseType: 'blob' });
   }
+
+  //Registro de email y password
+  actualizarUsername(id: number, nuevoUsername: string): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/${id}/username`, nuevoUsername);
+  }
+
+  actualizarPassword(id: number, nuevoPassword: string): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/${id}/password`, nuevoPassword);
+  } 
+
+  actualizarDatosPersonales(id: number, datosPersonales: CPanel): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/${id}/registrar`, datosPersonales);
+  }
 }

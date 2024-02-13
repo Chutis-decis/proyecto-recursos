@@ -9,6 +9,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,8 @@ public  class DatosPersonales {
     private String correoPersonal;
     private boolean activo = true;
 
+    private String username; // Nuevo campo para almacenar el nombre de usuario
+    private String password;
 
     //Relacion u Mappeo con DatosEscolares
 
@@ -60,5 +64,10 @@ public  class DatosPersonales {
     @OneToMany(mappedBy = "datosPersonales", cascade = CascadeType.ALL)
     private List<com.humans.resource.entity.DatosFTD.DatosFTD> datosFTD;
 
+    // Método para establecer y encriptar la contraseña usando BCrypt
+    public void setPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
+    }
 }
 

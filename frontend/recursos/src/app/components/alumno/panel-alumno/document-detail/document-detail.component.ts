@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Document } from 'src/app/Document';
+import { CPanel } from 'src/app/components/admin/CPanel';
 import { DocumentDetailService } from 'src/app/service/document-detail.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class DocumentDetailComponent implements OnInit{
   document: Document | undefined;
   comment = '';
 
+  alumno: CPanel[] = [];
+  alumn: CPanel = new CPanel();
 
 
   constructor(

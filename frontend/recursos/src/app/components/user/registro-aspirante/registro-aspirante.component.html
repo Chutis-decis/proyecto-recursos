@@ -97,7 +97,15 @@
         <!-- boton -->
             <button type="button" class="btn btn-secondary border-0" role="button" (click)="create()" [disabled]="miFormulario.invalid" *ngIf="!estudiante.id else elseBlock">Siguiente</button>
             <ng-template #elseBlock>
-                <button type="button" class="btn btn-secondary border-0" role="button" (click)="update()" [disabled]="miFormulario.invalid">Actualizar</button>
+                <div class="col-md-4 mt-4 mb-3">
+                    <label>Correo INFOTEC</label>
+                    <input type="email" class="form-control" placeholder="Escribe tu correo personal" id="email2" name="email2" [(ngModel)]="estudiante.username">
+                </div>
+                <div class="col-md-4 mt-4 mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Escribe tu correo personal" id="Password" name="Password" [(ngModel)]="estudiante.password">
+                </div>
+                <button type="button" class="btn btn-secondary border-0" role="button" (click)="actualizar()">Actualizar</button>
             </ng-template>
     </div>
     </div>

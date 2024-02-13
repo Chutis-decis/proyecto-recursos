@@ -11,7 +11,7 @@ export class PanelAlumnoComponent{
   documents: Document[] = [];
   selectedFile: File | null = null;
   newName = '';
-  newStatus = '';
+  newStatus = 'Pendiente';
   newDocumentType = '';
 
   constructor(private documentService: DocumentService) {}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'pdf-lib';
+import { AlumnoService } from 'src/app/service/alumno/alumno.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Usuario } from 'src/app/auth/Usuario';
 import { CPanel } from 'src/app/components/admin/CPanel';
@@ -32,19 +33,37 @@ export class RegistroDatosFtdComponent{
   universidad: Universidad = new Universidad();
   datosAspirante = new CPanel() ;
 
+  id: number;
+  nuevoUsername: string;
+  nuevoPassword: string;
+
   /* registro de un nuevo aspirante */
-  user: Usuario[] = [];
-  usuario: Usuario = new Usuario();
+  user: CPanel[] = [];
+  usuario: CPanel = new CPanel();
 
   /* Constructor */
-  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService, private authService: AuthService) { }
+  constructor(private datosFTDService: FtdService, private router: Router, private activateRouter: ActivatedRoute, private matriculaService: MatriculaService, private aspiranteService: AlumnoService) { }
 
-  registro(){
-    this.authService.registrarUsuario(this.usuario.username, this.usuario.password).subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    );
+  actualizarUsername() {
+    this.aspiranteService.actualizarUsername(this.id, this.nuevoUsername).subscribe(() => {
+      console.log('Username actualizado correctamente.');
+    }, error => {
+      console.error('Error al actualizar el username:', error);
+    });
   }
+
+  actualizarPassword() {
+    this.aspiranteService.actualizarPassword(this.id, this.nuevoPassword).subscribe(() => {
+      console.log('Password actualizado correctamente.');
+    }, error => {
+      console.error('Error al actualizar el password:', error);
+    });
+  }
+
+  cargarAndActualizar() {
+    this.crear();
+  }
+  
 
   /* Obtener Beca */
   obtenerBeca(): void{
@@ -101,6 +120,7 @@ export class RegistroDatosFtdComponent{
     this.datosFTDService.createDatosFTD(this.datosFTD).subscribe(ftd => {
       this.router.navigate(['/datos-ftd'])
       Swal.fire('Nuevo Dato de Ingreso', `Datos Ftd del proyecto: ${this.datosFTD.nombreProyecto} creado con exito!!!`, 'success');
+      
     },
     err => {
       console.error('Código del error desde el backend: ' + err.status);

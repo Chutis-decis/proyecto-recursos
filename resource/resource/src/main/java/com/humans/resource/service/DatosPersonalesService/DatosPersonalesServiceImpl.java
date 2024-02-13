@@ -4,6 +4,7 @@ import com.humans.resource.entity.DatosFTD.Beca;
 import com.humans.resource.entity.DatosPersonales.DatosPersonales;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesRepository;
 import com.humans.resource.repository.DatosPersonalesRepository.DatosPersonalesService;
+import com.humans.resource.service.securityService.PasswordEncoderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,5 +95,27 @@ public class DatosPersonalesServiceImpl implements DatosPersonalesService {
     @Override
     public void eliminarDatosPersonales(Long id) {
         datosPersonalesRepository.deleteById(id);
+    }
+
+    @Override
+    public DatosPersonales findByUsernames(String username) {
+        return datosPersonalesRepository.findByUsername(username);
+    }
+
+    @Autowired
+    private PasswordEncoderService passwordEncoder;
+
+    public boolean validarCredenciales(String username, String password) {
+        DatosPersonales usuario = datosPersonalesRepository.findByUsername(username);
+
+        if (usuario != null) {
+            boolean valido = false;
+            System.out.println("Password: " + password + " Usuario: " + usuario);
+            valido =  passwordEncoder.matches(password, usuario.getPassword());
+
+            return valido;
+        }
+
+        return false;
     }
 }

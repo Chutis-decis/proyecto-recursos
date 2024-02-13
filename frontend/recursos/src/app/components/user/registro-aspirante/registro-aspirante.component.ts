@@ -14,9 +14,43 @@ export class RegistroAspiranteComponent implements OnInit{
   /* Atributo para crear un nuevo estudiante */
   estudiante : CPanel = new CPanel();
   estudiantes: CPanel[];
+
+  id: number;
+  nuevoUsername: string;
+  nuevaPassword: string;
   /* Atributo para crear un nuevo dato escolar */
   escolares: DatosEscolares = new DatosEscolares();
 
+  actualizar() {
+    this.actualizarUsername();
+    this.actualizarPassword();
+    this.update();
+}
+
+actualizarUsername() {
+    this.alumnoService.actualizarUsername(this.estudiante.id, this.estudiante.username).subscribe(() => {
+        console.log('Nombre de usuario actualizado correctamente.');
+    }, error => {
+        console.error('Error al actualizar el nombre de usuario:', error);
+    });
+}
+
+actualizarPassword() {
+    this.alumnoService.actualizarPassword(this.estudiante.id, this.estudiante.password).subscribe(() => {
+        console.log('Contraseña actualizada correctamente.');
+    }, error => {
+        console.error('Error al actualizar la contraseña:', error);
+    });
+}
+actualizarDatosPersonales(): void {
+  this.estudiante.username = this.nuevoUsername;
+  this.estudiante.password = this.nuevaPassword;
+
+  this.alumnoService.actualizarDatosPersonales(this.id, this.estudiante).subscribe(
+    data => console.log(data),
+    error => console.log(error)
+  );
+}
   /* Constructor */
   constructor(private route: Router, public alumnoService: AlumnoService, private activateRouter: ActivatedRoute) { this.route = route }
 

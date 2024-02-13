@@ -16,4 +16,6 @@ export class CPanel{
     telefono:string;
     correoPersonal:string;
     activo:boolean;
+    username:string;
+    password:string;
 }
